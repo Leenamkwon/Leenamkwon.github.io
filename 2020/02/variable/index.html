@@ -20,37 +20,37 @@
     var CONFIG = {"hostname":"github.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="blah blah blah">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Leenamkwon">
-<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/index.html">
+  <meta name="description" content="1. 변수란 무엇인가?  변수(Variable)는 하나의 값을 저장하기 위해 확보한 메모리 공간 자체 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말한다.  간단히 말하자면 변수는 프로그래밍 언어에서 값을 저장하고 참조하는 매커니즘으로 값의 위치를 가리키는 상징적인 이름이다.  상징적 이름인 변수는 프로그래밍 언어의 컴파일러 또는 인터프리터에 의해 값">
+<meta property="og:type" content="article">
+<meta property="og:title" content="변수 | javaScript">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/variable/index.html">
 <meta property="og:site_name" content="Leenamkwon">
-<meta property="og:description" content="blah blah blah">
+<meta property="og:description" content="1. 변수란 무엇인가?  변수(Variable)는 하나의 값을 저장하기 위해 확보한 메모리 공간 자체 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말한다.  간단히 말하자면 변수는 프로그래밍 언어에서 값을 저장하고 참조하는 매커니즘으로 값의 위치를 가리키는 상징적인 이름이다.  상징적 이름인 변수는 프로그래밍 언어의 컴파일러 또는 인터프리터에 의해 값">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-20T03:28:11.000Z">
+<meta property="article:modified_time" content="2020-02-20T08:52:06.734Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
-<meta property="article:tag" content=" TypeScript">
-<meta property="article:tag" content=" JS">
-<meta property="article:tag" content=" HTML5">
-<meta property="article:tag" content=" CSS3">
-<meta property="article:tag" content=" SCSS">
-<meta property="article:tag" content=" React">
-<meta property="article:tag" content=" web">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="npm">
+<meta property="article:tag" content="github">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://github.com/Leenamkwon/Leenamkwon.github.io/">
+<link rel="canonical" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/variable/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false
+    isHome: false,
+    isPost: true
   };
 </script>
 
-  <title>Leenamkwon</title>
+  <title>변수 | javaScript | Leenamkwon</title>
   
 
 
@@ -146,10 +146,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
     <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/variable/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -163,8 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/variable/" class="post-title-link" itemprop="url">변수 | javaScript</a>
+          변수 | javaScript
         </h1>
 
         <div class="post-meta">
@@ -189,7 +188,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-변수란-무엇인가"><a href="#1-변수란-무엇인가" class="headerlink" title="1. 변수란 무엇인가?"></a>1. 변수란 무엇인가?</h1><p>  <strong>변수(Variable)는 하나의 값을 저장하기 위해 확보한 메모리 공간 자체 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말한다.</strong><br>  간단히 말하자면 변수는 프로그래밍 언어에서 값을 저장하고 참조하는 매커니즘으로 값의 위치를 가리키는 상징적인 이름이다.<br>  상징적 이름인 변수는 프로그래밍 언어의 컴파일러 또는 인터프리터에 의해 값이 저장된 메모리 공간의 주소로 치환되어 실행된다.<br>  따라서 개발자가 직접 메모리 주소를 통해 값에 저장하고 참조할 필요가 없고 변수를 통해 안전하게 값에 접근할 수 있다.</p>
+        <h1 id="1-변수란-무엇인가"><a href="#1-변수란-무엇인가" class="headerlink" title="1. 변수란 무엇인가?"></a>1. 변수란 무엇인가?</h1><p>  <strong>변수(Variable)는 하나의 값을 저장하기 위해 확보한 메모리 공간 자체 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말한다.</strong><br>  간단히 말하자면 변수는 프로그래밍 언어에서 값을 저장하고 참조하는 매커니즘으로 값의 위치를 가리키는 상징적인 이름이다.<br>  상징적 이름인 변수는 프로그래밍 언어의 컴파일러 또는 인터프리터에 의해 값이 저장된 메모리 공간의 주소로 치환되어 실행된다.<br>  따라서 개발자가 직접 메모리 주소를 통해 값에 저장하고 참조할 필요가 없고 변수를 통해 안전하게 값에 접근할 수 있다.</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 변수는 하나의 값을 저장하기 위한 수단이다.</span><br><span class="line">var userName &#x3D; &#39;Namkwon&#39;;</span><br><span class="line">var userRole &#x3D; &#39;Admin&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 객체나 배열과 같은 자료 구조를 사용하면 여러 개의 값을 하나로 그룹화하여 하나의 값처럼 사용할 수 있다.</span><br><span class="line">var user &#x3D; &#123;</span><br><span class="line">  name: &#39;Namkwon&#39;;</span><br><span class="line">  role: &#39;Admin&#39;;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">var user &#x3D; [</span><br><span class="line">  &#123; name: &#39;Namkwon&#39;, role: &#39;Admin&#39; &#125;,</span><br><span class="line">  &#123; name: &#39;Kim&#39;, role: &#39;Developer&#39; &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
 
 
@@ -200,94 +199,41 @@
 <p> 변수, 함수, 클래스 등의 이름과 같은 식별자는 네이밍 규칙을 준수해야 하며, “선언(declaration)”에 의해 자바스크립트 엔진에 식별자의 존재를 알린다.  </p>
 <p>$ hexo deploy</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+              <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+              <a href="/tags/git/" rel="tag"># git</a>
+              <a href="/tags/React/" rel="tag"># React</a>
+              <a href="/tags/npm/" rel="tag"># npm</a>
+              <a href="/tags/github/" rel="tag"># github</a>
+          </div>
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/hello-world/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lee namkwon">
-      <meta itemprop="description" content="blah blah blah">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leenamkwon">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-10 12:26:12" itemprop="dateCreated datePublished" datetime="2020-02-10T12:26:12+09:00">2020-02-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -338,6 +284,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-변수란-무엇인가"><span class="nav-number">1.</span> <span class="nav-text">1. 변수란 무엇인가?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-식별자"><span class="nav-number">2.</span> <span class="nav-text">2. 식별자</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
