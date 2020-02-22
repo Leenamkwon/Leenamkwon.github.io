@@ -175,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-02-22 18:28:11 / Modified: 18:46:27" itemprop="dateCreated datePublished" datetime="2020-02-22T18:28:11+09:00">2020-02-22</time>
+              <time title="Created: 2020-02-22 18:28:11 / Modified: 18:53:15" itemprop="dateCreated datePublished" datetime="2020-02-22T18:28:11+09:00">2020-02-22</time>
             </span>
 
           
@@ -297,6 +297,48 @@ ECMAScript 사양은 문자열과 숫자 타입 이외의 데이터 타입의 �
 <p>이때 값을 참조하려면 한번에 읽어 들여야 할 메모리 공간의 크기, 즉 메모리 셀의 개수(byte 수)를 알아야 한다. 변수 score의 경우, 저장되어 있는 값이 숫자 타입이므로 8byte 단위로 읽어 들이지 않으면 값이 훼손된다. 그렇다면 컴퓨터는 한번에 읽어 들여야 할 메모리 셀의 크기를 어떻게 알 수 있는 것일까? 변수 score에는 숫자 타입의 값이 할당되어 있으므로 자바스크립트 엔진은 변수 score를 숫자 타입으로 인식한다. 숫자 타입은 8byte 단위로 저장되어 있으므로 변수 score를 참조하면 8byte 단위로 메모리 공간에 저장된 값을 읽어 들인다.</p>
 <h2 id="9-2-데이터-타입에-의한-값의-해석"><a href="#9-2-데이터-타입에-의한-값의-해석" class="headerlink" title="9.2. 데이터 타입에 의한 값의 해석"></a>9.2. 데이터 타입에 의한 값의 해석</h2><p>그런데 아직 문제가 남아 있다. 메모리에서 읽어 들인 2진수를 어떻게 해석해야 하는지에 대한 것이다.</p>
 <p>모든 값은 데이터 타입을 갖으며 메모리에 2진수, 즉 비트(bit)의 나열로 저장된다. 메모리에 저장된 값은 데이터 타입에 따라 다르게 해석될 수 있다. 예를 들어, 메모리에 저장된 값 0100 0001를 숫자로 해석하면 65이지만 문자열로 해석하면 ‘A’이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 2진수 01000001을 10진수 숫자로 해석하면 65이다.</span><br><span class="line">&#x2F;&#x2F; parseInt는 문자열을 숫자로 변환한다.</span><br><span class="line">console.log(parseInt(&#39;01000001&#39;, 2)); &#x2F;&#x2F; 65</span><br><span class="line">&#x2F;&#x2F; 진수 01000001을 문자(Unicode)로 해석하면 &#39;A&#39;이다.</span><br><span class="line">&#x2F;&#x2F; String.fromCharCode은 UTF-16 코드 유닛의 시퀀스로부터 문자열을 생성한다.</span><br><span class="line">console.log(String.fromCharCode(parseInt(&#39;01000001&#39;, 2))); &#x2F;&#x2F; A</span><br></pre></td></tr></table></figure>
+
+<p>위에서 살펴본 예제의 변수 score에 할당된 값은 숫자 타입의 값이다. 따라서 변수 score를 참조하면 메모리 공간의 주소에서 읽어 들인 2진수를 숫자로 해석한다.</p>
+<p>지금까지 살펴본 데이터 타입에 대해 정리해보자. 데이터 타입(Data type)은 값의 종류를 말한다. 자바스크립트의 모든 값은 데이터 타입을 갖는다. 데이터 타입이 필요한 이유는 아래와 같다.</p>
+<ul>
+<li>값을 저장할 때 확보해야 하는 메모리 공간의 크기를 결정하기 위해</li>
+<li>값을 참조할 때 한번에 읽어 들여야 할 메모리 공간의 크기를 결정하기 위해</li>
+<li>메모리에서 읽어 들인 2진수를 어떻게 해석할 지를 결정하기 위해<br>
+
+</li>
+</ul>
+<h1 id="10-동적-타이핑"><a href="#10-동적-타이핑" class="headerlink" title="10.동적 타이핑"></a>10.동적 타이핑</h1><h2 id="10-1-동적-타입-언어와-정적-타입-언어"><a href="#10-1-동적-타입-언어와-정적-타입-언어" class="headerlink" title="10.1 동적 타입 언어와 정적 타입 언어"></a>10.1 동적 타입 언어와 정적 타입 언어</h2><p>자바스크립트의 모든 값은 데이터 타입을 갖는다고 했다. 그렇다면 변수는 데이터 타입을 갖을까?</p>
+<p>C나 Java와 같은 정적 타입(Static/Strong type) 언어는 변수를 선언할 때 변수에 할당할 수 있는 값의 종류, 즉 데이터 타입을 사전에 선언해야 한다. 이를 명시적 타입 선언(explicit type declaration)이라 한다. 다음은 C에서 정수 타입의 변수를 선언하는 예이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 변수 c에는 1byte 정수 타입의 값(-128 ~ 127)만을 할당할 수 있다.</span><br><span class="line">char c;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 변수 num에는 4byte 정수 타입의 값(-2,124,483,648 ~ 2,124,483,647)만을 할당할 수 있다.</span><br><span class="line">int num;</span><br></pre></td></tr></table></figure>
+
+<p>정적 타입 언어는 변수의 타입을 변경할 수 없으며 변수에 선언한 타입에 맞는 값만을 할당할 수 있다. 정적 타입 언어는 컴파일 시점에 타입 체크(선언한 데이터 타입에 맞는 값을 할당했는지 검사하는 처리)를 수행한다. 만약 타입 체크를 통과하지 못했다면 에러를 발생시키고 프로그램의 실행 자체를 막는다. 이를 통해 타입의 일관성을 강제하여 보다 안정적인 코드의 구현을 통해 런타임에 발생하는 에러를 줄인다. 대표적인 정적 타입 언어는 C, C++, Java, Kotlin, Go, Haskell, Rust, Scala 등이 있다.</p>
+<p>자바스크립트는 정적 타입 언어와는 다르게 변수를 선언할 때 타입을 선언하지 않는다. 다만 var, let, const 키워드를 사용해 변수를 선언할 뿐이다. 자바스크립트의 변수는 정적 타입 언어와 같이 미리 선언한 데이터 타입의 값만을 할당할 수 있는 것이 아니다. 어떠한 데이터 타입의 값이라도 자유롭게 할당할 수 있다.</p>
+<p>하나의 변수를 선언하고 지금까지 살펴본 다양한 데이터 타입의 값을 할당한 다음, typeof 연산자로 변수의 데이터 타입을 조사해 보자. typeof 연산자(“7.8. typeof 연산자” 참고)는 자신의 뒤에 위치한 피연산자의 데이터 타입을 문자열로 반환한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var foo;</span><br><span class="line">console.log(typeof foo);  &#x2F;&#x2F; undefined</span><br><span class="line"></span><br><span class="line">foo &#x3D; 3;</span><br><span class="line">console.log(typeof foo);  &#x2F;&#x2F; number</span><br><span class="line"></span><br><span class="line">foo &#x3D; &#39;Hello&#39;;</span><br><span class="line">console.log(typeof foo);  &#x2F;&#x2F; string</span><br><span class="line"></span><br><span class="line">foo &#x3D; true;</span><br><span class="line">console.log(typeof foo);  &#x2F;&#x2F; boolean</span><br><span class="line"></span><br><span class="line">foo &#x3D; null;</span><br><span class="line">console.log(typeof foo);  &#x2F;&#x2F; object</span><br><span class="line"></span><br><span class="line">foo &#x3D; Symbol(); &#x2F;&#x2F; 심볼</span><br><span class="line">console.log(typeof foo);  &#x2F;&#x2F; symbol</span><br><span class="line"></span><br><span class="line">foo &#x3D; &#123;&#125;; &#x2F;&#x2F; 객체</span><br><span class="line">console.log(typeof foo);  &#x2F;&#x2F; object</span><br><span class="line"></span><br><span class="line">foo &#x3D; []; &#x2F;&#x2F; 배열</span><br><span class="line">console.log(typeof foo);  &#x2F;&#x2F; object</span><br><span class="line"></span><br><span class="line">foo &#x3D; function () &#123;&#125;; &#x2F;&#x2F; 함수</span><br><span class="line">console.log(typeof foo);  &#x2F;&#x2F; function</span><br></pre></td></tr></table></figure>
+
+<p>typeof 연산자로 변수를 연산해 보면 변수의 데이터 타입을 반환한다. 정확히 말하면 변수의 데이터 타입을 반환하는 것이 아니라 변수에 할당된 값의 데이터 타입을 반환한 것이다.</p>
+<p>자바스크립트의 변수는 어떤 데이터 타입의 값이라도 자유롭게 할당할 수 있으므로 정적 타입 언어에서 말하는 데이터 타입과 개념이 다르다. 정적 타입 언어는 변수 선언 시점에 변수의 타입이 결정되고 변수의 타입을 변경할 수 없다. 자바스크립트는 값을 할당하는 시점에 변수의 타입이 동적으로 결정되고 변수의 타입을 언제든지 자유롭게 변경할 수 있다.</p>
+<p>다시 말해 자바스크립트 변수는 선언이 아닌 할당에 의해 타입이 결정된다. 그리고 재할당에 의해 변수의 타입은 언제든지 동적으로 변할 수 있다. 이러한 특징을 동적 타이핑(Dynamic typing)이라 하며 자바스크립트를 정적 타입 언어와 구별하기 위해 동적 타입(Dynamic/Weak type) 언어라 부른다. 대표적인 동적 타입 언어는 자바스크립트, Python, PHP, Ruby, Lisp, Perl 등이 있다.</p>
+<p>처음의 질문으로 돌아가 보자. 변수는 타입을 갖을까? 기본적으로 변수는 타입을 갖지 않는다. 하지만 값은 타입을 갖는다. 따라서 현재 변수에 할당되어 있는 값에 의해 변수의 타입이 동적으로 결정된다고 표현하는 것이 보다 적절하다. 변수는 값에 묶여 있는 값에 대한 별명이기 때문이다.</p>
+<h2 id="10-2-동적-타입-언어와-변수"><a href="#10-2-동적-타입-언어와-변수" class="headerlink" title="10.2. 동적 타입 언어와 변수"></a>10.2. 동적 타입 언어와 변수</h2><p>동적 타입 언어는 변수에 어떤 데이터 타입의 값이라도 자유롭게 할당할 수 있다. 이러한 동적 타입 언어의 특징은 데이터 타입에 대해 무감각해질 정도로 편리하다. 하지만 언제나 그렇듯 편리함의 이면에는 위험도 도사리고 있다.</p>
+<p>모든 소프트웨어 아키텍처에는 트레이드오프(trade-off)가 존재하며 모든 애플리케이션에 적합한 은 탄환(Silver bullet)은 없듯이, 동적 타입 언어 또한 구조적인 단점이 있다.<br><br></p>
+<p>변수 값은 언제든지 변경될 수 있기 때문에 복잡한 프로그램에서는 변화하는 변수 값을 추적하기 어려울 수 있다. 뿐만 아니라, 변수의 타입이 고정되어 있지 않고 동적으로 변하는 동적 타입 언어의 변수는 값의 변경에 의해 타입도 언제든지 변경될 수 있다. 따라서 동적 타입 언어의 변수는 값을 확인하기 전에는 타입을 확신할 수 없다.</p>
+<p>더욱이 자바스크립트는 개발자의 의도와는 상관없이 자바스크립트 엔진에 의해 암묵적으로 타입이 자동 변환되기도 한다. 즉, 숫자 타입의 변수일 것이라고 예측했지만 사실은 문자열 타입의 변수일 수도 있다는 말이다. 잘못된 예측에 의해 작성된 프로그램은 당연히 오류를 뿜어낼 것이다. 결국 동적 타입 언어는 유연성(flexibility)은 높지만, 신뢰성(reliability)은 떨어진다.</p>
+<p>이러한 이유로 안정적인 프로그램을 만들기 위해 변수를 사용하기 이전에 데이터 타입을 체크해야 하는 경우가 있는데 이는 매우 번거로울 뿐만 아니라 코드량도 증가한다. 코드량이 증가하면 버그가 발생할 확률도 높아지며 테스트 분량도 증가한다. 따라서 변수를 사용할 때 주의할 사항은 아래와 같다.</p>
+<ul>
+<li><p>변수는 꼭 필요한 경우에 한해 제한적으로 사용한다. 변수값은 재할당에 의해 언제든지 변경될 수 있다. 이로 인해 동적 타입 언어인 자바스크립트는 타입을 잘못 예측해 오류가 발생할 가능성이 크다. 변수의 개수가 많으면 많을수록 오류가 발생할 확률도 높아진다. 따라서 변수의 무분별한 남발은 금물이며 필요 최소한으로 유지하도록 주의해야 한다.</p>
+</li>
+<li><p>변수의 유효 범위(스코프)는 최대한 좁게 만들어 변수의 부작용을 억제해야 한다. 변수의 유효 범위가 넓으면 넓을수록 변수로 인해 오류가 발생할 확률은 높아진다. 변수의 유효 범위에 대해서는 “13. 스코프”에서 자세히 살펴보도록 하자.</p>
+</li>
+<li><p>전역 변수는 최대한 사용하지 않도록 한다. 어디서든지 참조/변경 가능한 전역 변수는 의도치 않게 값이 변경될 가능성이 높고 다른 코드에 영향을 줄 가능성도 높다. 따라서 전역 변수는 프로그램의 복잡성을 증가시키고 처리의 흐름을 추적하기 어렵게 만들고, 오류가 발생했을 경우, 오류의 원인을 특정하기 어렵게 만든다. 전역 변수의 문제점과 전역 변수의 사용을 억제하는 방법에 대해서는 “14. 전역 변수의 문제점”에서 자세히 살펴보도록 하자.</p>
+</li>
+<li><p>변수보다는 상수를 사용해 값의 변경을 억제한다. 상수를 사용하는 방법에 대해서는 “15.3. const 키워드”에서 살펴보도록 하자.</p>
+</li>
+<li><p>변수 이름은 변수의 목적이나 의미를 파악할 수 있도록 네이밍한다. 변수 이름 뿐만이 아니라 모든 식별자(변수, 함수, 클래스 이름 등)는 존재 이유를 파약할 수 있는 적절한 이름을 네이밍해야 한다. 특히 식별자의 유효 범위가 넓을수록 보다 명확한 이름을 명명하도록 노력하도록 하자. 개발자의 의도를 나타내는 명확한 네이밍은 코드를 이해하기 쉽게 만들며 이는 협업과 생산성 향상에 도움을 준다. 변수 이름은 첫아이 이름을 짓듯이 심사숙고해서 지어야 한다.</p>
+</li>
+</ul>
+<p>코드는 오해하지 않도록 작성해야 한다. 오해는 커뮤니케이션을 어렵게 하는 대표적인 원인으로 생산성을 떨어뜨리는 것은 물론 팀의 사기까지 저하시킨다. 코드는 동작하는 것만이 존재 목적은 아니다. 코드는 개발자를 위한 문서이기도 하다. 따라서 사람이 이해할 수 있는 코드, 즉 가독성이 좋은 코드가 좋은 코드다.</p>
 
       
     </div>
