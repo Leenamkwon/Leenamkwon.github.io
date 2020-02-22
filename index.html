@@ -173,10 +173,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-21 12:28:11 / Modified: 14:14:49" itemprop="dateCreated datePublished" datetime="2020-02-21T12:28:11+09:00">2020-02-21</time>
+              <time title="Created: 2020-02-21 12:28:11" itemprop="dateCreated datePublished" datetime="2020-02-21T12:28:11+09:00">2020-02-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-22 18:26:26" itemprop="dateModified" datetime="2020-02-22T18:26:26+09:00">2020-02-22</time>
+              </span>
 
           
 
@@ -199,11 +205,40 @@
 <br>
 <br>
 
-<h1 id="3-표현식"><a href="#3-표현식" class="headerlink" title="3. 표현식"></a>3. 표현식</h1><p><strong>표현식(expression)은 값으로 평가될 수 있는 문(statement)이다. 즉, 표현식이 평가되면 값을 생성하거나 값을 참조한다.</strong><br>앞서 살펴본 리터럴은 값으로 평가된다. 따라서 리터럴도 표현식이다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var score &#x3D; 100;</span><br></pre></td></tr></table></figure>
+<h1 id="3-표현식"><a href="#3-표현식" class="headerlink" title="3. 표현식"></a>3. 표현식</h1><p><strong>표현식(expression)은 값으로 평가될 수 있는 문(statement)이다. 즉, 표현식이 평가되면 값을 생성하거나 값을 참조한다.</strong><br>앞서 살펴본 리터럴은 값으로 평가된다. 따라서 모든 식별자도 표현식이며 리터럴도 표현식인 셈이다. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 리터럴 표현식</span><br><span class="line">10</span><br><span class="line">&#39;Hello&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 식별자 표현식 (선언이 이미 존재한다고 가정)</span><br><span class="line">sum</span><br><span class="line">person.name</span><br><span class="line">arr[1]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 연산자 표현식</span><br><span class="line">10 + 20</span><br><span class="line">sum &#x3D; 10</span><br><span class="line">sum !&#x3D;&#x3D; 10</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 함수&#x2F;메소드 호출 표현식 (선언이 이미 존재한다고 가정)</span><br><span class="line">square()</span><br><span class="line">person.getName()</span><br></pre></td></tr></table></figure>
 
 
+<br>
+<br>
 
+<h1 id="4-문"><a href="#4-문" class="headerlink" title="4. 문"></a>4. 문</h1><p>앞으로 자바스크립트를 설명할 때 “문(statement)”과 “표현식(expression)”이라는 용어가 자주 등장할 것이다. 따라서 문과 표현식은 확실히 이해할 필요가 있다. 문과 표현식을 구별하고 해석할 수 있다면 자바스크립트 엔진의 입장에서 코드를 읽을 수 있고 실행 결과 예측에 도움이 된다. 이는 버그를 줄이고 코드의 품질을 높여줄 것이다.</p>
+<p>문(statement)은 프로그램을 구성하는 기본 단위이자 최소 실행 단위이다. 문의 집합으로 이루어진 것이 바로 프로그램이며 문을 작성하고 순서에 맞게 나열하는 것이 프로그래밍이다.</p>
+<p>문은 여러 토큰들로 구성된다. 토큰(token)이란 문법적인 의미를 가지며, 문법적으로 더이상 나눌 수 없는 코드의 기본 요소를 의미한다. 예를 들어, 키워드, 식별자, 연산자, 리터럴, 세미콜론(;)이나 마침표(.) 등의 특수 기호는 문법적인 의미를 가지며, 문법적으로 더 이상 나눌 수 없는 코드의 기본 요소이므로 모두 토큰이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 변수 선언문</span><br><span class="line">var x;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 표현식 문(할당문)</span><br><span class="line">x &#x3D; 5;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 함수 선언문</span><br><span class="line">function foo () &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 조건문</span><br><span class="line">if (x &gt; 1) &#123; console.log(x); &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 반복문</span><br><span class="line">for (var i &#x3D; 0; i &lt; 2; i++) &#123; console.log(i); &#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+<br>
+
+<h1 id="5-세미콜론과-세미콜론-자동-삽입-기능"><a href="#5-세미콜론과-세미콜론-자동-삽입-기능" class="headerlink" title="5. 세미콜론과 세미콜론 자동 삽입 기능"></a>5. 세미콜론과 세미콜론 자동 삽입 기능</h1><p>세미콜론( ; )은 문의 종료를 나타낸다. 따라서 문은 세미콜론으로 끝나야 한다. 단, 0개 이상의 문을 중괄호로 묶은 코드 블록 { … } 뒤에는 세미콜론을 붙이지 않는다. 예를 들어, if 문, for 문, 함수 등의 코드 블록 뒤에는 세미콜론을 붙이지 않는다. 이들 코드 블록은 언제나 문의 종료를 의미하는 자체 종결성(self closing)을 갖기 때문이다.</p>
+<p>문의 끝에 붙이는 세미콜론은 옵션이다. 즉, 세미콜론은 생략 가능하다. 이는 자바스크립트 엔진이 소스 코드를 해석할 때, 문의 끝이라고 예측되는 지점에 세미콜론을 자동으로 붙여주는 세미콜론 자동 삽입 기능(ASI, automatic semicolon insertion)이 암묵적으로 수행되기 때문이다.</p>
+<p>하지만 세미콜론 자동 삽입 기능의 동작과 개발자의 예측이 일치하지 않는 경우가 간혹 있다. 정확히 말하면 아래 예제와 같이 개발자가 세미콜론 자동 삽입 기능의 동작을 제대로 예측하지 못해 제대로 활용하지 못하는 경우가 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function foo () &#123;</span><br><span class="line">  return</span><br><span class="line">    &#123;&#125;</span><br><span class="line">  &#x2F;&#x2F; ASI의 동작 결과 &#x3D;&gt; return; &#123;&#125;;</span><br><span class="line">  &#x2F;&#x2F; 개발자의 예측 &#x3D;&gt; return &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(foo()); &#x2F;&#x2F; undefined</span><br><span class="line"></span><br><span class="line">var bar &#x3D; function () &#123;&#125;</span><br><span class="line">(function() &#123;&#125;)();</span><br><span class="line">&#x2F;&#x2F; ASI의 동작 결과 &#x3D;&gt; var bar &#x3D; function () &#123;&#125;(function() &#123;&#125;)();</span><br><span class="line">&#x2F;&#x2F; 개발자의 예측 &#x3D;&gt; var bar &#x3D; function () &#123;&#125;; (function() &#123;&#125;)();</span><br><span class="line">&#x2F;&#x2F; TypeError: (intermediate value)(...) is not a function</span><br></pre></td></tr></table></figure>
+
+<p>세미콜론을 반드시 붙여야 한다는 주장이 다수를 차지하지만 붙이지 말아야 한다 주장도 설득력이 있다. 하지만 ESLint와 같은 정적 분석 도구에서도 세미콜론 사용을 기본으로 설정하고 있고 (브랜든 아이크는 반대하고 있지만) TC39(ECMAScript 기술 위원회)도 세미콜론 사용을 권장하는 분위기이므로 이 책에서는 세미콜론을 붙이도록 하겠다.</p>
+<br>
+<br>
+
+<h1 id="6-표현식인-문과-표현식이-아닌-문"><a href="#6-표현식인-문과-표현식이-아닌-문" class="headerlink" title="6.표현식인 문과 표현식이 아닌 문"></a>6.표현식인 문과 표현식이 아닌 문</h1><p>표현식은 문의 일부일 수도 있고 그 자체로 문이 될 수도 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 변수 선언문은 값으로 평가될 수 없으므로 표현식이 아니다.</span><br><span class="line">var x;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 1, 2, 1 + 2, x &#x3D; 1 + 2는 표현식이다.</span><br><span class="line">&#x2F;&#x2F; x &#x3D; 1 + 2은 표현식이면서 완전한 문이기도 하다.</span><br><span class="line">x &#x3D; 1 + 2;</span><br></pre></td></tr></table></figure>
+
+<p>이처럼 표현식과 문은 유사하여 구별이 어렵다고 느낄 수 있다. 하지만 표현식과 문을 구별하는 방법은 의외로 간단하다. 표현식과 문을 구별하는 방법에 대해 살펴보자.</p>
+<p>문에는 표현식인 문과 표현식이 아닌 문이 있다. 표현식인 문은 값으로 평가될 수 있는 문이며 표현식이 아닌 문은 값으로 평가될 수 없는 문을 말한다. 예를 들어 변수 선언문은 값으로 평가될 수 없다. 따라서 표현식이 아닌 문이다. 하지만 할당문은 값으로 평가될 수 있다. 따라서 표현식인 문이다.</p>
+<p>표현식인 문과 표현식이 아닌 문을 구별하기 위한 가장 간단하고 명료한 방법은 변수에 할당해 보는 것이다. 표현식인 문은 값으로 평가되므로 변수에 할당할 수 있다. 하지만 표현식이 아닌 문은 값으로 평가할 수 없으므로 변수에 할당하면 에러가 발생한다. 아래 예제를 살펴보자.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 변수 선언문은 표현식이 아닌 문이다.</span><br><span class="line">var x;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 할당문은 그 자체가 표현식이지만 완전한 문이기도 하다. 즉, 할당문은 표현식인 문이다.</span><br><span class="line">x &#x3D; 100;</span><br></pre></td></tr></table></figure>
+
+<p>위 예제의 변수 선언문은 표현식이 아닌 문이다. 다시 말해 값으로 평가될 수 없다. 따라서 변수선언문은 값처럼 사용할 수 없다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 표현식이 아닌 문은 값처럼 사용할 수 없다.</span><br><span class="line">var foo &#x3D; var x; &#x2F;&#x2F; SyntaxError: Unexpected token var</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -245,10 +280,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-20 12:28:11 / Modified: 21:38:26" itemprop="dateCreated datePublished" datetime="2020-02-20T12:28:11+09:00">2020-02-20</time>
+              <time title="Created: 2020-02-20 12:28:11" itemprop="dateCreated datePublished" datetime="2020-02-20T12:28:11+09:00">2020-02-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-22 18:16:25" itemprop="dateModified" datetime="2020-02-22T18:16:25+09:00">2020-02-22</time>
+              </span>
 
           
 
@@ -274,14 +315,16 @@
 이 메모리 주소는 메모리 공간의 위치를 나타내며 0부터 시작하여 메모리의 크기만큼 정수로 표현된다. 예를 들어 4GB의 메모리는 0부터 4,294,967,295
 까지의 메모리 주소를 갖는다.</code></pre><br>
 <br>
-<br>
 
 <h1 id="2-식별자"><a href="#2-식별자" class="headerlink" title="2. 식별자"></a>2. 식별자</h1> <br>
 
 <p> 변수 이름을 식별자(identifier)라고도 부른다. <strong>식별자는 어떤 값을 구별하여 식별해낼 수 있는 고유한 이름을 말한다.</strong><br> 사람을 이름으로 구별하여 식별하는 것처럼 값도 식별자로 구별하여 식별할 수 있다.<br> 값은 메모리 공간에 저장되어 있다. 따라서 식별자는 메모리 공간에 저장되어 있는 어떤 값을 구별하여 식별해낼 수 있어야 한다.<br> 이를 위해 식별자는 어떤 값이 저장되어 있는 메모리 주소를 기억(저장)해야 한다.</p>
 <p> <strong>식별자는 값이 아니라 메모리 주소를 기억하고 있다.</strong>식별자로 값을 구별하여 식별한다는 것은 식별자가 기억하고 있는 메모리 주소를 통해<br> 메모리 공간에 저장된 값에 접근할 수 있다는 것을 의미한다. 즉, 식별자는 메모리 주소에 붙인 이름이라고 할 수 있다.  </p>
 <p> 식별자라는 용어는 변수 이름에만 국한해서 사용하지 않는다. 예를 들어, 변수, 함수, 클래스 등의 이름은 모두 <strong>식별자</strong>다.<br> 식별자인 변수 이름으로는 메모리 상에 존재하는 변수값을 식별할 수 있고, 함수 이름으로는 메모리 상에 존재하는 함수(자바스크립트에서는 함수는 값이다)<br> 를 식별할 수 있다. 즉, 메모리 상에 존재하는 어떤 값을 식별할 수 있는 이름은 모두 식별자라고 부른다.</p>
-<p> 변수, 함수, 클래스 등의 이름과 같은 식별자는 네이밍 규칙을 준수해야 하며, “선언(declaration)”에 의해 자바스크립트 엔진에 식별자의 존재를 알린다.<br> 이제 변수를 선언하는 방법에 대해 알아보자!<br><br><br><br><br><br></p>
+<p> 변수, 함수, 클래스 등의 이름과 같은 식별자는 네이밍 규칙을 준수해야 하며, “선언(declaration)”에 의해 자바스크립트 엔진에 식별자의 존재를 알린다.<br> 이제 변수를 선언하는 방법에 대해 알아보자!</p>
+<br>
+<br>
+
 <h1 id="3-변수-선언"><a href="#3-변수-선언" class="headerlink" title="3. 변수 선언"></a>3. 변수 선언</h1><br>
 
 <p> 변수 선언(Variable declaration)이란 변수를 생성하는 것을 말한다. 음.. 좀 더 자세히 말하면 값을 저장하기 위한 메모리 공간을 확보(allocate)하고<br> 변수 이름과 확보된 메모리 공간의 주소를 연결하여 값을 저장할 수 있도록 준비 하는 것이다. 변수 선언에 의해 확보된 메모리 공간은 확보가 해제(release)되기<br> 이전까지는 누구도 확보된 메모리 공간을 사용할 수 없도록 보호되므로 안전하게 사용할 수 있다.</p>
@@ -302,8 +345,15 @@ undefined는 자바스크립트가 제공하는 원시 타입의 값(Primitive v
 </ul>
 <p>var 키워드를 사용한 변수 선언은 선언 단계와 초기화 단계가 동시에 진행됩니다. <code>var score;</code>는 선언 단계를 통해 변수 이름 score를 등록하고, 초기화 단계를 통해 변수 score에 암묵적으로 <code>undefined</code>를 할당하여 초기화합니다.</p>
 <p>일반적으로 초기화(Initialization)란 변수가 선언된 이후 최초로 값을 할당하는 것을 말합니다. var 키워드로 선언한 변수는 undefined로 암묵적인 초기화가 자동 수행됩니다.<br>따라서 var 키워드로 변수는 선언 이후 어떠한 값도 할당하지 않아도 <code>undefined</code>라는 값을 갖습니다.</p>
-<p>변수를 사용하려면 반드시 선언이 필요합니다. 변수 뿐만이 아니라 모든 식별자(함수, 클래스 등)가 그렇습니다. 만약 선언하지 않은 식별자에 접근하면 <code>ReferenceError(참조 에러)</code>가 발생합니다. ReferenceError는 식별자를 통해 값을 참조하려 했지만 자바스크립트 엔진이 등록된 식별자를 찾을 수 없을 때 발생하는 에러입니다.<br><br><br><br><br><br></p>
-<h1 id="4-변수-선언의-실행-시점과-변수-호이스팅"><a href="#4-변수-선언의-실행-시점과-변수-호이스팅" class="headerlink" title="4. 변수 선언의 실행 시점과 변수 호이스팅"></a>4. 변수 선언의 실행 시점과 변수 호이스팅</h1>
+<p>변수를 사용하려면 반드시 선언이 필요합니다. 변수 뿐만이 아니라 모든 식별자(함수, 클래스 등)가 그렇습니다. 만약 선언하지 않은 식별자에 접근하면 <code>ReferenceError(참조 에러)</code>가 발생합니다. ReferenceError는 식별자를 통해 값을 참조하려 했지만 자바스크립트 엔진이 등록된 식별자를 찾을 수 없을 때 발생하는 에러입니다.</p>
+<br>
+<br>
+
+
+<h1 id="4-변수-선언의-실행-시점과-변수-호이스팅"><a href="#4-변수-선언의-실행-시점과-변수-호이스팅" class="headerlink" title="4. 변수 선언의 실행 시점과 변수 호이스팅"></a>4. 변수 선언의 실행 시점과 변수 호이스팅</h1><p>변수 선언문보다 변수를 참조하는 코드가 앞에 있다. 자바스크립트 코드는 한 줄씩 순차적으로 실행되므로 console.log(score);가 가장 먼저 실행되고 순차적으로 다음 줄에 있는 코드를 실행한다. 따라서 console.log(score);가 실행되는 시점에는 아직 변수 score의 선언이 실행되지 않았으므로 참조 에러(ReferenceError)가 발생할 것처럼 보인다. 하지만 참조 에러가 발생하지 않고 undefined가 출력된다.</p>
+<p>그 이유는 변수 선언이 소스 코드가 한 줄씩 순차적으로 실행되는 시점, 즉 런타임(run-time)이 아니라 그 이전 단계에서 먼저 실행되기 때문이다.</p>
+<p>자바스크립트 엔진은 소스 코드를 한 줄씩 순차적으로 실행하기에 앞서 먼저 코드의 평가 과정을 거치면서 코드 실행을 위한 준비를 한다. 이때, 즉 코드 실행을 위한 준비 단계인 코드의 평가 과정에서 자바스크립트 엔진은 변수 선언을 포함한 모든 선언문(변수 선언문, 함수 선언문 등)을 소스 코드에서 찾아내어 먼저 실행한다. 그리고 코드의 평가 과정이 끝나면 비로소 변수 선언을 포함한 모든 선언문을 제외하고 코드가 한 줄씩 순차적으로 실행한다.</p>
+
       
     </div>
 
