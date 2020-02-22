@@ -20,29 +20,25 @@
     var CONFIG = {"hostname":"github.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="연산자(Operator)는 하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산(operation) 등을 수행해 하나의 값을 만든다. 이때 연산의 대상을 피연산자(Operand)라 한다. 피연산자는 값으로 평가될 수 있는 표현식이어야 한다.그리고 피연산자와 연산자의 조합으로 이루어진 연산자 표현식도 값으로 평가될 수 있는 표현식이다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/hello-world/index.html">
+<meta property="og:title" content="4. 연산자 | javaScript">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/operator/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="연산자(Operator)는 하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산(operation) 등을 수행해 하나의 값을 만든다. 이때 연산의 대상을 피연산자(Operand)라 한다. 피연산자는 값으로 평가될 수 있는 표현식이어야 한다.그리고 피연산자와 연산자의 조합으로 이루어진 연산자 표현식도 값으로 평가될 수 있는 표현식이다.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-10T03:26:12.709Z">
-<meta property="article:modified_time" content="2020-02-10T03:26:12.709Z">
+<meta property="article:published_time" content="2020-02-22T09:28:11.000Z">
+<meta property="article:modified_time" content="2020-02-22T17:12:21.535Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
-<meta property="article:tag" content=" TypeScript">
-<meta property="article:tag" content=" JS">
-<meta property="article:tag" content=" HTML5">
-<meta property="article:tag" content=" CSS3">
-<meta property="article:tag" content=" SCSS">
-<meta property="article:tag" content=" React">
-<meta property="article:tag" content=" web">
-<meta property="article:tag" content=" vue">
-<meta property="article:tag" content=" git">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="npm">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="github">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/hello-world/">
+<link rel="canonical" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/operator/">
 
 
 <script id="page-configurations">
@@ -54,7 +50,7 @@
   };
 </script>
 
-  <title>Hello World | namkwon's tech blog</title>
+  <title>4. 연산자 | javaScript | namkwon's tech blog</title>
   
 
 
@@ -164,7 +160,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/operator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,7 +173,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          4. 연산자 | javaScript
         </h1>
 
         <div class="post-meta">
@@ -187,8 +183,15 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-02-10 12:26:12" itemprop="dateCreated datePublished" datetime="2020-02-10T12:26:12+09:00">2020-02-10</time>
+              <time title="Created: 2020-02-22 18:28:11" itemprop="dateCreated datePublished" datetime="2020-02-22T18:28:11+09:00">2020-02-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-23 02:12:21" itemprop="dateModified" datetime="2020-02-23T02:12:21+09:00">2020-02-23</time>
+              </span>
 
           
 
@@ -201,19 +204,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <p>연산자(Operator)는 하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산(operation) 등을 수행해 하나의 값을 만든다. 이때 연산의 대상을 피연산자(Operand)라 한다. 피연산자는 값으로 평가될 수 있는 표현식이어야 한다.그리고 피연산자와 연산자의 조합으로 이루어진 연산자 표현식도 값으로 평가될 수 있는 표현식이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 산술 연산자</span><br><span class="line">5 * 4 &#x2F;&#x2F; -&gt; 20</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 문자열 연결 연산자</span><br><span class="line">&#39;My name is &#39; + &#39;Lee&#39; &#x2F;&#x2F; -&gt; &#39;My name is Lee&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 할당 연산자</span><br><span class="line">color &#x3D; &#39;red&#39; &#x2F;&#x2F; -&gt; &#39;red&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 비교 연산자</span><br><span class="line">3 &gt; 5 &#x2F;&#x2F; -&gt; false</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 논리 연산자</span><br><span class="line">true &amp;&amp; false &#x2F;&#x2F; -&gt; false</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 타입 연산자</span><br><span class="line">typeof &#39;Hi&#39; &#x2F;&#x2F; -&gt; string</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>피연산자가 “값”이라는 명사의 역할을 한다면 연산자는 “피연산자를 연산하여 새로운 값을 만든다”라는 동사의 역할을 한다고 볼 수 있다.다시 말해,피연산자는 연산의 대상이 되어야 하므로 값으로 평가할 수 있어야 한다.연산자는 값으로 평가된 피연산자를 연산해 새로운 값을 만든다.</p>
+<p>자바스크립트가 제공하는 다양한 연산자에 대해 살펴보도록 하자.</p>
+<h1 id="1-산술-연산자"><a href="#1-산술-연산자" class="headerlink" title="1. 산술 연산자"></a>1. 산술 연산자</h1><p>산술 연산자는 피연산자를 대상으로 수학적 계산을 수행해 새로운 숫자 값을 만든다. 산술 연산이 불가능한 경우, NaN을 반환한다.</p>
+<p>산술 연산자는 피연산자의 개수에 따라 이항 산술 연산자와 단항 산술 연산자로 구분할 수 있다.</p>
 
     </div>
 
@@ -222,16 +219,27 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+              <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+              <a href="/tags/npm/" rel="tag"># npm</a>
+              <a href="/tags/React/" rel="tag"># React</a>
+              <a href="/tags/git/" rel="tag"># git</a>
+              <a href="/tags/github/" rel="tag"># github</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/02/variable/" rel="next" title="변수 | javaScript">
-      변수 | javaScript <i class="fa fa-chevron-right"></i>
+    <a href="/2020/02/statement/" rel="prev" title="표현식과 문 | javaScript">
+      <i class="fa fa-chevron-left"></i> 표현식과 문 | javaScript
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/data-type/" rel="next" title="데이터 타입 | javaScript">
+      데이터 타입 | javaScript <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -292,7 +300,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-산술-연산자"><span class="nav-number">1.</span> <span class="nav-text">1. 산술 연산자</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
