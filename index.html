@@ -193,7 +193,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-24 15:11:04" itemprop="dateModified" datetime="2020-02-24T15:11:04+09:00">2020-02-24</time>
+                <time title="Modified: 2020-02-24 15:33:25" itemprop="dateModified" datetime="2020-02-24T15:33:25+09:00">2020-02-24</time>
               </span>
 
           
@@ -286,6 +286,58 @@ ES6에서 새롭게 도입된 Object.is 메소드는 아래와 같이 예측 가
 <h1 id="5-논리-연산자"><a href="#5-논리-연산자" class="headerlink" title="5. 논리 연산자"></a>5. 논리 연산자</h1><p>논리 연산자(Logical Operator)는 우항과 좌항의 피연산자(부정 논리 연산자의 경우, 우항의 피연산자)를 논리 연산한다.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 논리합(||) 연산자</span><br><span class="line">true || true;   &#x2F;&#x2F; -&gt; true</span><br><span class="line">true || false;  &#x2F;&#x2F; -&gt; true</span><br><span class="line">false || true;  &#x2F;&#x2F; -&gt; true</span><br><span class="line">false || false; &#x2F;&#x2F; -&gt; false</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 논리곱(&amp;&amp;) 연산자</span><br><span class="line">true &amp;&amp; true;   &#x2F;&#x2F; -&gt; true</span><br><span class="line">true &amp;&amp; false;  &#x2F;&#x2F; -&gt; false</span><br><span class="line">false &amp;&amp; true;  &#x2F;&#x2F; -&gt; false</span><br><span class="line">false &amp;&amp; false; &#x2F;&#x2F; -&gt; false</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 논리 부정(!) 연산자</span><br><span class="line">!true;  &#x2F;&#x2F; -&gt; false</span><br><span class="line">!false; &#x2F;&#x2F; -&gt; true</span><br></pre></td></tr></table></figure>
 
+<p>논리 부정(!) 연산자는 언제나 불리언 값을 반환한다. 단, 피연산자가 반드시 불리언 값일 필요는 없다. 만약 피연산자가 불리언 값이 아니면 불리언 타입으로 암묵적 타입 변환된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 암묵적 타입 변환</span><br><span class="line">!0;       &#x2F;&#x2F; -&gt; true</span><br><span class="line">!&#39;Hello&#39;; &#x2F;&#x2F; -&gt; false</span><br></pre></td></tr></table></figure>
+
+<p>논리합(||) 또는 논리곱(&amp;&amp;) 연산자 표현식의 평가 결과는 불리언 값이 아닐 수도 있다. 논리합(||) 또는 논리곱(&amp;&amp;) 연산자 표현식은 언제나 2개의 피연산자 중 어는 한쪽으로 평가된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 단축 평가</span><br><span class="line">&#39;Cat&#39; &amp;&amp; &#39;Dog&#39;; &#x2F;&#x2F; -&gt; &#39;Dog&#39;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!(x || y) &#x3D;&#x3D;&#x3D; (!x &amp;&amp; !y)</span><br><span class="line">!(x &amp;&amp; y) &#x3D;&#x3D;&#x3D; (!x || !y)</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="6-쉼표-연산자"><a href="#6-쉼표-연산자" class="headerlink" title="6. 쉼표 연산자"></a>6. 쉼표 연산자</h1><p>쉼표(,) 연산자는 왼쪽 피연산자부터 차례대로 피연산자를 평가하고 마지막 피연산자의 평가가 끝나면 마지막 피연산자의 평가 결과를 반환한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var x, y, z;</span><br><span class="line"></span><br><span class="line">x &#x3D; 1, y &#x3D; 2, z &#x3D; 3; &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="7-그룹-연산자"><a href="#7-그룹-연산자" class="headerlink" title="7. 그룹 연산자"></a>7. 그룹 연산자</h1><p>그룹 연산자 (…)는 자신의 피연산자인 표현식을 가장 먼저 평가한다. 따라서 그룹 연산자를 사용하면 연산자의 우선 순위를 조절할 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10 * 2 + 3; &#x2F;&#x2F; -&gt; 23</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 그룹 연산자를 사용하여 우선 순위 조절</span><br><span class="line">10 * (2 + 3); &#x2F;&#x2F; -&gt; 50</span><br></pre></td></tr></table></figure>
+<p>위 예제의 첫번째 문은 10 * 2를 먼저 연산하고 그 다음 20 + 3을 연산한다. 수학에서와 마찬가지로 곱셈 연산자 *가 덧셈 연산자 +보다 우선 순위가 높기 때문이다.</p>
+<p>두번째 문은 그룹 연산자로 감싼 표현식을 먼저 연산한다. 따라서 2 + 3을 먼저 연산하고 그 다음 10 * 5를 연산한다.<br><br></p>
+<h1 id="8-typeof-연산자"><a href="#8-typeof-연산자" class="headerlink" title="8. typeof 연산자"></a>8. typeof 연산자</h1><p>typeof 연산자는 피연산자의 데이터 타입을 문자열로 반환한다. typeof 연산자는 7가지 문자열 “string”, “number”, “boolean”, “undefined”, “symbol”, “object”, “function” 중 하나를 반환한다. “null”을 반환하는 경우는 없으며 함수의 경우 “function”을 반환한다. 이처럼 typeof 연산자가 반환하는 문자열은 7개의 데이터 타입과 정확히 일치하지는 않는다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typeof &#39;&#39;              &#x2F;&#x2F; -&gt; &quot;string&quot;</span><br><span class="line">typeof 1               &#x2F;&#x2F; -&gt; &quot;number&quot;</span><br><span class="line">typeof NaN             &#x2F;&#x2F; -&gt; &quot;number&quot;</span><br><span class="line">typeof true            &#x2F;&#x2F; -&gt; &quot;boolean&quot;</span><br><span class="line">typeof undefined       &#x2F;&#x2F; -&gt; &quot;undefined&quot;</span><br><span class="line">typeof Symbol()        &#x2F;&#x2F; -&gt; &quot;symbol&quot;</span><br><span class="line">typeof null            &#x2F;&#x2F; -&gt; &quot;object&quot;</span><br><span class="line">typeof []              &#x2F;&#x2F; -&gt; &quot;object&quot;</span><br><span class="line">typeof &#123;&#125;              &#x2F;&#x2F; -&gt; &quot;object&quot;</span><br><span class="line">typeof new Date()      &#x2F;&#x2F; -&gt; &quot;object&quot;</span><br><span class="line">typeof &#x2F;test&#x2F;gi        &#x2F;&#x2F; -&gt; &quot;object&quot;</span><br><span class="line">typeof function () &#123;&#125;  &#x2F;&#x2F; -&gt; &quot;function&quot;</span><br></pre></td></tr></table></figure>
+
+<p>typeof 연산자로 null 값을 연산해 보면 “null”이 아닌 “object”를 반환하는 것에 주의하자. 이것은 자바스크립트의 첫 번째 버전의 버그이다. 하지만 기존 코드에 영향을 줄 수 있기 때문에 아직까지 수정되지 못하고 있다.</p>
+<p>따라서 null 타입을 확인할 때는 typeof 연산자를 사용하지 말고 일치 연산자(===)를 사용하도록 하자.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var foo &#x3D; null;</span><br><span class="line"></span><br><span class="line">typeof foo &#x3D;&#x3D;&#x3D; null; &#x2F;&#x2F; -&gt; false</span><br><span class="line">foo &#x3D;&#x3D;&#x3D; null;        &#x2F;&#x2F; -&gt; true</span><br></pre></td></tr></table></figure>
+
+<p>또 하나 주의해야 할 것이 있다. 선언하지 않은 식별자를 typeof 연산자로 연산해 보면 ReferenceError가 발생하지 않고 “undefined”를 반환한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 식별자 undeclared는 선언한 적이 없다.</span><br><span class="line">typeof undeclared; &#x2F;&#x2F; -&gt; undefined</span><br></pre></td></tr></table></figure>
+
+<p>typeof 연산자가 선언하지 않은 식별자를 연산했을 때 “undefined”를 반환하는 것을 카일 심슨의 “You don’t know JS”에서는 특별한 안전 가드(safety guard)로 설명한다. 하지만 모던 자바스크립트 개발에서는 대부분 모듈을 사용하고 전역 변수인 플래그를 사용하지 않으므로 의도적으로 사용할 필요는 없다.<br><br></p>
+<h1 id="9-지수-연산자"><a href="#9-지수-연산자" class="headerlink" title="9. 지수 연산자"></a>9. 지수 연산자</h1><p>ES7에서 새롭게 도입된 지수 연산자는 좌항의 피연산자를 밑으로, 우항의 피연산자를 지수로 거듭 제곱하여 숫자 타입의 값을 반환한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2 ** 2;   &#x2F;&#x2F; -&gt; 4</span><br><span class="line">2 ** 2.5; &#x2F;&#x2F; -&gt; 5.65685424949238</span><br><span class="line">2 ** 0;   &#x2F;&#x2F; -&gt; 1</span><br><span class="line">2 ** -2;  &#x2F;&#x2F; -&gt; 0.25</span><br></pre></td></tr></table></figure>
+
+<p>지수 연산자가 도입되기 이전에는 Math.pow 메소드를 사용하였다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Math.pow(2, 2);   &#x2F;&#x2F; -&gt; 4</span><br><span class="line">Math.pow(2, 2.5); &#x2F;&#x2F; -&gt; 5.65685424949238</span><br><span class="line">Math.pow(2, 0);   &#x2F;&#x2F; -&gt; 1</span><br><span class="line">Math.pow(2, -2);  &#x2F;&#x2F; -&gt; 0.25</span><br></pre></td></tr></table></figure>
+
+<p>지수 연산자는 여러 개의 피연산자를 사용할 경우, Math.pow 메소드보다 가독성이 좋다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2 ** 2 ** 2; &#x2F;&#x2F; -&gt; 16</span><br><span class="line">Math.pow(Math.pow(2, 2), 2); &#x2F;&#x2F; -&gt; 16</span><br></pre></td></tr></table></figure>
+
+<p>음수를 거듭제곱의 밑으로 계산하려면 아래와 같이 괄호로 묶어야 한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-5 ** 2;</span><br><span class="line">&#x2F;&#x2F; -&gt; SyntaxError: Unary operator used immediately before exponentiation expression. Parenthesis must be used to disambiguate operator precedence</span><br><span class="line">(-5) ** 2; &#x2F;&#x2F; -&gt; 25</span><br></pre></td></tr></table></figure>
+
+<p>지수 연산자는 다른 산술 연산자와 마찬가지로 할당 연산자와 함께 사용할 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var num &#x3D; 5;</span><br><span class="line">num **&#x3D; 2; &#x2F;&#x2F; -&gt; 25</span><br></pre></td></tr></table></figure>
+
+<p>지수 연산자는 모든 이항 연산자보다 우선 순위가 높다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 * 5 ** 2; &#x2F;&#x2F; -&gt; 50</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="10-연산자의-부수-효과"><a href="#10-연산자의-부수-효과" class="headerlink" title="10. 연산자의 부수 효과"></a>10. 연산자의 부수 효과</h1><p>대부분의 연산자는 다른 코드에 영향을 주지 않는다. 예를 들어, 1 * 2는 다른 코드에 어떠한 영향도 주지 않는다. 하지만 일부 연산자는 다른 코드에 영향을 주는 부수 효과(side effect)가 있다.</p>
+<p>부수 효과가 있는 연산자는 할당(=) 연산자, 증가/감소(++/–) 연산자, delete 연산자이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var x;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 할당 연산자는 변수 값이 변하는 부수 효과가 있다.</span><br><span class="line">&#x2F;&#x2F; 이는 변수 x를 사용하는 다른 코드에 영향을 준다.</span><br><span class="line">x &#x3D; 1;</span><br><span class="line">console.log(x); &#x2F;&#x2F; 1</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 증가&#x2F;감소(++&#x2F;--) 연산자는 피연산자의 값을 변경하는 부수 효과가 있다.</span><br><span class="line">&#x2F;&#x2F; 피연산자 x의 값이 변경된다. 이는 변수 x를 사용하는 다른 코드에 영향을 준다.</span><br><span class="line">x++;</span><br><span class="line">console.log(x); &#x2F;&#x2F; 2</span><br><span class="line"></span><br><span class="line">var o &#x3D; &#123; a: 1 &#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; delete 연산자는 객체의 프로퍼티를 삭제하는 부수 효과가 있다.</span><br><span class="line">&#x2F;&#x2F; 이는 객체 o를 사용하는 다른 코드에 영향을 준다.</span><br><span class="line">delete o.a;</span><br><span class="line">console.log(o); &#x2F;&#x2F; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>delete 연산자는 객체의 프로퍼티를 삭제한다. 이에 대해서는 객체에 대해 살펴본 다음 “프로퍼티 삭제”에서 알아보도록 하자.</p>
 
       
     </div>
