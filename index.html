@@ -193,7 +193,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-24 14:48:00" itemprop="dateModified" datetime="2020-02-24T14:48:00+09:00">2020-02-24</time>
+                <time title="Modified: 2020-02-24 15:11:04" itemprop="dateModified" datetime="2020-02-24T15:11:04+09:00">2020-02-24</time>
               </span>
 
           
@@ -262,6 +262,31 @@ ES6에서 새롭게 도입된 Object.is 메소드는 아래와 같이 예측 가
 
 <p>부동등 비교 연산자(!=)와 불일치 비교 연산자(!==)는 동등 비교(==) 연산자와 일치 비교(===) 연산자의 반대 개념이다.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 부동등 비교</span><br><span class="line">5 !&#x3D; 8;   &#x2F;&#x2F; -&gt; true</span><br><span class="line">5 !&#x3D; 5;   &#x2F;&#x2F; -&gt; false</span><br><span class="line">5 !&#x3D; &#39;5&#39;; &#x2F;&#x2F; -&gt; false</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 불일치 비교</span><br><span class="line">5 !&#x3D;&#x3D; 8;   &#x2F;&#x2F; -&gt; true</span><br><span class="line">5 !&#x3D;&#x3D; 5;   &#x2F;&#x2F; -&gt; false</span><br><span class="line">5 !&#x3D;&#x3D; &#39;5&#39;; &#x2F;&#x2F; -&gt; true</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-대소-관계-비교-연산자"><a href="#3-2-대소-관계-비교-연산자" class="headerlink" title="3.2. 대소 관계 비교 연산자"></a>3.2. 대소 관계 비교 연산자</h2><p>대소 관계 비교 연산자는 피연산자의 크기를 비교하여 불리언 값을 반환한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 대소 관계 비교</span><br><span class="line">5 &gt; 0;  &#x2F;&#x2F; -&gt; true</span><br><span class="line">5 &gt; 5;  &#x2F;&#x2F; -&gt; false</span><br><span class="line">5 &gt;&#x3D; 5; &#x2F;&#x2F; -&gt; true</span><br><span class="line">5 &lt;&#x3D; 5; &#x2F;&#x2F; -&gt; true</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="4-삼항-조건-연산자"><a href="#4-삼항-조건-연산자" class="headerlink" title="4. 삼항 조건 연산자"></a>4. 삼항 조건 연산자</h1><p>삼항 조건 연산자(ternary operator)는 조건식의 평가 결과에 따라 반환할 값을 결정한다. 자바스크립트의 유일한 삼항 연산자이며 부수 효과는 없다. 삼항 조건 연산자 표현식은 아래와 같이 사용한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">조건식 ? 조건식이 true일때 반환할 값 : 조건식이 false일때 반환할 값</span><br></pre></td></tr></table></figure>
+
+<p>물음표(?) 앞의 첫번째 피연산자는 조건식, 즉 불리언 타입의 값으로 평가될 표현식이다. 만약 조건식의 평가 결과가 불리언 값이 아니면 불리언 값으로 암묵적 타입 변환된다. 이때 조건식이 참이면 콜론(:) 앞의 두번째 피연산자가 평가되어 반환되고, 거짓이면 콜론(:) 뒤의 세번째 피연산자가 평가되어 반환된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 2;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2 % 2는 0이고 0은 false로 암묵적 타입 변환된다.</span><br><span class="line">var result &#x3D; x % 2 ? &#39;홀수&#39; : &#39;짝수&#39;;</span><br><span class="line"></span><br><span class="line">console.log(result); &#x2F;&#x2F; 짝수</span><br></pre></td></tr></table></figure>
+
+<p>삼항 조건 연산자는 다음 장에서 살펴볼 if…else 문을 사용해도 동일한 처리를 할 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 2, result;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2 % 2는 0이고 0은 false로 암묵적 타입 변환된다.</span><br><span class="line">if (x % 2) result &#x3D; &#39;홀수&#39;;</span><br><span class="line">else       result &#x3D; &#39;짝수&#39;;</span><br><span class="line"></span><br><span class="line">console.log(result); &#x2F;&#x2F; 짝수</span><br></pre></td></tr></table></figure>
+
+<p>하지만 if…else 문은 표현식이 아닌 문이다. 따라서 if…else 문은 값처럼 사용할 수 없다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 10;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; if...else 문은 표현식이 아닌 문이다. 따라서 값처럼 사용할 수 없다.</span><br><span class="line">var result &#x3D; if (x % 2) &#123; result &#x3D; &#39;홀수&#39;; &#125; else &#123; result &#x3D; &#39;짝수&#39;; &#125;;</span><br><span class="line">&#x2F;&#x2F; SyntaxError: Unexpected token if</span><br></pre></td></tr></table></figure>
+
+<p><strong>삼항 조건 연산자 표현식은 값으로 평가할 수 있는 표현식인 문이다.</strong> 따라서 삼항 조건 연산자식은 값처럼 다른 표현식의 일부가 될 수 있어 매우 유용하다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 10;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 삼항 연산자 표현식은 표현식인 문이다. 따라서 값처럼 사용할 수 있다.</span><br><span class="line">var result &#x3D; x % 2 ? &#39;홀수&#39; : &#39;짝수&#39;;</span><br><span class="line">console.log(result); &#x2F;&#x2F; 짝수</span><br></pre></td></tr></table></figure>
+
+<p>조건에 따라 어떤 값을 결정해야 한다면 if…else 문보다 삼항 조건 연산자 표현식을 사용하는 것이 유리하다. 하지만 조건에 따라 수행해야 할 문이 하나가 아니라 여러 개라면 if…else 문이 보다 가독성이 좋다.<br><br></p>
+<h1 id="5-논리-연산자"><a href="#5-논리-연산자" class="headerlink" title="5. 논리 연산자"></a>5. 논리 연산자</h1><p>논리 연산자(Logical Operator)는 우항과 좌항의 피연산자(부정 논리 연산자의 경우, 우항의 피연산자)를 논리 연산한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 논리합(||) 연산자</span><br><span class="line">true || true;   &#x2F;&#x2F; -&gt; true</span><br><span class="line">true || false;  &#x2F;&#x2F; -&gt; true</span><br><span class="line">false || true;  &#x2F;&#x2F; -&gt; true</span><br><span class="line">false || false; &#x2F;&#x2F; -&gt; false</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 논리곱(&amp;&amp;) 연산자</span><br><span class="line">true &amp;&amp; true;   &#x2F;&#x2F; -&gt; true</span><br><span class="line">true &amp;&amp; false;  &#x2F;&#x2F; -&gt; false</span><br><span class="line">false &amp;&amp; true;  &#x2F;&#x2F; -&gt; false</span><br><span class="line">false &amp;&amp; false; &#x2F;&#x2F; -&gt; false</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 논리 부정(!) 연산자</span><br><span class="line">!true;  &#x2F;&#x2F; -&gt; false</span><br><span class="line">!false; &#x2F;&#x2F; -&gt; true</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
