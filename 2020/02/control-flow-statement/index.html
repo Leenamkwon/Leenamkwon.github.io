@@ -28,7 +28,7 @@
 <meta property="og:description" content="제어문(Control flow statement)은 주어진 조건에 따라 코드 블록을 실행(조건문)하거나 반복 실행(반복문)할 때 사용한다. 일반적으로 코드는 위에서 아래 방향으로 순차적으로 실행된다. 제어문을 사용하면 코드의 실행 흐름을 인위적으로 제어할 수 있다. 하지만 코드의 실행 순서가 변경된다는 것은 단순하게 위에서 아래로 순차적으로 진행하는 직관적">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-24T06:34:10.000Z">
-<meta property="article:modified_time" content="2020-02-24T08:30:22.866Z">
+<meta property="article:modified_time" content="2020-02-24T08:40:54.928Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -184,7 +184,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-02-24 15:34:10 / Modified: 17:30:22" itemprop="dateCreated datePublished" datetime="2020-02-24T15:34:10+09:00">2020-02-24</time>
+              <time title="Created: 2020-02-24 15:34:10 / Modified: 17:40:54" itemprop="dateCreated datePublished" datetime="2020-02-24T15:34:10+09:00">2020-02-24</time>
             </span>
 
           
@@ -256,7 +256,19 @@
 <li>증감식 실행이 종료되면 다시 조건식으로 실행 순서가 이동한다. 현재 변수 i는 2이므로 조건식의 평가 결과는 false다. 조건식의 평가 결과가 false이므로 for 문의 실행이 종료된다.</li>
 <li>아래 예제는 위 예제를 역으로 반복하는 for 문이다. 변수 i가 1으로 초기화된 상태에서 시작하여 i가 0보다 같거나 커질 때까지 코드 블록을 2번 반복 실행한다.</li>
 </ol>
+<p>for 문 내에 for 문을 중첩해 사용할 수 있다. 아래는 두 개의 주사위를 던졌을 때, 두 눈의 합이 6이 되는 모든 경우의 수를 출력하는 예제다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (var i &#x3D; 1; i &lt;&#x3D; 6; i++) &#123;</span><br><span class="line">  for (var j &#x3D; 1; j &lt;&#x3D; 6; j++) &#123;</span><br><span class="line">    if (i + j &#x3D;&#x3D;&#x3D; 6) console.log(&#96;[$&#123;i&#125;, $&#123;j&#125;]&#96;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>출력 결과는 아래와 같다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[1, 5]</span><br><span class="line">[2, 4]</span><br><span class="line">[3, 3]</span><br><span class="line">[4, 2]</span><br><span class="line">[5, 1]</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-while-문"><a href="#3-2-while-문" class="headerlink" title="3.2. while 문"></a>3.2. while 문</h2><p>while 문은 주어진 조건식의 평가 결과가 참이면 코드 블록을 계속해서 반복 실행한다. 조건문의 평가 결과가 거짓이 되면 실행을 종료한다. 만약 조건식의 평가 결과가 불리언 값이 아니면 불리언 값으로 강제 변환되어 논리적 참, 거짓을 구별한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var count &#x3D; 0;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; count가 3보다 작을 때까지 코드 블록을 계속 반복 실행한다.</span><br><span class="line">while (count &lt; 3) &#123;</span><br><span class="line">  console.log(count);</span><br><span class="line">  count++;</span><br><span class="line">&#125; &#x2F;&#x2F; 0 1 2</span><br></pre></td></tr></table></figure>
+
+<p>조건식의 평가 결과가 언제나 참이면 무한루프가 된다. 무한루프를 탈출하기 위해서는 코드 블럭 내에 if문으로 탈출 조건을 만들고 break 문으로 코드 블럭을 탈출한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var count &#x3D; 0;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 무한루프</span><br><span class="line">while (true) &#123;</span><br><span class="line">  console.log(count);</span><br><span class="line">  count++;</span><br><span class="line">  &#x2F;&#x2F; count가 3이면 코드 블록을 탈출한다.</span><br><span class="line">  if (count &#x3D;&#x3D;&#x3D; 3) break;</span><br><span class="line">&#125; &#x2F;&#x2F; 0 1 2</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-break-문"><a href="#4-break-문" class="headerlink" title="4. break 문"></a>4. break 문</h1>
     </div>
 
     
@@ -342,7 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-블록문"><span class="nav-number">1.</span> <span class="nav-text">1.블록문</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-조건문"><span class="nav-number">2.</span> <span class="nav-text">2.조건문</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-if…else-문"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. if…else 문</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-switch-문"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. switch 문</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-반목문"><span class="nav-number">3.</span> <span class="nav-text">3. 반목문</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-for-문"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 for 문</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-블록문"><span class="nav-number">1.</span> <span class="nav-text">1.블록문</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-조건문"><span class="nav-number">2.</span> <span class="nav-text">2.조건문</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-if…else-문"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. if…else 문</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-switch-문"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. switch 문</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-반목문"><span class="nav-number">3.</span> <span class="nav-text">3. 반목문</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-for-문"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 for 문</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-while-문"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. while 문</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-break-문"><span class="nav-number">4.</span> <span class="nav-text">4. break 문</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
