@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="var 키워드로 선언한 변수의 문제점ES5까지 변수를 선언할 수 있는 유일한 방법은 var 키워드를 사용하는 것이었다. var 키워드로 선언된 변수는 아래와 같은 특징이 있다. 이는 다른 언어와는 구별되는 독특한 특징으로 주의를 기울이지 않으면 심각한 문제를 발생시킬 수 있다..    1.1. 변수 중복 선언 허용var 키워드로 선언한 변수는 중복 선언이">
+<meta property="og:type" content="article">
+<meta property="og:title" content="let_const">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/let_const/index.html">
+<meta property="og:site_name" content="namkwon&#39;s tech blog">
+<meta property="og:description" content="var 키워드로 선언한 변수의 문제점ES5까지 변수를 선언할 수 있는 유일한 방법은 var 키워드를 사용하는 것이었다. var 키워드로 선언된 변수는 아래와 같은 특징이 있다. 이는 다른 언어와는 구별되는 독특한 특징으로 주의를 기울이지 않으면 심각한 문제를 발생시킬 수 있다..    1.1. 변수 중복 선언 허용var 키워드로 선언한 변수는 중복 선언이">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-02T12:36:54.874Z">
+<meta property="article:modified_time" content="2020-03-02T12:39:06.456Z">
+<meta property="article:author" content="Lee namkwon">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content=" TypeScript">
+<meta property="article:tag" content=" JS">
+<meta property="article:tag" content=" HTML5">
+<meta property="article:tag" content=" CSS3">
+<meta property="article:tag" content=" SCSS">
+<meta property="article:tag" content=" React">
+<meta property="article:tag" content=" web">
+<meta property="article:tag" content=" vue">
+<meta property="article:tag" content=" git">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/let_const/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>let_const | namkwon's tech blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">namkwon's tech blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">I am the master of javascript</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-javascript">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-list"></i>javaScript</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/let_const/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lee namkwon">
+      <meta itemprop="description" content="welcome my Blog!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="namkwon's tech blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          let_const
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-02 21:36:54 / Modified: 21:39:06" itemprop="dateCreated datePublished" datetime="2020-03-02T21:36:54+09:00">2020-03-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ol>
+<li>var 키워드로 선언한 변수의 문제점<br>ES5까지 변수를 선언할 수 있는 유일한 방법은 var 키워드를 사용하는 것이었다. var 키워드로 선언된 변수는 아래와 같은 특징이 있다. 이는 다른 언어와는 구별되는 독특한 특징으로 주의를 기울이지 않으면 심각한 문제를 발생시킬 수 있다..<br>
+
+</li>
+</ol>
+<h1 id="1-1-변수-중복-선언-허용"><a href="#1-1-변수-중복-선언-허용" class="headerlink" title="1.1. 변수 중복 선언 허용"></a>1.1. 변수 중복 선언 허용</h1><p>var 키워드로 선언한 변수는 중복 선언이 가능하다. 아래 예제를 살펴보자.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 1;</span><br><span class="line">&#x2F;&#x2F; var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언을 허용한다.</span><br><span class="line">&#x2F;&#x2F; 아래 변수 선언문은 자바스크립트 엔진에 의해 var 키워드가 없는 것처럼 동작한다.</span><br><span class="line">var x &#x3D; 100;</span><br><span class="line">console.log(x); &#x2F;&#x2F; 100</span><br></pre></td></tr></table></figure>
+<p>위 예제의 변수 x는 중복 선언되었다. 이처럼 같은 스코프 내에서 변수를 중복 선언하면 나중에 작성된 변수 선언문은 자바스크립트 엔진에 의해 var 키워드가 없는 것처럼 동작한다. 이때 에러는 발생하지 않는다.</p>
+<p>위 예제와 같이 만약 동일한 변수 이름이 이미 선언되어 있는 것을 모르고 변수를 중복 선언하면서 값까지 할당했다면 의도치 않게 먼저 선언된 변수값이 변경되는 부작용이 발생한다. 따라서 변수의 중복 선언은 문법적으로 허용되지만 사용하지 않는 것이 좋다.<br><br></p>
+<h1 id="1-2-함수-레벨-스코프"><a href="#1-2-함수-레벨-스코프" class="headerlink" title="1.2. 함수 레벨 스코프"></a>1.2. 함수 레벨 스코프</h1><p>var 키워드로 선언한 변수는 오로지 함수의 코드 블록 만을 지역 스코프로 인정한다. 따라서 함수 외부에서 var 키워드로 선언한 변수는 코드 블록 내에서 선언하여도 모두 전역 변수가 된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 1;</span><br><span class="line"></span><br><span class="line">if (true) &#123;</span><br><span class="line">  &#x2F;&#x2F; x는 전역 변수이다. 이미 선언된 전역 변수 x가 있으므로 변수 x는 중복 선언된다.</span><br><span class="line">  &#x2F;&#x2F; 이는 의도치 않게 변수값이 변경되는 부작용을 발생시킨다.</span><br><span class="line">  var x &#x3D; 10;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(x); &#x2F;&#x2F; 10</span><br></pre></td></tr></table></figure>
+<p>for 문의 변수 선언문에서 var 키워드로 선언한 변수도 전역 변수가 된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var i &#x3D; 10;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; for문에서 선언한 i는 전역 변수이다. 이미 선언된 전역 변수 i가 있으므로 중복 선언된다.</span><br><span class="line">for (var i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">  console.log(i); &#x2F;&#x2F; 0 1 2 3 4</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 의도치 않게 변수의 값이 변경되었다.</span><br><span class="line">console.log(i); &#x2F;&#x2F; 5</span><br></pre></td></tr></table></figure>
+
+<p>함수 레벨 스코프는 전역 변수를 남발할 가능성을 높인다. 이로 인해 의도치 않게 전역 변수가 중복 선언되는 경우가 발생한다.<br><br></p>
+<h1 id="1-3-변수-호이스팅"><a href="#1-3-변수-호이스팅" class="headerlink" title="1.3. 변수 호이스팅"></a>1.3. 변수 호이스팅</h1><p>var 키워드로 변수를 선언하면 변수 호이스팅에 의해 변수 선언문이 스코프의 선두로 끌어 올려진 것처럼 동작한다. 즉, 변수 호이스팅에 의해 var 키워드로 선언한 변수는 변수 선언문 이전에 참조할 수 있다. 단, 할당문 이전에 변수를 참조하면 언제나 undefined를 반환한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 이 시점에는 변수 호이스팅에 의해 이미 변수 foo가 선언되었다. (1. 선언 단계)</span><br><span class="line">&#x2F;&#x2F; 변수 foo는 undefined로 초기화된다. (2. 초기화 단계)</span><br><span class="line">console.log(foo); &#x2F;&#x2F; undefined</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 변수에 값을 할당 (3. 할당 단계)</span><br><span class="line">foo &#x3D; 123;</span><br><span class="line"></span><br><span class="line">console.log(foo); &#x2F;&#x2F; 123</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 변수 선언은 런타임 이전에 자바스크립트 엔진에 의해 암묵적으로 실행된다.</span><br><span class="line">var foo;</span><br></pre></td></tr></table></figure>
+
+<p>변수 선언문 이전에 변수를 참조하는 것은 변수 호이스팅에 의해 에러를 발생시키지는 않지만 프로그램의 흐름 상 맞지 않을 뿐더러 가독성을 떨어뜨리고 오류를 발생시킬 여지를 남긴다.<br><br></p>
+<h1 id="2-let-키워드"><a href="#2-let-키워드" class="headerlink" title="2. let 키워드"></a>2. let 키워드</h1><p>앞에서 살펴본 var 키워드의 단점을 보완하기 위해 ES6에서는 새로운 변수 선언 키워드 let과 const를 도입하였다. var 키워드와의 차이점을 중심으로 let 키워드에 대해 살펴보자.<br><br></p>
+<h1 id="2-1-변수-중복-선언-금지"><a href="#2-1-변수-중복-선언-금지" class="headerlink" title="2.1. 변수 중복 선언 금지"></a>2.1. 변수 중복 선언 금지</h1><p>var 키워드로 동일한 이름을 갖는 변수를 중복 선언하면 아무런 에러가 발생하지 않는다. 이때 변수를 중복 선언하면서 값까지 할당했다면 의도치 않게 먼저 선언된 변수값이 재할당되어 변경되는 부작용이 발생한다.</p>
+<p>하지만 let 키워드로 동일한 이름을 갖는 변수를 중복 선언하면 문법 에러(SyntaxError)가 발생한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var foo &#x3D; 123;</span><br><span class="line">&#x2F;&#x2F; var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언을 허용한다.</span><br><span class="line">&#x2F;&#x2F; 아래 변수 선언문은 자바스크립트 엔진에 의해 var 키워드가 없는 것처럼 동작한다.</span><br><span class="line">var foo &#x3D; 456;</span><br><span class="line"></span><br><span class="line">let bar &#x3D; 123;</span><br><span class="line">&#x2F;&#x2F; let이나 const 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언을 허용하지 않는다.</span><br><span class="line">let bar &#x3D; 456; &#x2F;&#x2F; SyntaxError: Identifier &#39;bar&#39; has already been declared</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="2-2-블록-레벨-스코프"><a href="#2-2-블록-레벨-스코프" class="headerlink" title="2.2. 블록 레벨 스코프"></a>2.2. 블록 레벨 스코프</h1><p>var 키워드로 선언한 변수는 오로지 함수의 코드 블록 만을 지역 스코프로 인정하는 함수 레벨 스코프를 따른다. 하지만 let 키워드로 선언한 변수는 모든 코드 블록(함수, if 문, for 문, while 문, try/catch 문 등) 을 지역 스코프로 인정하는 블록 레벨 스코프(Block-level scope)를 따른다. 아래 예제를 살펴보자.</p>
+<p>let foo = 123; // 전역 변수</p>
+<p>{<br>  let foo = 456; // 지역 변수<br>  let bar = 456; // 지역 변수<br>}</p>
+<p>console.log(foo); // 123<br>console.log(bar); // ReferenceError: bar is not defined<br>let 키워드로 선언된 변수는 블록 레벨 스코프를 따른다. 따라서 위 예제에서 코드 블록 내에 선언된 변수 foo와 지역 변수이다. 전역에서 선언된 변수 foo와는 다른 별개의 변수이다. 또한 변수 bar도 블록 레벨 스코프를 갖는 지역 변수이다. 따라서 전역에서는 변수 bar를 참조할 수 없다.</p>
+<p>함수도 코드 블록이므로 스코프를 만든다. 이때 함수 내의 코드 블록은 함수 레벨 스코프에 중첩된다.</p>
+<p>블록 레벨 스코프의 중첩</p>
+<p>#2.3. 변수 호이스팅<br>var 키워드로 선언한 변수와는 달리 let 키워드로 선언한 변수는 변수 호이스팅이 발생하지 않는 것처럼 동작한다. 아래 예제를 살펴보자.</p>
+<p>console.log(foo); // ReferenceError: foo is not defined<br>let foo;<br>이처럼 let 키워드로 선언한 변수를 변수 선언문 이전에 참조하면 참조 에러(ReferenceError)가 발생한다.</p>
+<p>“4.3. 변수 선언”에서 살펴본 바와 같이 var 키워드로 선언한 변수는 런타임 이전에 자바스크립트 엔진에 의해 암묵적으로 “선언 단계”와 “초기화 단계”가 한번에 진행된다. 즉, 선언 단계에서 스코프(실행 컨텍스트의 렉시컬 환경(Lexical Environment))에 변수 식별자를 등록하여 자바스크립트 엔진에 변수의 존재를 알린다. 그리고 즉시 초기화 단계에서 undefined로 변수를 초기화한다. 따라서 변수 선언문 이전에 변수에 접근하여도 스코프에 변수가 존재하기 때문에 에러가 발생하지 않는다. 다만 undefined를 반환한다. 이후 변수 할당문에 도달하면 비로소 값이 할당된다.</p>
+<p>// var 키워드로 선언한 변수는 런타임 이전에 선언 단계와 초기화 단계가 실행된다.<br>// 따라서 변수 선언문 이전에 변수를 참조할 수 있다.<br>console.log(foo); // undefined</p>
+<p>var foo;<br>console.log(foo); // undefined</p>
+<p>foo = 1; // 할당문에서 할당 단계가 실행된다.<br>console.log(foo); // 1</p>
+<p>var 키워드로 선언한 변수의 생명 주기</p>
+<p>let 키워드로 선언한 변수는 “선언 단계”와 “초기화 단계”가 분리되어 진행된다. 즉, 런타임 이전에 자바스크립트 엔진에 의해 암묵적으로 선언 단계가 먼저 실행되지만 초기화 단계는 변수 선언문에 도달했을 때 실행된다.</p>
+<p>만약 초기화 단계가 실행되기 이전에 변수에 접근하려고 하면 참조 에러(ReferenceError)가 발생한다. 따라서 스코프의 시작 지점부터 초기화 단계 시작 지점(변수 선언문)까지는 변수를 참조할 수 없다. 스코프의 시작 지점부터 초기화 시작 지점까지의 구간을 일시적 사각지대(Temporal Dead Zone; TDZ)라고 부른다.</p>
+<p>// 런타임 이전에 선언 단계가 실행된다.<br>// 아직 변수가 초기화되지 않았다. 따라서 변수 선언문 이전에 변수를 참조할 수 없다.<br>console.log(foo); // ReferenceError: foo is not defined</p>
+<p>let foo; // 변수 선언문에서 초기화 단계가 실행된다.<br>console.log(foo); // undefined</p>
+<p>foo = 1; // 할당문에서 할당 단계가 실행된다.<br>console.log(foo); // 1</p>
+<p>let 키워드로 선언한 변수의 생명 주기</p>
+<p>결국 let 키워드로 선언한 변수는 변수 호이스팅이 발생하지 않는 것처럼 보인다. 하지만 그렇지 않다. 아래 예제를 살펴보자.</p>
+<p>let foo = 1; // 전역 변수</p>
+<p>{<br>  console.log(foo); // ReferenceError: foo is not defined<br>  let foo = 2; // 지역 변수<br>}<br>let 키워드로 선언한 변수의 경우, 변수 호이스팅 발생하지 않는다면 위 예제는 전역 변수 foo의 값을 출력해야 한다. 하지만 let 키워드로 선언한 변수도 여전히 호이스팅이 발생하기 때문에 참조 에러(ReferenceError)가 발생한다.</p>
+<p>자바스크립트는 ES6에서 도입된 let, const를 포함하여 모든 선언(var, let, const, function, function*, class 등)을 호이스팅한다. 단, ES6에서 도입된 let, const, class를 사용한 선언문은 호이스팅이 발생하지 않는 것처럼 동작한다.</p>
+<p>#2.4. 전역 객체와 let<br>전역 객체(Global Object, “21.4. 전역 객체” 참고)는 코드가 실행되기 이전 단계에 자바스크립트 엔진에 의해 어떤 객체보다도 먼저 생성되는 특수한 객체이며 어떤 객체에도 속하지 않은 최상위 객체이다. 전역 객체는 클라이언트 사이드 환경(브라우저)에서는 window, 서버 사이드 환경(Node.js)에서는 global 객체를 가리킨다.</p>
+<p>var 키워드로 선언한 전역 변수와 선언하지 않은 변수에 값을 할당한 암묵적 전역(“21.4.3. 암묵적 전역” 참고) 그리고 전역 함수는 전역 객체의 프로퍼티가 된다. 전역 객체의 프로퍼티를 참조할 때 window를 생략할 수 있다.</p>
+<p>// 이 예제는 브라우저 환경에서 실행시켜야 한다.</p>
+<p>// 전역 변수<br>var x = 1;<br>// 암묵적 전역<br>y = 2;<br>function foo() {}</p>
+<p>// var 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티이다.<br>console.log(window.x); // 1<br>// 전역 객체의 프로퍼티는 전역 변수처럼 사용할 수 있다.<br>console.log(x); // 1</p>
+<p>// 암묵적 전역은 전역 객체의 프로퍼티이다.<br>console.log(window.y); // 2<br>console.log(y); // 2</p>
+<p>// 함수 선언문으로 정의한 전역 함수는 전역 객체의 프로퍼티이다.<br>console.log(window.foo); // ƒ foo() {}<br>// 전역 객체의 프로퍼티는 전역 변수처럼 사용할 수 있다.<br>console.log(foo); // ƒ foo() {}<br>let 키워드로 선언한 전역 변수는 전역 객체 window의 프로퍼티가 아니다. 즉, window.foo와 같이 접근할 수 없다. let 전역 변수는 보이지 않는 개념적인 블록(전역 렉시컬 환경의 선언적 환경 레코드. 이에 대해서는 “23. 실행 컨텍스트”에서 자세히 살펴볼 것이다.) 내에 존재하게 된다.</p>
+<p>// 이 예제는 브라우저 환경에서 실행시켜야 한다.<br>let x = 1;</p>
+<p>// let, const 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티가 아니다.<br>console.log(window.x); // undefined<br>console.log(x); // 1<br>#3. const 키워드<br>const 키워드는 상수(constant)를 선언하기 위해 사용한다. 하지만 반드시 상수만을 위해 사용하지는 않는다. 이에 대해서는 후반부에 설명한다. const의 특징은 let과 대부분 동일하므로 let과 다른 점을 중심으로 살펴보도록 하자.</p>
+<p>#3.1. 선언과 초기화<br>const 키워드로 선언한 변수는 반드시 선언과 동시에 할당이 이루어져야 한다.</p>
+<p>const foo = 1;<br>그렇지 않으면 아래와 같이 문법 에러(SyntaxError)가 발생한다.</p>
+<p>const foo; // SyntaxError: Missing initializer in const declaration<br>const 키워드로 선언한 변수는 let 키워드로 선언한 변수와 마찬가지로 블록 레벨 스코프를 가지며 변수 호이스팅이 발생하지 않는 것처럼 동작한다.</p>
+<p>{<br>  // 변수 호이스팅이 발생하지 않는 것처럼 동작한다<br>  console.log(foo); // ReferenceError: Cannot access ‘foo’ before initialization<br>  const foo = 1;<br>  console.log(foo); // 1<br>}</p>
+<p>// 블록 레벨 스코프를 갖는다.<br>console.log(foo); // ReferenceError: foo is not defined<br>#3.2. 재할당 금지<br>var 또는 let 키워드로 선언한 변수는 재할당이 자유로우나 const 키워드로 선언한 변수는 재할당이 금지된다.</p>
+<p>const foo = 1;<br>foo = 2; // TypeError: Assignment to constant variable.<br>#3.3. 상수<br>const 키워드로 선언한 변수에 원시값을 할당한 경우, 변수값을 변경할 수 없다. 원시값은 변경 불가능한 값(immutable value)이므로 재할당없이 값을 변경할 수 있는 방법이 없기 때문이다. 이러한 특징을 이용해 const 키워드를 상수를 표현하는 데 사용하기도 한다.</p>
+<p>변수의 상대 개념인 상수는 재할당이 금지된 변수를 말한다. 상수도 값을 저장하기 위한 메모리 공간이 필요하므로 변수라고 할 수 있다. 단, 변수는 언제든지 재할당을 통해 변수값을 변경할 수 있지만 상수는 재할당이 금지된다.</p>
+<p>상수는 상태 유지와 가독성, 유지보수의 편의를 위해 적극적으로 사용해야 한다. 아래 예제를 살펴보자.</p>
+<p>// 세전 가격<br>let preTaxPrice = 100;</p>
+<p>// 세후 가격<br>// 0.1의 의미를 명확히 알기 어렵기 때문에 가독성이 좋지 않다.<br>let afterTaxPrice = preTaxPrice + (preTaxPrice * 0.1);</p>
+<p>console.log(afterTaxPrice); // 110<br>코드 내에서 사용한 0.1은 어떤 의미로 사용하였는지 명확히 알기 어렵기 때문에 가독성이 좋지 않다. 또한 세율을 의미하는 0.1은 쉽게 바뀌지 않는 값이며 프로그램 전체에서 고정된 값을 사용해야 한다. 이때 세율을 상수로 정의하면 값의 의미를 쉽게 파악할 수 있고 변경될 수 없는 고정값으로 사용할 수 있다.</p>
+<p>일반적으로 상수의 이름은 대문자로 선언하여 상수임을 명확히 나타낸다. 여러 단어로 이루어진 경우에는 언더스코어(_)로 구분하여 스네이크 케이스로 표현하는 것이 일반적이다.<br>// 세율을 의미하는 0.1은 변경할 수 없는 상수로서 사용될 값이다.<br>// 변수 이름을 대문자로 선언하여 상수임을 명확히 나타낸다.<br>const TAX_RATE = 0.1;</p>
+<p>// 세전 가격<br>let preTaxPrice = 100;</p>
+<p>// 세후 가격<br>let afterTaxPrice = preTaxPrice + (preTaxPrice * TAX_RATE);</p>
+<p>console.log(afterTaxPrice); // 110<br>const 키워드로 선언된 변수는 재할당이 금지된다. const 키워드로 선언된 변수에 원시 값을 할당한 경우, 원시 값은 변경할 수 없는 값(immutable value)이고 const 키워드에 의해 재할당이 금지되므로 할당된 값을 변경할 수 있는 방법은 없다. 또한 상수는 프로그램 전체에서 공통 사용하므로 나중에 세율이 변경되면 상수만을 변경하면 되기 때문에 유지보수성이 대폭 향상된다.</p>
+<p>#3.3. const 키워드와 객체<br>const 키워드로 선언된 변수에 원시값을 할당한 경우, 값을 변경할 수 없다. 하지만 const 키워드로 선언된 변수에 객체를 할당한 경우, 값을 변경할 수 있다. 변경 불가능한 값인 원시값은 재할당없이 변경(교체)할 수 있는 방법이 없지만 변경 가능한 값인 객체는 재할당없이도 직접 변경이 가능하기 때문이다.</p>
+<p>const person = {<br>  name: ‘Lee’<br>};</p>
+<p>// 객체는 변경 가능한 값이다. 따라서 재할당없이 변경이 가능하다.<br>person.name = ‘Kim’;</p>
+<p>console.log(person); // {name: “Kim”}<br>“11.1.1. 변경 불가능한 값”에서 살펴본 바와 같이, const 키워드는 재할당을 금지할 뿐 “불변(immutable)”을 의미하지는 않는다. 다시 말해, 새로운 값을 재할당하는 것은 불가능하지만 객체의 내용(프로퍼티의 추가, 삭제, 프로퍼티 값의 변경)을 변경하는 것은 가능하다. 객체의 내용이 변경되더라도 변수에 할당된 참조값은 변경되지 않는다.</p>
+<p>#4. var vs. let vs. const<br>변수 선언에는 기본적으로 const를 사용하고 let은 재할당이 필요한 경우에 한정해 사용하는 것이 좋다. 원시 값의 경우, 가급적 상수를 사용하는 편이 좋다. 그리고 객체를 재할당하는 경우는 생각보다 흔하지 않다. const 키워드를 사용하면 의도치 않은 재할당을 방지해 주기 때문에 보다 안전하다.<br>var와 let, 그리고 const 키워드는 다음처럼 사용하는 것을 추천한다.</p>
+<p>ES6를 사용한다면 var 키워드는 사용하지 않는다.<br>재할당이 필요한 경우에 한정해 let 키워드를 사용한다. 이때 변수의 스코프는 최대한 좁게 만든다.<br>변경이 발생하지 않고 읽기 전용으로 사용하는(재할당이 필요 없는 상수) 원시 값과 객체에는 const 키워드를 사용한다. const 키워드는 재할당을 금지하므로 var, let 키워드보다 안전하다.<br>변수를 선언하는 시점에는 재할당이 필요할지 잘 모르는 경우가 많다. 그리고 객체는 의외로 재할당을 하는 경우가 드물다.(Angular, React, Vue.js와 같은 SPA 프레임워크의 경우, 상태가 변경되었음을 알리기 위해 객체를 재할당하는 경우도 있다.) 따라서 변수를 선언할 때에는 일단 const 키워드를 사용하도록 하자. 반드시 재할당이 필요하다면(반드시 재할당이 필요한지 한번 생각해 볼 일이다.) 그때 const 키워드를 let 키워드로 변경해도 결코 늦지 않는다.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/var/" rel="prev" title="전역 변수의 문제점 | javaScript">
+      <i class="fa fa-chevron-left"></i> 전역 변수의 문제점 | javaScript
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-1-변수-중복-선언-허용"><span class="nav-number">1.</span> <span class="nav-text">1.1. 변수 중복 선언 허용</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-함수-레벨-스코프"><span class="nav-number">2.</span> <span class="nav-text">1.2. 함수 레벨 스코프</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-3-변수-호이스팅"><span class="nav-number">3.</span> <span class="nav-text">1.3. 변수 호이스팅</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-let-키워드"><span class="nav-number">4.</span> <span class="nav-text">2. let 키워드</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-1-변수-중복-선언-금지"><span class="nav-number">5.</span> <span class="nav-text">2.1. 변수 중복 선언 금지</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2-블록-레벨-스코프"><span class="nav-number">6.</span> <span class="nav-text">2.2. 블록 레벨 스코프</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lee namkwon</p>
+  <div class="site-description" itemprop="description">welcome my Blog!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee namkwon</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
