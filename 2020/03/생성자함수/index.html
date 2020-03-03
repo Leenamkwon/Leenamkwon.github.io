@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1. Object 생성자 함수new 연산자와 함께 Object 생성자 함수를 호출하면 빈 객체를 생성하여 반환한다. 빈 객체를 생성한 이후에는 프로퍼티나 메소드 추가 가능 1234567891011&#x2F;&#x2F; 생성자 객체 생성const person &#x3D; new object();&#x2F;&#x2F; 프로퍼티, 메서드 동적 추가person.n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="생성자 함수에 의한 객체 생성 | javaScript">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%EC%83%9D%EC%84%B1%EC%9E%90%ED%95%A8%EC%88%98/index.html">
+<meta property="og:site_name" content="namkwon&#39;s tech blog">
+<meta property="og:description" content="1. Object 생성자 함수new 연산자와 함께 Object 생성자 함수를 호출하면 빈 객체를 생성하여 반환한다. 빈 객체를 생성한 이후에는 프로퍼티나 메소드 추가 가능 1234567891011&#x2F;&#x2F; 생성자 객체 생성const person &#x3D; new object();&#x2F;&#x2F; 프로퍼티, 메서드 동적 추가person.n">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-03T11:02:03.000Z">
+<meta property="article:modified_time" content="2020-03-03T11:49:09.643Z">
+<meta property="article:author" content="Lee namkwon">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="github">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%EC%83%9D%EC%84%B1%EC%9E%90%ED%95%A8%EC%88%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>생성자 함수에 의한 객체 생성 | javaScript | namkwon's tech blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">namkwon's tech blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">I am the master of javascript</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-javascript">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-list"></i>javaScript</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%EC%83%9D%EC%84%B1%EC%9E%90%ED%95%A8%EC%88%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lee namkwon">
+      <meta itemprop="description" content="welcome my Blog!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="namkwon's tech blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          생성자 함수에 의한 객체 생성 | javaScript
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-03 20:02:03 / Modified: 20:49:09" itemprop="dateCreated datePublished" datetime="2020-03-03T20:02:03+09:00">2020-03-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-Object-생성자-함수"><a href="#1-Object-생성자-함수" class="headerlink" title="1. Object 생성자 함수"></a>1. Object 생성자 함수</h1><p>new 연산자와 함께 Object 생성자 함수를 호출하면 빈 객체를 생성하여 반환한다. 빈 객체를 생성한 이후에는 프로퍼티나 메소드 추가 가능</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 생성자 객체 생성</span><br><span class="line">const person &#x3D; new object();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 프로퍼티, 메서드 동적 추가</span><br><span class="line">person.name &#x3D; &#39;이남권&#39;;</span><br><span class="line">person.sayHello &#x3D; function() &#123;</span><br><span class="line">  console.log(&#39;Hi My name is&#39; + this.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(person) &#x2F;&#x2F; &#123;name: &quot;Lee&quot;, sayHello: f&#125;</span><br><span class="line">person.sayHello(); &#x2F;&#x2F; Hi My name is 이남권</span><br></pre></td></tr></table></figure>
+
+<p>생성자(constructor)함수란 new 연산자와 함께 호출하여 객체(인스턴스)를 생성하는 함수를 말한다. 생성자 함수에 의해 생성된 객체를 인스턴스(instance)라 한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; String 생성자 함수에 의한 String 객체 생성</span><br><span class="line">const strObj &#x3D; new string(&#39;이남권&#39;);</span><br><span class="line">console.log(typeof strObj); &#x2F;&#x2F; object</span><br><span class="line">console.log(strObj); &#x2F;&#x2F; 이남권</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Number 생성자 함수에 의한 Number 객체 생성</span><br><span class="line">const numObj &#x3D; new Number(123);</span><br><span class="line">console.log(typeof numObj); &#x2F;&#x2F; object</span><br><span class="line">console.log(numObj); &#x2F;&#x2F; Number &#123;123&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Boolean 생성자 함수에 의한 Boolean 객체 생성</span><br><span class="line">const boolObj&#x3D; new Boolean(true);</span><br><span class="line">console.log(typeof boolObj); &#x2F;&#x2F; object</span><br><span class="line">console.log(boolObj);        &#x2F;&#x2F; Boolean &#123;true&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Function 생성자 함수에 의한 Function 객체(함수) 생성</span><br><span class="line">const func &#x3D; new Function(&#39;x&#39;, &#39;return x * x&#39;);</span><br><span class="line">console.log(typeof func); &#x2F;&#x2F; function</span><br><span class="line">console.dir(func);        &#x2F;&#x2F; ƒ anonymous(x)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Array 생성자 함수에 의한 Array 객체(배열) 생성</span><br><span class="line">const arr &#x3D; new Array(1, 2, 3);</span><br><span class="line">console.log(typeof arr); &#x2F;&#x2F; object</span><br><span class="line">console.log(arr);        &#x2F;&#x2F; [1, 2, 3]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; RegExp 생성자 함수에 의한 RegExp 객체(정규 표현식) 생성</span><br><span class="line">const regExp &#x3D; new RegExp(&#x2F;ab+c&#x2F;i);</span><br><span class="line">console.log(typeof regExp); &#x2F;&#x2F; object</span><br><span class="line">console.log(regExp);        &#x2F;&#x2F; &#x2F;ab+c&#x2F;i</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Date 생성자 함수에 의한 Date 객체 생성</span><br><span class="line">const date &#x3D; new Date();</span><br><span class="line">console.log(typeof date); &#x2F;&#x2F; object</span><br><span class="line">console.log(date);        &#x2F;&#x2F; Fri Feb 14 2020 17:17:59 GMT+0900 (대한민국 표준시)</span><br></pre></td></tr></table></figure>
+<p><br><br></p>
+<h1 id="2-생성자-함수"><a href="#2-생성자-함수" class="headerlink" title="2.생성자 함수"></a>2.생성자 함수</h1><br>
+
+<h2 id="2-1-객체-리터럴에-의한-객체-생성-방식의-문제점"><a href="#2-1-객체-리터럴에-의한-객체-생성-방식의-문제점" class="headerlink" title="2.1. 객체 리터럴에 의한 객체 생성 방식의 문제점"></a>2.1. 객체 리터럴에 의한 객체 생성 방식의 문제점</h2><p>객체 리터럴에 의한 객체 생성 방식은 단 하나의 객체만을 생성한다. 따라서 동일한 프로퍼티를 갖는 객체를 여러 개 생성해야 하는 경우, 매번 같은 프로퍼티를 기술해야 하기 떄문에 비효율적이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const circle1 &#x3D; &#123;</span><br><span class="line">  radius: 5,</span><br><span class="line">  getDiameter() &#123;</span><br><span class="line">    return 2 * this.radius;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(circle1.getDiameter()); &#x2F;&#x2F; 10</span><br><span class="line"></span><br><span class="line">const circle2 &#x3D; &#123;</span><br><span class="line">  radius: 10,</span><br><span class="line">  getDiameter() &#123;</span><br><span class="line">    return 2 * this.radius;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(circle2.getDiameter()); &#x2F;&#x2F; 20</span><br></pre></td></tr></table></figure>
+
+<p>위 예제처럼 객체가 한두개라면 넘어갈 수도 있겠지만 만약 수십개의 객체를 생성해야 한다면 문제가 크다.<br><br></p>
+<h2 id="2-2-생성자-함수에-의한-객체-생성-방식의-장점"><a href="#2-2-생성자-함수에-의한-객체-생성-방식의-장점" class="headerlink" title="2.2. 생성자 함수에 의한 객체 생성 방식의 장점"></a>2.2. 생성자 함수에 의한 객체 생성 방식의 장점</h2><p>생성자 함수에 의한 객체 생성 방식은 생성자 함수를 사용하여 프로퍼티 구조가 동일한 객체 여러 개를 간편하게 생성할 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 생성자 함수</span><br><span class="line">function Circle(radius) &#123;</span><br><span class="line">  &#x2F;&#x2F; 생성자 함수 내부의 this는 생성자 함수가 생성할 인스턴스를 가리킨다.</span><br><span class="line">  this.radius &#x3D; radius;</span><br><span class="line">  this.getDiameter &#x3D; function () &#123;</span><br><span class="line">    return 2 * this.radius;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 인스턴스의 생성</span><br><span class="line">const circle1 &#x3D; new Circle(5);  &#x2F;&#x2F; 반지름이 5인 Circle 객체를 생성</span><br><span class="line">const circle2 &#x3D; new Circle(10); &#x2F;&#x2F; 반지름이 10인 Circle 객체를 생성</span><br><span class="line"></span><br><span class="line">console.log(circle1.getDiameter()); &#x2F;&#x2F; 10</span><br><span class="line">console.log(circle2.getDiameter()); &#x2F;&#x2F; 20</span><br></pre></td></tr></table></figure>
+<br>
+
+<pre><code>this
+this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기 참조 변수이다.this가 가리키는 값, 즉 this 바인딩은 함수 호출 방식에 따라 동적으로 결정된다.</code></pre><br>
+
+<table>
+<thead>
+<tr>
+<th>함수 호출 방식</th>
+<th>this가 가리키는 값</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>일반 함수로서 호출</td>
+<td>전역 객체</td>
+</tr>
+<tr>
+<td>메소드로서 호출</td>
+<td>메소드를 호출한 객체</td>
+</tr>
+<tr>
+<td>생성자 함수로서 호출</td>
+<td>생성자 함수가 (미래에) 생성할 인스턴스</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 함수는 다양한 방식으로 호출될 수 있다.</span><br><span class="line">function foo() &#123;</span><br><span class="line">  console.log(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 일반적인 함수로서 호출</span><br><span class="line">&#x2F;&#x2F; 전역 객체는 브라우저 환경에서는 window, Node.js 환경에서는 global을 가리킨다.</span><br><span class="line">foo(); &#x2F;&#x2F; window</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 메소드로서 호출</span><br><span class="line">const obj &#x3D; &#123; foo &#125;; &#x2F;&#x2F; ES6 프로퍼티 축약 표현</span><br><span class="line">obj.foo(); &#x2F;&#x2F; obj</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 생성자 함수로서 호출</span><br><span class="line">const inst &#x3D; new foo(); &#x2F;&#x2F; inst</span><br></pre></td></tr></table></figure>
+
+<p>this에 대해서는 나중에 자세히 살펴보자.</p>
+<p>생성자 함수는 이름 그대로 객체(인스턴스)를 생성하는 함수이다.<br>만약 new 연산자와 함께 생성자 함수를 호출하지 않으면 생성자 함수가 아니라 일반 함수로 동작한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; new 연산자와 함께 호출하지 않으면 생성자 함수로 동작하지 않는다.</span><br><span class="line">&#x2F;&#x2F; 즉, 일반적인 함수의 호출이다.</span><br><span class="line">const circle3 &#x3D; Circle(15);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 일반 함수 Circle은 반환문이 없으므로 암묵적으로 undefined를 반환한다.</span><br><span class="line">console.log(circle3); &#x2F;&#x2F; undefined</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 일반 함수 Circle내의 this는 전역 객체를 가리킨다.</span><br><span class="line">console.log(radius); &#x2F;&#x2F; 15</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-내부-메소드-Call-과-Construct"><a href="#2-3-내부-메소드-Call-과-Construct" class="headerlink" title="2.3. 내부 메소드 [[Call]]과 [[Construct]]"></a>2.3. 내부 메소드 [[Call]]과 [[Construct]]</h2><p>함수 선언문 또는 함수 표현식으로 정의한 함수는 일반적인 함수로서 호출할 수 있는 것은 물론 생성자 함수로서 호출할 수 있다. 생성자 함수로서 호출한다는 것은 new 연산자와 함께 호출하여 객체를 생성하는 것을 의미한다.</p>
+<p>함수는 객체이므로 일반 객체(Ordinary object)와 동일하게 동작할 수 있다. 즉, 함수 객체는 일반 객체의 내부 슬롯과 내부 메소드(“15.2 내부 슬롯/메소드” 참고)를 모두 가지고 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 함수는 객체이다.</span><br><span class="line">function foo() &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 함수는 객체이므로 프로퍼티를 소유할 수 있다.</span><br><span class="line">foo.prop &#x3D; 10;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 함수는 객체이므로 메소드를 소유할 수 있다.</span><br><span class="line">foo.method &#x3D; function () &#123;</span><br><span class="line">  console.log(this.prop);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo.method(); &#x2F;&#x2F; 10</span><br></pre></td></tr></table></figure>
+<p>함수 객체는 함수로서 동작하기 위해 일반 객체의 내부 슬롯과 내부 메소드 이외에 아래와 같은 내부 슬롯과 내부 메소드를 추가적으로 가지고 있다.<br>내부 메소드[[Call]]을 갖는 함수 객체를 Callable이라 하며, 내부 메소드인[[Construct]]를 갖는 함수 객체를 constructor, [[Construct]]를 갖지 않는 함수 객체를 non-constructor라고 부른다.</p>
+<p>callable은 호출할 수 있는 객체, 즉 함수를 말하며, constructor는 생성자 함수로서 호출할 수 있는 객체를 의미한다. 생성자 함수로서 호출할 수 있다는 것은 new 연산자(또는 super 연산자)와 함께 호출하는 것을 의미한다.</p>
+<p>함수가 일반적인 함수로서 호출되면 함수 객체의 내부 메소드 [[Call]]가 호출되고 new 연산자(또는 super 연산자)와 함께 생성자 함수로서 호출되면 내부 메소드 [[Construct]]가 호출된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 일반적인 함수로서 호출: [[Call]]이 호출된다.</span><br><span class="line">foo();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 생성자 함수로서 호출: [[Construct]]가 호출된다.</span><br><span class="line">new foo();</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+              <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+              <a href="/tags/github/" rel="tag"># github</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/let_const/" rel="prev" title="let과 const | javaScript">
+      <i class="fa fa-chevron-left"></i> let과 const | javaScript
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/property_attribute/" rel="next" title="프로퍼티 어트리뷰트 | javaScript">
+      프로퍼티 어트리뷰트 | javaScript <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Object-생성자-함수"><span class="nav-number">1.</span> <span class="nav-text">1. Object 생성자 함수</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-생성자-함수"><span class="nav-number">2.</span> <span class="nav-text">2.생성자 함수</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-객체-리터럴에-의한-객체-생성-방식의-문제점"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 객체 리터럴에 의한 객체 생성 방식의 문제점</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-생성자-함수에-의한-객체-생성-방식의-장점"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 생성자 함수에 의한 객체 생성 방식의 장점</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-내부-메소드-Call-과-Construct"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 내부 메소드 [[Call]]과 [[Construct]]</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lee namkwon</p>
+  <div class="site-description" itemprop="description">welcome my Blog!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee namkwon</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
