@@ -28,7 +28,7 @@
 <meta property="og:description" content="1. 일급 객체 아래와 같은 조건을 만족하는 객체를 일급 객체(first-class object)라 한다.   무명의 리터럴로 생성할 수 있다. 즉, 런타임에 생성이 가능하다. 변수나 자료구조(객체, 배열 등)에 저장할 수 있다. 함수의 매개 변수에게 전달할 수 있다. 함수의 결괏값으로 반환할 수 있다.  자바스크립트의 함수는 아래 예제와 같이 위의 조건을">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-04T04:00:03.000Z">
-<meta property="article:modified_time" content="2020-03-04T05:35:36.373Z">
+<meta property="article:modified_time" content="2020-03-04T06:20:50.210Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -181,7 +181,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-03-04 13:00:03 / Modified: 14:35:36" itemprop="dateCreated datePublished" datetime="2020-03-04T13:00:03+09:00">2020-03-04</time>
+              <time title="Created: 2020-03-04 13:00:03 / Modified: 15:20:50" itemprop="dateCreated datePublished" datetime="2020-03-04T13:00:03+09:00">2020-03-04</time>
             </span>
 
           
@@ -238,8 +238,25 @@
 
 <p>이러한 번거로움을 해결하기 위해 ES6에서는 Rest 파라미터를 도입했다.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; ES6 Rest parameter</span><br><span class="line">function sum(...args) &#123;</span><br><span class="line">  return args.reduce((pre, cur) &#x3D;&gt; pre + cur, 0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(sum(1, 2));           &#x2F;&#x2F; 3</span><br><span class="line">console.log(sum(1, 2, 3, 4, 5));  &#x2F;&#x2F; 15</span><br></pre></td></tr></table></figure>
+<br>
 
+<h2 id="2-2-length-프로퍼티"><a href="#2-2-length-프로퍼티" class="headerlink" title="2.2. length 프로퍼티"></a>2.2. length 프로퍼티</h2><p>함수 객체의 length 프로퍼티는 함수 정의 시 선언한 매개변수의 개수를 가리킨다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  console.log(foo.length); &#x2F;&#x2F; 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function bar(x) &#123;</span><br><span class="line">  return x;</span><br><span class="line">&#125;</span><br><span class="line">console.log(bar.length); &#x2F;&#x2F; 1</span><br><span class="line"></span><br><span class="line">function baz(x, y, z) &#123;</span><br><span class="line">  return x * y * z;</span><br><span class="line">&#125;</span><br><span class="line">console.log(baz.length); &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
 
+<p>arguments 객체의 length 프로퍼티와 함수 객체의 length 프로퍼티의 값은 다를 수 있으므로 주의하여야 한다.<br><strong>arguments 객체의 length 프로퍼티는 인자(argument)의 개수를 가리키고, 함수 객체의 length 프로퍼티는 매개변수(parameter)의 개수를 가리킨다.</strong><br><br></p>
+<h2 id="2-3-name-프로퍼티"><a href="#2-3-name-프로퍼티" class="headerlink" title="2.3. name 프로퍼티"></a>2.3. name 프로퍼티</h2><p>함수 객체의 name 프로퍼티는 함수 이름을 나타낸다.<br>name 프로퍼티는 ES5와 ES6에서 동작을 달리 하므로 주의하기 바란다. 익명 함수 표현식의 경우, ES5에서 name 프로퍼티는 빈 문자열을 값으로 갖는다. 하지만 ES6에서는 함수 객체를 가리키는 변수 이름을 값으로 갖는다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 기명 함수 표현식</span><br><span class="line">var namedFunc &#x3D; function foo () &#123;&#125;;</span><br><span class="line">console.log(namedFunc.name); &#x2F;&#x2F; foo</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 익명 함수 표현식</span><br><span class="line">var anoymusFunc &#x3D; function() &#123;&#125;;</span><br><span class="line">&#x2F;&#x2F; ES5: name 프로퍼티는 빈 문자열을 값으로 갖는다.</span><br><span class="line">&#x2F;&#x2F; ES6: name 프로퍼티는 함수 객체를 가리키는 변수 이름을 값으로 갖는다.</span><br><span class="line">console.log(anonymousFunc.name); &#x2F;&#x2F; anonymousFunc</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 함수 선언문(Function declaration)</span><br><span class="line">function bar() &#123;&#125;</span><br><span class="line">console.log(bar.name); &#x2F;&#x2F; bar</span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="2-5-proto-접근자-프로퍼티"><a href="#2-5-proto-접근자-프로퍼티" class="headerlink" title="2.5. proto 접근자 프로퍼티"></a>2.5. <strong>proto</strong> 접근자 프로퍼티</h2><p>모든 객체는[[prototype]]이라는 내부 슬롯을 갖는다. [[prototype]]내부 슬롯은 객체 지향 프로그래밍의 상속을 구현하는 프로토타입 객체를 가리킨다.</p>
+<p><strong>proto</strong>프로퍼티는 [[Prototype]]내부 슬롯이 가리키는 프로토타입 객체에 접근하기 위해 사용하는 접근자 프로퍼티이다. 내부 슬롯에는 직접 접근할 수 없고 간접적인 접근 방법을 제공하는 경우에 한하여 접근할 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const obj &#x3D; &#123; a: 1 &#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 객체 리터럴 방식으로 생성한 객체의 프로토타입 객체는 Object.prototype이다.</span><br><span class="line">console.log(obj.__proto__ &#x3D;&#x3D;&#x3D; Object.prototype); &#x2F;&#x2F; true</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 객체 리터럴 방식으로 생성한 객체는 프로토타입 객체인 Object.prototype의 프로퍼티를 상속받는다.</span><br><span class="line">&#x2F;&#x2F; hasOwnProperty 메소드는 Object.prototype의 메소드이다.</span><br><span class="line">console.log(obj.hasOwnProperty(&#39;a&#39;));         &#x2F;&#x2F; true</span><br><span class="line">console.log(obj.hasOwnProperty(&#39;__proto__&#39;)); &#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="2-6-prototype-프로퍼티"><a href="#2-6-prototype-프로퍼티" class="headerlink" title="2.6. prototype 프로퍼티"></a>2.6. prototype 프로퍼티</h2><p>prototype 프로퍼티는 함수 객체만이 소유하는 프로퍼티이다. 일반 객체에는 prototype 프로퍼티가 없다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 함수 객체는 prototype 프로퍼티를 소유한다.</span><br><span class="line">console.log((function() &#123;&#125;).hasOwnproperty(&#39;prototype&#39;)); &#x2F;&#x2F; true</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 일반 객체는 prototype 프로퍼티를 소유하지 않는다.</span><br><span class="line">console.log((&#123;&#125;).hasOwnProperty(&#39;prototype&#39;)); &#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
+
+<p>prototype 프로퍼티는 함수가 객체를 생성하는 생성자 함수로 사용될 때, 생성자 함수가 생성할 인스턴스의 프로토타입 객체를 가리킨다.</p>
 
     </div>
 
@@ -323,7 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-일급-객체"><span class="nav-number">1.</span> <span class="nav-text">1. 일급 객체</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-함수-객체의-프로퍼티"><span class="nav-number">2.</span> <span class="nav-text">2. 함수 객체의 프로퍼티</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-arguments-프로퍼티"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. arguments 프로퍼티</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-일급-객체"><span class="nav-number">1.</span> <span class="nav-text">1. 일급 객체</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-함수-객체의-프로퍼티"><span class="nav-number">2.</span> <span class="nav-text">2. 함수 객체의 프로퍼티</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-arguments-프로퍼티"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. arguments 프로퍼티</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-length-프로퍼티"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. length 프로퍼티</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-name-프로퍼티"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. name 프로퍼티</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-proto-접근자-프로퍼티"><span class="nav-number">2.4.</span> <span class="nav-text">2.5. proto 접근자 프로퍼티</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-prototype-프로퍼티"><span class="nav-number">2.5.</span> <span class="nav-text">2.6. prototype 프로퍼티</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
