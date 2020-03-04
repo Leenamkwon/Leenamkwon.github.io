@@ -553,6 +553,94 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lee namkwon">
+      <meta itemprop="description" content="welcome my Blog!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="namkwon's tech blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85/" class="post-title-link" itemprop="url">프로토타입 | javaScript</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-03 15:02:03" itemprop="dateCreated datePublished" datetime="2020-03-03T15:02:03+09:00">2020-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-04 16:24:25" itemprop="dateModified" datetime="2020-03-04T16:24:25+09:00">2020-03-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>자바스크립트는 명령형(Imperative), 함수형(Functional), 프로토타입 기반(Prototype-based) 객체지향 프로그래밍(OOP, Object Oriented Programming)을 지원하는 멀티 패러다임 프로그래밍 언어다.</p>
+<p><strong>자바스크립트는 객체 기반의 프로그래밍 언어이며 자바스크립트를 이루고 있는 거의 “모든 것”이 객체이다.</strong> 원시타입을 제외한 모든 것(함수, 배열, 객체등)은 모두 객체이다.<br><br></p>
+<h1 id="1-객체지향-프로그래밍"><a href="#1-객체지향-프로그래밍" class="headerlink" title="1. 객체지향 프로그래밍"></a>1. 객체지향 프로그래밍</h1><p>객체지향 프로그래밍(OOP)은 프로그램을 명령어 또는 함수의 목록으로 보는 전통적인 명령형 프로그래밍의 절차지향적 관점에서 벗어나 여러 개의 독립적 단위, 즉 객체(object)들의 집합으로 프로그램을 표현하려는 프로그래밍 패러다임을 말한다.</p>
+<p>객체지향 프로그래밍은 실세계의 실체(사물이나 개념)를 인식하는 철학적 사고를 프로그래밍에 접목하려는 시도에서 시작한다. 실체는 특징이나 성질을 나타내는 속성(attribute, property)을 가지고 있고, 이를 통해 실체를 인식하거나 구별할 수 있다.</p>
+<p>예를 들어 사람은 이름, 주소, 성별, 나이, 신장, 체중, 학력, 성격, 직업 등 다양한 속성을 갖는다. 이때 “이름이 아무개이고 성별은 여성이며 나이는 20세인 사람”과 같이 속성을 구체적으로 표현하면 특정한 사람을 다른 사람과 구별하여 인식할 수 있다.</p>
+<p>이러한 방식을 프로그래밍에 접목시켜보자. 사람에게는 다양한 속성이 있으나 우리가 구현하려는 프로그램에서는 사람의 “이름”, “주소”라는 속성에만 관심이 있다고 가정하자. 이처럼 다양한 속성 중에서 프로그램에 필요한 속성만을 간추려 내어 표현하는 것을 <strong>추상화(abstraction)</strong>라 한다.</p>
+<p>“이름”과 “주소”라는 속성을 갖는 person이라는 객체를 자바스크립트로 표현해 보면 아래와 같다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 이름과 주소 속성을 갖는 객체</span><br><span class="line">const person &#x3D; &#123;</span><br><span class="line">  name: &#39;Lee&#39;,</span><br><span class="line">  address: &#39;Seoul&#39;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(person);</span><br></pre></td></tr></table></figure>
+
+<p>이때 프로그래머(subject, 주체)는 이름과 주소 속성으로 표현된 객체(object)인 person을 다른 객체와 구별하여 인식할 수 있다. 이처럼 <strong>속성을 통해 여러 개의 값을 하나의 단위로 구성한 복합적인 자료 구조</strong>를 객체라 하며 객체 지향 프로그래밍은 독립적인 객체의 집합으로 프로그램을 표현하려는 프로그래밍 패러다임이다.</p>
+<p>이번에는 원(Circle)이라는 개념을 객체로 만들어보자. 원에는 반지름이라는 속성이 있다. 이 반지름을 가지고 원의 지름, 둘레, 넓이를 구할 수 있다. 이때 반지름은 원의 상태를 나타내는 데이터이며 원의 지름, 둘레, 넓이를 구하는 것은 동작이다.</p>
+<p>이번에는 원(Circle)이라는 개념을 객체로 만들어보자. 원에는 반지름이라는 속성이 있다. 이 반지름을 가지고 원의 지름, 둘레, 넓이를 구할 수 있다. 이때 반지름은 원의 상태를 나타내는 데이터이며 원의 지름, 둘레, 넓이를 구하는 것은 <strong>동작</strong>이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const circle &#x3D; &#123;</span><br><span class="line">  radius: 5, &#x2F;&#x2F; 반지름</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 원의 지름: 2r</span><br><span class="line">  getDiameter() &#123;</span><br><span class="line">    return 2 * this.radius;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 원의 둘레: 2πr</span><br><span class="line">  getPerimeter() &#123;</span><br><span class="line">    return 2 * Math.PI * this.radius;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 원의 넓이: πrr</span><br><span class="line">  getArea() &#123;</span><br><span class="line">    return Math.PI * Math.pow(this.radius, 2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(circle);</span><br><span class="line"></span><br><span class="line">console.log(circle.getDiameter());   &#x2F;&#x2F; 10</span><br><span class="line">console.log(circle.getperimeter());  &#x2F;&#x2F; 31.41</span><br><span class="line">  console.log(circle.getArea());     &#x2F;&#x2F; 78.53</span><br></pre></td></tr></table></figure>
+
+<p>이처럼 객체지향 프로그래밍은 객체의 <strong>상태(state)</strong>를 나타내는 데이터와 상태 데이터를 조작할 수 있는 <strong>동작(behavior)</strong>을 하나의 논리적인 단위로 묶어 생각한다. 따라서 객체는 <strong>상태 데이터와 동작을 하나의 논리적인 단위로 묶은 복합적인 자료 구조</strong>라고 할 수 있다. 객체의 상태 데이터를 프로퍼티(property), 동작을 메소드(method)라 부른다.</p>
+<p>각각의 객체는 고유의 기능을 갖는 독립적인 부품으로 볼 수 있지만 자신의 고유한 기능을 수행하면서 다른 객체와 관계성(relationship)을 갖을 수 있다. 다른 객체와 메시지를 주고 받거나 데이터를 처리할 수도 있다. 또는 다른 객체의 상태 데이터나 동작을 상속받아 사용하기도 한다.<br><br></p>
+<h1 id="2-상속과-프로토타입"><a href="#2-상속과-프로토타입" class="headerlink" title="2.상속과 프로토타입"></a>2.상속과 프로토타입</h1><p>상속은 객체지향 프로그래밍의 핵심 개념으로 어떤 객체의 프로퍼티 또는 메소드를 다른 객체가 상속받아 그대로 사용할 수 있는 것을 말한다.</p>
+<p><strong>자바스크립트는 프로토타입을 기반으로 상속을 구현하여 불필요한 중복을 제거한다.</strong>중복을 제거하는 방법은 기존의 코드를 적극적으로 재사용하는 것이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function Circle(radius) &#123;</span><br><span class="line">  this.radius &#x3D; radisu;</span><br><span class="line">  this.getArea &#x3D; function () &#123;</span><br><span class="line">    &#x2F;&#x2F; Math.pow는 첫번째 인수를 두번째 인수로 거듭제곱한 값을 반환한다.</span><br><span class="line">    return Math.PI * Math.pow(this.radius, 2);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 인스턴스 생성</span><br><span class="line">&#x2F;&#x2F; 반지름이 1인 인스턴스 생성</span><br><span class="line">const circle1 &#x3D; new Circle(1);</span><br><span class="line">&#x2F;&#x2F; 반지름이 2인 인스턴스 생성</span><br><span class="line">const circle2 &#x3D; new Circle(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Circle 생성자 함수는 인스턴스를 생성할 때마다 동일한 동작을 하는</span><br><span class="line">&#x2F;&#x2F; getArea 메소드를 중복 생성하고 모든 인스턴스가 중복 소유한다.</span><br><span class="line">&#x2F;&#x2F; 따라서 getArea 메소드는 하나만 생성하여 모든 인스턴스가 공유하는 것이 바람직하다.</span><br><span class="line">console.log(circle1.getArea &#x3D;&#x3D;&#x3D; circle2.getArea); &#x2F;&#x2F; false</span><br><span class="line"></span><br><span class="line">console.log(circle1.getArea()); &#x2F;&#x2F; 3.141592653589793</span><br><span class="line">console.log(circle2.getArea()); &#x2F;&#x2F; 12.566370614359172</span><br></pre></td></tr></table></figure>
+
+<p>Circle 생성자 함수가 생성하는 모든 객체(인스턴스)는 radius 프로퍼티와 getArea 메소드를 갖는다. radius 프로퍼티 값은 일반적으로 인스턴스마다 다르다.(같은 상태를 갖는 여러 개의 인스턴스가 필요하다면 radius 프로퍼티 값이 같을 수도 있다.) 하지만 getArea 메소드는 모든 인스턴스가 동일한 내용의 메소드를 사용하므로 하나만 생성하여 모든 인스턴스가 공유하는 것이 바람직하다. 그런데 Circle 생성자 함수는 인스턴스를 생성할 때마다 getArea 메소드를 중복 생성하고 모든 인스턴스가 중복 소유한다.</p>
+<p>동일한 생성자 함수에 의해 생성된 모든 인스턴스가 동일한 메소드를 중복 소유하는 것은 메모리를 불필요하게 낭비한다. 또한 인스턴스를 생성할 때마다 메소드를 생성하므로 퍼포먼스에도 악영향을 준다. 만약 10개의 인스턴스를 생성하면 내용이 동일한 메소드도 10개 생성된다.</p>
+<p>상속을 통해 불필요한 중복을 제거해 보자.<strong>자바스크립트는 프로토타입을 기반으로 상속을 구현한다.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 생성자 함수</span><br><span class="line">function Circle(radius) &#123;</span><br><span class="line">  this.radius &#x3D; radius;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Circle 생성자 함수가 생성한 모든 인스턴스가 공유할 수 있도록 getArea 메소드를 프로토타입에 추가한다.</span><br><span class="line">&#x2F;&#x2F; 프로토타입은 Circle 생성자 함수의 prototype 프로퍼티에 바인딩되어 있다.</span><br><span class="line">Circle.prototype.getArea &#x3D; function() &#123;</span><br><span class="line">  return Math.PI * Math.pow(this.radius, 2);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 인스턴스 생성</span><br><span class="line">const circle1 &#x3D; new Circle(1);</span><br><span class="line">const circle2 &#x3D; new Circle(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Circle 생성자 함수가 생성한 모든 인스턴스는 부모 객체의 역할을 하는</span><br><span class="line">&#x2F;&#x2F; 프로토타입 Circle.prototype로부터 getArea 메소드를 상속받는다.</span><br><span class="line">&#x2F;&#x2F; 즉, Circle 생성자 함수가 생성하는 모든 인스턴스는 하나의 getArea 메소드를 공유한다.</span><br><span class="line">console.log(circle1.getArea &#x3D;&#x3D;&#x3D; circle2.getArea); &#x2F;&#x2F; true</span><br><span class="line"></span><br><span class="line">console.log(circle1.getArea()); &#x2F;&#x2F; 3.141592653589793</span><br><span class="line">console.log(circle2.getArea()); &#x2F;&#x2F; 12.566370614359172</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/let_const/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1408,70 +1496,6 @@ var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언이
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/coercion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lee namkwon">
-      <meta itemprop="description" content="welcome my Blog!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="namkwon's tech blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/coercion/" class="post-title-link" itemprop="url">타입 변환과 단축 평가 | javaScript</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-24 14:07:23" itemprop="dateCreated datePublished" datetime="2020-02-24T14:07:23+09:00">2020-02-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-26 14:56:23" itemprop="dateModified" datetime="2020-02-26T14:56:23+09:00">2020-02-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1541,12 +1565,12 @@ var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언이
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
