@@ -556,7 +556,7 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-04 16:24:25" itemprop="dateModified" datetime="2020-03-04T16:24:25+09:00">2020-03-04</time>
+                <time title="Modified: 2020-03-06 17:34:17" itemprop="dateModified" datetime="2020-03-06T17:34:17+09:00">2020-03-06</time>
               </span>
 
           
@@ -594,6 +594,8 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
 <p>동일한 생성자 함수에 의해 생성된 모든 인스턴스가 동일한 메소드를 중복 소유하는 것은 메모리를 불필요하게 낭비한다. 또한 인스턴스를 생성할 때마다 메소드를 생성하므로 퍼포먼스에도 악영향을 준다. 만약 10개의 인스턴스를 생성하면 내용이 동일한 메소드도 10개 생성된다.</p>
 <p>상속을 통해 불필요한 중복을 제거해 보자.<strong>자바스크립트는 프로토타입을 기반으로 상속을 구현한다.</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 생성자 함수</span><br><span class="line">function Circle(radius) &#123;</span><br><span class="line">  this.radius &#x3D; radius;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Circle 생성자 함수가 생성한 모든 인스턴스가 공유할 수 있도록 getArea 메소드를 프로토타입에 추가한다.</span><br><span class="line">&#x2F;&#x2F; 프로토타입은 Circle 생성자 함수의 prototype 프로퍼티에 바인딩되어 있다.</span><br><span class="line">Circle.prototype.getArea &#x3D; function() &#123;</span><br><span class="line">  return Math.PI * Math.pow(this.radius, 2);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 인스턴스 생성</span><br><span class="line">const circle1 &#x3D; new Circle(1);</span><br><span class="line">const circle2 &#x3D; new Circle(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Circle 생성자 함수가 생성한 모든 인스턴스는 부모 객체의 역할을 하는</span><br><span class="line">&#x2F;&#x2F; 프로토타입 Circle.prototype로부터 getArea 메소드를 상속받는다.</span><br><span class="line">&#x2F;&#x2F; 즉, Circle 생성자 함수가 생성하는 모든 인스턴스는 하나의 getArea 메소드를 공유한다.</span><br><span class="line">console.log(circle1.getArea &#x3D;&#x3D;&#x3D; circle2.getArea); &#x2F;&#x2F; true</span><br><span class="line"></span><br><span class="line">console.log(circle1.getArea()); &#x2F;&#x2F; 3.141592653589793</span><br><span class="line">console.log(circle2.getArea()); &#x2F;&#x2F; 12.566370614359172</span><br></pre></td></tr></table></figure>
+
+<p>즉, 객체와 생성자함수 prototype은 연결되어있다.</p>
 
       
     </div>
