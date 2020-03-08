@@ -29,8 +29,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://poiemaweb.com/assets/fs-images/19-1.png">
 <meta property="og:image" content="https://poiemaweb.com/assets/fs-images/19-2.png">
+<meta property="og:image" content="https://poiemaweb.com/assets/fs-images/19-3.png">
+<meta property="og:image" content="https://poiemaweb.com/assets/fs-images/19-4.png">
+<meta property="og:image" content="https://poiemaweb.com/assets/fs-images/19-5.png">
 <meta property="article:published_time" content="2020-03-08T06:02:03.000Z">
-<meta property="article:modified_time" content="2020-03-08T14:22:12.836Z">
+<meta property="article:modified_time" content="2020-03-08T14:34:12.580Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -185,7 +188,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-03-08 15:02:03 / Modified: 23:22:12" itemprop="dateCreated datePublished" datetime="2020-03-08T15:02:03+09:00">2020-03-08</time>
+              <time title="Created: 2020-03-08 15:02:03 / Modified: 23:34:12" itemprop="dateCreated datePublished" datetime="2020-03-08T15:02:03+09:00">2020-03-08</time>
             </span>
 
           
@@ -235,7 +238,24 @@
 <p><img src="https://poiemaweb.com/assets/fs-images/19-2.png" alt="prototype" title="상속에 의한 메소드 공유"></p>
 <p>Circle 생성자 함수가 생성한 모든 인스턴스는 자신의 프로토타입, 즉 상위(부모) 객체 역할을 하는 Circle.prototype의 모든 프로퍼티와 메소드를 상속 받는다.</p>
 <p>getArea 메소드는 단 하나만 생성되어 프로토타입인 Circle.prototype의 메소드로 할당되어 있다. 따라서 Circle 생성자 함수가 생성하는 모든 인스턴스는 getArea 메소드를 상속받아 사용할 수 있다. 즉, 자신의 상태를 나타내는 radius 프로퍼티만을 개별적으로 소유하고 내용이 동일한 메소드는 상속을 통해 공유하여 사용하는 것이다.</p>
-<p>상속은 코드의 재사용이란 관점에서 매우 유용하다. 생성자 함수가 생성할 모든 인스턴스가 공통적으로 사용할 프로퍼티나 메소드를 프로토타입에 미리 구현에 놓으면 생성자 함수가 생성할 모든 인스턴스는 별도의 구현없이 상위(부모) 객체인 프로토타입의 자산을 공유하여 사용할 수 있다.</p>
+<p>상속은 코드의 재사용이란 관점에서 매우 유용하다. 생성자 함수가 생성할 모든 인스턴스가 공통적으로 사용할 프로퍼티나 메소드를 프로토타입에 미리 구현에 놓으면 생성자 함수가 생성할 모든 인스턴스는 별도의 구현없이 상위(부모) 객체인 프로토타입의 자산을 공유하여 사용할 수 있다.<br><br></p>
+<h1 id="3-프로토타입-객체"><a href="#3-프로토타입-객체" class="headerlink" title="3. 프로토타입 객체"></a>3. 프로토타입 객체</h1><p>프로토타입 객체(또는 줄여서 프로토타입)란 객체간 상속을 구현하기 위해 사용된다.<br>프로토타입은 어떤 객체의 상위(부모)객체의 역할을 하는 객체로서 다른 객체에 공유 프로퍼티(메소드 포함)를 제공한다.프로토타입을 상속받은 하위 객체는 상위 객체의 프로퍼티를 자신의 프로퍼티처럼 자유롭게 사용할 수 있다.</p>
+<p>모든 객체는 Prototype이라는 내부 슬롯을 갖는다. 모든 객체는 생성될 떄  [[Prototype]] 내부 슬롯의 값으로 프로토타입의 참조를 저장한다. 즉, 모든 객체는 하나의 프로토타입을 갖으며 프로토타입은 객체의 생성 방식에 의해 결정된다.</p>
+<p>예를 들어, 객체 리터럴에 의해 생성된 객체의 프로토타입은 Object.prototype이고 생성자 함수에 의해 생성된 객체의 프로토타입은 생성자 함수의 prototype 프로퍼티에 바인딩되어 있는 객체이다. 이에 대해서는 “객체 생성 방식과 프로토타입의 결정”에서 자세히 살펴볼 것이다.</p>
+<p>모든 객체는 하나의 프로토타입을 갖는다. 프로토타입은 null이거나 객체이다. 그리고 모든 프로토타입은 생성자 함수와 연결되어 있다. 즉, 객체와 프로토타입과 생성자 함수는 서로 연결되어 있다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/19-3.png" alt="prototype" title="객체와 프로토타입과 생성자 함수는 서로 연결되어 있다."></p>
+<p>위 그림처럼 객체는 <strong>proto</strong> 접근자 프로퍼티를 통해 자신의 프로토타입, 즉 자신의 [[Prototype]]내부 슬롯이 가리키는 객체에 접근할 수 있다. 그리고 프로토타입은 constructor 프로퍼티를 통해 생성자 함수에 접근할 수 있다. 생성자 함수는 Prototype 프로퍼티를 통해 프로토타입에 접근할 수 있다.<br><br></p>
+<h2 id="3-1-proto-접근자-프로퍼티"><a href="#3-1-proto-접근자-프로퍼티" class="headerlink" title="3.1. proto 접근자 프로퍼티"></a>3.1. <strong>proto</strong> 접근자 프로퍼티</h2><p><strong>모든 객체는 <strong>proto</strong> 접근자 프로퍼티를 통해 자신의 프로토타입, [[Prototype]]내부 슬롯에 접근할 수 있다.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const person &#x3D; &#123; name: &#39;namkwon&#39; &#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="https://poiemaweb.com/assets/fs-images/19-4.png" alt=""></p>
+<p>위 그림의 빨간 박스로 표시한 것이 person 객체의 프로토타입인 Object.prototype이다. 이는 <strong>proto</strong> 접근자 프로퍼티를 통해 person 객체의 [[Prototype]] 내부 슬롯이 가리키는 객체인 Object.prototype에 접근한 결과를 크롬 브라우저가 콘솔에 표시한 것이다. 이처럼 모든 객체는 프로토타입을 가리키는 [[Prototype]] 내부 슬롯에 접근하기 위해 <strong>proto</strong> 접근자 프로퍼티를 사용할 수 있다.</p>
+<p><mark style="font-size: 20px"><strong>proto</strong>는 접근자 프로퍼티이다.</mark></p>
+<p>“15.2 내부 슬롯/메소드”에서 살펴보았듯이 내부 슬롯은 프로퍼티가 아니다. 따라서 내부 슬롯에는 직접 접근할 수 없고 간접적인 접근 방법을 제공하는 경우에 한하여 접근할 수 있다. [[Prototype]] 내부 슬롯에도 직접 접근할 수 없으며 <strong>proto</strong> 접근자 프로퍼티를 통해 간접적으로 [[Prototype]] 내부 슬롯의 값, 즉 프로토타입에 접근할 수 있다.</p>
+<p>“접근자 프로퍼티”에서 살펴본 것처럼 접근자 프로퍼티는 자체적으로는 값을 갖지 않고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 사용하는 접근자 함수(Accessor function)로 구성된 프로퍼티다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/19-5.png" alt=""><br>Object.prototype의 프로퍼티인 <strong>proto</strong> 접근자 프로퍼티는 getter/setter 함수라고 부르는 접근자 함수를 통해 [[Prototype]] 내부 슬롯의 값, 즉 프로토타입을 취득하거나 할당한다. <strong>proto</strong> 접근자 프로퍼티를 통해 프로토타입에 접근하면 내부적으로 <strong>proto</strong> 접근자 프로퍼티의 getter 함수인 get <strong>proto</strong>가 호출된다. <strong>proto</strong> 접근자 프로퍼티를 통해 새로운 프로토타입을 할당하면 <strong>proto</strong> 접근자 프로퍼티의 setter 함수인 set <strong>proto</strong>가 호출된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const obj &#x3D; &#123;&#125;;</span><br><span class="line">const parent &#x3D; &#123; x: 1 &#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; getter 함수인 get __proto__가 호출되어 obj 객체의 프로토타입을 취득</span><br><span class="line">obj.__proto__;</span><br><span class="line">&#x2F;&#x2F; setter함수인 set __proto__가 호출되어 obj 객체의 프로토타입을 교체</span><br><span class="line">obj.__proto__ &#x3D; parent;</span><br><span class="line"></span><br><span class="line">console.log(obj.x); &#x2F;&#x2F; 1</span><br></pre></td></tr></table></figure>
+
+<p><mark style="font-size: 20px"><strong>proto</strong> 접근자 프로퍼티는 상속을 통해 사용된다.</mark></p>
 
     </div>
 
@@ -320,7 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-객체지향-프로그래밍"><span class="nav-number">1.</span> <span class="nav-text">1. 객체지향 프로그래밍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-상속과-프로토타입"><span class="nav-number">2.</span> <span class="nav-text">2.상속과 프로토타입</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-객체지향-프로그래밍"><span class="nav-number">1.</span> <span class="nav-text">1. 객체지향 프로그래밍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-상속과-프로토타입"><span class="nav-number">2.</span> <span class="nav-text">2.상속과 프로토타입</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-프로토타입-객체"><span class="nav-number">3.</span> <span class="nav-text">3. 프로토타입 객체</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-proto-접근자-프로퍼티"><span class="nav-number">3.1.</span> <span class="nav-text">3.1. proto 접근자 프로퍼티</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
