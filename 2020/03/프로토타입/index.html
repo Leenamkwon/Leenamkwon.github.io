@@ -27,14 +27,17 @@
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
 <meta property="og:description" content="자바스크립트는 명령형(Imperative), 함수형(Functional), 프로토타입 기반(Prototype-based) 객체지향 프로그래밍(OOP, Object Oriented Programming)을 지원하는 멀티 패러다임 프로그래밍 언어다. 자바스크립트는 객체 기반의 프로그래밍 언어이며 자바스크립트를 이루고 있는 거의 “모든 것”이 객체이다. 원시타입">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-03T06:02:03.000Z">
-<meta property="article:modified_time" content="2020-03-06T08:34:17.459Z">
+<meta property="og:image" content="https://poiemaweb.com/assets/fs-images/19-1.png">
+<meta property="og:image" content="https://poiemaweb.com/assets/fs-images/19-2.png">
+<meta property="article:published_time" content="2020-03-08T06:02:03.000Z">
+<meta property="article:modified_time" content="2020-03-08T14:22:12.836Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
 <meta property="article:tag" content="github">
 <meta property="article:tag" content="prototype">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://poiemaweb.com/assets/fs-images/19-1.png">
 
 <link rel="canonical" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85/">
 
@@ -180,16 +183,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-03-03 15:02:03" itemprop="dateCreated datePublished" datetime="2020-03-03T15:02:03+09:00">2020-03-03</time>
+              <time title="Created: 2020-03-08 15:02:03 / Modified: 23:22:12" itemprop="dateCreated datePublished" datetime="2020-03-08T15:02:03+09:00">2020-03-08</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-06 17:34:17" itemprop="dateModified" datetime="2020-03-06T17:34:17+09:00">2020-03-06</time>
-              </span>
 
           
 
@@ -227,7 +224,18 @@
 <p>상속을 통해 불필요한 중복을 제거해 보자.<strong>자바스크립트는 프로토타입을 기반으로 상속을 구현한다.</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 생성자 함수</span><br><span class="line">function Circle(radius) &#123;</span><br><span class="line">  this.radius &#x3D; radius;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Circle 생성자 함수가 생성한 모든 인스턴스가 공유할 수 있도록 getArea 메소드를 프로토타입에 추가한다.</span><br><span class="line">&#x2F;&#x2F; 프로토타입은 Circle 생성자 함수의 prototype 프로퍼티에 바인딩되어 있다.</span><br><span class="line">Circle.prototype.getArea &#x3D; function() &#123;</span><br><span class="line">  return Math.PI * Math.pow(this.radius, 2);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 인스턴스 생성</span><br><span class="line">const circle1 &#x3D; new Circle(1);</span><br><span class="line">const circle2 &#x3D; new Circle(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Circle 생성자 함수가 생성한 모든 인스턴스는 부모 객체의 역할을 하는</span><br><span class="line">&#x2F;&#x2F; 프로토타입 Circle.prototype로부터 getArea 메소드를 상속받는다.</span><br><span class="line">&#x2F;&#x2F; 즉, Circle 생성자 함수가 생성하는 모든 인스턴스는 하나의 getArea 메소드를 공유한다.</span><br><span class="line">console.log(circle1.getArea &#x3D;&#x3D;&#x3D; circle2.getArea); &#x2F;&#x2F; true</span><br><span class="line"></span><br><span class="line">console.log(circle1.getArea()); &#x2F;&#x2F; 3.141592653589793</span><br><span class="line">console.log(circle2.getArea()); &#x2F;&#x2F; 12.566370614359172</span><br></pre></td></tr></table></figure>
 
-<p>즉, 객체와 생성자함수 prototype은 연결되어있다.</p>
+<p>“16.2 생성자 함수”에서 살펴본 바와 같이 생성자 함수는 동일한 프로퍼티(메소드 포함) 구조를 갖는 객체를 여러 개 생성할 때 유용하다. 하지만 위 예제의 생성자 함수는 문제가 있다.</p>
+<p>Circle 생성자 함수가 생성하는 모든 객체(인스턴스)는 radius 프로퍼티와 getArea 메소드를 갖는다. radius 프로퍼티 값은 일반적으로 인스턴스마다 다르다.(같은 상태를 갖는 여러 개의 인스턴스가 필요하다면 radius 프로퍼티 값이 같을 수도 있다.) 하지만 getArea 메소드는 모든 인스턴스가 동일한 내용의 메소드를 사용하므로 하나만 생성하여 모든 인스턴스가 공유하는 것이 바람직하다. 그런데 Circle 생성자 함수는 인스턴스를 생성할 때마다 getArea 메소드를 중복 생성하고 모든 인스턴스가 중복 소유한다.<br></p>
+<p><img src="https://poiemaweb.com/assets/fs-images/19-1.png" alt="prototye" title="메소드 중복 생성"><br><br></p>
+<p>이처럼 동일한 생성자 함수에 의해 생성된 모든 인스턴스가 동일한 메소드를 중복 소유하는 것은 메모리를 불필요하게 낭비한다. 또한 인스턴스를 생성할 때마다 메소드를 생성하므로 퍼포먼스에도 악영향을 준다. 만약 10개의 인스턴스를 생성하면 내용이 동일한 메소드도 10개 생성된다.</p>
+<p>상속을 통해 불필요한 중복을 제거해 보자. <strong>자바스크립트는 프로토타입(prototype)을 기반으로 상속을 구현한다.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 생성자 함수</span><br><span class="line">function Circle(radius) &#123;</span><br><span class="line">  this.radius &#x3D; radius;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Circle 생성자 함수가 생성한 모든 인스턴스가 공유할 수 있도록 getArea 메소드를 프로토타입에 추가한다.</span><br><span class="line">&#x2F;&#x2F; 프로토 타입은 Circle 생성자 함수의 prototype 프로퍼티에 바인딩되어 있다.</span><br><span class="line">Circle.prototype.getArea &#x3D; function () &#123;</span><br><span class="line">  return Math.PI * Math.pow(this.radius, 2);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 인스턴스 생성</span><br><span class="line">const circle1 &#x3D; new Circle(1);</span><br><span class="line">const circle2 &#x3D; new Circle(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Circle 생성자 함수가 생성한 모든 인스턴스는 부모 객체의 역할을 하는</span><br><span class="line">&#x2F;&#x2F; 프로토타입 Circle.prototype로부터 getArea 메소드를 상속받는다.</span><br><span class="line">&#x2F;&#x2F; 즉, Circle 생성자 함수가 생성하는 모든 인스턴스는 하나의 getArea 메소드를 공유한다.</span><br><span class="line">console.log(circle1.getArea &#x3D;&#x3D;&#x3D; circle2.getArea); &#x2F;&#x2F; true</span><br><span class="line"></span><br><span class="line">console.log(circle1.getArea()); &#x2F;&#x2F; 3.141592653589793</span><br><span class="line">console.log(circle2.getArea()); &#x2F;&#x2F; 12.566370614359172</span><br></pre></td></tr></table></figure>
+<br>
+
+<p><img src="https://poiemaweb.com/assets/fs-images/19-2.png" alt="prototype" title="상속에 의한 메소드 공유"></p>
+<p>Circle 생성자 함수가 생성한 모든 인스턴스는 자신의 프로토타입, 즉 상위(부모) 객체 역할을 하는 Circle.prototype의 모든 프로퍼티와 메소드를 상속 받는다.</p>
+<p>getArea 메소드는 단 하나만 생성되어 프로토타입인 Circle.prototype의 메소드로 할당되어 있다. 따라서 Circle 생성자 함수가 생성하는 모든 인스턴스는 getArea 메소드를 상속받아 사용할 수 있다. 즉, 자신의 상태를 나타내는 radius 프로퍼티만을 개별적으로 소유하고 내용이 동일한 메소드는 상속을 통해 공유하여 사용하는 것이다.</p>
+<p>상속은 코드의 재사용이란 관점에서 매우 유용하다. 생성자 함수가 생성할 모든 인스턴스가 공통적으로 사용할 프로퍼티나 메소드를 프로토타입에 미리 구현에 놓으면 생성자 함수가 생성할 모든 인스턴스는 별도의 구현없이 상위(부모) 객체인 프로토타입의 자산을 공유하여 사용할 수 있다.</p>
 
     </div>
 
@@ -249,13 +257,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/let_const/" rel="prev" title="let과 const | javaScript">
-      <i class="fa fa-chevron-left"></i> let과 const | javaScript
+    <a href="/2020/03/%ED%95%A8%EC%88%98%EC%99%80%20%EC%9D%BC%EA%B8%89%20%EA%B0%9D%EC%B2%B4/" rel="prev" title="함수와 일급 객체 | javaScript">
+      <i class="fa fa-chevron-left"></i> 함수와 일급 객체 | javaScript
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/%EC%83%9D%EC%84%B1%EC%9E%90%ED%95%A8%EC%88%98/" rel="next" title="생성자 함수에 의한 객체 생성 | javaScript">
-      생성자 함수에 의한 객체 생성 | javaScript <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
