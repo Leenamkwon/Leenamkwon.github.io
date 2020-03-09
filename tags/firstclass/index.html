@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Category: React - namkwon&#39;s tech blog</title>
+<title>Tag: firstclass - namkwon&#39;s tech blog</title>
 
 
     <meta name="description" content="welcome my Blog!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="namkwon&#39;s tech blog">
-<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/categories/React/index.html">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/tags/firstclass/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
 <meta property="og:description" content="welcome my Blog!">
 <meta property="og:locale" content="en_US">
@@ -38,7 +38,7 @@
 
 
 
-<link rel="icon" href="/images/favicon.svg">
+<link rel="icon" href="/images/react-brands.svg">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -88,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="namkwon&#39;s tech blog" height="28">
+                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="namkwon&#39;s tech blog" height="28">
             
             </a>
         </div>
@@ -141,9 +141,8 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Categories</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">React</a></li>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">firstclass</a></li>
         </ul>
         </nav>
     </div>
@@ -156,18 +155,12 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-24T05:07:23.000Z">2020-02-24</time>
+                <time class="level-item has-text-grey" datetime="2020-03-04T04:00:03.000Z">2020-03-04</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/React/">React</a>
+                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                 </div>
                 
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 0 words)
-                </span>
                 
                 
             </div>
@@ -175,13 +168,31 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/02/coercion/">타입 변환과 단축 평가 | javaScript</a>
+                <a class="has-link-black-ter" href="/2020/03/%ED%95%A8%EC%88%98%EC%99%80%20%EC%9D%BC%EA%B8%89%20%EA%B0%9D%EC%B2%B4/">함수와 일급 객체 | javaScript</a>
             
         </h1>
         <div class="content">
-            
+            <h1 id="1-일급-객체"><a href="#1-일급-객체" class="headerlink" title="1. 일급 객체"></a>1. 일급 객체</h1><br>
+아래와 같은 조건을 만족하는 객체를 일급 객체(first-class object)라 한다.
+
+<ol>
+<li>무명의 리터럴로 생성할 수 있다. 즉, 런타임에 생성이 가능하다.</li>
+<li>변수나 자료구조(객체, 배열 등)에 저장할 수 있다.</li>
+<li>함수의 매개 변수에게 전달할 수 있다.</li>
+<li>함수의 결괏값으로 반환할 수 있다.</li>
+</ol>
+<p>자바스크립트의 함수는 아래 예제와 같이 위의 조건을 모두 만족하므로 일급 객체이다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 함수는 무명의 리터럴로 생성할 수 있다.</span><br><span class="line"><span class="number">2.</span> 함수는 변수에 저장할 수 있다.</span><br><span class="line"><span class="comment">// 런타임(할당 단계)에 함수 리터럴이 평가되어 함수 객체가 생성되고 변수에 할당된다.</span></span><br><span class="line"><span class="keyword">const</span> increase = <span class="function"><span class="keyword">function</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> ++num</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> decrease = <span class="function"><span class="keyword">function</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> --num;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 함수는 객체에 저장할 수 있다.</span></span><br><span class="line"><span class="keyword">const</span> predicates = &#123; increase, decrease &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 함수의 매개 변수에게 전달할 수 있다.</span></span><br><span class="line"><span class="comment">// 4. 함수의 반환값으로 사용할 수 있다.</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeCounter</span>(<span class="params">predicate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    num = predicate(num);</span><br><span class="line">    <span class="keyword">return</span> num;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 함수는 매개 변수에게 함수를 전달할 수 있다.</span></span><br><span class="line"><span class="keyword">const</span> increaser = makeCounter(predicates.increase);</span><br><span class="line"><span class="built_in">console</span>.log(increaser()); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(increaser()); <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 함수는 매개 변수에게 함수를 전달할 수 있다.</span></span><br><span class="line"><span class="keyword">const</span> decreaser = makeCounter(predicates.decrease);</span><br><span class="line"><span class="built_in">console</span>.log(decreaser()); <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">console</span>.log(decreaser()); <span class="comment">// -2</span></span><br></pre></td></tr></table></figure>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/%ED%95%A8%EC%88%98%EC%99%80%20%EC%9D%BC%EA%B8%89%20%EA%B0%9D%EC%B2%B4/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -196,11 +207,12 @@
 
 </div>
                 
+                
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
     
         
 <div class="card widget">
@@ -210,22 +222,22 @@
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="namkwon">
+                        <img class="" src="/images/react-brands.svg" alt="Namkwon">
                     </figure>
                     
                     <p class="is-size-4 is-block">
-                        namkwon
+                        Namkwon
                     </p>
                     
                     
                     <p class="is-size-6 is-block">
-                        welcome my gitBlog
+                        Front developer &lt; /&gt; Fashion lover
                     </p>
                     
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>korea/seoul</span>
+                        <span>Seoul</span>
                     </p>
                     
                 </div>
@@ -251,7 +263,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            3
+                            2
                         </p>
                     </a>
                 </div>
@@ -263,7 +275,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            12
+                            19
                         </p>
                     </a>
                 </div>
@@ -286,34 +298,6 @@
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Twitter" href="https://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
         </div>
         
     </div>
@@ -330,30 +314,22 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/JavaScript/">
+        <a class="level is-marginless" href="/categories/develop/">
+            <span class="level-start">
+                <span class="level-item">develop</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">15</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/develop/JavaScript/">
             <span class="level-start">
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">15</span>
             </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/JavaScript/vue-js/">
-            <span class="level-start">
-                <span class="level-item">vue.js</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -367,51 +343,75 @@
         
         <article class="media">
             
+            <a href="/2020/03/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="프로토타입 | javaScript">
+                </p>
+            </a>
+            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-08T06:02:03.000Z">2020-03-08</time></div>
                     <a href="/2020/03/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">프로토타입 | javaScript</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
         </article>
         
         <article class="media">
+            
+            <a href="/2020/03/%ED%95%A8%EC%88%98%EC%99%80%20%EC%9D%BC%EA%B8%89%20%EA%B0%9D%EC%B2%B4/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="함수와 일급 객체 | javaScript">
+                </p>
+            </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-04T04:00:03.000Z">2020-03-04</time></div>
                     <a href="/2020/03/%ED%95%A8%EC%88%98%EC%99%80%20%EC%9D%BC%EA%B8%89%20%EA%B0%9D%EC%B2%B4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">함수와 일급 객체 | javaScript</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
         </article>
         
         <article class="media">
+            
+            <a href="/2020/03/property_attribute/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="프로퍼티 어트리뷰트 | javaScript">
+                </p>
+            </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-03T11:02:03.000Z">2020-03-03</time></div>
                     <a href="/2020/03/property_attribute/" class="title has-link-black-ter is-size-6 has-text-weight-normal">프로퍼티 어트리뷰트 | javaScript</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
         </article>
         
         <article class="media">
+            
+            <a href="/2020/03/%EC%83%9D%EC%84%B1%EC%9E%90%ED%95%A8%EC%88%98/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="생성자 함수에 의한 객체 생성 | javaScript">
+                </p>
+            </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-03T11:02:03.000Z">2020-03-03</time></div>
                     <a href="/2020/03/%EC%83%9D%EC%84%B1%EC%9E%90%ED%95%A8%EC%88%98/" class="title has-link-black-ter is-size-6 has-text-weight-normal">생성자 함수에 의한 객체 생성 | javaScript</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/vue-js/">vue.js</a>
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -419,12 +419,18 @@
         
         <article class="media">
             
+            <a href="/2020/03/let_const/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="let과 const | javaScript">
+                </p>
+            </a>
+            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T04:53:10.000Z">2020-03-02</time></div>
                     <a href="/2020/03/let_const/" class="title has-link-black-ter is-size-6 has-text-weight-normal">let과 const | javaScript</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -434,13 +440,8 @@
 </div>
     
     
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
-        
-        </div>
-    
 </div>
 
-                
             </div>
         </div>
     </section>
@@ -450,7 +451,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="namkwon&#39;s tech blog" height="28">
+                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="namkwon&#39;s tech blog" height="28">
                 
                 </a>
                 <p class="is-size-7">

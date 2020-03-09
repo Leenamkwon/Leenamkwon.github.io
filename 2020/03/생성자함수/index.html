@@ -19,11 +19,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://github.com/images/og_image.png">
 <meta property="article:published_time" content="2020-03-03T11:02:03.000Z">
-<meta property="article:modified_time" content="2020-03-09T12:44:55.835Z">
+<meta property="article:modified_time" content="2020-03-09T16:47:05.250Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
-<meta property="article:tag" content="github">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="object">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://github.com/images/og_image.png">
 
@@ -33,7 +34,7 @@
 
 
 
-<link rel="icon" href="/images/favicon.svg">
+<link rel="icon" href="/images/react-brands.svg">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -83,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="생성자 함수에 의한 객체 생성 | javaScript" height="28">
+                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="생성자 함수에 의한 객체 생성 | javaScript" height="28">
             
             </a>
         </div>
@@ -142,15 +143,9 @@
                 <time class="level-item has-text-grey" datetime="2020-03-03T11:02:03.000Z">2020-03-03</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavaScript/vue-js/">vue.js</a>
+                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                 </div>
                 
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 minutes read (About 1635 words)
-                </span>
                 
                 
             </div>
@@ -166,6 +161,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 생성자 객체 생성</span></span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> object();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 프로퍼티, 메서드 동적 추가</span></span><br><span class="line">person.name = <span class="string">'이남권'</span>;</span><br><span class="line">person.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Hi My name is'</span> + <span class="keyword">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person) <span class="comment">// &#123;name: "Lee", sayHello: f&#125;</span></span><br><span class="line">person.sayHello(); <span class="comment">// Hi My name is 이남권</span></span><br></pre></td></tr></table></figure>
 
 <p>생성자(constructor)함수란 new 연산자와 함께 호출하여 객체(인스턴스)를 생성하는 함수를 말한다. 생성자 함수에 의해 생성된 객체를 인스턴스(instance)라 한다.</p>
+<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// String 생성자 함수에 의한 String 객체 생성</span></span><br><span class="line"><span class="keyword">const</span> strObj = <span class="keyword">new</span> string(<span class="string">'이남권'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> strObj); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(strObj); <span class="comment">// 이남권</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Number 생성자 함수에 의한 Number 객체 생성</span></span><br><span class="line"><span class="keyword">const</span> numObj = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">123</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> numObj); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(numObj); <span class="comment">// Number &#123;123&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Boolean 생성자 함수에 의한 Boolean 객체 생성</span></span><br><span class="line"><span class="keyword">const</span> boolObj= <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> boolObj); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(boolObj);        <span class="comment">// Boolean &#123;true&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Function 생성자 함수에 의한 Function 객체(함수) 생성</span></span><br><span class="line"><span class="keyword">const</span> func = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'x'</span>, <span class="string">'return x * x'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> func); <span class="comment">// function</span></span><br><span class="line"><span class="built_in">console</span>.dir(func);        <span class="comment">// ƒ anonymous(x)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Array 생성자 함수에 의한 Array 객체(배열) 생성</span></span><br><span class="line"><span class="keyword">const</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> arr); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);        <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// RegExp 생성자 함수에 의한 RegExp 객체(정규 표현식) 생성</span></span><br><span class="line"><span class="keyword">const</span> regExp = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/ab+c/i</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> regExp); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(regExp);        <span class="comment">// /ab+c/i</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Date 생성자 함수에 의한 Date 객체 생성</span></span><br><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> date); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(date);        <span class="comment">// Fri Feb 14 2020 17:17:59 GMT+0900 (대한민국 표준시)</span></span><br></pre></td></tr></table></figure>
 <p><br><br></p>
 <h1 id="2-생성자-함수"><a href="#2-생성자-함수" class="headerlink" title="2.생성자 함수"></a>2.생성자 함수</h1><br>
@@ -222,7 +218,7 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="has-link-grey -link" href="/tags/github/" rel="tag">github</a>, <a class="has-link-grey -link" href="/tags/javaScript/" rel="tag">javaScript</a>
+                    <a class="has-link-grey -link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="has-link-grey -link" href="/tags/hexo/" rel="tag">hexo</a>, <a class="has-link-grey -link" href="/tags/javaScript/" rel="tag">javaScript</a>, <a class="has-link-grey -link" href="/tags/object/" rel="tag">object</a>
                 </div>
             </div>
         </div>
@@ -292,13 +288,29 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
 </div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%EC%83%9D%EC%84%B1%EC%9E%90%ED%95%A8%EC%88%98/" data-num-posts="5"></div>
+
+    </div>
 </div>
+</div>
+                
                 
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
     
         
 <div class="card widget">
@@ -308,22 +320,22 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="namkwon">
+                        <img class="" src="/images/react-brands.svg" alt="Namkwon">
                     </figure>
                     
                     <p class="is-size-4 is-block">
-                        namkwon
+                        Namkwon
                     </p>
                     
                     
                     <p class="is-size-6 is-block">
-                        welcome my gitBlog
+                        Front developer &lt; /&gt; Fashion lover
                     </p>
                     
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>korea/seoul</span>
+                        <span>Seoul</span>
                     </p>
                     
                 </div>
@@ -349,7 +361,7 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            3
+                            2
                         </p>
                     </a>
                 </div>
@@ -361,7 +373,7 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            12
+                            19
                         </p>
                     </a>
                 </div>
@@ -384,34 +396,6 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Twitter" href="https://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
         </div>
         
     </div>
@@ -428,30 +412,22 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/JavaScript/">
+        <a class="level is-marginless" href="/categories/develop/">
+            <span class="level-start">
+                <span class="level-item">develop</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">15</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/develop/JavaScript/">
             <span class="level-start">
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">15</span>
             </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/JavaScript/vue-js/">
-            <span class="level-start">
-                <span class="level-item">vue.js</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -465,51 +441,75 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
         
         <article class="media">
             
+            <a href="/2020/03/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="프로토타입 | javaScript">
+                </p>
+            </a>
+            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-08T06:02:03.000Z">2020-03-08</time></div>
                     <a href="/2020/03/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85/" class="title has-link-black-ter is-size-6 has-text-weight-normal">프로토타입 | javaScript</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
         </article>
         
         <article class="media">
+            
+            <a href="/2020/03/%ED%95%A8%EC%88%98%EC%99%80%20%EC%9D%BC%EA%B8%89%20%EA%B0%9D%EC%B2%B4/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="함수와 일급 객체 | javaScript">
+                </p>
+            </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-04T04:00:03.000Z">2020-03-04</time></div>
                     <a href="/2020/03/%ED%95%A8%EC%88%98%EC%99%80%20%EC%9D%BC%EA%B8%89%20%EA%B0%9D%EC%B2%B4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">함수와 일급 객체 | javaScript</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
         </article>
         
         <article class="media">
+            
+            <a href="/2020/03/property_attribute/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="프로퍼티 어트리뷰트 | javaScript">
+                </p>
+            </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-03T11:02:03.000Z">2020-03-03</time></div>
                     <a href="/2020/03/property_attribute/" class="title has-link-black-ter is-size-6 has-text-weight-normal">프로퍼티 어트리뷰트 | javaScript</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
         </article>
         
         <article class="media">
+            
+            <a href="/2020/03/%EC%83%9D%EC%84%B1%EC%9E%90%ED%95%A8%EC%88%98/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="생성자 함수에 의한 객체 생성 | javaScript">
+                </p>
+            </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-03T11:02:03.000Z">2020-03-03</time></div>
                     <a href="/2020/03/%EC%83%9D%EC%84%B1%EC%9E%90%ED%95%A8%EC%88%98/" class="title has-link-black-ter is-size-6 has-text-weight-normal">생성자 함수에 의한 객체 생성 | javaScript</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/vue-js/">vue.js</a>
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -517,12 +517,18 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
         
         <article class="media">
             
+            <a href="/2020/03/let_const/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="let과 const | javaScript">
+                </p>
+            </a>
+            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T04:53:10.000Z">2020-03-02</time></div>
                     <a href="/2020/03/let_const/" class="title has-link-black-ter is-size-6 has-text-weight-normal">let과 const | javaScript</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -532,13 +538,8 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
 </div>
     
     
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
-        
-        </div>
-    
 </div>
 
-                
             </div>
         </div>
     </section>
@@ -548,7 +549,7 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="생성자 함수에 의한 객체 생성 | javaScript" height="28">
+                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="생성자 함수에 의한 객체 생성 | javaScript" height="28">
                 
                 </a>
                 <p class="is-size-7">
