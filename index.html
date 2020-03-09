@@ -632,71 +632,6 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%ED%85%8C%EC%8A%A4%ED%8A%B8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lee namkwon">
-      <meta itemprop="description" content="welcome my Blog!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="namkwon's tech blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/%ED%85%8C%EC%8A%A4%ED%8A%B8/" class="post-title-link" itemprop="url">생성자 함수에 의한 객체 생성 | project</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-03 20:02:03" itemprop="dateCreated datePublished" datetime="2020-03-03T20:02:03+09:00">2020-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-09 02:35:38" itemprop="dateModified" datetime="2020-03-09T02:35:38+09:00">2020-03-09</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>안녕</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/let_const/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -855,10 +790,16 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-27 21:02:23 / Modified: 21:28:13" itemprop="dateCreated datePublished" datetime="2020-02-27T21:02:23+09:00">2020-02-27</time>
+              <time title="Created: 2020-02-27 21:02:23" itemprop="dateCreated datePublished" datetime="2020-02-27T21:02:23+09:00">2020-02-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-09 15:17:19" itemprop="dateModified" datetime="2020-03-09T15:17:19+09:00">2020-03-09</time>
+              </span>
 
           
 
@@ -888,8 +829,8 @@ this는 객체 자신의 프로퍼티나 메소드를 참조하기 위한 자기
 
 <p>함수 foo 내부에서 선언된 지역 변수 x는 ①의 시점에 이미 선언되고 undefined로 초기화 되었다. 따라서 전역 변수 x를 참조하는 것이 아니라 지역 변수 x를 참조하여 값을 출력한다. 즉, 지역 변수는 함수 전체에서 유효하다. 단, 변수 할당문이 실행되기 이전까지는 undefined 값을 갖는다.<br>이처럼 호이스팅은 스코프를 단위로 동작한다. 전역 변수의 호이스팅은 전역 변수의 선언이 전역 스코프의 선두로 끌어 올려진 것처럼 동작한다. 따라서 전역 변수는 전역 전체에서 유효하다. 지역 변수의 호이스팅은 지역 변수의 선언이 지역 스코프의 선두로 끌어 올려진 것처럼 동작한다. 따라서 지역 변수는 함수 전체에서 유효하다. 즉, 호이스팅은 변수 선언이 스코프의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징을 말한다.<br><br></p>
 <h2 id="1-2-전역-변수의-생명-주기"><a href="#1-2-전역-변수의-생명-주기" class="headerlink" title="1.2. 전역 변수의 생명 주기"></a>1.2. 전역 변수의 생명 주기</h2><p>함수와는 달리 전역 코드는 명시적인 호출없이 실행된다. 다시 말해 전역 코드는 함수 호출과 같이 전역 코드를 실행하는 특별한 진입점(entry point)이 없고 코드가 로드되자마자 곧바로 해석되고 실행된다.<br>진입점(entry point)<br>C나 Java으로 작성된 코드를 실행하면 가장 먼저 main 함수가 호출된다. 이 main 함수는 프로그램이 시작되는 지점이므로 이를 진입점 또는 시작점이라고 한다.<br>함수는 함수 몸체의 마지막 문 또는 return 문이 실행되면 종료한다. 하지만 전역 코드에는 return 문을 사용할 수 없으므로 마지막 문이 실행되어 더 이상 실행할 문이 없을 때 종료한다.</p>
-<p>return 문의 위치<br>return 문은 함수 몸체 내부에서만 사용할 수 있다. 전역에서 return 문을 사용하면 문법 에러(SyntaxError: Illegal return statement)가 발생한다. 참고로 Node.js는 모듈 시스템에 의해 파일 별로 독립적인 파일 스코프를 갖는다. 따라서 Node.js 환경에서는 파일의 가장 바깥 영역에 return 문을 사용해도 에러가 발생하지 않는다.<br>var 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티가 된다. 이는 전역 변수의 생명 주기가 전역 객체의 생명 주기와 일치한다는 것을 말한다.</p>
-<p>전역 객체<br>전역 객체(Global Object)는 코드가 실행되기 이전 단계에 자바스크립트 엔진에 의해 생성되는 특수한 객체이다. 전역 객체는 클라이언트 사이드 환경(브라우저)에서는 window, 서버 사이드 환경(Node.js)에서는 global 객체를 의미한다.<br>전역 객체에는 표준 빌트인 객체(Object, String, Number, Function, Array…)들과 환경에 따른 호스트 객체(클라이언트 web API 또는 Node.js의 호스트 API), 그리고 var 키워드로 선언한 전역 변수와 전역 함수를 프로퍼티로 갖는다. 전역 객체에 대해서는 “21.4. 전역 객체” 그리고 “23. 실행 컨텍스트”에서 자세히 살펴볼 것이다.<br>브라우저 환경에서 전역 객체는 window이므로 브라우저 환경에서 var 키워드로 선언한 전역 변수는 전역 객체 window의 프로퍼티이다. 이 전역 객체 window는 웹페이지를 종료하기 전까지 유효하다. 따라서 브라우저 환경에서 var 키워드로 선언한 전역 변수는 웹페이지를 종료할 때까지 유효하다. 즉, 전역 변수의 생명 주기는 전역 객체의 생명 주기와 일치한다.</p>
+<p>return 문의 위치<br>return 문은 함수 몸체 내부에서만 사용할 수 있다. 전역에서 return 문을 사용하면 문법 에러(SyntaxError: Illegal return statement)가 발생한다. 참고로 Node.js는 모듈 시스템에 의해 파일 별로 독립적인 파일 스코프를 갖는다. 따라서 Node.js 환경에서는 파일의 가장 바깥 영역에 return 문을 사용해도 에러가 발생하지 않는다.<br>var 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티가 된다. 이는 전역 변수의 생명 주기가 전역 객체의 생명 주기와 일치한다는 것을 말한다.<br><img src="https://poiemaweb.com/assets/fs-images/14-1.png" alt=""></p>
+<p>전역 객체<br>전역 객체(Global Object)는 코드가 실행되기 이전 단계에 자바스크립트 엔진에 의해 생성되는 특수한 객체이다. 전역 객체는 클라이언트 사이드 환경(브라우저)에서는 window, 서버 사이드 환경(Node.js)에서는 global 객체를 의미한다.<br>전역 객체에는 표준 빌트인 객체(Object, String, Number, Function, Array…)들과 환경에 따른 호스트 객체(클라이언트 web API 또는 Node.js의 호스트 API), 그리고 var 키워드로 선언한 전역 변수와 전역 함수를 프로퍼티로 갖는다. 전역 객체에 대해서는 “21.4. 전역 객체” 그리고 “23. 실행 컨텍스트”에서 자세히 살펴볼 것이다.<br>브라우저 환경에서 전역 객체는 window이므로 브라우저 환경에서 var 키워드로 선언한 전역 변수는 전역 객체 window의 프로퍼티이다. 이 전역 객체 window는 웹페이지를 종료하기 전까지 유효하다. 따라서 브라우저 환경에서 var 키워드로 선언한 전역 변수는 웹페이지를 종료할 때까지 유효하다. 즉, 전역 변수의 생명 주기는 전역 객체의 생명 주기와 일치한다.<br><img src="https://poiemaweb.com/assets/fs-images/14-2.png" alt=""></p>
 <p>전역 변수의 생명 주기<br><br></p>
 <h1 id="2-전역-변수의-문제점"><a href="#2-전역-변수의-문제점" class="headerlink" title="2. 전역 변수의 문제점"></a>2. 전역 변수의 문제점</h1><p>암묵적 결합<br>전역 변수를 선언한 의도는 전역, 즉 코드 어디에서든지 전역 변수를 사용하겠다는 것이다. 이는 모든 코드가 전역 변수를 참조하고 변경할 수 있는 암묵적 결합(implicit coupling)을 허용하는 것으로 변수의 유효 범위가 크면 클수록 코드의 가독성은 나빠지고 의도치 않게 상태가 변경될 수 있는 위험성도 높아진다.</p>
 <p>긴 생명 주기<br>전역 변수는 생명 주기가 길다. 따라서 메모리 리소스도 오랜 기간 소비한다. 또한 전역 변수의 상태를 변경할 수 있는 시간도 길고, 모든 함수가 참조할 수 있기 때문에 상태를 변경할 기회도 많다.</p>
@@ -1408,6 +1349,150 @@ var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언이
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/control-flow-statement/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lee namkwon">
+      <meta itemprop="description" content="welcome my Blog!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="namkwon's tech blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/control-flow-statement/" class="post-title-link" itemprop="url">제어문 | javaScript</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-24 15:34:10" itemprop="dateCreated datePublished" datetime="2020-02-24T15:34:10+09:00">2020-02-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-26 14:56:26" itemprop="dateModified" datetime="2020-02-26T14:56:26+09:00">2020-02-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>제어문(Control flow statement)은 주어진 조건에 따라 코드 블록을 실행(조건문)하거나 반복 실행(반복문)할 때 사용한다. 일반적으로 코드는 위에서 아래 방향으로 순차적으로 실행된다. 제어문을 사용하면 코드의 실행 흐름을 인위적으로 제어할 수 있다.</p>
+<p>하지만 코드의 실행 순서가 변경된다는 것은 단순하게 위에서 아래로 순차적으로 진행하는 직관적인 코드의 흐름을 혼란스럽게 만든다. 따라서 제어문은 코드의 흐름을 이해하기 어렵게 만들어 가독성을 해치는 단점이 있다. 가독성이 좋지 않은 코드는 오류를 발생시키는 원인이 된다. 나중에 살펴볼 forEach, map, filter, reduce와 같은 고차 함수를 사용한 함수형 프로그래밍 기법에서는 제어문의 사용을 억제하여 복잡성을 해결하려고 노력한다.</p>
+<p>2보 전진을 위해서는 먼저 첫발을 내디뎌야 한다. 제어문을 바르게 이해하는 것은 코딩 스킬에 많은 영향을 준다. 특히 for 문은 매우 중요하므로 확실히 이해하도록 하자.</p>
+<h1 id="1-블록문"><a href="#1-블록문" class="headerlink" title="1.블록문"></a>1.블록문</h1><p>블록문(Block statement/Compound statement)는 0개 이상의 문을 중괄호로 묶은 것으로 코드 블록 또는 블록이라고 부르기도 한다. 자바스크립트는 블록문을 하나의 실행 단위로 취급한다. 블록문은 단독으로 사용할 수도 있으나 일반적으로 제어문이나 함수를 정의할 때 사용하는 것이 일반적이다.</p>
+<p>아래는 블록문이 사용되는 다양한 예제이다. 문의 끝에는 세미 콜론(;)을 붙이는 것이 일반적이지만 블록문의 끝에는 세미콜론을 붙이지 않는다는 것에 주의하기 바란다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 블록문</span><br><span class="line">&#123;</span><br><span class="line">  var foo &#x3D; 10;</span><br><span class="line">  console.log(foo);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 제어문</span><br><span class="line">var x &#x3D; 0;</span><br><span class="line">while (x &lt; 10) &#123;</span><br><span class="line">  x++;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); &#x2F;&#x2F; 10</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 함수 선언문</span><br><span class="line">function sum(a, b) &#123;</span><br><span class="line">  return a + b;</span><br><span class="line">&#125;</span><br><span class="line">console.log(sum(1, 2)); &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="2-조건문"><a href="#2-조건문" class="headerlink" title="2.조건문"></a>2.조건문</h1><p>조건문(conditional statement)은 주어진 조건식(conditional expression)의 평가 결과에 따라 코드 블럭(블록문)의 실행을 결정한다. 조건식은 불리언 값으로 평가될 수 있는 표현식이다.</p>
+<p>자바스크립트는 2가지의 조건문 if…else 문과 switch 문을 제공한다.</p>
+<h2 id="2-1-if…else-문"><a href="#2-1-if…else-문" class="headerlink" title="2.1. if…else 문"></a>2.1. if…else 문</h2><p>if…else 문은 주어진 조건식(불리언 값으로 평가될 수 있는 표현식)의 평가 결과, 즉 논리적 참 또는 거짓에 따라 실행할 코드 블록을 결정한다. 조건식의 평가 결과가 참(true)일 경우, if 문 다음의 코드 블록이 실행되고 거짓(false)일 경우, else 문 다음의 코드 블록이 실행된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (조건식) &#123;</span><br><span class="line">  &#x2F;&#x2F; 조건식이 참이면 이 코드 블록이 실행된다.</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  &#x2F;&#x2F; 조건식이 거짓이면 이 코드 블록이 실행된다.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>if 문의 조건식은 불리언 값으로 평가되어야 한다. 만약 if 문의 조건식이 불리언 값이 아닌 값으로 평가되면 자바스크립트 엔진에 의해 암묵적으로 데이터 타입이 불리언 값으로 강제 변환되어 실행할 코드 블록을 결정한다. 이에 대해서는 “8.2. 암묵적 타입 변환”에서 살펴볼 것이다.</p>
+<p>조건식을 추가하여 조건에 따라 실행될 코드 블록을 늘리고 싶으면 else if 문을 사용한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if (조건식1) &#123;</span><br><span class="line">  &#x2F;&#x2F; 조건식1이 참이면 이 코드 블록이 실행된다.</span><br><span class="line">&#125; else if (조건식2) &#123;</span><br><span class="line">  &#x2F;&#x2F; 조건식2이 참이면 이 코드 블록이 실행된다.</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  &#x2F;&#x2F; 조건식1과 조건식2가 모두 거짓이면 이 코드 블록이 실행된다.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>else if 문과 else 문은 옵션이다. 즉, 사용할 수도 있고 사용하지 않을 수도 있다. if 문과 else 문은 2번 이상 사용할 수 없지만 else if 문은 여러 번 사용할 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var num &#x3D; 2;</span><br><span class="line">var kind;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; if 문</span><br><span class="line">if (num &gt; 0) &#123;</span><br><span class="line">  kind &#x3D; &#39;양수&#39;; &#x2F;&#x2F; 음수를 구별할 수 없다</span><br><span class="line">&#125;</span><br><span class="line">console.log(kind); &#x2F;&#x2F; 양수</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; if…else 문</span><br><span class="line">if (num &gt; 0) &#123;</span><br><span class="line">  kind &#x3D; &#39;양수&#39;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  kind &#x3D; &#39;음수&#39;; &#x2F;&#x2F; 0은 음수가 아니다.</span><br><span class="line">&#125;</span><br><span class="line">console.log(kind); &#x2F;&#x2F; 양수</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; if…else if 문</span><br><span class="line">if (num &gt; 0) &#123;</span><br><span class="line">  kind &#x3D; &#39;양수&#39;;</span><br><span class="line">&#125; else if (num &lt; 0) &#123;</span><br><span class="line">  kind &#x3D; &#39;음수&#39;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  kind &#x3D; &#39;영&#39;;</span><br><span class="line">&#125;</span><br><span class="line">console.log(kind); &#x2F;&#x2F; 양수</span><br></pre></td></tr></table></figure>
+
+<p>만약 코드 블록 내의 문이 하나뿐이라면 중괄호를 생략할 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var num &#x3D; 2;</span><br><span class="line">var kind;</span><br><span class="line"></span><br><span class="line">if (num &gt; 0)      kind &#x3D; &#39;양수&#39;;</span><br><span class="line">else if (num &lt; 0) kind &#x3D; &#39;음수&#39;;</span><br><span class="line">else              kind &#x3D; &#39;영&#39;;</span><br><span class="line"></span><br><span class="line">console.log(kind); &#x2F;&#x2F; 양수</span><br></pre></td></tr></table></figure>
+
+<p>대부분의 if…else 문은 삼항 조건 연산자(“7.4. 삼항 조건 연산자” 참고)로 바꿔 쓸 수 있다. 아래 예제를 살펴보자.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; x가 짝수이면 문자열 &#39;짝수&#39;를 반환하고 홀수이면 문자열 &#39;홀수&#39;를 반환한다.</span><br><span class="line">var x &#x3D; 2;</span><br><span class="line">var result;</span><br><span class="line"></span><br><span class="line">if (x % 2) &#123; &#x2F;&#x2F; 2 % 2는 0이다. 이때 0은 false로 암묵적 강제 변환된다.</span><br><span class="line">  result &#x3D; &#39;홀수&#39;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  result &#x3D; &#39;짝수&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(result); &#x2F;&#x2F; 짝수</span><br></pre></td></tr></table></figure>
+
+<p>위 예제는 아래와 같이 삼항 조건 연산자로 바꿔 쓸 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; x가 짝수이면 문자열 &#39;짝수&#39;를 반환하고 홀수이면 문자열 &#39;홀수&#39;를 반환한다.</span><br><span class="line">var x &#x3D; 2;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 0은 false로 취급된다.</span><br><span class="line">var result &#x3D; x % 2 ? &#39;홀수&#39; : &#39;짝수&#39;;</span><br><span class="line"></span><br><span class="line">console.log(result); &#x2F;&#x2F; 짝수</span><br></pre></td></tr></table></figure>
+
+<p>위 예제는 두가지 경우의 수(‘홀수’ 또는 ‘짝수’)를 갖는 경우이다. 만약 세가지 경우의 수(양수, 음수, 영)를 갖는 경우는 아래와 같이 바꿔 쓸 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var num &#x3D; 2;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 0은 false로 취급된다.</span><br><span class="line">var kind &#x3D; num ? (num &gt; 0 ? &#39;양수&#39; : &#39;음수&#39;) : &#39;영&#39;;</span><br><span class="line"></span><br><span class="line">console.log(kind); &#x2F;&#x2F; 양수</span><br></pre></td></tr></table></figure>
+
+<p>num &gt; 0 ? ‘양수’ : ‘음수’는 표현식이다. 즉, 삼항 연산자는 값으로 평가되는 표현식을 만든다. 하지만 if…else 문은 표현식이 아닌 문이다. 따라서 삼항 조건 연산자 표현식은 값처럼 사용할 수 있기 때문에 변수에 할당할 수 있다. 하지만 if…else 문은 값처럼 사용할 수 없기 때문에 변수에 할당할 수 없다는 차이가 있다.</p>
+<h2 id="2-2-switch-문"><a href="#2-2-switch-문" class="headerlink" title="2.2. switch 문"></a>2.2. switch 문</h2><p>switch 문은 주어진 표현식을 평가하여 그 값과 일치하는 표현식을 갖는 case 문으로 실행 순서를 이동시킨다. case 문은 상황(case)을 의미하는 표현식을 지정하고 콜론으로 마친다. 그리고 그 뒤에 실행할 문들을 위치시킨다.</p>
+<p>switch 문의 표현식과 일치하는 표현식을 갖는 case 문이 없다면 실행 순서는 default 문으로 이동한다. default 옵션으로 사용할 수도 있고 사용하지 않을 수도 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">switch (표현식) &#123;</span><br><span class="line">  case 표현식1:</span><br><span class="line">    switch 문의 표현식과 표현식1이 일치하면 실행될 문;</span><br><span class="line">    break;</span><br><span class="line">  case 표현식2:</span><br><span class="line">    switch 문의 표현식과 표현식2가 일치하면 실행될 문;</span><br><span class="line">    break;</span><br><span class="line">  default:</span><br><span class="line">    switch 문의 표현식과 일치하는 표현식을 갖는 case 문이 없을 때 실행될 문;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>if…else 문의 조건식은 반드시 불리언 값으로 평가되지만 switch 문의 표현식은 불리언 값보다는 문자열, 숫자 값인 경우가 많다. if…else 문은 논리적 참, 거짓으로 실행할 코드 블록을 결정한다. switch 문은 논리적 참, 거짓보다는 다양한 상황(case)에 따라 실행할 코드 블록을 결정할 때 사용한다.</p>
+<p>아래 예제를 살펴보자. switch 문의 표현식, 즉 변수 month의 평가 결과인 숫자 값 11과 일치하는 case 문으로 실행 순서가 이동한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 월을 영어로 변환한다. (11 → &#39;November&#39;)</span><br><span class="line">var month &#x3D; 11;</span><br><span class="line">var monthName;</span><br><span class="line"></span><br><span class="line">switch (month) &#123;</span><br><span class="line">  case 1:</span><br><span class="line">    monthName &#x3D; &#39;January&#39;;</span><br><span class="line">  case 2:</span><br><span class="line">    monthName &#x3D; &#39;February&#39;;</span><br><span class="line">  case 3:</span><br><span class="line">    monthName &#x3D; &#39;March&#39;;</span><br><span class="line">  case 4:</span><br><span class="line">    monthName &#x3D; &#39;April&#39;;</span><br><span class="line">  case 5:</span><br><span class="line">    monthName &#x3D; &#39;May&#39;;</span><br><span class="line">  case 6:</span><br><span class="line">    monthName &#x3D; &#39;June&#39;;</span><br><span class="line">  case 7:</span><br><span class="line">    monthName &#x3D; &#39;July&#39;;</span><br><span class="line">  case 8:</span><br><span class="line">    monthName &#x3D; &#39;August&#39;;</span><br><span class="line">  case 9:</span><br><span class="line">    monthName &#x3D; &#39;September&#39;;</span><br><span class="line">  case 10:</span><br><span class="line">    monthName &#x3D; &#39;October&#39;;</span><br><span class="line">  case 11:</span><br><span class="line">    monthName &#x3D; &#39;November&#39;;</span><br><span class="line">  case 12:</span><br><span class="line">    monthName &#x3D; &#39;December&#39;;</span><br><span class="line">  default:</span><br><span class="line">    monthName &#x3D; &#39;Invalid month&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(monthName); &#x2F;&#x2F; Invalid month</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="3-반목문"><a href="#3-반목문" class="headerlink" title="3. 반목문"></a>3. 반목문</h1><p>반복문(Loop statement)은 주어진 조건식의 평가 결과가 참인 경우 코드 블럭을 실행한다. 그 후 조건식을 다시 검사하여 여전히 참인 경우 코드 블록을 다시 실행한다. 이는 조건식이 거짓일 때까지 반복된다.</p>
+<p>자바스크립트는 3가지의 반복문 for 문, while 문, do…while 문을 제공한다. 그 외에도 for..in 문, ES6에서 새롭게 도입된 for…of 문이 있다. for..in 문과 for…of 문에 대해서는 나중에 살펴보기로 하자.</p>
+<h2 id="3-1-for-문"><a href="#3-1-for-문" class="headerlink" title="3.1 for 문"></a>3.1 for 문</h2><p>for 문은 조건식이 거짓으로 판별될 때까지 코드 블록을 반복 실행한다. 가장 일반적으로 사용되는 반복문의 형태는 아래와 같다. 변수 선언문의 변수 이름은 반복을 의미하는 iteration의 i를 사용하는 것이 일반적이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for (변수 선언문 또는 할당문; 조건식; 증감식) &#123;</span><br><span class="line">  조건식이 참인 경우 반복 실행될 문;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (var i &#x3D; 0; i &lt; 2; i++) &#123;</span><br><span class="line">  console.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 예제의 for 문은 변수 i가 0으로 초기화된 상태에서 시작하여 i가 2보다 작을 때까지 코드 블록을 2번 반복 실행한다. for 문의 실행 순서를 따라가며 어떻게 동작하는지 살펴보자.</p>
+<ol>
+<li>for 문을 실행하면 가장 먼저 변수 선언문 var i = 0이 실행된다. 변수 선언문은 단 한번만 실행된다.</li>
+<li>변수 선언문의 실행이 종료되면 조건식으로 실행 순서가 이동한다. 현재 변수 i는 0이므로 조건식의 평가 결과는 true다.</li>
+<li>조건식의 평가 결과가 true이므로 실행 순서가 코드 블록으로 이동하여 실행된다. 증감문으로 실행 순서가 이동하는 것이 아니라 코드 블록으로 실행 순서가 이동하는 것에 주의하자.</li>
+<li>코드 블록의 실행이 종료하면 증감식으로 실행 순서가 이동한다. 증감식 i++가 실행되어 i는 1이 된다.</li>
+<li>증감식 실행이 종료되면 다시 조건식으로 실행 순서가 이동한다. 변수 선언문으로 실행 순서가 이동하는 것이 아니라 조건식으로 실행 순서가 이동하는 것에 주의하자. 변수 선언문은 단 한번만 실행된다. 현재 변수 i는 1이므로 조건식의 평가 결과는 true다.</li>
+<li>조건식의 평가 결과가 true이므로 실행 순서가 코드 블록으로 이동하여 실행된다.</li>
+<li>코드 블록의 실행이 종료하면 증감식으로 실행 순서가 이동한다. 증감식 i++가 실행되어 i는 2가 된다.</li>
+<li>증감식 실행이 종료되면 다시 조건식으로 실행 순서가 이동한다. 현재 변수 i는 2이므로 조건식의 평가 결과는 false다. 조건식의 평가 결과가 false이므로 for 문의 실행이 종료된다.</li>
+<li>아래 예제는 위 예제를 역으로 반복하는 for 문이다. 변수 i가 1으로 초기화된 상태에서 시작하여 i가 0보다 같거나 커질 때까지 코드 블록을 2번 반복 실행한다.</li>
+</ol>
+<p>for 문 내에 for 문을 중첩해 사용할 수 있다. 아래는 두 개의 주사위를 던졌을 때, 두 눈의 합이 6이 되는 모든 경우의 수를 출력하는 예제다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (var i &#x3D; 1; i &lt;&#x3D; 6; i++) &#123;</span><br><span class="line">  for (var j &#x3D; 1; j &lt;&#x3D; 6; j++) &#123;</span><br><span class="line">    if (i + j &#x3D;&#x3D;&#x3D; 6) console.log(&#96;[$&#123;i&#125;, $&#123;j&#125;]&#96;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>출력 결과는 아래와 같다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[1, 5]</span><br><span class="line">[2, 4]</span><br><span class="line">[3, 3]</span><br><span class="line">[4, 2]</span><br><span class="line">[5, 1]</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-while-문"><a href="#3-2-while-문" class="headerlink" title="3.2. while 문"></a>3.2. while 문</h2><p>while 문은 주어진 조건식의 평가 결과가 참이면 코드 블록을 계속해서 반복 실행한다. 조건문의 평가 결과가 거짓이 되면 실행을 종료한다. 만약 조건식의 평가 결과가 불리언 값이 아니면 불리언 값으로 강제 변환되어 논리적 참, 거짓을 구별한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var count &#x3D; 0;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; count가 3보다 작을 때까지 코드 블록을 계속 반복 실행한다.</span><br><span class="line">while (count &lt; 3) &#123;</span><br><span class="line">  console.log(count);</span><br><span class="line">  count++;</span><br><span class="line">&#125; &#x2F;&#x2F; 0 1 2</span><br></pre></td></tr></table></figure>
+
+<p>조건식의 평가 결과가 언제나 참이면 무한루프가 된다. 무한루프를 탈출하기 위해서는 코드 블럭 내에 if문으로 탈출 조건을 만들고 break 문으로 코드 블럭을 탈출한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var count &#x3D; 0;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 무한루프</span><br><span class="line">while (true) &#123;</span><br><span class="line">  console.log(count);</span><br><span class="line">  count++;</span><br><span class="line">  &#x2F;&#x2F; count가 3이면 코드 블록을 탈출한다.</span><br><span class="line">  if (count &#x3D;&#x3D;&#x3D; 3) break;</span><br><span class="line">&#125; &#x2F;&#x2F; 0 1 2</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-break-문"><a href="#4-break-문" class="headerlink" title="4. break 문"></a>4. break 문</h1><p>switch 문과 while 문에서 살펴보았듯이 break 문은 코드 블록을 탈출한다. 좀 더 정확히 표현하자면 코드 블록을 탈출하는 것이 아니라 레이블 문, 반복문(for, for…in, for…of, while, do…while) 또는 switch 문의 코드 블록을 탈출한다. 레이블 문, 반복문, switch 문의 코드 블록 이외에 break 문을 사용하면 SyntaxError(문법 에러)가 발생한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (true) &#123;</span><br><span class="line">  break; &#x2F;&#x2F; Uncaught SyntaxError: Illegal break statement</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-continue-문"><a href="#5-continue-문" class="headerlink" title="5. continue 문"></a>5. continue 문</h1><p>continue 문은 반복문의 코드 블록 실행을 현 지점에서 중단하고 반복문의 증감식으로 이동한다. break 문처럼 반복문을 탈출하지는 않는다.<br>아래는 문자열에서 특정 문자의 개수를 카운트하는 예제이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var string &#x3D; &#39;Hello World.&#39;;</span><br><span class="line">var search &#x3D; &#39;l&#39;;</span><br><span class="line">var count &#x3D; 0;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 문자열은 유사배열이므로 for 문으로 순회할 수 있다.</span><br><span class="line">for (var i &#x3D; 0; i &lt; string.length; i++) &#123;</span><br><span class="line">  &#x2F;&#x2F; &#39;l&#39;이 아니면 현 지점에서 실행을 중단하고 반복문의 증감식으로 이동한다.</span><br><span class="line">  if (string[i] !&#x3D;&#x3D; search) continue;</span><br><span class="line">  count++; &#x2F;&#x2F; continue 문이 실행되면 이 문은 실행되지 않는다.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(count); &#x2F;&#x2F; 3</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 참고로 String.prototype.match 메소드를 사용해도 같은 동작을 한다.</span><br><span class="line">const regexp &#x3D; new RegExp(search, &#39;g&#39;);</span><br><span class="line">console.log(string.match(regexp).length); &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
+
+<p>위 예제의 for 문은 아래와 동일하게 동작한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (var i &#x3D; 0; i &lt; string.length; i++) &#123;</span><br><span class="line">  &#x2F;&#x2F; &#39;l&#39;이면 카운트를 증가시킨다.</span><br><span class="line">  if (string[i] &#x3D;&#x3D;&#x3D; search) count++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 if 문 내에서 실행해야 할 코드가 한 줄이라면 continue 문을 사용했을 때보다 간편하며 가독성도 좋다. 하지만 if 문 내에서 실행해야 할 코드가 길다면 들여쓰기가 한 단계 더 깊어지므로 continue 문을 사용하는 것이 가독성이 더 좋다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; continue 문을 사용하지 않으면 if 문 내에 코드를 작성해야 한다.</span><br><span class="line">for (var i &#x3D; 0; i &lt; string.length; i++) &#123;</span><br><span class="line">  &#x2F;&#x2F; &#39;l&#39;이면 카운트를 증가시킨다.</span><br><span class="line">  if (string[i] &#x3D;&#x3D;&#x3D; search) &#123;</span><br><span class="line">    count++;</span><br><span class="line">    &#x2F;&#x2F; code</span><br><span class="line">    &#x2F;&#x2F; code</span><br><span class="line">    &#x2F;&#x2F; code</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; continue 문을 사용면 if 문 밖에 코드를 작성할 수 있다.</span><br><span class="line">for (var i &#x3D; 0; i &lt; string.length; i++) &#123;</span><br><span class="line">  &#x2F;&#x2F; &#39;l&#39;이 아니면 카운트를 증가시키지 않는다.</span><br><span class="line">  if (string[i] !&#x3D;&#x3D; search) continue;</span><br><span class="line"></span><br><span class="line">  count++;</span><br><span class="line">  &#x2F;&#x2F; code</span><br><span class="line">  &#x2F;&#x2F; code</span><br><span class="line">  &#x2F;&#x2F; code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -1477,7 +1562,7 @@ var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언이
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

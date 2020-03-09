@@ -27,8 +27,10 @@
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
 <meta property="og:description" content="전역 변수의 무분별한 사용은 위험하다. 전역 변수를 반드시 사용하여야 할 이유를 찾지 못한다면 지역 변수를 사용하여야 한다. 전역 변수의 문제점과 전역 변수의 사용을 억제할 수 있는 방법에 대해 살펴보도록 하자. 1. 변수의 생명 주기  1.1. 지역 변수의 생명 주기변수는 선언에 의해 생성되고 할당을 통해 값을 갖는다. 그리고 언젠가 소멸한다. 즉, 변수">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://poiemaweb.com/assets/fs-images/14-1.png">
+<meta property="og:image" content="https://poiemaweb.com/assets/fs-images/14-2.png">
 <meta property="article:published_time" content="2020-02-27T12:02:23.000Z">
-<meta property="article:modified_time" content="2020-02-27T12:28:13.689Z">
+<meta property="article:modified_time" content="2020-03-09T06:17:19.592Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -36,6 +38,7 @@
 <meta property="article:tag" content="let">
 <meta property="article:tag" content="var">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://poiemaweb.com/assets/fs-images/14-1.png">
 
 <link rel="canonical" href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/02/var/">
 
@@ -176,10 +179,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-27 21:02:23 / Modified: 21:28:13" itemprop="dateCreated datePublished" datetime="2020-02-27T21:02:23+09:00">2020-02-27</time>
+              <time title="Created: 2020-02-27 21:02:23" itemprop="dateCreated datePublished" datetime="2020-02-27T21:02:23+09:00">2020-02-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-09 15:17:19" itemprop="dateModified" datetime="2020-03-09T15:17:19+09:00">2020-03-09</time>
+              </span>
 
           
 
@@ -209,8 +218,8 @@
 
 <p>함수 foo 내부에서 선언된 지역 변수 x는 ①의 시점에 이미 선언되고 undefined로 초기화 되었다. 따라서 전역 변수 x를 참조하는 것이 아니라 지역 변수 x를 참조하여 값을 출력한다. 즉, 지역 변수는 함수 전체에서 유효하다. 단, 변수 할당문이 실행되기 이전까지는 undefined 값을 갖는다.<br>이처럼 호이스팅은 스코프를 단위로 동작한다. 전역 변수의 호이스팅은 전역 변수의 선언이 전역 스코프의 선두로 끌어 올려진 것처럼 동작한다. 따라서 전역 변수는 전역 전체에서 유효하다. 지역 변수의 호이스팅은 지역 변수의 선언이 지역 스코프의 선두로 끌어 올려진 것처럼 동작한다. 따라서 지역 변수는 함수 전체에서 유효하다. 즉, 호이스팅은 변수 선언이 스코프의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징을 말한다.<br><br></p>
 <h2 id="1-2-전역-변수의-생명-주기"><a href="#1-2-전역-변수의-생명-주기" class="headerlink" title="1.2. 전역 변수의 생명 주기"></a>1.2. 전역 변수의 생명 주기</h2><p>함수와는 달리 전역 코드는 명시적인 호출없이 실행된다. 다시 말해 전역 코드는 함수 호출과 같이 전역 코드를 실행하는 특별한 진입점(entry point)이 없고 코드가 로드되자마자 곧바로 해석되고 실행된다.<br>진입점(entry point)<br>C나 Java으로 작성된 코드를 실행하면 가장 먼저 main 함수가 호출된다. 이 main 함수는 프로그램이 시작되는 지점이므로 이를 진입점 또는 시작점이라고 한다.<br>함수는 함수 몸체의 마지막 문 또는 return 문이 실행되면 종료한다. 하지만 전역 코드에는 return 문을 사용할 수 없으므로 마지막 문이 실행되어 더 이상 실행할 문이 없을 때 종료한다.</p>
-<p>return 문의 위치<br>return 문은 함수 몸체 내부에서만 사용할 수 있다. 전역에서 return 문을 사용하면 문법 에러(SyntaxError: Illegal return statement)가 발생한다. 참고로 Node.js는 모듈 시스템에 의해 파일 별로 독립적인 파일 스코프를 갖는다. 따라서 Node.js 환경에서는 파일의 가장 바깥 영역에 return 문을 사용해도 에러가 발생하지 않는다.<br>var 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티가 된다. 이는 전역 변수의 생명 주기가 전역 객체의 생명 주기와 일치한다는 것을 말한다.</p>
-<p>전역 객체<br>전역 객체(Global Object)는 코드가 실행되기 이전 단계에 자바스크립트 엔진에 의해 생성되는 특수한 객체이다. 전역 객체는 클라이언트 사이드 환경(브라우저)에서는 window, 서버 사이드 환경(Node.js)에서는 global 객체를 의미한다.<br>전역 객체에는 표준 빌트인 객체(Object, String, Number, Function, Array…)들과 환경에 따른 호스트 객체(클라이언트 web API 또는 Node.js의 호스트 API), 그리고 var 키워드로 선언한 전역 변수와 전역 함수를 프로퍼티로 갖는다. 전역 객체에 대해서는 “21.4. 전역 객체” 그리고 “23. 실행 컨텍스트”에서 자세히 살펴볼 것이다.<br>브라우저 환경에서 전역 객체는 window이므로 브라우저 환경에서 var 키워드로 선언한 전역 변수는 전역 객체 window의 프로퍼티이다. 이 전역 객체 window는 웹페이지를 종료하기 전까지 유효하다. 따라서 브라우저 환경에서 var 키워드로 선언한 전역 변수는 웹페이지를 종료할 때까지 유효하다. 즉, 전역 변수의 생명 주기는 전역 객체의 생명 주기와 일치한다.</p>
+<p>return 문의 위치<br>return 문은 함수 몸체 내부에서만 사용할 수 있다. 전역에서 return 문을 사용하면 문법 에러(SyntaxError: Illegal return statement)가 발생한다. 참고로 Node.js는 모듈 시스템에 의해 파일 별로 독립적인 파일 스코프를 갖는다. 따라서 Node.js 환경에서는 파일의 가장 바깥 영역에 return 문을 사용해도 에러가 발생하지 않는다.<br>var 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티가 된다. 이는 전역 변수의 생명 주기가 전역 객체의 생명 주기와 일치한다는 것을 말한다.<br><img src="https://poiemaweb.com/assets/fs-images/14-1.png" alt=""></p>
+<p>전역 객체<br>전역 객체(Global Object)는 코드가 실행되기 이전 단계에 자바스크립트 엔진에 의해 생성되는 특수한 객체이다. 전역 객체는 클라이언트 사이드 환경(브라우저)에서는 window, 서버 사이드 환경(Node.js)에서는 global 객체를 의미한다.<br>전역 객체에는 표준 빌트인 객체(Object, String, Number, Function, Array…)들과 환경에 따른 호스트 객체(클라이언트 web API 또는 Node.js의 호스트 API), 그리고 var 키워드로 선언한 전역 변수와 전역 함수를 프로퍼티로 갖는다. 전역 객체에 대해서는 “21.4. 전역 객체” 그리고 “23. 실행 컨텍스트”에서 자세히 살펴볼 것이다.<br>브라우저 환경에서 전역 객체는 window이므로 브라우저 환경에서 var 키워드로 선언한 전역 변수는 전역 객체 window의 프로퍼티이다. 이 전역 객체 window는 웹페이지를 종료하기 전까지 유효하다. 따라서 브라우저 환경에서 var 키워드로 선언한 전역 변수는 웹페이지를 종료할 때까지 유효하다. 즉, 전역 변수의 생명 주기는 전역 객체의 생명 주기와 일치한다.<br><img src="https://poiemaweb.com/assets/fs-images/14-2.png" alt=""></p>
 <p>전역 변수의 생명 주기<br><br></p>
 <h1 id="2-전역-변수의-문제점"><a href="#2-전역-변수의-문제점" class="headerlink" title="2. 전역 변수의 문제점"></a>2. 전역 변수의 문제점</h1><p>암묵적 결합<br>전역 변수를 선언한 의도는 전역, 즉 코드 어디에서든지 전역 변수를 사용하겠다는 것이다. 이는 모든 코드가 전역 변수를 참조하고 변경할 수 있는 암묵적 결합(implicit coupling)을 허용하는 것으로 변수의 유효 범위가 크면 클수록 코드의 가독성은 나빠지고 의도치 않게 상태가 변경될 수 있는 위험성도 높아진다.</p>
 <p>긴 생명 주기<br>전역 변수는 생명 주기가 길다. 따라서 메모리 리소스도 오랜 기간 소비한다. 또한 전역 변수의 상태를 변경할 수 있는 시간도 길고, 모든 함수가 참조할 수 있기 때문에 상태를 변경할 기회도 많다.</p>
@@ -340,7 +349,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
