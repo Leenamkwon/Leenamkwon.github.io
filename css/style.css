@@ -2,7 +2,7 @@
  *       Override CSS Framework
  * --------------------------------- */
 html {
-  font-size: 13px;
+  font-size: 14px;
 }
 body {
   background-color: #333;
@@ -373,7 +373,7 @@ img.thumbnail {
 .content h4,
 .content h5,
 .content h6 {
-  font-weight: 700;
+  font-weight: 500;
 }
 .content h1 {
   font-size: 1.75em;
