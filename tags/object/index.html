@@ -179,9 +179,6 @@
         </h1>
         <div class="content">
             <h1 id="1-Object-생성자-함수"><a href="#1-Object-생성자-함수" class="headerlink" title="1. Object 생성자 함수"></a>1. Object 생성자 함수</h1><p>new 연산자와 함께 Object 생성자 함수를 호출하면 빈 객체를 생성하여 반환한다. 빈 객체를 생성한 이후에는 프로퍼티나 메소드 추가 가능</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 생성자 객체 생성</span></span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> object();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 프로퍼티, 메서드 동적 추가</span></span><br><span class="line">person.name = <span class="string">'이남권'</span>;</span><br><span class="line">person.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Hi My name is'</span> + <span class="keyword">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person) <span class="comment">// &#123;name: "Lee", sayHello: f&#125;</span></span><br><span class="line">person.sayHello(); <span class="comment">// Hi My name is 이남권</span></span><br></pre></td></tr></table></figure>
-
-<p>생성자(constructor)함수란 new 연산자와 함께 호출하여 객체(인스턴스)를 생성하는 함수를 말한다. 생성자 함수에 의해 생성된 객체를 인스턴스(instance)라 한다.</p>
         </div>
         
         

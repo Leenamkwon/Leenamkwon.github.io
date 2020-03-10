@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-02-20T03:28:11.000Z">
-<meta property="article:modified_time" content="2020-03-10T10:07:18.294Z">
+<meta property="article:modified_time" content="2020-03-10T10:30:21.589Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -165,8 +165,8 @@
         <div class="content">
             <h1 id="1-변수란-무엇인가"><a href="#1-변수란-무엇인가" class="headerlink" title="1. 변수란 무엇인가?"></a>1. 변수란 무엇인가?</h1>  <br>
 
-<p>  <strong>변수(Variable)는 하나의 값을 저장하기 위해 확보한 메모리 공간 자체 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말한다.</strong><br>  간단히 말하자면 변수는 프로그래밍 언어에서 값을 저장하고 참조하는 매커니즘으로 값의 위치를 가리키는 상징적인 이름이다.<br>  상징적 이름인 변수는 프로그래밍 언어의 컴파일러 또는 인터프리터에 의해 값이 저장된 메모리 공간의 주소로 치환되어 실행된다.<br>  따라서 개발자가 직접 메모리 주소를 통해 값에 저장하고 참조할 필요가 없고 변수를 통해 안전하게 값에 접근할 수 있다.</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 변수는 하나의 값을 저장하기 위한 수단이다.</span><br><span class="line">var userName &#x3D; &#39;Namkwon&#39;;</span><br><span class="line">var userRole &#x3D; &#39;Admin&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 객체나 배열과 같은 자료 구조를 사용하면 여러 개의 값을 하나로 그룹화하여 하나의 값처럼 사용할 수 있다.</span><br><span class="line">var user &#x3D; &#123;</span><br><span class="line">  name: &#39;Namkwon&#39;;</span><br><span class="line">  role: &#39;Admin&#39;;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">var user &#x3D; [</span><br><span class="line">  &#123; name: &#39;Namkwon&#39;, role: &#39;Admin&#39; &#125;,</span><br><span class="line">  &#123; name: &#39;Kim&#39;, role: &#39;Developer&#39; &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>  <strong>변수(Variable)는 하나의 값을 저장하기 위해 확보한 메모리 공간 자체 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말한다.</strong><br>  간단히 말하자면 변수는 프로그래밍 언어에서 값을 저장하고 참조하는 매커니즘으로 값의 위치를 가리키는 상징적인 이름이다.<br>  상징적 이름인 변수는 프로그래밍 언어의 컴파일러 또는 인터프리터에 의해 값이 저장된 메모리 공간의 주소로 치환되어 실행된다.<br>  따라서 개발자가 직접 메모리 주소를 통해 값에 저장하고 참조할 필요가 없고 변수를 통해 안전하게 값에 접근할 수 있다.<br>  <a id="more"></a></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 변수는 하나의 값을 저장하기 위한 수단이다.</span></span><br><span class="line"><span class="keyword">var</span> userName = <span class="string">'Namkwon'</span>;</span><br><span class="line"><span class="keyword">var</span> userRole = <span class="string">'Admin'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 객체나 배열과 같은 자료 구조를 사용하면 여러 개의 값을 하나로 그룹화하여 하나의 값처럼 사용할 수 있다.</span></span><br><span class="line"><span class="keyword">var</span> user = &#123;</span><br><span class="line">  name: <span class="string">'Namkwon'</span>;</span><br><span class="line">  role: <span class="string">'Admin'</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> user = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'Namkwon'</span>, <span class="attr">role</span>: <span class="string">'Admin'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'Kim'</span>, <span class="attr">role</span>: <span class="string">'Developer'</span> &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
 
 
 <pre><code>여기서 잠깐! 메모리란?
@@ -190,7 +190,10 @@
 
 <p> 변수 선언(Variable declaration)이란 변수를 생성하는 것을 말한다. 음.. 좀 더 자세히 말하면 값을 저장하기 위한 메모리 공간을 확보(allocate)하고<br> 변수 이름과 확보된 메모리 공간의 주소를 연결하여 값을 저장할 수 있도록 준비 하는 것이다. 변수 선언에 의해 확보된 메모리 공간은 확보가 해제(release)되기<br> 이전까지는 누구도 확보된 메모리 공간을 사용할 수 없도록 보호되므로 안전하게 사용할 수 있다.</p>
 <p> <strong>변수를 사용하려면 반드시 선언이 필요합니다! 변수를 선언할 떄는 var, let, const 키워드(keyword)를 사용합니다!</strong></p>
-<p>아래의 코드를 보시죠.<br><code>var score; // 변수 선언(변수 선언문)</code></p>
+<p>아래의 코드를 보시죠.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> score; <span class="comment">// 변수 선언(변수 선언문)</span></span><br></pre></td></tr></table></figure>
+
+
 <p>var 키워드는 뒤에 오는 변수 이름으로 새로운 변수를 선언할 것을 지시하는 키워드입니다.</p>
 <pre><code>잠깐! 키워드(keyword)란?
 키워드는 자바스크립트 코드를 실행하는 자바스크립트 엔진이 수행할 동작을 규정한 일종의 명령어 입니다! 자바스크립트 엔진은 
