@@ -10,16 +10,16 @@
 <title>순차검색 | With javaScript - namkwon&#39;s tech blog</title>
 
 
-    <meta name="description" content="1. 순차 검색">
+    <meta name="description" content="1.검색">
 <meta property="og:type" content="article">
 <meta property="og:title" content="순차검색 | With javaScript">
 <meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98(%EC%88%9C%EC%B0%A8%EA%B2%80%EC%83%89)/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
-<meta property="og:description" content="1. 순차 검색">
+<meta property="og:description" content="1.검색">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://images.velog.io/post-images/dvmflstm/d99bdee0-09d0-11ea-9bf5-814109ad4203/algorithm-2.png">
 <meta property="article:published_time" content="2020-03-12T05:02:03.000Z">
-<meta property="article:modified_time" content="2020-03-12T14:16:18.979Z">
+<meta property="article:modified_time" content="2020-03-12T18:58:00.573Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="algorism">
@@ -161,23 +161,36 @@
             
         </h1>
         <div class="content">
-            <h1 id="1-순차-검색"><a href="#1-순차-검색" class="headerlink" title="1. 순차 검색"></a>1. 순차 검색</h1><a id="more"></a>
+            <h1 id="1-검색"><a href="#1-검색" class="headerlink" title="1.검색"></a>1.검색</h1><a id="more"></a>
 
-<p>// function linearSearch(array, target) {<br>//   for (var i = 0; i &lt;= array.length; i += 1) {<br>//     if ( array[i] === target) {<br>//         return array[i] - 1;<br>//     }<br>//   }<br>//   return -1;<br>// }</p>
-<p>// console.log(linearSearch([1, 2, 3, 4, 5, 6], 1));<br>// console.log(linearSearch([1, 2, 3, 4, 5, 6], 3));<br>// console.log(linearSearch([1, 2, 3, 4, 5, 6], 5));<br>// console.log(linearSearch([1, 2, 3, 4, 5, 6], 6));<br>// console.log(linearSearch([1, 2, 3, 4, 5, 6], -1));<br>// console.log(linearSearch([1, 2, 3, 4, 5, 6], 0));<br>// console.log(linearSearch([1, 2, 3, 4, 5, 6], 7));</p>
-<p>console.log(binarySearch([1,2,3,4,5,6,7,8,9,10], 3));</p>
-<p>function binarySearch (dataArray, target) {<br>  let low = 0;<br>  let high = dataArray.length - 1;<br>  console.log(low);<br>  console.log(high);</p>
-<p>  while (low &lt;= high) {<br>    console.log(low);<br>    console.log(high);<br>    let mid = Math.floor((high + low) / 2);<br>    console.log(mid);<br>    let guess = dataArray[mid];<br>    console.log(guess);</p>
-<pre><code>if (guess === target) {
-  return guess;
-} else if (guess &gt; target) {
-  high = mid - 1;
-  console.log(high);
-} else {
-  low = mid + 1;
-  console.log(low);
-}</code></pre><p>  }<br>  return -1;<br>}</p>
+<h2 id="1-1-선형-검색-문제"><a href="#1-1-선형-검색-문제" class="headerlink" title="1.1 선형 검색 문제"></a>1.1 선형 검색 문제</h2><p>for를 사용하여 구현하시오</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">linearSearch</span>(<span class="params">array, target</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= array.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> ( array[i] === target) &#123;</span><br><span class="line">         <span class="keyword">return</span> array[i] - <span class="number">1</span>;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(linearSearch([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">1</span>));</span><br><span class="line"><span class="built_in">console</span>.log(linearSearch([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">3</span>));</span><br><span class="line"><span class="built_in">console</span>.log(linearSearch([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">5</span>));</span><br><span class="line"><span class="built_in">console</span>.log(linearSearch([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">6</span>));</span><br><span class="line"><span class="built_in">console</span>.log(linearSearch([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">-1</span>));</span><br><span class="line"><span class="built_in">console</span>.log(linearSearch([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">0</span>)); </span><br><span class="line"><span class="built_in">console</span>.log(linearSearch([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">7</span>));</span><br></pre></td></tr></table></figure>
+<br>
 
+<h2 id="1-2-이진-검색"><a href="#1-2-이진-검색" class="headerlink" title="1.2 이진 검색"></a>1.2 이진 검색</h2><ul>
+<li>이진 검색은 선형 검색과는 달리 <strong>정렬된 배열에서만 동작</strong></li>
+<li>선형 검색은 배열의 모든 요소를 하나씩 확인해야하지만 이진검색은 중간값과 검색 대상 값을 비교하여 검색 범위를 매번 반으로 줄여나간다.<ul>
+<li>예를 들어 선형검색은 480,000개를 하나씩 찾아 나가지만 이진 검색은 18번만에 찾아낸다.</li>
+</ul>
+</li>
+<li>시간 복잡도: O(log n)  </li>
+</ul>
+<p><img src="https://poiemaweb.com/assets/fs-images/binary-search.png" alt=""></p>
+<p>이진 검색을 통해 주어진 배열(array)에 주어진 값(target)이 요소로 존재하는지 확인하여 존재하는 경우 해당 인덱스를 반환하고 존재하지 않는 경우 -1을 반환하는 함수를 구현하라. 단, 아래의 빌트인 함수 이외에는 어떤 빌트인 함수도 사용하지 않아야 하며, while 문을 사용하여 구현하여야 한다.</p>
+<p>힌트: <code>Math.floor</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(binarySearch([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>], <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">dataArray, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> start = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> end = dataArray.length - <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(start);</span><br><span class="line">  <span class="built_in">console</span>.log(end);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (start &lt;= end) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(start);</span><br><span class="line">    <span class="built_in">console</span>.log(end);</span><br><span class="line">    <span class="keyword">let</span> mid = <span class="built_in">Math</span>.floor((start + end) / <span class="number">2</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(mid);</span><br><span class="line">    <span class="keyword">let</span> array = dataArray[mid];</span><br><span class="line">    <span class="built_in">console</span>.log(guess);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (array === target) &#123;</span><br><span class="line">      <span class="keyword">return</span> array;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (array &gt; target) &#123;</span><br><span class="line">      end = mid - <span class="number">1</span>;</span><br><span class="line">      <span class="built_in">console</span>.log(end);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      start = mid + <span class="number">1</span>;</span><br><span class="line">      <span class="built_in">console</span>.log(start);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="2-정렬"><a href="#2-정렬" class="headerlink" title="2. 정렬"></a>2. 정렬</h1><br>
+
+<h2 id="2-1-버블-정렬-buble-sort"><a href="#2-1-버블-정렬-buble-sort" class="headerlink" title="2.1 버블 정렬(buble sort)"></a>2.1 버블 정렬(buble sort)</h2><ul>
+<li>버블 정렬은 가장 간단하지만 가장 느린 정렬 알고리즘이다.</li>
+<li>버블 정렬은 배열을 순회하면서 요소가 다른 요소보다 큰 경우 두 요소를 교환한다.</li>
+<li>시간 복잡도: O(n2)</li>
+</ul>
+<p><img src="https://poiemaweb.com/assets/fs-images/bubble-sort.png" alt=""></p>
+<p>버블 정렬을 통해 주어진 배열(array)을 정렬하는 함수를 구현하라. 단, 어떠한 빌트인 함수도 사용하지 않고 for 문을 사용하여 구현하여야 한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort 메서드로 구현가능!</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
