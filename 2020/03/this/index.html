@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-03-15T11:02:03.000Z">
-<meta property="article:modified_time" content="2020-03-14T20:54:44.705Z">
+<meta property="article:modified_time" content="2020-03-14T20:56:32.327Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -248,7 +248,36 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.doSomething = <span class="function"><span class="keyword">function</span> (<span class="params">callback</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ①</span></span><br><span class="line">  callback.bind(<span class="keyword">this</span>)();</span><br><span class="line">  <span class="comment">// callback.apply(this);</span></span><br><span class="line">  <span class="comment">// callback.call(this);</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name); <span class="comment">// ②</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> Person(<span class="string">'Lee'</span>);</span><br><span class="line"></span><br><span class="line">person.doSomething(foo); <span class="comment">// Lee</span></span><br></pre></td></tr></table></figure>
 <br>
 
-<p>지금까지 함수 호출 방식에 따라 this 바인딩이 동적으로 결정되는 것에 대해 살펴보았다. 이를 정리해 보면 아래와 같다<br>|함수 호출 방식|this 바인딩|<br>|—|—|<br>|일반 함수 호출|전역 객체|<br>|메소드 호출|메소드를 호출한 객체|<br>|생성자 함수 호출|생성자 함수가 (미래에) 생성할 인스턴스|<br>|Function.prototype.apply/call/bind 메소드에 의한 간접 호출|Function.prototype.apply/call/bind 메소드에 인자로 전달한 객체|</p>
+<p>지금까지 함수 호출 방식에 따라 this 바인딩이 동적으로 결정되는 것에 대해 살펴보았다. 이를 정리해 보면 아래와 같다</p>
+<table>
+<thead>
+<tr>
+<th>함수 호출 방식</th>
+<th>this 바인딩</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>일반 함수 호출</td>
+<td>전역 객체</td>
+<td></td>
+</tr>
+<tr>
+<td>메소드 호출</td>
+<td>메소드를 호출한 객체</td>
+<td></td>
+</tr>
+<tr>
+<td>생성자 함수 호출</td>
+<td>생성자 함수가 (미래에) 생성할 인스턴스</td>
+<td></td>
+</tr>
+<tr>
+<td>Function.prototype.apply/call/bind 메소드에 의한 간접 호출</td>
+<td>Function.prototype.apply/call/bind 메소드에 인자로 전달한 객체</td>
+<td></td>
+</tr>
+</tbody></table>
 
         </div>
         
