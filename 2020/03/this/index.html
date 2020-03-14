@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-03-15T11:02:03.000Z">
-<meta property="article:modified_time" content="2020-03-14T20:11:39.049Z">
+<meta property="article:modified_time" content="2020-03-14T20:47:17.312Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -222,6 +222,20 @@
 
 <p>Function.prototype.apply, Function.prototype.call 메소드는 인수로 this와 인수 리스트를 전달받아 함수를 호출한다.<br>apply와 call 메소드는 Function.prototype의 메소드이다. 즉, apply와 call 메소드는 Function 생성자 함수를 constructor 프로퍼티로 가리키는 모든 함수가 상속받아 사용할 수 있다.</p>
 <p><img src="https://poiemaweb.com/assets/fs-images/22-4.png" alt=""></p>
+<p>apply와 call 메소드의 사용 방법은 아래와 같다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 주어진 this 바인딩과 인수 리스트 배열을 사용하여 함수를 호출한다.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">thisArg</span></span> - this로 사용될 객체</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">argsArray</span></span> - 함수에게 전달할 인수 리스트의 배열 또는 유사 배열 객체</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>호출된 함수의 반환값</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.apply(thisArg[, argsArray])</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 주어진 this 바인딩과 인수 리스트를 사용하여 함수를 호출한다.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">thisArg</span></span> - this로 사용될 객체</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>arg1, arg2, ... - 함수에게 전달할 인수 리스트</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>호출된 함수의 반환값</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.call (thisArg[, arg1[, arg2[, ...]]])</span><br></pre></td></tr></table></figure>
+
+<p>아래 예제를 살펴보자</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getThisBinding</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// this로 사용할 객체</span></span><br><span class="line"><span class="keyword">const</span> thisArg = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getThisBinding()); <span class="comment">// window</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수(getThisBinding)를 호출하면서 인수로 전달한 객체를 호출한 함수의 this에 바인딩한다.</span></span><br><span class="line"><span class="built_in">console</span>.log(getThisBinding.apply(thisArg)); <span class="comment">// Object &#123; a: 1 &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(getThisBinding.call(thisArg)); <span class="comment">// Object &#123; a: 1 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>apply와 call 메소드의 본질적인 기능은 함수를 호출하는 것이다. apply와 call 메소드는 함수를 호출하면서 첫번째 인수로 전달한 특정 객체를 호출한 함수의 this에 바인딩한다.</strong></p>
+<p>apply와 call 메소드는 호출할 함수에 인수를 전달하는 방식만 다를 뿐 동일하게 동작한다. 위 예제는 호출할 함수,<br>즉 getThisBinding 함수에 인수를 전달하지 않는다.<br>apply와 call 메소드를 통해 getThisBinding 함수를 호출하면서 인수를 전달해 보자.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getThisBinding</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// this로 사용할 객체</span></span><br><span class="line"><span class="keyword">const</span> thisArg = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수(getThisBinding)를 호출하면서 인수로 전달한 객체를 호출한 함수의 this에 바인딩한다.</span></span><br><span class="line"><span class="comment">// apply 메소드는 호출할 함수의 인수를 배열로 묶어 전달한다.</span></span><br><span class="line"><span class="built_in">console</span>.log(getThisBinding.apply(thisArg, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]));</span><br><span class="line"><span class="comment">// Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]</span></span><br><span class="line"><span class="comment">// &#123; a: 1 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// call 메소드는 호출할 함수의 인수를 쉼표로 구분한 리스트 형식으로 전달한다.</span></span><br><span class="line"><span class="built_in">console</span>.log(getThisBinding.call(thisArg, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));</span><br><span class="line"><span class="comment">// Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]</span></span><br><span class="line"><span class="comment">// &#123; a: 1 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>apply 메소드는 호출할 함수의 인수를 배열로 묶어 전달한다.</strong> call 메소드는 호출할 함수의 인수를 쉼표로 구분한 리스트 형식으로 전달한다. 이처럼 apply와 call 메소드는 호출할 함수에 인수를 전달하는 방식만 다를 뿐 this로 사용할 객체를 전달하면서 함수를 호출하는 것은 동일하다.</p>
+<p>apply와 call 메소드의 대표적인 용도는 arguments 객체와 같은 유사 배열 객체에 배열 메소드를 사용하는 경우이다. arguments 객체는 배열이 아니기 때문에 Array.prototype.slice와 같은 배열의 메소드를 사용할 수 없으나 apply와 call 메소드를 이용하면 가능하다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertArgsToArray</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// arguments 객체를 배열로 변환</span></span><br><span class="line">  <span class="comment">// slice: 배열의 특정 부분에 대한 복사본을 생성한다.</span></span><br><span class="line">  <span class="keyword">const</span> arr = <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>);</span><br><span class="line">  <span class="comment">// const arr = Array.prototype.slice.call(arguments);</span></span><br><span class="line">  <span class="built_in">console</span>.log(arr);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">convertArgsToArray(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// [ 1, 2, 3 ]</span></span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -245,13 +259,6 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98(%EC%88%9C%EC%B0%A8%EA%B2%80%EC%83%89)/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">검색과 정렬 | With javaScript</span>
-            </a>
-        </div>
         
         
         <div class="level-end">
@@ -450,25 +457,6 @@
         
         <article class="media">
             
-            <a href="/2020/03/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98(%EC%88%9C%EC%B0%A8%EA%B2%80%EC%83%89)/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.velog.io/post-images/dvmflstm/d99bdee0-09d0-11ea-9bf5-814109ad4203/algorithm-2.png" alt="검색과 정렬 | With javaScript">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T13:02:03.000Z">2020-03-15</time></div>
-                    <a href="/2020/03/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98(%EC%88%9C%EC%B0%A8%EA%B2%80%EC%83%89)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">검색과 정렬 | With javaScript</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/algorism/">algorism</a> / <a class="has-link-grey -link" href="/categories/algorism/With-Js/">With Js</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/03/this/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="this | javaScript">
@@ -538,6 +526,25 @@
                     <a href="/2020/03/%EB%A6%AC%EC%95%A1%ED%8A%B81/" class="title has-link-black-ter is-size-6 has-text-weight-normal">리액트 입문하기 | React</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/React/">React</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98(%EC%88%9C%EC%B0%A8%EA%B2%80%EC%83%89)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.velog.io/post-images/dvmflstm/d99bdee0-09d0-11ea-9bf5-814109ad4203/algorithm-2.png" alt="검색과 정렬 | With javaScript">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T13:02:03.000Z">2020-03-09</time></div>
+                    <a href="/2020/03/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98(%EC%88%9C%EC%B0%A8%EA%B2%80%EC%83%89)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">검색과 정렬 | With javaScript</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/algorism/">algorism</a> / <a class="has-link-grey -link" href="/categories/algorism/With-Js/">With Js</a>
                     </p>
                 </div>
             </div>
