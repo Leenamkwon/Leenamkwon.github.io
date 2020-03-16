@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>실행 컨텍스트 | javaScript - namkwon&#39;s tech blog</title>
+
+
+    <meta name="description" content="실행 컨텍스트(Execution Context)는 식별자, 스코프, 호이스팅, 클로저 등의 동작 원리를 담고 있는 자바스크립트의 핵심 개념이다.실행 컨텍스트를 바르게 이해하면 자바스크립트가 스코프를 기반으로 식별자와 식별자에 바인딩된 값(식별자 바인딩)을 관리하는 방식과 호이스팅이 발생하는 이유, 그리고 클로저의 동작 방식에 대해 이해할 수 있다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="실행 컨텍스트 | javaScript">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html">
+<meta property="og:site_name" content="namkwon&#39;s tech blog">
+<meta property="og:description" content="실행 컨텍스트(Execution Context)는 식별자, 스코프, 호이스팅, 클로저 등의 동작 원리를 담고 있는 자바스크립트의 핵심 개념이다.실행 컨텍스트를 바르게 이해하면 자바스크립트가 스코프를 기반으로 식별자와 식별자에 바인딩된 값(식별자 바인딩)을 관리하는 방식과 호이스팅이 발생하는 이유, 그리고 클로저의 동작 방식에 대해 이해할 수 있다.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
+<meta property="article:published_time" content="2020-03-16T07:45:03.000Z">
+<meta property="article:modified_time" content="2020-03-16T09:15:17.333Z">
+<meta property="article:author" content="Lee namkwon">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="ExecutionContext">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/react-brands.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="실행 컨텍스트 | javaScript" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="실행 컨텍스트 | javaScript">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-16T07:45:03.000Z">2020-03-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                실행 컨텍스트 | javaScript
+            
+        </h1>
+        <div class="content">
+            <p>실행 컨텍스트(Execution Context)는 식별자, 스코프, 호이스팅, 클로저 등의 동작 원리를 담고 있는 자바스크립트의 핵심 개념이다.실행 컨텍스트를 바르게 이해하면 자바스크립트가 스코프를 기반으로 식별자와 식별자에 바인딩된 값(식별자 바인딩)을 관리하는 방식과 호이스팅이 발생하는 이유, 그리고 클로저의 동작 방식에 대해 이해할 수 있다.<br><br></p>
+<a id="more"></a>
+
+<h1 id="1-소스-코드의-타입"><a href="#1-소스-코드의-타입" class="headerlink" title="1. 소스 코드의 타입"></a>1. 소스 코드의 타입</h1><table>
+<thead>
+<tr>
+<th>소스 코드의 타입</th>
+<th>설명</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>소스 코드(실행 가능한 코드, executable code)를 4가지 타입으로 구분하는 이유는 소스 코드의 타입에 따라 실행 컨텍스트를 생성하는 과정과 관리 내용이 다르기 때문이다.</p>
+<ol>
+<li><br>
+
+</li>
+</ol>
+<h1 id="2-소스-코드의-평가와-실행"><a href="#2-소스-코드의-평가와-실행" class="headerlink" title="2. 소스 코드의 평가와 실행"></a>2. 소스 코드의 평가와 실행</h1><br>
+
+<p>소스 코드 평가 과정에서는 실행 컨텍스트를 생성하고 변수, 함수 등의 선언문 만을 먼저 실행하여 생성된 변수나 함수를 식별자를 키로 실행 컨텍스트가 관리하는 스코프(렉시컬 환경의 환경 레코드)에 등록한다.</p>
+<p>소스 코드의 평가 과정이 끝나면 비로소 선언문을 제외한 소스 코드가 순차적으로 실행되기 시작한다. 이때 소스 코드 실행에 필요한 정보, 즉 변수나 함수의 참조를 실행 컨텍스트가 관리하는 스코프에서 취득한다. 그리고 변수 값의 변경과 같은 소스 코드의 실행 결과는 다시 실행 컨텍스트가 관리하는 스코프에 등록된다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/23-2.png" alt=""></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line">x = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>자바스크립트는 위 예제를 2개의 과정으로 나누어 처리한다. 먼저 소스 코드 평가 과정에서 변수 선언문 var x;을 먼저 실행한다. 이때 생성된 변수 x는 실행 컨텍스트가 관리하는 스코프에 등록된다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/23-3.png" alt=""></p>
+<p>소스 코드 평가 과정이 끝나면 비로소 소스 코드 실행 과정이 시작된다. 변수 선언문 var x;는 소스 코드 평가 과정에서 이미 실행이 완료되었다. 따라서 소스 코드 실행 과정에서는 변수 할당문 x = 1;만 실행된다. 이때 변수 x에 값을 할당하려면 변수 x가 선언된 변수인지 확인해야 한다.</p>
+<p>이를 위해 실행 컨텍스트가 관리하는 스코프에 변수 x가 등록되어 있는지 확인한다. 만약 변수 x가 등록되어 있다면 변수 x는 선언된 변수, 즉 소스 코드 평가 과정에서 선언문이 실행되어 등록된 변수이다. 변수 x가 선언된 변수라면 값을 할당하고 할당 결과를 실행 컨텍스트에 등록하여 관리한다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/23-4.png" alt=""></p>
+<br>
+
+<h1 id="3-실행-컨텍스트의-역할"><a href="#3-실행-컨텍스트의-역할" class="headerlink" title="3. 실행 컨텍스트의 역할"></a>3. 실행 컨텍스트의 역할</h1><br>
+
+<p>아래 예제는 전역 코드와 함수 코드로 구성되어 있다. 자바스크립트 엔진이 아래 예제를 어떻게 평가하고 실행할지 생각해보자.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 전역 변수 선언</span></span><br><span class="line"><span class="keyword">const</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수 정의</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 지역 변수 선언</span></span><br><span class="line">  <span class="keyword">const</span> x = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">const</span> y = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 메소드 호출</span></span><br><span class="line">  <span class="built_in">console</span>.log(a + x + y); <span class="comment">// 130</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수 호출</span></span><br><span class="line">foo(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 메소드 호출</span></span><br><span class="line"><span class="built_in">console</span>.log(x + y); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>  <strong>1. 전역 코드 평가</strong></p>
+<p>먼저 전역 코드를 실행하기에 앞서 전역 코드 평가 과정을 거치며 전역 코드 실행을 위한 준비를 한다. 소스 코드 평가 과정에서는 선언문 만을 먼저 실행한다. 따라서 전역 코드의 변수 선언문과 함수 선언문이 먼저 실행되고 그 결과 생성된 전역 변수와 전역 함수가 실행 컨텍스트가 관리하는 전역 스코프에 등록된다. 또한 var 키워드로 선언된 전역 변수와 함수 선언문으로 정의된 전역 함수는 전역 객체의 전역 객체의 프로퍼티와 메소드가 된다.</p>
+<p>  <strong>2. 전역 코드 실행</strong></p>
+<p>전역 코드의 평가가 끝나면 전역 코드가 순차적으로 실행되기 시작한다. 이때 전역 변수에 값이 할당되고 함수가 호출된다. 함수가 호출되면 순차적으로 실행되던 전역 코드의 실행을 일시 중단하고 코드 실행 순서를 변경하여 함수 내부로 진입한다.</p>
+<p>  <strong>3. 함수 코드 평가</strong></p>
+<p>코드 실행 순서가 변경되어 함수 내부로 진입하면 함수 내부의 문들을 실행하기에 앞서 함수 코드 평가 과정을 거치며 함수 코드 실행을 위한 준비를 한다. 이때 매개 변수와 지역 변수 선언문이 먼저 실행되고 그 결과 생성된 매개 변수와 지역 변수가 실행 컨텍스트가 관리하는 지역 스코프에 등록된다. 또한 함수 내부에서 지역 변수처럼 사용할 수 있는 <code>arguments 객체</code> 도 생성되어 지역 스코프에 등록된다.</p>
+<p>  <strong>4. 함수 코드 실행</strong></p>
+<p>함수 코드의 평가가 끝나면 함수 코드가 순차적으로 실행되기 시작한다. 이때 매개 변수와 지역 변수에 값이 할당되고 console.log 메소드가 호출된다.</p>
+<p>console.log 메소드를 호출하기 위해 먼저 식별자 console을 스코프 체인을 통해 검색한다. 이를 위해 함수 코드의 지역 스코프는 상위 스코프인 전역 스코프와 연결되어야 한다. 하지만 식별자 console은 스코프 체인에 등록되어 있지 않고 전역 객체에 프로퍼티로 존재한다. 이는 전역 객체의 프로퍼티가 마치 전역 변수처럼 전역 스코프에서 검색 가능해야 한다는 것을 의미한다.</p>
+<p>다음은 log 프로퍼티를 console 객체의 프로토타입 체인을 통해 검색한다. 그후 console.log 메소드의 인수로 전달된 표현식 a + x + y가 평가된다. 식별자 a, x, y는 스코프 체인을 통해 검색한다. console.log 메소드의 실행이 종료되면 함수 코드의 실행이 종료되고 함수 호출 이전으로 되돌아가 전역 코드 실행을 계속한다.</p>
+<p>이처럼 코드가 실행되려면 스코프를 구분하여 식별자와 바인딩된 값을 관리할 수 있어야 한다. 그리고 중첩 관계에 의해 스코프 체인을 형성하여 식별자를 검색할 수 있어야 하고, 전역 객체의 프로퍼티도 전역 변수처럼 검색할 수 있어야 한다.</p>
+<p>또한 함수 호출이 종료하면 함수 호출 이전으로 되돌아가기 위해 현재 실행 중인 코드와 이전에 실행하던 코드를 구분하여 관리해야 한다.<br><strong>이처럼 코드가 실행되려면 아래와 같이 스코프, 식별자, 코드 실행 순서 등의 관리가 필요하다.</strong></p>
+<ol>
+<li><p>선언에 의해 생성된 모든 식별자(변수, 함수, 클래스 등)를 스코프를 구분하여 등록하고 상태 변화(식별자에 바인딩된 값의 변화)를 지속적으로 관리할 수 있어야 한다.</p>
+</li>
+<li><p>스코프는 중첩 관계에 의해 스코프 체인을 형성해야 한다. 즉, 스코프 체인을 통해 상위 스코프로 이동하며 식별자를 검색할 수 있어야 한다.</p>
+</li>
+<li><p>현재 실행 중인 코드의 실행 순서를 변경(예를 들어 함수 호출에 의한 실행 순서 변경)할 수 있어야 하며 다시 되돌아갈 수도 있어야 한다.</p>
+</li>
+</ol>
+<p><strong>실행 컨텍스트(Execution context)는 소스 코드를 실행하기 위해 필요한 환경을 제공하고 코드의 실행 결과를 실제로 관리하는 영역이다.</strong></p>
+<p><strong>좀 더 구체적으로 말해, 실행 컨텍스트는 식별자(변수, 함수, 클래스 등의 이름)를 등록하고 관리하는 스코프와 코드 실행 순서 관리를 구현한 내부 매커니즘으로 모든 코드는 실행 컨텍스트를 통해 실행되고 관리된다.</strong></p>
+<p>식별자와 스코프는 실행 컨텍스트의 <strong>렉시컬 환경</strong>으로 관리하고 코드 실행 순서는 <strong>실행 컨텍스트 스택</strong>으로 관리한다. 먼저 실행 컨텍스트 스택에 대해 살펴보도록 하자.<br><br></p>
+<h1 id="4-실행-컨텍스트-스택"><a href="#4-실행-컨텍스트-스택" class="headerlink" title="4. 실행 컨텍스트 스택"></a>4. 실행 컨텍스트 스택</h1><br>
+
+<p>아래 예제를 살펴보자.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> x = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> z = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(x + y + z);</span><br><span class="line">  &#125;</span><br><span class="line">  bar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<p>위 예제는 소스 코드의 타입으로 분류할 때 전역 코드와 함수 코드로 이루어져 있다. 자바스크립트 엔진은 먼저 전역 코드를 평가하여 전역 실행 컨텍스트를 생성한다. 그리고 함수가 호출되면 함수 코드를 평가하여 함수 실행 컨텍스트를 생성한다.</p>
+<p>이때 생성된 <strong>실행 컨텍스트는 스택 자료 구조</strong>로 관리된다.</p>
+<pre><code>실행 컨텍스트 스택을 콜 스택(call stack)이라고 부르기도 한다.</code></pre><p>위 코드를 실행하면 코드가 실행되는 시간의 흐름에 따라 실행 컨텍스트 스택에는 아래와 같이 실행 컨텍스트가 추가(push)되고 제거(pop)된다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/23-5.png" alt=""></p>
+<p>  <strong>1.전역 코드의 평가와 실행</strong></p>
+<p>  자바스크립트 엔진은 먼저 전역 코드를 평가하여 전역 실행 컨텍스트를 생성하고 실행 컨텍스트 스택에 푸시한다. 이때 전역 변수 x와 전역 함수 foo는 전역 실행 컨텍스트에 등록된다. 이후, 전역 코드가 실행되기 시작하여 전역 변수 x에 값이 할당되고 전역 함수 foo가 호출된다.</p>
+<p>  <strong>2.foo 함수 코드의 평가와 실행</strong></p>
+<p>  전역 함수 foo가 호출되면 전역 코드의 실행은 일시 중단되고 코드의 제어권(control)이 foo 함수 내부로 이동한다. 자바스크립트 엔진은 foo 함수 내부의 함수 코드를 평가하여 foo 함수 실행 컨텍스트를 생성하고 실행 컨텍스트 스택에 푸시한다. 이때 foo 함수의 지역 변수 y와 중첩 함수 bar가 foo 함수 실행 컨텍스트에 등록된다. 이후, foo 함수 코드가 실행되기 시작하여 지역 변수 y에 값이 할당되고 중첩 함수 bar가 호출된다.</p>
+<p>  <strong>3.bar 함수 코드의 평가와 실행</strong></p>
+<p>중첩 함수 bar가 호출되면 함수 foo 코드의 실행은 일시 중단되고 코드의 제어권이 bar 함수 내부로 이동한다. 자바스크립트 엔진은 bar 함수 내부의 함수 코드를 평가하여 bar 함수 실행 컨텍스트를 생성하고 실행 컨텍스트 스택에 푸시한다. 이때 bar 함수의 지역 변수 z가 bar 함수 실행 컨텍스트에 등록된다. 이후, bar 함수 코드가 실행되기 시작하여 지역 변수 z에 값이 할당되고 console.log 메소드를 호출(console.log 메소드도 함수이므로 호출되면 실행 컨텍스트를 생성하고 실행 컨텍스트 스택에 푸시한다. 이는 그림에서 생략하였다)한 이후, 함수 bar는 종료된다.</p>
+<p>  <strong>4.foo 함수 코드로 복귀</strong></p>
+<p>함수 bar가 종료되면 코드의 제어권은 다시 함수 foo로 이동한다. 이때 자바스크립트 엔진은 bar 함수 실행 컨텍스트를 실행 컨텍스트 스택에서 팝하여 제거한다. 그리고 함수 foo는 더 이상 실행할 코드가 없으므로 종료된다.</p>
+<p>  <strong>5. 전역 코드로 복귀</strong></p>
+<p>함수 foo가 종료되면 코드의 제어권은 다시 전역 코드로 이동한다. 이때 자바스크립트 엔진은 foo 함수 실행 컨텍스트를 실행 컨텍스트 스택에서 팝하여 제거한다. 그리고 더 이상 실행할 전역 코드가 남아 있지 않으므로 전역 실행 컨텍스트도 실행 컨텍스트 스택에서 팝되어 실행 컨텍스트 스택에는 아무것도 남아있지 않게 된다.<br><br></p>
+<p>이처럼 <strong>실행 컨텍스트 스택은 코드의 실행 순서를 관리한다.</strong> 소스 코드가 평가되면 실행 컨텍스트가 생성되고 실행 컨텍스트 스택의 최상위에 쌓인다. <strong>실행 컨텍스트 스택의 최상위에 존재하는 실행 컨텍스트는 언제나 현재 실행 중인 코드의 실행 컨텍스트이다.</strong> 따라서 <strong>실행 컨텍스트 스택의 최상위에 존재하는 실행 컨텍스트를 실행 중인 실행 컨텍스트(running execution context)라 부른다.</strong><br><br></p>
+<h1 id="5-동기식-처리-모델과-비동기식-처리-모델"><a href="#5-동기식-처리-모델과-비동기식-처리-모델" class="headerlink" title="5. 동기식 처리 모델과 비동기식 처리 모델"></a>5. 동기식 처리 모델과 비동기식 처리 모델</h1><br>
+자바스크립트 엔진은 단 하나의 실행 컨텍스트 스택을 갖는다. 즉, 자바스크립트 애플리케이션은 여러 개의 실행 컨텍스트 스택에서 실행할 수 없다. 이는 동시에 두가지 이상의 태스크를 실행할 수 없다는 것을 의미한다. 실행 컨텍스트 스택의 최상위 스택만이 현재 실행 중인 실행 컨텍스트이며 나머지 실행 컨텍스트는 모두 대기중인 실행 컨텍스트이기 때문이다. 
+
+<p><strong>이는 자바스크립트가 싱글 스레드(single thread)로 동작한다는 것을 의미한다.</strong></p>
+<p>실행 컨텍스트 스택의 최상위 스택(실행 중인 실행 컨텍스트)을 제외한 모든 실행 컨텍스트는 모두 실행 대기 중인 태스크들이다. 이들은 현재 실행 중인 실행 컨텍스트가 팝되어 실행 컨텍스트 스택에서 제거될 때까지 실행을 대기한다. 이처럼 하나의 처리가 종료되어야 다음 처리를 실행할 수 있는 것을 <strong>동기식 처리 모델(Synchronous processing model)이라고 한다.</strong></p>
+<p>동기식 처리 모델은 직렬적으로 태스크(task)를 수행한다. 즉, 태스크는 순차적으로 실행되며 어떤 작업이 수행 중이면 다음 작업은 대기하게 된다. 예를 들어 서버에서 데이터를 가져와서 화면에 표시하는 작업을 수행할 때, 서버에 데이터를 요청하고 데이터가 응답될 때까지 이후 태스크들은 블로킹(blocking, 작업 중단)된다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/23-6.png" alt=""></p>
+<p>다행히도 자바스크립트는 비동기식 처리 모델을 지원한다. 비동기식 처리 모델(Asynchronous processing model 또는 Non-Blocking processing model)은 병렬적으로 태스크를 수행한다. 즉, 태스크가 종료되지 않은 상태라 하더라도 대기하지 않고 다음 태스크를 실행한다.</p>
+<p>예를 들어 서버에서 데이터를 가져와서 화면에 표시하는 태스크를 수행할 때, 서버에 데이터를 요청한 이후 서버로부터 데이터가 응답될 때까지 대기하지 않고(Non-Blocking) 즉시 다음 태스크를 수행한다. 이후 서버로부터 데이터가 응답되면 이벤트가 발생하고 이벤트 핸들러가 응답된 데이터를 가지고 수행할 태스크를 계속해 수행한다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/23-7.png" alt=""></p>
+<p>자바스크립트의 Timer 함수(setTimeout, setInterval), Ajax 요청은 비동기식 처리 모델로 동작한다. 비동기식 처리 모델은 자바스크립트에 동시성(concurrency)을 부여하여 싱글 스레드의 약점을 보완해 준다. 하지만 비동기식으로 동작하는 코드는 순차적으로 실행되지 않아 가독성이 좋지 않고 콜백 헬을 유발하며 에러 처리가 어렵다는 약점이 있다.<br><br></p>
+<h1 id="6-렉시컬-환경"><a href="#6-렉시컬-환경" class="headerlink" title="6. 렉시컬 환경"></a>6. 렉시컬 환경</h1><br>
+
+<p>렉시컬 환경(Lexical Environment)은 식별자와 식별자에 바인딩된 값 그리고 상위 스코프에 대한 참조를 기록하는 환경으로 실행 컨텍스트를 구성하는 컴포넌트이다. 실행 컨텍스트 스택이 코드의 실행 순서를 관리한다면 렉시컬 환경은 스코프와 식별자를 관리한다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/23-8.png" alt=""></p>
+<p>렉시컬 환경은 객체 형태의 스코프(전역, 함수, 블록 스코프)를 생성하여 식별자를 키로 등록하고 식별자에 바인딩된 값을 관리한다. 즉, 렉시컬 환경은 스코프를 구분하여 식별자를 등록하고 관리하는 저장소 역할을 하는 렉시컬 스코프의 실체이다.</p>
+<p>실행 컨텍스트는 LexicalEnvironment 컴포넌트와 VariableEnvironment 컴포넌트로 구성된다. 생성 초기의 실행 컨텍스트와 렉시컬 환경을 그림으로 표현하면 아래와 같다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/23-9.png" alt=""></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ExecutionContext/" rel="tag">ExecutionContext</a>, <a class="has-link-grey -link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="has-link-grey -link" href="/tags/javaScript/" rel="tag">javaScript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/this/">
+                <span class="level-item">this | javaScript</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" data-num-posts="5"></div>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/react-brands.svg" alt="Namkwon">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Namkwon
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        &lt;Frontend developer/&gt; &lt;Fashion, Travel/&gt;
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Korea in Seoul</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            22
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Leenamkwon" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/Leenamkwon">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/algorism/">
+            <span class="level-start">
+                <span class="level-item">algorism</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/algorism/With-Js/">
+            <span class="level-start">
+                <span class="level-item">With Js</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/develop/">
+            <span class="level-start">
+                <span class="level-item">develop</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">20</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/develop/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">18</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/develop/React/">
+            <span class="level-start">
+                <span class="level-item">React</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/develop/git/">
+            <span class="level-start">
+                <span class="level-item">git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="실행 컨텍스트 | javaScript">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-16T07:45:03.000Z">2020-03-16</time></div>
+                    <a href="/2020/03/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">실행 컨텍스트 | javaScript</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/this/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="this | javaScript">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T11:02:03.000Z">2020-03-15</time></div>
+                    <a href="/2020/03/this/" class="title has-link-black-ter is-size-6 has-text-weight-normal">this | javaScript</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/%ED%91%9C%EC%A4%80%EB%B9%8C%ED%8A%B8%EC%9D%B8%EA%B0%9D%EC%B2%B4/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="표준빌트인 객체 | javaScript">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-14T18:02:03.000Z">2020-03-15</time></div>
+                    <a href="/2020/03/%ED%91%9C%EC%A4%80%EB%B9%8C%ED%8A%B8%EC%9D%B8%EA%B0%9D%EC%B2%B4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">표준빌트인 객체 | javaScript</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/G_%EA%B9%83%EC%9E%85%EB%AC%B8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FSFBhJ%2FbtqvyBI6eGX%2FtN0cZvjgFM0iHbP514z4S0%2Fimg.png" alt="깃 입문하기 | git &amp; github">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-11T06:02:03.000Z">2020-03-11</time></div>
+                    <a href="/2020/03/G_%EA%B9%83%EC%9E%85%EB%AC%B8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 입문하기 | git &amp; github</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/git/">git</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/%EB%A6%AC%EC%95%A1%ED%8A%B81/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.velog.io/post-images/jayden/27ffa150-285f-11ea-9190-194120881e71/react.png" alt="리액트 입문하기 | React">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-11T06:02:03.000Z">2020-03-11</time></div>
+                    <a href="/2020/03/%EB%A6%AC%EC%95%A1%ED%8A%B81/" class="title has-link-black-ter is-size-6 has-text-weight-normal">리액트 입문하기 | React</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/React/">React</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/ExecutionContext/" style="font-size: 10px;">ExecutionContext</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/TypeScript/" style="font-size: 18px;">TypeScript</a> <a href="/tags/algorism/" style="font-size: 12px;">algorism</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/attribute/" style="font-size: 10px;">attribute</a> <a href="/tags/bulitin/" style="font-size: 10px;">bulitin</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/firstclass/" style="font-size: 10px;">firstclass</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 16px;">hexo</a> <a href="/tags/javaScript/" style="font-size: 20px;">javaScript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/object/" style="font-size: 12px;">object</a> <a href="/tags/operator/" style="font-size: 10px;">operator</a> <a href="/tags/present/" style="font-size: 10px;">present</a> <a href="/tags/property/" style="font-size: 10px;">property</a> <a href="/tags/prototype/" style="font-size: 14px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/scopechain/" style="font-size: 10px;">scopechain</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/statement/" style="font-size: 10px;">statement</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="실행 컨텍스트 | javaScript" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Lee namkwon&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://github.com/Leenamkwon/Leenamkwon.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
