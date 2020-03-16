@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-03-16T07:45:03.000Z">
-<meta property="article:modified_time" content="2020-03-16T09:15:17.333Z">
+<meta property="article:modified_time" content="2020-03-16T09:33:20.054Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -280,6 +280,49 @@
 <p>렉시컬 환경은 객체 형태의 스코프(전역, 함수, 블록 스코프)를 생성하여 식별자를 키로 등록하고 식별자에 바인딩된 값을 관리한다. 즉, 렉시컬 환경은 스코프를 구분하여 식별자를 등록하고 관리하는 저장소 역할을 하는 렉시컬 스코프의 실체이다.</p>
 <p>실행 컨텍스트는 LexicalEnvironment 컴포넌트와 VariableEnvironment 컴포넌트로 구성된다. 생성 초기의 실행 컨텍스트와 렉시컬 환경을 그림으로 표현하면 아래와 같다.</p>
 <p><img src="https://poiemaweb.com/assets/fs-images/23-9.png" alt=""></p>
+<p>생성 초기에 LexicalEnvironment 컴포넌트와 VariableEnvironment 컴포넌트는 하나의 동일한 렉시컬 환경을 참조한다. 이후, 몇가지 상황을 만나면 VariableEnvironment 컴포넌트를 위한 새로운 렉시컬 환경을 생성하여 생성하고 이때부터 VariableEnvironment 컴포넌트와 LexicalEnvironment 컴포넌트는 내용이 달라지는 경우도 있다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/23-10.png" alt=""></p>
+<ol>
+<li><p>환경 레코드(Environment Record): 스코프에 포함된 식별자를 등록하고 등록된 식별자에 바인딩된 값을 관리하는 저장소이다. 환경 레코드는 소스 코드의 타입에 따라 내용에 차이가 있다.</p>
+</li>
+<li><p>외부 렉시컬 환경에 대한 참조(Outer Lexical Environment Reference): 외부 렉시컬 환경에 대한 참조는 상위 스코프를 가리킨다. 이때 상위 스코프란 외부 렉시컬 환경, 즉 해당 실행 컨텍스트를 생성한 소스 코드를 포함하는 상위 코드의 렉시컬 환경을 말한다. 외부 렉시컬 환경에 대한 참조를 통해 단방향 링크드 리스트인 스코프 체인을 구현한다.</p>
+</li>
+</ol>
+<br>
+
+<h1 id="7-실행-컨텍스트의-생성과-식별자-검색-과정"><a href="#7-실행-컨텍스트의-생성과-식별자-검색-과정" class="headerlink" title="7. 실행 컨텍스트의 생성과 식별자 검색 과정"></a>7. 실행 컨텍스트의 생성과 식별자 검색 과정</h1><br>
+
+<p>아래 예제를 통해 어떻게 실행 컨텍스트가 생성되고 코드 실행 결과가 관리되는지 그리고 어떻게 실행 컨텍스트를 통해 식별자를 검색하는지 살펴보도록 하자.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">const</span> y = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span> (<span class="params">b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> z = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a + b + x + y + z);</span><br><span class="line">&#125;</span><br><span class="line">  bar(<span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="number">20</span>); <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="7-1-전역-객체-생성"><a href="#7-1-전역-객체-생성" class="headerlink" title="7.1. 전역 객체 생성"></a>7.1. 전역 객체 생성</h2><br>
+전역 객체(“21.4 전역 객체” 참고)는 전역 코드가 평가되기 이전에 생성된다. 이때 전역 객체에는 전역 프로퍼티와 전역 함수, 표준 빌트인 객체가 추가되며 동작 환경(클라이언트 사이드 또는 서버 사이드)에 따라 클라이언트 사이드 Web API 또는 특정 환경을 위한 호스트 객체(“21.1 자바스크립트 객체의 분류” 참고)를 포함한다.
+
+<p>전역 객체도 Object.prototype을 상속받는다. 즉, 전역 객체도 프로토타입 체인의 일원이다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Object.prototype.toString</span></span><br><span class="line"><span class="built_in">window</span>.toString(); <span class="comment">// -&gt; "[object Window]"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.__proto__.__proto__.__proto__.__proto__ === <span class="built_in">Object</span>.prototype; <span class="comment">// -&gt; true</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="7-2-전역-코드-평가"><a href="#7-2-전역-코드-평가" class="headerlink" title="7.2. 전역 코드 평가"></a>7.2. 전역 코드 평가</h2><br>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 전역 실행 컨텍스트 생성</span><br><span class="line">2. 전역 렉시컬 환경 생성</span><br><span class="line">  2.1. 전역 환경 레코드 생성</span><br><span class="line">    2.1.1. 객체 환경 레코드 생성</span><br><span class="line">    2.1.2. 선언적 환경 레코드 생성</span><br><span class="line">  2.2. 외부 렉시컬 환경에 대한 참조 할당</span><br><span class="line">  2.3. this 바인딩</span><br></pre></td></tr></table></figure>
+
+<p>위 과정을 거쳐 생성된 전역 실행 컨텍스트와 렉시컬 환경은 아래와 같다.</p>
+<p><img src="https://poiemaweb.com/assets/fs-images/23-11.png" alt=""></p>
+<p>생성 과정에 대해 자세히 순서대로 살펴보자</p>
+<br>
+
+<h2 id="7-1-전역-객체-생성-1"><a href="#7-1-전역-객체-생성-1" class="headerlink" title="7.1. 전역 객체 생성"></a>7.1. 전역 객체 생성</h2><br>
+
+<br>
+
+<h2 id="7-1-전역-객체-생성-2"><a href="#7-1-전역-객체-생성-2" class="headerlink" title="7.1. 전역 객체 생성"></a>7.1. 전역 객체 생성</h2><br>
+
+<br>
+
+<h2 id="7-1-전역-객체-생성-3"><a href="#7-1-전역-객체-생성-3" class="headerlink" title="7.1. 전역 객체 생성"></a>7.1. 전역 객체 생성</h2><br>
 
         </div>
         
