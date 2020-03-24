@@ -152,6 +152,95 @@
 <div class="card">
     
     <div class="card-image">
+        <a href="/2020/03/hof/" class="image is-7by1">
+            <img class="thumbnail" src="https:images.velog.io/post-images/dvmflstm/d99bdee0-09d0-11ea-9bf5-814109ad4203/algorithm-2.png" alt="Array HOF 연습 문제 | With javaScript">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-24T10:33:03.000Z">2020-03-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/algorism/">algorism</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/algorism/With-Js/">With Js</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/hof/">Array HOF 연습 문제 | With javaScript</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="1-html-생성"><a href="#1-html-생성" class="headerlink" title="1. html 생성"></a>1. html 생성</h1><p>아래 배열을 사용하여 html을 생성하는 함수를 작성하라.<br><br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">'HTML'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">'CSS'</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">'Javascript'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> html = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">  todos.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">todo</span>) </span>&#123;</span><br><span class="line">    html += <span class="string">`&lt;li id="<span class="subst">$&#123;todo.id&#125;</span>"&gt;</span></span><br><span class="line"><span class="string">    &lt;label&gt;&lt;input type="checkbox" <span class="subst">$&#123;todo.completed ? <span class="string">"checked"</span> : <span class="string">''</span>&#125;</span>&gt;<span class="subst">$&#123;todo.content&#125;</span>&lt;/label&gt;</span></span><br><span class="line"><span class="string">  &lt;/li&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> html;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(render());</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="2-특정-프로퍼티-값-추출"><a href="#2-특정-프로퍼티-값-추출" class="headerlink" title="2. 특정 프로퍼티 값 추출"></a>2. 특정 프로퍼티 값 추출</h1><p>요소의 프로퍼티(id, content, completed)를 문자열 인수로 전달하면 todos의 각 요소 중, 해당 프로퍼티의 값만을 추출한 배열을 반환하는 함수를 작성하라.</p>
+<p>단, for 문이나 Array#forEach는 사용하지 않도록 하자.</p>
+<br>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">'HTML'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">'CSS'</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">'Javascript'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValues</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> todos.map( <span class="function"><span class="params">item</span> =&gt;</span> item[key])</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getValues(<span class="string">'id'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(getValues(<span class="string">'content'</span>)); </span><br><span class="line"><span class="built_in">console</span>.log(getValues(<span class="string">'completed'</span>));</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="3-프로퍼티-정렬"><a href="#3-프로퍼티-정렬" class="headerlink" title="3. 프로퍼티 정렬"></a>3. 프로퍼티 정렬</h1><p>요소의 프로퍼티(id, content, completed)를 문자열 인수로 전달하면 todos의 요소를 정렬하는 함수를 작성하라.</p>
+<p>단, todos는 변경되지 않도록 하자.</p>
+<p>참고: <code>Array.prototype.sort</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">'HTML'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">'CSS'</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">'Javascript'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortBy</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> todos.sort( <span class="function">(<span class="params">v, i</span>) =&gt;</span> (v[key] &gt; i[key] ? <span class="number">1</span> : (v[key] &lt; i[key] ? <span class="number">-1</span> : <span class="number">0</span>)) );</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sortBy(<span class="string">'completed'</span>));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sortBy(<span class="string">'id'</span>));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sortBy(<span class="string">'content'</span>));</span><br></pre></td></tr></table></figure>
+<br>
+
+
+<h1 id="4-새로운-요소-추가"><a href="#4-새로운-요소-추가" class="headerlink" title="4. 새로운 요소 추가"></a>4. 새로운 요소 추가</h1><p>새로운 요소(예를 들어 <code>{ id: 4, content: &#39;Test&#39;, completed: false }</code> )를 인수로 전달하면 todos의 선두에 새로운 요소를 추가하는 함수를 작성하라. 단, Array#push는 사용하지 않도록 하자.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">'HTML'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">'CSS'</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">'Javascript'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTodo</span>(<span class="params">newTodo</span>) </span>&#123;</span><br><span class="line">  todos.unshift(newTodo);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">addTodo(&#123; <span class="attr">id</span>: <span class="number">4</span>, <span class="attr">content</span>: <span class="string">'Test'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(todos);</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="5-특정-요소-삭제"><a href="#5-특정-요소-삭제" class="headerlink" title="5. 특정 요소 삭제"></a>5. 특정 요소 삭제</h1><br>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">'HTML'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">'CSS'</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">'Javascript'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeTodo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> todos.filter( <span class="function"><span class="params">item</span> =&gt;</span> item.id !== id );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(removeTodo(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="6-특정-요소의-프로퍼티-값-반전"><a href="#6-특정-요소의-프로퍼티-값-반전" class="headerlink" title="6. 특정 요소의 프로퍼티 값 반전"></a>6. 특정 요소의 프로퍼티 값 반전</h1><br>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">'HTML'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">'CSS'</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">'Javascript'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toggleCompletedById</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> boxbox = todos.map( <span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (item.id == id) item.completed = !item.completed;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.assign(todos, boxbox);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">toggleCompletedById(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(todos);</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="7-모든-요소의-completed-프로퍼티-값을-true로-설정"><a href="#7-모든-요소의-completed-프로퍼티-값을-true로-설정" class="headerlink" title="7. 모든 요소의 completed 프로퍼티 값을 true로 설정"></a>7. 모든 요소의 completed 프로퍼티 값을 true로 설정</h1><p>todos의 모든 요소의 completed 프로퍼티 값을 true로 설정하는 함수를 작성하라.</p>
+<p>hint) 기존 객체의 특정 프로퍼티를 변경/추가하여 새로운 객체를 생성하려면 <code>Object.assign</code>  또는 <code>스프레드 문법</code> 을 사용한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">'HTML'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">'CSS'</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">'Javascript'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toggleCompletedAll</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> boxbox = todos.map( <span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    item.completed = <span class="literal">true</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(item.completed);</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.assign(todos, boxbox);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">toggleCompletedAll();</span><br><span class="line"><span class="built_in">console</span>.log(todos);</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="8-completed-프로퍼티의-값이-true인-요소의-갯수-구하기"><a href="#8-completed-프로퍼티의-값이-true인-요소의-갯수-구하기" class="headerlink" title="8. completed 프로퍼티의 값이 true인 요소의 갯수 구하기"></a>8. completed 프로퍼티의 값이 true인 요소의 갯수 구하기</h1><p>todos에서 완료(completed: true)한 할일의 갯수를 구하는 함수를 작성하라.</p>
+<p>단, for 문, Array#forEach는 사용하지 않도록 하자.<br><br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">'HTML'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">'CSS'</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">'Javascript'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countCompletedTodos</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.completed === <span class="literal">true</span>).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(countCompletedTodos());</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="9-id-프로퍼티의-값-중에서-최대값-구하기"><a href="#9-id-프로퍼티의-값-중에서-최대값-구하기" class="headerlink" title="9 id 프로퍼티의 값 중에서 최대값 구하기"></a>9 id 프로퍼티의 값 중에서 최대값 구하기</h1><p>todos의 id 프로퍼티의 값 중에서 최대값을 함수를 작성하라.</p>
+<p>단, for 문, Array#forEach는 사용하지 않도록 하자.<br><br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">'HTML'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">'CSS'</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">'Javascript'</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMaxId</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.max(...todos.map(<span class="function"><span class="params">item</span> =&gt;</span> item.id))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getMaxId());</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
         <a href="/2020/03/%EB%B0%B0%EC%97%B4/" class="image is-7by1">
             <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="배열(Array) | javaScript">
         </a>
@@ -617,59 +706,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/03/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98(%EC%88%9C%EC%B0%A8%EA%B2%80%EC%83%89)/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.velog.io/post-images/dvmflstm/d99bdee0-09d0-11ea-9bf5-814109ad4203/algorithm-2.png" alt="자료구조와 알고리즘 | With javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-09T13:02:03.000Z">2020-03-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/algorism/">algorism</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/algorism/With-Js/">With Js</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98(%EC%88%9C%EC%B0%A8%EA%B2%80%EC%83%89)/">자료구조와 알고리즘 | With javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="자료구조와-알고리즘"><a href="#자료구조와-알고리즘" class="headerlink" title="자료구조와 알고리즘"></a>자료구조와 알고리즘</h1>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98(%EC%88%9C%EC%B0%A8%EA%B2%80%EC%83%89)/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -737,7 +773,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            26
+                            27
                         </p>
                     </a>
                 </div>
@@ -761,7 +797,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            30
+                            31
                         </p>
                     </a>
                 </div>
@@ -805,7 +841,7 @@
                 <span class="level-item">algorism</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/algorism/With-Js/">
@@ -813,7 +849,7 @@
                 <span class="level-item">With Js</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/develop/">
@@ -858,6 +894,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/hof/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https:images.velog.io/post-images/dvmflstm/d99bdee0-09d0-11ea-9bf5-814109ad4203/algorithm-2.png" alt="Array HOF 연습 문제 | With javaScript">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-24T10:33:03.000Z">2020-03-24</time></div>
+                    <a href="/2020/03/hof/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array HOF 연습 문제 | With javaScript</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/algorism/">algorism</a> / <a class="has-link-grey -link" href="/categories/algorism/With-Js/">With Js</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -935,25 +990,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="실행 컨텍스트 | javaScript">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-16T07:45:03.000Z">2020-03-16</time></div>
-                    <a href="/2020/03/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">실행 컨텍스트 | javaScript</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -962,7 +998,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/ExecutionContext/" style="font-size: 10px;">ExecutionContext</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/TypeScript/" style="font-size: 18.33px;">TypeScript</a> <a href="/tags/algorism/" style="font-size: 11.67px;">algorism</a> <a href="/tags/array/" style="font-size: 13.33px;">array</a> <a href="/tags/attribute/" style="font-size: 10px;">attribute</a> <a href="/tags/bulitin/" style="font-size: 10px;">bulitin</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/closer/" style="font-size: 10px;">closer</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/firstclass/" style="font-size: 10px;">firstclass</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/javaScript/" style="font-size: 20px;">javaScript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/object/" style="font-size: 11.67px;">object</a> <a href="/tags/operator/" style="font-size: 10px;">operator</a> <a href="/tags/present/" style="font-size: 10px;">present</a> <a href="/tags/property/" style="font-size: 10px;">property</a> <a href="/tags/prototype/" style="font-size: 15px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/scopechain/" style="font-size: 10px;">scopechain</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/statement/" style="font-size: 10px;">statement</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/ExecutionContext/" style="font-size: 10px;">ExecutionContext</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/TypeScript/" style="font-size: 18.57px;">TypeScript</a> <a href="/tags/algorism/" style="font-size: 12.86px;">algorism</a> <a href="/tags/array/" style="font-size: 14.29px;">array</a> <a href="/tags/attribute/" style="font-size: 10px;">attribute</a> <a href="/tags/bulitin/" style="font-size: 10px;">bulitin</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/closer/" style="font-size: 10px;">closer</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/firstclass/" style="font-size: 10px;">firstclass</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 17.14px;">hexo</a> <a href="/tags/hof/" style="font-size: 10px;">hof</a> <a href="/tags/javaScript/" style="font-size: 20px;">javaScript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/object/" style="font-size: 11.43px;">object</a> <a href="/tags/operator/" style="font-size: 10px;">operator</a> <a href="/tags/present/" style="font-size: 10px;">present</a> <a href="/tags/property/" style="font-size: 10px;">property</a> <a href="/tags/prototype/" style="font-size: 15.71px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/scopechain/" style="font-size: 10px;">scopechain</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/statement/" style="font-size: 10px;">statement</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a>
     </div>
 </div>
     
