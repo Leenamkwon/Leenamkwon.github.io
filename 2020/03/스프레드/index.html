@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-03-21T11:02:03.000Z">
-<meta property="article:modified_time" content="2020-03-24T05:14:19.155Z">
+<meta property="article:modified_time" content="2020-03-24T05:24:39.640Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -165,7 +165,31 @@
             <p>ES에서 새롭게 도입된 스프레드 문법 …은 하나로 뭉쳐 있는 여러 값들의 집합을 펼쳐서(전개, 분산)개별적인 값들의 목록을 만든다.</p>
 <a id="more"></a>
 
-<p>스프레드 문법을 사용할 수 있는 대상은 **Array, String, Map, set, DOM 컬렉션</p>
+<p>스프레드 문법을 사용할 수 있는 대상은 <strong>Array, String, Map, set, DOM 컬렉션(NodeList, HTMLCollection), Arguments와 같이 for..of 문으로 순회할 수 있는 이터러블</strong>에 한정된다.</p>
+<br>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...[1, 2, 3]는 [1, 2, 3]을 개별 요소로 분리한다(→ 1, 2, 3)</span></span><br><span class="line"><span class="built_in">console</span>.log(...[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) <span class="comment">// 1 2 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 문자열은 이터러블이다.</span></span><br><span class="line"><span class="built_in">console</span>.log(...<span class="string">'Hello'</span>); <span class="comment">// H e l l o</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Map과 Set은 이터러블이다.</span></span><br><span class="line"><span class="built_in">console</span>.log(...new <span class="built_in">Map</span>([[<span class="string">'a'</span>, <span class="string">'1'</span>], [<span class="string">'b'</span>, <span class="string">'2'</span>]])); <span class="comment">// [ 'a', '1' ] [ 'b', '2' ]</span></span><br><span class="line"><span class="built_in">console</span>.log(...new <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])); <span class="comment">// 1 2 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 이터러블이 아닌 일반 객체는 스프레드 문법의 대상이 될 수 없다.</span></span><br><span class="line"><span class="built_in">console</span>.log(...&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;);</span><br><span class="line"><span class="comment">// TypeError: Found non-callable @@iterator</span></span><br></pre></td></tr></table></figure>
+
+<p>1 2 3은 값이 아니라 값들의 목록이다. 즉, 스프레드 문법의 결과는 값이 아니다. 이는 스프레드 문법 …이 피연산자를 연산하여 값을 생성하는 연산자가 아님을 의미한다. 따라서 스프레드 문법의 결과는 변수에 할당할 수 없다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = ...arr; <span class="comment">// SyntaxError: Unexpected token ...</span></span><br></pre></td></tr></table></figure>
+
+<p> 스프레드 문법의 결과물은 단독으로 사용할 수 없고, 아래와 같이 쉼표로 구분한 값의 목록을 사용하는 문맥에서만 사용할 수 있다.</p>
+<ul>
+<li>함수 호출문의 인수 목록</li>
+<li>배열 리터럴의 요소 목록</li>
+<li>객체 리터럴의 프로퍼티 목록<br>
+
+</li>
+</ul>
+<h1 id="1-함수-호출문의-인수-목록에서-사용하는-경우"><a href="#1-함수-호출문의-인수-목록에서-사용하는-경우" class="headerlink" title="1. 함수 호출문의 인수 목록에서 사용하는 경우"></a>1. 함수 호출문의 인수 목록에서 사용하는 경우</h1><br>
+
+<p>요소값들의 집합인 배열을 펼쳐서 개별적인 값들의 목록으로 만든 후, 이를 함수의 인수 목록으로 전달해야 하는 경우가 있다. 아래의 예제를 살펴보자.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 배열 arr의 요소 중에서 최대값을 구하기 위해 Math.max를 사용한다.</span></span><br><span class="line"><span class="keyword">const</span> maxValue = <span class="built_in">Math</span>.max(arr);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(maxValue); <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<p>Math.max 메소드는 매개변수 개수를 확정할 수 없는 가변 인자 함수이다. 아래와 같이 개수가 정해져 있지 않은 여러 개의 숫자를 인수로 전달받아 인수 중에서 최대값을 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.max(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// -&gt; 2</span></span><br><span class="line"><span class="built_in">Math</span>.max(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// -&gt; 3</span></span><br><span class="line"><span class="built_in">Math</span>.max(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>); <span class="comment">// -&gt; 4</span></span><br></pre></td></tr></table></figure>
+
+<p>만약 Math.max 메소드에 숫자가 아닌 배열을 인수로 전달하면 최대값을 구할 수 없으므로 NaN을 반환한다.</p>
 
         </div>
         
