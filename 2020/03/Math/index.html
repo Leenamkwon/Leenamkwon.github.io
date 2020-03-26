@@ -7,30 +7,26 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Tag: prototype - namkwon&#39;s tech blog</title>
+<title>수학 상수와 함수를 위한 Math 객체 | javaScript - namkwon&#39;s tech blog</title>
 
 
-    <meta name="description" content="Its all good, man!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="namkwon&#39;s tech blog">
-<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/tags/prototype/index.html">
+    <meta name="description" content="Math 객체는 수학 상수와 함수를 위한 프로퍼티와 메소드를 제공하는 빌트인 객체이다. Math 객체는 생성자 함수가 아니다. 따라서 Math 객체는 정적(static) 프로퍼티와 메소드만을 제공한다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="수학 상수와 함수를 위한 Math 객체 | javaScript">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/Math/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
-<meta property="og:description" content="Its all good, man!">
+<meta property="og:description" content="Math 객체는 수학 상수와 함수를 위한 프로퍼티와 메소드를 제공하는 빌트인 객체이다. Math 객체는 생성자 함수가 아니다. 따라서 Math 객체는 정적(static) 프로퍼티와 메소드만을 제공한다.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/images/og_image.png">
+<meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
+<meta property="article:published_time" content="2020-03-26T05:48:03.000Z">
+<meta property="article:modified_time" content="2020-03-26T05:58:00.345Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
-<meta property="article:tag" content=" TypeScript">
-<meta property="article:tag" content=" JS">
-<meta property="article:tag" content=" HTML5">
-<meta property="article:tag" content=" CSS3">
-<meta property="article:tag" content=" SCSS">
-<meta property="article:tag" content=" React">
-<meta property="article:tag" content=" web">
-<meta property="article:tag" content=" vue">
-<meta property="article:tag" content=" git">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="object">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/images/og_image.png">
+<meta name="twitter:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 
 
 
@@ -88,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="namkwon&#39;s tech blog" height="28">
+                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="수학 상수와 함수를 위한 Math 객체 | javaScript" height="28">
             
             </a>
         </div>
@@ -137,383 +133,139 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="수학 상수와 함수를 위한 Math 객체 | javaScript">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-26T05:48:03.000Z">2020-03-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                수학 상수와 함수를 위한 Math 객체 | javaScript
+            
+        </h1>
+        <div class="content">
+            <p>Math 객체는 수학 상수와 함수를 위한 프로퍼티와 메소드를 제공하는 빌트인 객체이다. Math 객체는 생성자 함수가 아니다. 따라서 Math 객체는 정적(static) 프로퍼티와 메소드만을 제공한다.</p>
+<a id="more"></a>
+
+<p>사용 빈도가 높은 프로퍼티와 메소드만을 설명한다.<br><br></p>
+<h1 id="1-Math-Property"><a href="#1-Math-Property" class="headerlink" title="1. Math Property"></a>1. Math Property</h1><br>
+
+<h1 id="1-1-Math-PI"><a href="#1-1-Math-PI" class="headerlink" title="1.1 Math.PI"></a>1.1 Math.PI</h1><p>PI 값(π ≈ 3.141592653589793)을 반환한다.</p>
+<br>
+
+<h1 id="2-Math-Method"><a href="#2-Math-Method" class="headerlink" title="2. Math Method"></a>2. Math Method</h1><br>
+
+<h1 id="2-1-Math-abs-x-number-number"><a href="#2-1-Math-abs-x-number-number" class="headerlink" title="2.1 Math.abs(x: number):number"></a>2.1 Math.abs(x: number):number</h1><br>
+
+<p>인수의 절댓값을 반환한다. 절댓값은 반드시 0 또는 양수이어야 한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.abs(<span class="number">-1</span>);       <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.abs(<span class="string">'-1'</span>);     <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.abs(<span class="string">''</span>);       <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Math</span>.abs([]);       <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Math</span>.abs(<span class="literal">null</span>);     <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Math</span>.abs(<span class="literal">undefined</span>);<span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Math</span>.abs(&#123;&#125;);       <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Math</span>.abs(<span class="string">'string'</span>); <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Math</span>.abs();         <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="2-2-Math-round-x-number-number"><a href="#2-2-Math-round-x-number-number" class="headerlink" title="2.2 Math.round(x: number):number"></a>2.2 Math.round(x: number):number</h1><br>
+
+<p>인수의 소수점 이하를 반올림한 정수를 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.round(<span class="number">1.4</span>);  <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">1.6</span>);  <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">-1.4</span>); <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">-1.6</span>); <span class="comment">// -2</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">1</span>);    <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.round();     <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h1 id="2-3-Math-ceil-x-number-number"><a href="#2-3-Math-ceil-x-number-number" class="headerlink" title="2.3 Math.ceil(x: number): number"></a>2.3 Math.ceil(x: number): number</h1><br>
+
+<p>인수의 소수점 이하를 올림한 정수를 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.round(<span class="number">1.4</span>);  <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">1.6</span>);  <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">-1.4</span>); <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">-1.6</span>); <span class="comment">// -2</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">1</span>);    <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.round();     <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h1 id="2-4-Math-floor-x-number-number"><a href="#2-4-Math-floor-x-number-number" class="headerlink" title="2.4 Math.floor(x: number): number"></a>2.4 Math.floor(x: number): number</h1><br>
+
+<p>인수의 소수점 이하를 내림한 정수를 반환한다. Math.ceil의 반대 개념이다.</p>
+<ul>
+<li>양수인 경우, 소수점 이하를 떼어 버린 다음 정수를 반환한다.</li>
+<li>음수인 경우, 소수점 이하를 떼어 버린 다음 -1을 한 정수를 반환한다.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.floor(<span class="number">1.9</span>);  <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.floor(<span class="number">9.1</span>);  <span class="comment">// 9</span></span><br><span class="line"><span class="built_in">Math</span>.floor(<span class="number">-1.9</span>); <span class="comment">// -2</span></span><br><span class="line"><span class="built_in">Math</span>.floor(<span class="number">-9.1</span>); <span class="comment">// -10</span></span><br><span class="line"><span class="built_in">Math</span>.floor(<span class="number">1</span>);    <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.floor();     <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h1 id="2-5-Math-sqrt-x-number-number"><a href="#2-5-Math-sqrt-x-number-number" class="headerlink" title="2.5 Math.sqrt(x: number): number"></a>2.5 Math.sqrt(x: number): number</h1><br>
+
+<p>인수의 제곱근을 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.sqrt(<span class="number">9</span>);  <span class="comment">// 3</span></span><br><span class="line"><span class="built_in">Math</span>.sqrt(<span class="number">-9</span>); <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Math</span>.sqrt(<span class="number">2</span>);  <span class="comment">// 1.414213562373095</span></span><br><span class="line"><span class="built_in">Math</span>.sqrt(<span class="number">1</span>);  <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.sqrt(<span class="number">0</span>);  <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Math</span>.sqrt();   <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h1 id="2-6-Math-random-number"><a href="#2-6-Math-random-number" class="headerlink" title="2.6 Math.random(): number"></a>2.6 Math.random(): number</h1><br>
+
+<p>인수의 소수점 이하를 올림한 정수를 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.round(<span class="number">1.4</span>);  <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">1.6</span>);  <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">-1.4</span>); <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">-1.6</span>); <span class="comment">// -2</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">1</span>);    <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.round();     <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Math/" rel="tag">Math</a>, <a class="has-link-grey -link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="has-link-grey -link" href="/tags/javaScript/" rel="tag">javaScript</a>, <a class="has-link-grey -link" href="/tags/object/" rel="tag">object</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/Number/">
+                <span class="level-item">Number 레퍼 객체 | javaScript</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">prototype</a></li>
-        </ul>
-        </nav>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/Math/" data-num-posts="5"></div>
+
     </div>
 </div>
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/03/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="프로토타입 | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-08T06:02:03.000Z">2020-03-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85/">프로토타입 | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <p>자바스크립트는 <strong>명령형, 함수형, 프로토타입 기반 객체지향 프로그래밍</strong>을 지원하는 멀티 패러다임 프로그래밍 언어다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/03/let_const/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="let과 const | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-02T04:53:10.000Z">2020-03-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/let_const/">let과 const | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <ol>
-<li>var 키워드로 선언한 변수의 문제점<br>ES5까지 변수를 선언할 수 있는 유일한 방법은 var 키워드를 사용하는 것이었다. var 키워드로 선언된 변수는 아래와 같은 특징이 있다. 이는 다른 언어와는 구별되는 독특한 특징으로 주의를 기울이지 않으면 심각한 문제를 발생시킬 수 있다..
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/let_const/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/02/function/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="함수 | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-26T04:53:10.000Z">2020-02-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/02/function/">함수 | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="1-함수란"><a href="#1-함수란" class="headerlink" title="1. 함수란?"></a>1. 함수란?</h1><p>함수는 자바스크립트에서 가장 중요한 핵심 개념입니다. 다른 자바스크립트의 핵심 개념인 스코프, 실행 컨텍스트, 클로저, 생성자 함수에 의한 객체 생성, 메소드, this, 프로토타입, 모듈화 등이 모두 함수와 깊은 관련이 있습니다. 따라서 함수는 자바스크립트를 정확히 이해하고 넘어 가야하는 핵심 중의 핵심이라고 할 수 있습니다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/02/function/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/02/object/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="객체 리터럴 | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-25T11:06:09.000Z">2020-02-25</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/02/object/">객체 리터럴 | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="1-객체란"><a href="#1-객체란" class="headerlink" title="1. 객체란?"></a>1. 객체란?</h1><p>자바스크립트는 객체(object) 기반의 프로그래밍 언어이며 자바스크립트를 이루고 있는 거의 “모든 것”이 객체이다. 원시 값을 제외한 나머지 값들(함수, 배열, 정규표현식 등)은 모두 객체이다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/02/object/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/02/control-flow-statement/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="제어문 | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-24T06:34:10.000Z">2020-02-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/02/control-flow-statement/">제어문 | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <p>제어문(Control flow statement)은 주어진 조건에 따라 코드 블록을 실행(조건문)하거나 반복 실행(반복문)할 때 사용한다. 일반적으로 코드는 위에서 아래 방향으로 순차적으로 실행된다. 제어문을 사용하면 코드의 실행 흐름을 인위적으로 제어할 수 있다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/02/control-flow-statement/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/02/coercion/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="타입 변환과 단축 평가 | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-24T05:07:23.000Z">2020-02-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/02/coercion/">타입 변환과 단축 평가 | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <a id="more"></a>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/02/data-type/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="데이터 타입 | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-22T09:28:11.000Z">2020-02-22</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/02/data-type/">데이터 타입 | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <p>데이터 타입(Data type. 줄여서 타입이라고도 부른다)은 값의 종류를 말한다. 자바스크립트의 모든 값은 데이터 타입을 갖는다.</p>
-<p>자바스크립트(ES6)는 7개의 데이터 타입을 제공한다. 7개의 데이터 타입은 원시 타입(primitive type)과 객체 타입(object/reference type)으로 분류할 수 있다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/02/data-type/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 </div>
                 
                 
@@ -801,7 +553,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="namkwon&#39;s tech blog" height="28">
+                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="수학 상수와 함수를 위한 Math 객체 | javaScript" height="28">
                 
                 </a>
                 <p class="is-size-7">

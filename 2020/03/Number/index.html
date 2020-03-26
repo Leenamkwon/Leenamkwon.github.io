@@ -19,12 +19,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-03-25T13:02:03.000Z">
-<meta property="article:modified_time" content="2020-03-25T13:35:23.110Z">
+<meta property="article:modified_time" content="2020-03-25T13:56:52.539Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
-<meta property="article:tag" content="Number">
 <meta property="article:tag" content="object">
+<meta property="article:tag" content="Number">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 
@@ -254,6 +254,7 @@ Number 객체는 Number() 생성자 함수를 통해 생성할 수 있다.
 
 <h1 id="3-5-Number-prototype-toExpoenetial-fractionDigits-number-string"><a href="#3-5-Number-prototype-toExpoenetial-fractionDigits-number-string" class="headerlink" title="3.5 Number.prototype.toExpoenetial(fractionDigits?: number): string"></a>3.5 Number.prototype.toExpoenetial(fractionDigits?: number): string</h1><br>
 
+<p>대상을 지수 표기법으로 변환하여 문자열로 반환한다. 지수 표기법이란 매우 큰 숫자를 표기할 때 주로 사용하며 e(Exponent) 앞에 있는 숫자에 10의 n승이 곱하는 형식으로 수를 나타내는 방식이다.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numObj = <span class="number">77.1234</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(numObj.toExponential());  <span class="comment">// logs 7.71234e+1</span></span><br><span class="line"><span class="built_in">console</span>.log(numObj.toExponential(<span class="number">4</span>)); <span class="comment">// logs 7.7123e+1</span></span><br><span class="line"><span class="built_in">console</span>.log(numObj.toExponential(<span class="number">2</span>)); <span class="comment">// logs 7.71e+1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">77.1234</span>.toExponential()); <span class="comment">// logs 7.71234e+1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">77.</span>toExponential());      <span class="comment">// SyntaxError: Invalid or unexpected token</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">77</span> .toExponential());     <span class="comment">// logs 7.7e+1</span></span><br></pre></td></tr></table></figure>
 <br>
 
@@ -302,6 +303,13 @@ Number 객체는 Number() 생성자 함수를 통해 생성할 수 있다.
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/Math/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">수학 상수와 함수를 위한 Math 객체 | javaScript</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -376,7 +384,7 @@ Number 객체는 Number() 생성자 함수를 통해 생성할 수 있다.
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            29
+                            30
                         </p>
                     </a>
                 </div>
@@ -400,7 +408,7 @@ Number 객체는 Number() 생성자 함수를 통해 생성할 수 있다.
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            33
+                            34
                         </p>
                     </a>
                 </div>
@@ -460,7 +468,7 @@ Number 객체는 Number() 생성자 함수를 통해 생성할 수 있다.
                 <span class="level-item">develop</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">26</span>
+                <span class="level-item tag">27</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/develop/JavaScript/">
@@ -468,7 +476,7 @@ Number 객체는 Number() 생성자 함수를 통해 생성할 수 있다.
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">24</span>
+                <span class="level-item tag">25</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/develop/React/">
@@ -497,6 +505,25 @@ Number 객체는 Number() 생성자 함수를 통해 생성할 수 있다.
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/Math/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="수학 상수와 함수를 위한 Math 객체 | javaScript">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T05:48:03.000Z">2020-03-26</time></div>
+                    <a href="/2020/03/Math/" class="title has-link-black-ter is-size-6 has-text-weight-normal">수학 상수와 함수를 위한 Math 객체 | javaScript</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -574,25 +601,6 @@ Number 객체는 Number() 생성자 함수를 통해 생성할 수 있다.
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/%EB%B0%B0%EC%97%B4/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="배열(Array) | javaScript">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-21T11:02:03.000Z">2020-03-21</time></div>
-                    <a href="/2020/03/%EB%B0%B0%EC%97%B4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">배열(Array) | javaScript</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -601,7 +609,7 @@ Number 객체는 Number() 생성자 함수를 통해 생성할 수 있다.
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/ExecutionContext/" style="font-size: 10px;">ExecutionContext</a> <a href="/tags/Number/" style="font-size: 10px;">Number</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/TypeScript/" style="font-size: 18.33px;">TypeScript</a> <a href="/tags/algorism/" style="font-size: 11.67px;">algorism</a> <a href="/tags/array/" style="font-size: 13.33px;">array</a> <a href="/tags/attribute/" style="font-size: 10px;">attribute</a> <a href="/tags/bulitin/" style="font-size: 10px;">bulitin</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/closer/" style="font-size: 10px;">closer</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/destructuring/" style="font-size: 10px;">destructuring</a> <a href="/tags/firstclass/" style="font-size: 10px;">firstclass</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/hof/" style="font-size: 10px;">hof</a> <a href="/tags/javaScript/" style="font-size: 20px;">javaScript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/object/" style="font-size: 11.67px;">object</a> <a href="/tags/operator/" style="font-size: 10px;">operator</a> <a href="/tags/present/" style="font-size: 10px;">present</a> <a href="/tags/property/" style="font-size: 10px;">property</a> <a href="/tags/prototype/" style="font-size: 15px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/scopechain/" style="font-size: 10px;">scopechain</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/statement/" style="font-size: 10px;">statement</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a>
+        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/ExecutionContext/" style="font-size: 10px;">ExecutionContext</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/Number/" style="font-size: 10px;">Number</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/TypeScript/" style="font-size: 18.33px;">TypeScript</a> <a href="/tags/algorism/" style="font-size: 11.67px;">algorism</a> <a href="/tags/array/" style="font-size: 13.33px;">array</a> <a href="/tags/attribute/" style="font-size: 10px;">attribute</a> <a href="/tags/bulitin/" style="font-size: 10px;">bulitin</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/closer/" style="font-size: 10px;">closer</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/destructuring/" style="font-size: 10px;">destructuring</a> <a href="/tags/firstclass/" style="font-size: 10px;">firstclass</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/hof/" style="font-size: 10px;">hof</a> <a href="/tags/javaScript/" style="font-size: 20px;">javaScript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/object/" style="font-size: 13.33px;">object</a> <a href="/tags/operator/" style="font-size: 10px;">operator</a> <a href="/tags/present/" style="font-size: 10px;">present</a> <a href="/tags/property/" style="font-size: 10px;">property</a> <a href="/tags/prototype/" style="font-size: 15px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/scopechain/" style="font-size: 10px;">scopechain</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/statement/" style="font-size: 10px;">statement</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a>
     </div>
 </div>
     
