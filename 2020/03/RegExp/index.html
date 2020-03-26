@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-03-26T07:00:01.000Z">
-<meta property="article:modified_time" content="2020-03-26T07:41:20.152Z">
+<meta property="article:modified_time" content="2020-03-26T07:48:40.143Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -278,6 +278,55 @@
 
 <p>메일 주소 형식에 맞는지 검사한다.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> email = <span class="string">'ungmo2@gmail.com'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> regexr = <span class="regexp">/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]&#123;2,3&#125;$/</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(regexr.test(email)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>핸드폰 번호 형식에 맞는지 검사한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cellphone = <span class="string">'010-1234-5678'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> regexr = <span class="regexp">/^\d&#123;3&#125;-\d&#123;3,4&#125;-\d&#123;4&#125;$/</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(regexr.test(cellphone)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>특수 문자 포함 여부를 검사한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> targetStr = <span class="string">'abc#123'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// A-Za-z0-9 이외의 문자가 있는지 검사</span></span><br><span class="line"><span class="keyword">let</span> regexr = <span class="regexp">/[^A-Za-z0-9]/gi</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(regexr.test(targetStr)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 아래 방식도 동작한다. 이 방식의 장점은 특수 문자를 선택적으로 검사할 수 있다.</span></span><br><span class="line">regexr = <span class="regexp">/[\&#123;\&#125;\[\]\/?.,;:|\)*~`!^\-_+&lt;&gt;@\#$%&amp;\\\=\(\'\"]/gi</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(regexr.test(targetStr)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 특수 문자 제거</span></span><br><span class="line"><span class="built_in">console</span>.log(targetStr.replace(regexr, <span class="string">''</span>)); <span class="comment">// abc123</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="2-Javascript-Regular-Expression"><a href="#2-Javascript-Regular-Expression" class="headerlink" title="2. Javascript Regular Expression"></a>2. Javascript Regular Expression</h1><br>
+
+<h2 id="2-1-RegExp-Constructor"><a href="#2-1-RegExp-Constructor" class="headerlink" title="2.1 RegExp Constructor"></a>2.1 RegExp Constructor</h2><br>
+
+<p>자바스크립트은 정규표현식을 위해 RegExp 객체를 지원한다. RegExp 객체를 생성하기 위해서는 리터럴 방식과 RegExp 생성자 함수를 사용할 수 있다. 일반적인 방법은 리터럴 방식이다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">RegExp</span>(pattern[, flags])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pattern 정규표현식의 텍스트</li>
+<li>flags 정규표현식의 플래그 (g, i, m, u, y)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 정규식 리터럴</span></span><br><span class="line">/ab+c/i;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'ab+c'</span>, <span class="string">'i'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/ab+c/</span>, <span class="string">'i'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/ab+c/i</span>); <span class="comment">// ES6</span></span><br></pre></td></tr></table></figure>
+
+<p>정규표현식을 사용하는 메소드는 RegExp.prototype.exec, RegExp.prototype.test, String.prototype.match, String.prototype.replace, String.prototype.search, String.prototype.split 등이 있다.</p>
+<br>
+
+<h2 id="2-2-RegExp-Method"><a href="#2-2-RegExp-Method" class="headerlink" title="2.2 RegExp Method"></a>2.2 RegExp Method</h2><br>
+
+<h2 id="2-2-1-RegExp-prototype-exec-target-string-RegExpExecArray-null"><a href="#2-2-1-RegExp-prototype-exec-target-string-RegExpExecArray-null" class="headerlink" title="2.2.1 RegExp.prototype.exec(target: string): RegExpExecArray | null"></a>2.2.1 RegExp.prototype.exec(target: string): RegExpExecArray | null</h2><br>
+
+<p>문자열을 검색하여 매칭 결과를 반환한다. 반환값은 배열 또는 null이다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = <span class="string">'Is this all there is?'</span>;</span><br><span class="line"><span class="keyword">const</span> regExp = <span class="regexp">/is/</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = regExp.exec(target);</span><br><span class="line"><span class="built_in">console</span>.log(res); <span class="comment">// [ 'is', index: 5, input: 'Is this all there is?' ]</span></span><br></pre></td></tr></table></figure>
+
+<p>exec 메소드는 g플래그를 지정하여도 첫번째 매칭 결과만을 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = <span class="string">'Is this all there is?'</span>;</span><br><span class="line"><span class="keyword">const</span> regExp = <span class="regexp">/is/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = regExp.exec(target);</span><br><span class="line"><span class="built_in">console</span>.log(res); <span class="comment">// [ 'is', index: 5, input: 'Is this all there is?' ]</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="2-2-2-RegExp-prototype-test-target-string-boolean"><a href="#2-2-2-RegExp-prototype-test-target-string-boolean" class="headerlink" title="2.2.2 RegExp.prototype.test(target: string):boolean"></a>2.2.2 RegExp.prototype.test(target: string):boolean</h2><br>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = <span class="string">'Is this all there is?'</span>;</span><br><span class="line"><span class="keyword">const</span> regExp = <span class="regexp">/is/</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = regExp.exec(target);</span><br><span class="line"><span class="built_in">console</span>.log(res); <span class="comment">// [ 'is', index: 5, input: 'Is this all there is?' ]</span></span><br></pre></td></tr></table></figure>
+
+<p>exec 메소드는 g플래그를 지정하여도 첫번쨰 매칭 결과만을 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = <span class="string">'Is this all there is?'</span>;</span><br><span class="line"><span class="keyword">const</span> regExp = <span class="regexp">/is/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = regExp.exec(target);</span><br><span class="line"><span class="built_in">console</span>.log(res); <span class="comment">// [ 'is', index: 5, input: 'Is this all there is?' ]</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="2-2-2-RegExp-prototype-test-target-string-boolean-ES3"><a href="#2-2-2-RegExp-prototype-test-target-string-boolean-ES3" class="headerlink" title="2.2.2 RegExp.prototype.test(target: string): boolean ES3"></a>2.2.2 RegExp.prototype.test(target: string): boolean ES3</h2><br>
+문자열을 검색하여 매칭 결과를 반환한다. 반환값은 true 또는 false이다.
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = <span class="string">'Is this all there is?'</span>;</span><br><span class="line"><span class="keyword">const</span> regExp = <span class="regexp">/is/</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = regExp.test(target);</span><br><span class="line"><span class="built_in">console</span>.log(res); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<br>
         </div>
         
         <div class="level is-size-7 is-uppercase">
