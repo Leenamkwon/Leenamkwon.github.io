@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-03-26T05:48:03.000Z">
-<meta property="article:modified_time" content="2020-03-26T05:58:00.345Z">
+<meta property="article:modified_time" content="2020-03-26T06:01:07.395Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -214,8 +214,28 @@
 
 <h1 id="2-6-Math-random-number"><a href="#2-6-Math-random-number" class="headerlink" title="2.6 Math.random(): number"></a>2.6 Math.random(): number</h1><br>
 
-<p>인수의 소수점 이하를 올림한 정수를 반환한다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.round(<span class="number">1.4</span>);  <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">1.6</span>);  <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">-1.4</span>); <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">-1.6</span>); <span class="comment">// -2</span></span><br><span class="line"><span class="built_in">Math</span>.round(<span class="number">1</span>);    <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.round();     <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<p>임의의 부동 소수점을 반환한다. 반환된 부동 소수점은 0부터 1 미만이다. 즉, 0은 포함되지만 1은 포함되지 않는다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.random(); <span class="comment">// 0 ~ 1 미만의 부동 소수점 (0.8208720231391746)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1 ~ 10의 랜덤 정수 취득</span></span><br><span class="line"><span class="comment">// 1) Math.random로 0 ~ 1 미만의 부동 소수점을 구한 다음, 10을 곱해 0 ~ 10 미만의 부동 소수점을 구한다.</span></span><br><span class="line"><span class="comment">// 2) 0 ~ 10 미만의 부동 소수점에 1을 더해 1 ~ 10까지의 부동 소수점을 구한다.</span></span><br><span class="line"><span class="comment">// 3) Math.floor으로 1 ~ 10까지의 부동 소수점의 소수점 이하를 떼어 버린 다음 정수를 반환한다.</span></span><br><span class="line"><span class="keyword">const</span> random = <span class="built_in">Math</span>.floor((<span class="built_in">Math</span>.random() * <span class="number">10</span>) + <span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(random); <span class="comment">// 1 ~ 10까지의 정수</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="2-7-Math-pow-x-number-y-number-number"><a href="#2-7-Math-pow-x-number-y-number-number" class="headerlink" title="2.7 Math.pow(x: number, y: number): number"></a>2.7 Math.pow(x: number, y: number): number</h1><br>
+
+<p>첫번째 인수를 밑(base), 두번째 인수를 지수(exponent)로하여 거듭제곱을 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">8</span>);  <span class="comment">// 256</span></span><br><span class="line"><span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">-1</span>); <span class="comment">// 0.5</span></span><br><span class="line"><span class="built_in">Math</span>.pow(<span class="number">2</span>);     <span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES7(ECMAScript 2016) Exponentiation operator(거듭 제곱 연산자)</span></span><br><span class="line"><span class="number">2</span> ** <span class="number">8</span>; <span class="comment">// 256</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="2-8-Math-max-…values-number-number"><a href="#2-8-Math-max-…values-number-number" class="headerlink" title="2.8 Math.max(…values: number[]): number"></a>2.8 Math.max(…values: number[]): number</h1><br>
+
+<p>인수 중에서 가장 큰 수를 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.max(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 배열 요소 중에서 최대값 취득</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> max = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, arr); <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6 Spread operator</span></span><br><span class="line"><span class="built_in">Math</span>.max(...arr); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h1 id="2-9-Math-min-…values-number-number"><a href="#2-9-Math-min-…values-number-number" class="headerlink" title="2.9 Math.min(…values: number[]): number"></a>2.9 Math.min(…values: number[]): number</h1><br>
+
+<p>인수 중에서 가장 큰 수를 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.min(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 배열 요소 중에서 최소값 취득</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> min = <span class="built_in">Math</span>.min.apply(<span class="literal">null</span>, arr); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6 Spread operator</span></span><br><span class="line"><span class="built_in">Math</span>.min(...arr); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
