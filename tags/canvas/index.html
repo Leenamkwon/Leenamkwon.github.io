@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Tag: var - namkwon&#39;s tech blog</title>
+<title>Tag: canvas - namkwon&#39;s tech blog</title>
 
 
     <meta name="description" content="Its all good, man!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="namkwon&#39;s tech blog">
-<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/tags/var/index.html">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/tags/canvas/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
 <meta property="og:description" content="Its all good, man!">
 <meta property="og:locale" content="en_US">
@@ -142,7 +142,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">var</a></li>
+            <li class="is-active"><a href="#" aria-current="page">canvas</a></li>
         </ul>
         </nav>
     </div>
@@ -152,8 +152,8 @@
 <div class="card">
     
     <div class="card-image">
-        <a href="/2020/02/var/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="전역 변수의 문제점 | javaScript">
+        <a href="/2020/03/canvas/" class="image is-7by1">
+            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="Canvas를 활용한 컴퓨터 그래픽스 | javaScript">
         </a>
     </div>
     
@@ -161,7 +161,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-27T12:02:23.000Z">2020-02-27</time>
+                <time class="level-item has-text-grey" datetime="2020-03-08T06:02:03.000Z">2020-03-08</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
@@ -174,24 +174,45 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/02/var/">전역 변수의 문제점 | javaScript</a>
+                <a class="has-link-black-ter" href="/2020/03/canvas/">Canvas를 활용한 컴퓨터 그래픽스 | javaScript</a>
             
         </h1>
         <div class="content">
-            <p>전역 변수의 무분별한 사용은 위험하다. 전역 변수를 반드시 사용하여야 할 이유를 찾지 못한다면 지역 변수를 사용하여야 한다. 전역 변수의 문제점과 전역 변수의 사용을 억제할 수 있는 방법에 대해 살펴보도록 하자.</p>
-<h1 id="1-변수의-생명-주기"><a href="#1-변수의-생명-주기" class="headerlink" title="1. 변수의 생명 주기"></a>1. 변수의 생명 주기</h1><br>
+            <h1 id="Canvas란"><a href="#Canvas란" class="headerlink" title="Canvas란?"></a>Canvas란?</h1><br>
 
-<h2 id="1-1-지역-변수의-생명-주기"><a href="#1-1-지역-변수의-생명-주기" class="headerlink" title="1.1. 지역 변수의 생명 주기"></a>1.1. 지역 변수의 생명 주기</h2><p>변수는 선언에 의해 생성되고 할당을 통해 값을 갖는다. 그리고 언젠가 소멸한다. 즉, 변수는 생물과 유사하게 생성되고 소멸되는 생명 주기(Life cycle)가 있다. 변수에 생명 주기가 없다면 한번 선언된 변수는 프로그램을 종료하지 않는 한 영원히 메모리 공간을 점유하게 된다.</p>
+<p>Canvas는 웹 브라우저에서 그래픽을 처리하기 위해 추가된 HTML5의 구성요소이다. 애플(Apple)사가 MacOs와 사파리 웹 브라우저에서 사용자 인터페이스를 만들기 위해 위젯이나 이미지를 렌더링할 목적으로 개발한 것이다. Canvas는 주요 웹브라우저에서 사용할 수 있으며 IE9이상에서 지원이된다.</p>
+<p>Canvas로는 2차원 그래픽과 WebGL을 사용한 3차원 그래픽을 구현할 수 있다.<br><br></p>
+<h1 id="Canvas의-특징"><a href="#Canvas의-특징" class="headerlink" title="Canvas의 특징"></a>Canvas의 특징</h1><br>
+
+<p>canvas는 즉시 실행형 저수준 API이다.<br><br></p>
+<h1 id="Canvas의-기본적인-사용법"><a href="#Canvas의-기본적인-사용법" class="headerlink" title="Canvas의 기본적인 사용법"></a>Canvas의 기본적인 사용법</h1><br>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>1 canvas 요소를 배치한다.</p>
+<p>body요소에서 canvas를 표시하고자 하는 위치에 canvas 요소를 배치한다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"mycanvas"</span> <span class="attr">width</span>=<span class="string">"640"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>입력 기본 단위는 px입니다. Canvas요소 객체의 가로 세로를 직접 입력할 수 있다. CSS로도 크기를 설정할 수 있지만 브라우저마다 왜곡/확대/축소될 수 있으므로 HTML 또는 DOM으로 설정하는 것이 나음.<br><br></p>
+<p>2 canvas 요소의 객체 가져오기</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"mycanvas"</span>);</span><br></pre></td></tr></table></figure>
+<br>
+
+<p>3 렌더링 컨텍스트 가져오기</p>
+<p>Canvas로 그림을 그리려면 canvas 요소객체에서 ‘렌더링 컨텍스트’라는 객체를 가져와야 함.<br>렌더링 컨텍스트를 가져올 떄는 canvas 요소 객체의 getContext 메서드를 사용해야합니다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>getContext의 메소드는 두 가지이다. 하나는 2차원 그래픽인 “2d” 하나는 WebGL을 사용한 3차원인 “webgl”을 사용한다.<br><br></p>
+<p>4 그림 그리기</p>
+<p>렌더링 컨텍스트를 가져왔다면 렌더링 컨텍스트의 메서드를 사용해서 Canvas 위에 그림을 그린다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeRext(<span class="number">50</span>, <span class="number">60</span>, <span class="number">200</span>, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h1 id="Canvas-좌표계"><a href="#Canvas-좌표계" class="headerlink" title="Canvas 좌표계"></a>Canvas 좌표계</h1><p>Canvas 좌표계는 기본적으로 왼쪽 윗부분이 원점인 (0, 0)이다. 캔버스 오른쪽이 x축의 정방향이며 캔버스 아래쪽이 y축 정방향이다.<br>좌표축의 길이를 세는 단위는 기본적으로 PX이다. 기본 좌표계는 나중에 수정이 가능함.</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/02/var/#more">Read More</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
