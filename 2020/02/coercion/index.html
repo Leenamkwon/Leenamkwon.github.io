@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-02-24T05:07:23.000Z">
-<meta property="article:modified_time" content="2020-04-02T19:06:03.354Z">
+<meta property="article:modified_time" content="2020-04-02T19:06:40.437Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -168,6 +168,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 명시적 타입 변환</span></span><br><span class="line"><span class="comment">// 숫자를 문자열로 타입 캐스팅한다.</span></span><br><span class="line"><span class="keyword">var</span> str = x.toString();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str, str); <span class="comment">// string 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 변수 x의 값이 변경된 것은 아니다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> x, x); <span class="comment">// number 10</span></span><br></pre></td></tr></table></figure>
 <p>개발자의 의도와는 상관없이 표현식을 평가하는 도중에 자바스크립트 엔진에 의해 암묵적으로 타입이 자동 변환되기도 한다. 이를 암묵적 타입 변환(Implicit coercion) 또는 타입 강제 변환(Type coercion)이라고 한다.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 암묵적 타입 변환</span></span><br><span class="line"><span class="comment">// 문자열 연결 연산자는 숫자 타입 x의 값을 바탕으로 새로운 문자열을 생성한다.</span></span><br><span class="line"><span class="keyword">var</span> str = x + <span class="string">''</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str, str); <span class="comment">// string 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 변수 x의 값이 변경된 것은 아니다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> x, x); <span class="comment">// number 10</span></span><br></pre></td></tr></table></figure>
+
 <p>명시적 타입 변환이나 암묵적 타입 변환이 기존 원시값(위 예제의 경우, 변수 x의 값)을 직접 변경하는 것은 아니다. 원시값은 변경 불가능한 값(imuutable value)이므로 변경할 수 없다. 타입 변환이란 기존 원시값을 사용해 다른 타입의 새로운 원시값을 생성하는 것이다.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 원시값 1이 '1'로 직접 변경되는 것이 아니다.</span></span><br><span class="line"><span class="comment">// 1을 사용해 타입이 다른 '1'을 새롭게 생성하여 '1' + ''을 평가한다.</span></span><br><span class="line"><span class="number">1</span> + <span class="string">''</span> <span class="comment">// '1'</span></span><br></pre></td></tr></table></figure>
 
@@ -486,9 +487,9 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/develop/git-gitHub/">
+        <a class="level is-marginless" href="/categories/develop/git/">
             <span class="level-start">
-                <span class="level-item">git & gitHub</span>
+                <span class="level-item">git</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -504,6 +505,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/G_%EA%B9%83%EC%9E%85%EB%AC%B8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FSFBhJ%2FbtqvyBI6eGX%2FtN0cZvjgFM0iHbP514z4S0%2Fimg.png" alt="깃 시작하기 | git &amp; github">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-03T21:02:03.000Z">2020-04-04</time></div>
+                    <a href="/2020/04/G_%EA%B9%83%EC%9E%85%EB%AC%B8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 시작하기 | git &amp; github</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/git/">git</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -574,25 +594,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T07:00:01.000Z">2020-03-26</time></div>
                     <a href="/2020/03/RegExp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">정규표현식 | javaScript</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/03/Date/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="날짜와 시간을 위한 Date 객체 | javaScript">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T06:03:01.000Z">2020-03-26</time></div>
-                    <a href="/2020/03/Date/" class="title has-link-black-ter is-size-6 has-text-weight-normal">날짜와 시간을 위한 Date 객체 | javaScript</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
                     </p>
