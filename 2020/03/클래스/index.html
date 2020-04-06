@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-03-18T11:02:03.000Z">
-<meta property="article:modified_time" content="2020-04-06T10:39:18.549Z">
+<meta property="article:modified_time" content="2020-04-06T12:09:42.058Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -308,6 +308,33 @@
 <p>상속을 통해 확장된 클래스를 서브 클래스(sub class)라 부르고, 서브 클래스에게 상속된 클래스를 수퍼 클래스(super class)라 부른다. 서브 클래스를 파생 클래스(derived class) 또는 자식 클래스(child class), 수퍼 클래스를 베이스 클래스(base class) 또는 부모 클래스(parent class)라고 부르기도 한다.</p>
 <p>extends 키워드의 역할은 수퍼 클래스와 서브 클래스 간의 상속 관계를 설정하는 것이다. 클래스도 프로토타입을 통해 상속 관계를 구현한다.</p>
 <p><img src="https://poiemaweb.com/assets/fs-images/25-10.png" alt=""></p>
+<p>수퍼 클래스와 서브 클래스는 인스턴스의 프로토타입 체인 뿐만이 아니라, 클래스 간의 프로토타입 체인도 생성한다. 이를 통해 프로토타입 메소드, 정적 메소드 모두 상속이 가능하다.<br><br></p>
+<h2 id="8-3-동적-상속"><a href="#8-3-동적-상속" class="headerlink" title="8.3. 동적 상속"></a>8.3. 동적 상속</h2><br>
+
+<p>extends 키워드는 생성자 함수를 상속받아 클래스를 확장할 수도 있다. 단, extends 키워드 앞에는 반드시 클래스가 와야 한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 생성자 함수</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Base</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.a = a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 생성자 함수를 상속받는 서브 클래스</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> derived = <span class="keyword">new</span> Derived(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(derived); <span class="comment">// Derived &#123;a: 1&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>extends 키워드 다음에는 클래스뿐만이 아니라 [[Construct]] 내부 메소드를 갖는 함수 객체를 반환하는 모든 표현식을 사용할 수 있다. 이를 통해 동적으로 상속받을 대상을 결정할 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Base1</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base2</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> condition = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 조건에 따라 동적으로 상속 대상을 결정하는 서브 클래스</span></span><br><span class="line">class Derived extends (condition ? Base1 : Base2) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> derived = <span class="keyword">new</span> Derived();</span><br><span class="line"><span class="built_in">console</span>.log(derived); <span class="comment">// Derived &#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(derived <span class="keyword">instanceof</span> Base1); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(derived <span class="keyword">instanceof</span> Base2); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="8-4-서브-클래스의-constructor"><a href="#8-4-서브-클래스의-constructor" class="headerlink" title="8.4. 서브 클래스의 constructor"></a>8.4. 서브 클래스의 constructor</h2><br>
+
+<p>클래스에 constructor를 생략하면 클래스에 아래와 같이 디폴트 constructor가 암묵적으로 정의된다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>() &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>서브 클래스에 constructor를 생략하면 클래스에 아래와 같이 디폴트 constructor가 암묵적으로 정의된다. args는 new 연산자와 함께 클래스를 호출할 때 전달한 인수의 리스트이다.</p>
+<p>super()는 수퍼 클래스의 constructor(super-constructor)를 호출하여 인스턴스를 생성한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(...args) &#123; <span class="keyword">super</span>(...args); &#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 예제는 아래와 같이 암묵적으로 디폴트 constructor가 정의된다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 수퍼 클래스</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 서브 클래스</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123; <span class="keyword">super</span>(); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> derived = <span class="keyword">new</span> Derived();</span><br><span class="line"><span class="built_in">console</span>.log(derived); <span class="comment">// Derived &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>위 예제와 같이 수퍼 클래스와 서브 클래스 모두 constructor를 생략하면 빈 객체가 생성된다.<br>프로퍼티를 소유하는 인스턴스를 생성하려면 constructor 내부에서 인스턴스에 프로퍼티를 추가해야 한다.<br><br></p>
+<h2 id="8-5-super-키워드"><a href="#8-5-super-키워드" class="headerlink" title="8.5. super 키워드"></a>8.5. super 키워드</h2><br>
+
+<p>super 키워드는 함수처럼 호출할 수도 있고 this와 같이 식별자처럼 참조할 수 있는 특수한 키워드이다. super는 아래와 같이 동작한다.</p>
+<p>  super를 호출하면 수퍼 클래스의 constructor(super-constructor)를 호출한다.<br>  super를 참조하면 수퍼 클래스의 메소드를 호출할 수 있다.</p>
 
         </div>
         
@@ -560,25 +587,6 @@
         
         <article class="media">
             
-            <a href="/2020/04/git02/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FSFBhJ%2FbtqvyBI6eGX%2FtN0cZvjgFM0iHbP514z4S0%2Fimg.png" alt="깃으로 버전 관리하기 | git &amp; github">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-03T21:02:03.000Z">2020-04-04</time></div>
-                    <a href="/2020/04/git02/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃으로 버전 관리하기 | git &amp; github</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/git/">git</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/04/git01/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FSFBhJ%2FbtqvyBI6eGX%2FtN0cZvjgFM0iHbP514z4S0%2Fimg.png" alt="깃 시작하기 | git &amp; github">
@@ -589,6 +597,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-03T21:02:03.000Z">2020-04-04</time></div>
                     <a href="/2020/04/git01/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 시작하기 | git &amp; github</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/git/">git</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/git02/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FSFBhJ%2FbtqvyBI6eGX%2FtN0cZvjgFM0iHbP514z4S0%2Fimg.png" alt="깃으로 버전 관리하기 | git &amp; github">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-03T21:02:03.000Z">2020-04-04</time></div>
+                    <a href="/2020/04/git02/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃으로 버전 관리하기 | git &amp; github</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/git/">git</a>
                     </p>
