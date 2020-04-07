@@ -7,30 +7,27 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Tag: this - namkwon&#39;s tech blog</title>
+<title>Sass 선택자, mixin, include | Sass(SCSS) - namkwon&#39;s tech blog</title>
 
 
-    <meta name="description" content="Its all good, man!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="namkwon&#39;s tech blog">
-<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/tags/this/index.html">
+    <meta name="description" content="Sass 선택자">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sass 선택자, mixin, include | Sass(SCSS)">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/04/sass02/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
-<meta property="og:description" content="Its all good, man!">
+<meta property="og:description" content="Sass 선택자">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/images/og_image.png">
+<meta property="og:image" content="https://velopert.com/wp-content/uploads/2016/06/hh.png">
+<meta property="article:published_time" content="2020-04-07T17:50:03.000Z">
+<meta property="article:modified_time" content="2020-04-07T18:24:33.360Z">
 <meta property="article:author" content="Lee namkwon">
-<meta property="article:tag" content="javaScript">
-<meta property="article:tag" content=" TypeScript">
-<meta property="article:tag" content=" JS">
-<meta property="article:tag" content=" HTML5">
-<meta property="article:tag" content=" CSS3">
-<meta property="article:tag" content=" SCSS">
-<meta property="article:tag" content=" React">
-<meta property="article:tag" content=" web">
-<meta property="article:tag" content=" vue">
-<meta property="article:tag" content=" git">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="SASS">
+<meta property="article:tag" content="SCSS">
+<meta property="article:tag" content="Koala">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/images/og_image.png">
+<meta name="twitter:image" content="https://velopert.com/wp-content/uploads/2016/06/hh.png">
 
 
 
@@ -88,7 +85,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="namkwon&#39;s tech blog" height="28">
+                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="Sass 선택자, mixin, include | Sass(SCSS)" height="28">
             
             </a>
         </div>
@@ -137,34 +134,23 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">this</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-image">
-        <a href="/2020/03/this/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="this | javaScript">
-        </a>
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://velopert.com/wp-content/uploads/2016/06/hh.png" alt="Sass 선택자, mixin, include | Sass(SCSS)">
+        </span>
     </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-15T11:02:03.000Z">2020-03-15</time>
+                <time class="level-item has-text-grey" datetime="2020-04-07T17:50:03.000Z">2020-04-08</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/Sass/">Sass</a>
                 </div>
                 
                 
@@ -174,21 +160,44 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/03/this/">this | javaScript</a>
+                Sass 선택자, mixin, include | Sass(SCSS)
             
         </h1>
         <div class="content">
-            <h1 id="1-this"><a href="#1-this" class="headerlink" title="1. this"></a>1. this</h1>
+            <h1 id="Sass-선택자"><a href="#Sass-선택자" class="headerlink" title="Sass 선택자"></a>Sass 선택자</h1><a id="more"></a>
+<br>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>테스트1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"aaa1"</span>&gt;</span>테스트2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>테스트3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>위 마크업을 scss로 선택자를 이용해 li를 선택하려면</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.a</span> &#123; <span class="attribute">color</span>: red;</span><br><span class="line">  <span class="selector-tag">ul</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">1px</span> solid red;</span><br><span class="line">    &gt; <span class="selector-tag">li</span> &#123;</span><br><span class="line">      <span class="attribute">border</span>: <span class="number">1px</span> solid blue;</span><br><span class="line">        <span class="selector-tag">a</span> &#123;</span><br><span class="line">          <span class="attribute">text-decoration</span>: none;</span><br><span class="line">          &amp;<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">            <span class="attribute">color</span>: red;</span><br><span class="line">          &#125;</span><br><span class="line">          &amp;<span class="selector-class">.aaa1</span> &#123; <span class="attribute">color</span>: blank;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &amp;<span class="selector-pseudo">:last-child</span> &#123; <span class="attribute">border</span>: <span class="number">1px</span> solid yellow &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>:hover 및 :last-child를 추가하고 싶을때는 해당 선택자 {}중괄호 안에서 &amp;:hover 추가<br><br></p>
+<h1 id="Mixin"><a href="#Mixin" class="headerlink" title="Mixin"></a>Mixin</h1><p>Mixin은 css의 keyframe이나 JS의 함수, 클래스와 비슷합니다. 반복되는 코드를 줄이기 위한 것<br><br></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @mixin으로 기능저장 </span></span><br><span class="line"><span class="keyword">@mixin</span> test&#123;</span><br><span class="line"><span class="comment">// Js로 생각하면 fn이라고 생각하면 됍니다.</span></span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="comment">// @include로 mixin을 만든 test 호출</span></span><br><span class="line">  <span class="keyword">@include</span> test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
+
+<p>sass를 사용하지 않았을 때 .clear라는 css를 미리 만들어서 사용하죠? sass를 사용하면 간편하게 가능해집니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> clear &#123;</span><br><span class="line">  &amp;<span class="selector-pseudo">:after</span> &#123; <span class="attribute">content</span>: <span class="string">" "</span>; </span><br><span class="line">            <span class="attribute">display</span>: block; </span><br><span class="line">            <span class="attribute">clear</span>: both;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123; <span class="keyword">@include</span> clear()</span><br><span class="line">    p &#123; </span><br><span class="line">      <span class="keyword">@include</span> test(); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
+
+<p>Mixin 매개 변수를 활용해서 사용해보겠습니다. JS의 함수와 매우 비슷합니다.</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> border(<span class="variable">$color</span>)&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="variable">$color</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;<span class="keyword">@include</span> border(blue); &#125;</span><br></pre></td></tr></table></figure>
+
+<p>다른 예제입니다. </p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> box(<span class="variable">$w</span>, <span class="variable">$h</span>) &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="variable">$w</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="variable">$h</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123; <span class="keyword">@include</span> box(<span class="number">300px</span>, <span class="number">400px</span>); <span class="attribute">border</span>: <span class="number">1px</span> solid red;&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/this/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/CSS/" rel="tag">CSS</a>, <a class="has-link-grey -link" href="/tags/HTML/" rel="tag">HTML</a>, <a class="has-link-grey -link" href="/tags/Koala/" rel="tag">Koala</a>, <a class="has-link-grey -link" href="/tags/SASS/" rel="tag">SASS</a>, <a class="has-link-grey -link" href="/tags/SCSS/" rel="tag">SCSS</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -198,9 +207,36 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/sass01/">
+                <span class="level-item">Sass 세팅하기 및 변수에 대해서 | Sass(SCSS)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/04/sass02/" data-num-posts="5"></div>
+
+    </div>
+</div>
 </div>
                 
                 
@@ -512,7 +548,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="namkwon&#39;s tech blog" height="28">
+                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="Sass 선택자, mixin, include | Sass(SCSS)" height="28">
                 
                 </a>
                 <p class="is-size-7">
