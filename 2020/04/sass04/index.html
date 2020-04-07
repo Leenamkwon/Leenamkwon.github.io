@@ -7,19 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Sass @for 반목문 | Sass(SCSS) - namkwon&#39;s tech blog</title>
+<title>Sass @for 반목문과 @each 반복문 | Sass(SCSS) - namkwon&#39;s tech blog</title>
 
 
     <meta name="description" content="@for(반복문)에 대해서">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sass @for 반목문 | Sass(SCSS)">
+<meta property="og:title" content="Sass @for 반목문과 @each 반복문 | Sass(SCSS)">
 <meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/04/sass04/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
 <meta property="og:description" content="@for(반복문)에 대해서">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://velopert.com/wp-content/uploads/2016/06/hh.png">
 <meta property="article:published_time" content="2020-04-07T18:34:03.000Z">
-<meta property="article:modified_time" content="2020-04-07T18:44:18.982Z">
+<meta property="article:modified_time" content="2020-04-07T19:10:56.775Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="HTML">
 <meta property="article:tag" content="CSS">
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="Sass @for 반목문 | Sass(SCSS)" height="28">
+                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="Sass @for 반목문과 @each 반복문 | Sass(SCSS)" height="28">
             
             </a>
         </div>
@@ -138,7 +138,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="https://velopert.com/wp-content/uploads/2016/06/hh.png" alt="Sass @for 반목문 | Sass(SCSS)">
+            <img class="thumbnail" src="https://velopert.com/wp-content/uploads/2016/06/hh.png" alt="Sass @for 반목문과 @each 반복문 | Sass(SCSS)">
         </span>
     </div>
     
@@ -159,7 +159,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Sass @for 반목문 | Sass(SCSS)
+                Sass @for 반목문과 @each 반복문 | Sass(SCSS)
             
         </h1>
         <div class="content">
@@ -168,6 +168,14 @@
 
 <p>@for에 변수명을 입력해서 작성한다. 보기쉽게 예제로 보자.</p>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt;ul class="list"&gt;</span><br><span class="line">  &lt;li class="ico1"&gt;텍스트1&lt;/li&gt;</span><br><span class="line">  &lt;li class="ico2"&gt;텍스트2&lt;/li&gt;</span><br><span class="line">  &lt;li class="ico3"&gt;텍스트3&lt;/li&gt;</span><br><span class="line">  &lt;li class="ico4"&gt;텍스트4&lt;/li&gt;</span><br><span class="line">  &lt;li class="ico5"&gt;텍스트5&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1부터 6미만(5까지)까지 반복을 하겠다.</span></span><br><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">1</span> to <span class="number">6</span> &#123;</span><br><span class="line">  <span class="selector-class">.list</span> <span class="selector-class">.ico</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">    <span class="comment">// 1.png ~ 4.png까지 자동으로 들어감</span></span><br><span class="line">    <span class="attribute">background-image</span>:url(ico#&#123;<span class="variable">$i</span>&#125;.png);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.list</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child</span>(#&#123;<span class="variable">$i</span>&#125;)<span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">"제목#&#123;$i&#125;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
+
+<h1 id="each-반복문에-대해서"><a href="#each-반복문에-대해서" class="headerlink" title="@each 반복문에 대해서"></a>@each 반복문에 대해서</h1><br>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 class="ico_book"&gt;제목1&lt;/h1&gt;</span><br><span class="line">&lt;h1 class="ico_zoom"&gt;제목2&lt;/h1&gt;</span><br><span class="line">&lt;h1 class="ico_phone"&gt;제목3&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@each</span> <span class="variable">$let</span> in book, zoom, phone &#123;</span><br><span class="line">  <span class="selector-class">.ico_</span>#&#123;<span class="variable">$var</span>&#125;&#123;</span><br><span class="line">    <span class="attribute">background</span>: url(images/#&#123;<span class="variable">$var</span>&#125;.gif) no-repeat;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이제 감이 오셨죠? 한층 더 응용해볼게요.</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 class="ico_book"&gt;제목1&lt;/h1&gt;</span><br><span class="line">&lt;h1 class="ico_zoom"&gt;제목2&lt;/h1&gt;</span><br><span class="line">&lt;h1 class="ico_phone"&gt;제목3&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@each</span> <span class="variable">$let</span> in book, zoom, phone &#123;</span><br><span class="line">  <span class="selector-class">.ico_</span>#&#123;<span class="variable">$var</span>&#125;&#123;</span><br><span class="line">    <span class="attribute">background</span>: url(images/#&#123;<span class="variable">$var</span>&#125;.gif) no-repeat;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$heading</span>:(</span><br><span class="line">  h1: <span class="number">30px</span>,</span><br><span class="line">  h2: <span class="number">20px</span>,</span><br><span class="line">  h3: <span class="number">15px</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">@each <span class="variable">$elem</span>, <span class="variable">$v</span> in <span class="variable">$heading</span> &#123;</span><br><span class="line">  #&#123;<span class="variable">$elem</span>&#125; &#123;</span><br><span class="line">    font-size: <span class="variable">$v</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -414,14 +422,14 @@
             
             <a href="/2020/04/sass04/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://velopert.com/wp-content/uploads/2016/06/hh.png" alt="Sass @for 반목문 | Sass(SCSS)">
+                    <img class="thumbnail" src="https://velopert.com/wp-content/uploads/2016/06/hh.png" alt="Sass @for 반목문과 @each 반복문 | Sass(SCSS)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-07T18:34:03.000Z">2020-04-08</time></div>
-                    <a href="/2020/04/sass04/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Sass @for 반목문 | Sass(SCSS)</a>
+                    <a href="/2020/04/sass04/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Sass @for 반목문과 @each 반복문 | Sass(SCSS)</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/Sass/">Sass</a>
                     </p>
@@ -529,7 +537,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="Sass @for 반목문 | Sass(SCSS)" height="28">
+                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="Sass @for 반목문과 @each 반복문 | Sass(SCSS)" height="28">
                 
                 </a>
                 <p class="is-size-7">
