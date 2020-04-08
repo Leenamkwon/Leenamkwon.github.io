@@ -10,16 +10,16 @@
 <title>브라우저의 렌더링 과정 | javaScript - namkwon&#39;s tech blog</title>
 
 
-    <meta name="description" content="구글의 V8 자바스크립트 엔진으로 빌드된 자바스크립트 런타임 환경(Runtime Environment)인 Node.js의 등장으로 자바스크립트는 웹 브라우저를 벗어나 서버 사이드 애플리케이션 개발에서도 사용할 수 있는 범용 개발 언어가 되었다. 하지만 자바스크립트가 가장 많이 사용되는 분야는 역시 웹 브라우저 환경에서 동작하는 웹 페이지&#x2F;애플리케이션의 클라">
+    <meta name="description" content="브라우저의 렌더링 과정">
 <meta property="og:type" content="article">
 <meta property="og:title" content="브라우저의 렌더링 과정 | javaScript">
 <meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/04/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%A0%8C%EB%8D%94%EB%A7%81/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
-<meta property="og:description" content="구글의 V8 자바스크립트 엔진으로 빌드된 자바스크립트 런타임 환경(Runtime Environment)인 Node.js의 등장으로 자바스크립트는 웹 브라우저를 벗어나 서버 사이드 애플리케이션 개발에서도 사용할 수 있는 범용 개발 언어가 되었다. 하지만 자바스크립트가 가장 많이 사용되는 분야는 역시 웹 브라우저 환경에서 동작하는 웹 페이지&#x2F;애플리케이션의 클라">
+<meta property="og:description" content="브라우저의 렌더링 과정">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-04-08T17:45:03.000Z">
-<meta property="article:modified_time" content="2020-04-08T18:25:17.835Z">
+<meta property="article:modified_time" content="2020-04-08T18:26:41.389Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -163,7 +163,10 @@
             
         </h1>
         <div class="content">
-            <p>구글의 V8 자바스크립트 엔진으로 빌드된 자바스크립트 런타임 환경(Runtime Environment)인 Node.js의 등장으로 자바스크립트는 웹 브라우저를 벗어나 서버 사이드 애플리케이션 개발에서도 사용할 수 있는 범용 개발 언어가 되었다. 하지만 자바스크립트가 가장 많이 사용되는 분야는 역시 웹 브라우저 환경에서 동작하는 웹 페이지/애플리케이션의 클라이언트 사이드이다.</p>
+            <h1 id="브라우저의-렌더링-과정"><a href="#브라우저의-렌더링-과정" class="headerlink" title="브라우저의 렌더링 과정"></a>브라우저의 렌더링 과정</h1><a id="more"></a>
+<br>
+
+<p>구글의 V8 자바스크립트 엔진으로 빌드된 자바스크립트 런타임 환경(Runtime Environment)인 Node.js의 등장으로 자바스크립트는 웹 브라우저를 벗어나 서버 사이드 애플리케이션 개발에서도 사용할 수 있는 범용 개발 언어가 되었다. 하지만 자바스크립트가 가장 많이 사용되는 분야는 역시 웹 브라우저 환경에서 동작하는 웹 페이지/애플리케이션의 클라이언트 사이드이다.</p>
 <p>웹 애플리케이션의 클라이언트 사이드 자바스크립트는 브라우저에서 HTML, CSS와 함께 실행된다. 따라서 브라우저 환경을 고려할 때 보다 효율적인 클라이언트 사이드 자바스크립트 프로그래밍이 가능하다.</p>
 <p>이를 위해 브라우저가 HTML, CSS, JS로 작성된 텍스트 문서를 어떻게 파싱(parsing, 해석)하여 브라우저에 렌더링하는지 살펴보자.</p>
 <pre><code>**파싱**
