@@ -7,30 +7,26 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Tag: RegExp - namkwon&#39;s tech blog</title>
+<title>forEach, map, reduce 차이점 | javaScript - namkwon&#39;s tech blog</title>
 
 
-    <meta name="description" content="Its all good, man!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="namkwon&#39;s tech blog">
-<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/tags/RegExp/index.html">
+    <meta name="description" content="javascript에서 forEach, map, reduce 차이점을 알아보자혼자서 할 때마다 맨날 mdn 뒤적뒤적 거리면서 보는게 짜증나서 이 글에서 정리를 해보려고한다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="forEach, map, reduce 차이점 | javaScript">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98%EC%B0%A8%EC%9D%B4/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
-<meta property="og:description" content="Its all good, man!">
+<meta property="og:description" content="javascript에서 forEach, map, reduce 차이점을 알아보자혼자서 할 때마다 맨날 mdn 뒤적뒤적 거리면서 보는게 짜증나서 이 글에서 정리를 해보려고한다.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/images/og_image.png">
+<meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
+<meta property="article:published_time" content="2020-03-25T07:02:03.000Z">
+<meta property="article:modified_time" content="2020-04-14T05:48:44.402Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
-<meta property="article:tag" content=" TypeScript">
-<meta property="article:tag" content=" JS">
-<meta property="article:tag" content=" HTML5">
-<meta property="article:tag" content=" CSS3">
-<meta property="article:tag" content=" SCSS">
-<meta property="article:tag" content=" React">
-<meta property="article:tag" content=" web">
-<meta property="article:tag" content=" vue">
-<meta property="article:tag" content=" git">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="array">
+<meta property="article:tag" content="hof">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/images/og_image.png">
+<meta name="twitter:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 
 
 
@@ -88,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="namkwon&#39;s tech blog" height="28">
+                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="forEach, map, reduce 차이점 | javaScript" height="28">
             
             </a>
         </div>
@@ -137,31 +133,20 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">RegExp</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-image">
-        <a href="/2020/03/RegExp/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="정규표현식 | javaScript">
-        </a>
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="forEach, map, reduce 차이점 | javaScript">
+        </span>
     </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-26T07:00:01.000Z">2020-03-26</time>
+                <time class="level-item has-text-grey" datetime="2020-03-25T07:02:03.000Z">2020-03-25</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
@@ -174,21 +159,39 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/03/RegExp/">정규표현식 | javaScript</a>
+                forEach, map, reduce 차이점 | javaScript
             
         </h1>
         <div class="content">
-            <h1 id="1-정규표현식-Regular-Expression"><a href="#1-정규표현식-Regular-Expression" class="headerlink" title="1. 정규표현식(Regular Expression)"></a>1. 정규표현식(Regular Expression)</h1>
+            <h1 id="javascript에서-forEach-map-reduce-차이점을-알아보자"><a href="#javascript에서-forEach-map-reduce-차이점을-알아보자" class="headerlink" title="javascript에서 forEach, map, reduce 차이점을 알아보자"></a>javascript에서 forEach, map, reduce 차이점을 알아보자</h1><p>혼자서 할 때마다 맨날 mdn 뒤적뒤적 거리면서 보는게 짜증나서 이 글에서 정리를 해보려고한다.</p>
+<a id="more"></a>
+
+<p>forEach, map, reduce의 공통점은 배열을 이용한다는 점이다. 배열의 값을 조작해서 원하는 결과값을 도출하는데 의미가 있다.<br><br></p>
+<p><strong>forEach는 문밖에서 리턴값을 받지 못한다.</strong></p>
+<p>이거랑 map이랑 맨날 헷갈려가지고 검색폼에 데이터를 뿌릴 때 오류나서 맨날 mdn에서 찾아봤다.(이제 좀 외웠으면 제발…머리야..)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> testArr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">const</span> matchArray = testArr.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> item;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(matchArray) <span class="comment">// undefinded</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>undefined가 출력된다</strong><br><br></p>
+<p><strong>map의 경우에는 문밖에서도 리턴값이 출력된다</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> testArr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">const</span> matchArray = testArr.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> item;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(matchArray) <span class="comment">// [1, 2, 3, 4, 5, 6, 7, 8]</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<p>그러면 <strong>reduce</strong>에 대해서 살펴보자</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> testArr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">const</span> matchArray = testArr.reduce(<span class="function">(<span class="params">lastitem, firstitem</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> lastitem + firstitem</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(matchArray) <span class="comment">// 36</span></span><br></pre></td></tr></table></figure>
+
+<p>reduce는 map과 다르게 배열로 반환하지 않고 값으로 출력한다.</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/RegExp/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="has-link-grey -link" href="/tags/array/" rel="tag">array</a>, <a class="has-link-grey -link" href="/tags/hof/" rel="tag">hof</a>, <a class="has-link-grey -link" href="/tags/javaScript/" rel="tag">javaScript</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -198,9 +201,43 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">스프레드문법 | javaScript</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/%EB%94%94%EC%8A%A4%ED%8A%B8%EB%9F%AD%EC%B2%98%EB%A7%81/">
+                <span class="level-item">디스트럭처링 할당 | javaScript</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/03/%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98%EC%B0%A8%EC%9D%B4/" data-num-posts="5"></div>
+
+    </div>
+</div>
 </div>
                 
                 
@@ -520,7 +557,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="namkwon&#39;s tech blog" height="28">
+                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="forEach, map, reduce 차이점 | javaScript" height="28">
                 
                 </a>
                 <p class="is-size-7">
