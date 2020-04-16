@@ -142,6 +142,125 @@
 <div class="card">
     
     <div class="card-image">
+        <a href="/2020/04/module/" class="image is-7by1">
+            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="모듈 | javaScript">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-16T00:42:03.000Z">2020-04-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/module/">모듈 | javaScript</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="1-모듈의-일반적인-의미"><a href="#1-모듈의-일반적인-의미" class="headerlink" title="1. 모듈의 일반적인 의미"></a>1. 모듈의 일반적인 의미</h1><br>
+
+<p>모듈(Module)이란 애플리케이션을 구성하는 개별적 요소로서 재사용 가능한 코드 조각을 말한다. 일반적으로 모듈은 기능을 기준으로 파일 단위로 분리되어 있다. 모듈이 성립하려면 모듈은 자신만의 파일 스코프를 가질 수 있어야 한다. 다시 말해, 자신만의 파일스코프를 갖는 모듈의 모든 자산은 캡슐화되어 다른 모듈에서 접근할 수 없다. 즉, 모듈은 개별적 존재로서 애플리케이션과 분리되어 존재한다.</p>
+<p>하지만 모듈은 애플리케이션이나 다른 모듈에 의해 재사용되어야 의미가 있다. 따라서 <strong>모듈은 공개가 필요한 자산에 한정하여 명시적으로 선택적 공개가 가능하다. 이를 export라 한다.</strong></p>
+<p>공개(export)된 모듈의 자산은 다른 모듈에서 재사용할 수 있다. 이때 공개된 모듈의 자산을 사용하는 모듈을 모듈 사용자라 한다. <strong>모듈 사용자는 필요한 자산을 공개한 모듈을 선택해 자신의 스코프 내로 불러 들여 재사용할 수 있다. 이를 import라 한다.</strong></p>
+<p><img src="https://poiemaweb.com/assets/fs-images/46-1.png" alt=""></p>
+<p>이처럼 모듈은 애플리케이션과 분리되어 개별적으로 존재하다가 필요에 따라 다른 모듈에 의해 재사용된다. 모듈은 기능별로 분리되어 개별적인 파일로 작성된다. 결론은 명확히 분리해서 애플리케이션을 구성할 수 있고, 재사용성이 좋아서 개발 효율성과 유지보수성을 높일 수 있다.<br><br></p>
+<h1 id="2-자바스크립트와-모듈"><a href="#2-자바스크립트와-모듈" class="headerlink" title="2. 자바스크립트와 모듈"></a>2. 자바스크립트와 모듈</h1><br>
+
+<p>C 언어는 #include, Java는 import 등 대부분의 프로그래밍 언어는 모듈 기능을 가지고 있다. 하지만 클라이언트 사이드 자바스크립트는 script 태그를 사용하여 외부의 자바스크립트 파일을 가져올 수는 있지만, 파일마다 독립적인 파일 스코프를 갖지 않고 하나의 전역 객체(Global Object)를 공유한다. 즉, 자바스크립트 파일을 여러 개의 파일로 분리하여 script 태그로 로드하여도 분리된 자바스크립트 파일들이 결국 하나의 자바스크립트 파일 내에 있는 것처럼 하나의 전역 객체를 공유한다. 따라서 분리된 자바스크립트 파일들이 하나의 전역을 갖게 되어 전역 변수가 중복되는 등의 문제가 발생할 수 있다. 이것으로는 모듈을 구현할 수 없다.</p>
+<p>자바스크립트를 클라이언트 사이드에 국한하지 않고 범용적으로 사용하고자 하는 움직임이 생기면서 모듈 시스템은 반드시 해결해야 하는 핵심 과제가 되었다. 이런 상황에서 제안된 것이 CommonJS와 AMD(Asynchronous Module Definition)이다.</p>
+<p>이로서 자바스크립트의 모듈 시스템은 크게 CommonJS와 AMD 진영으로 나뉘게 되었고 브라우저에서 모듈을 사용하기 위해서는 CommonJS 또는 AMD를 구현한 모듈 로더 라이브러리를 사용해야 하는 상황이 되었다.</p>
+<p>서버 사이드 자바스크립트 런타임 환경인 Node.js는 모듈 시스템의 사실상 표준(de facto standard)인 CommonJS를 채택하였고 독자적인 진화를 거쳐, 현재는 CommonJS 사양과 100% 동일하지는 않지만 기본적으로 CommonJS 사양을 따르고 있다. 즉, Node.js에서는 표준은 아니지만 모듈 시스템이 지원된다. 따라서 Node.js 환경에서는 모듈 별로 독립적인 파일 스코프, 즉 모듈 스코프를 갖는다.</p>
+<br>
+
+<h1 id="3-ES6-모듈"><a href="#3-ES6-모듈" class="headerlink" title="3. ES6 모듈"></a>3. ES6 모듈</h1><br>
+
+<p>이러한 상황에서 ES6에서는 클라이언트 사이드 자바스크립트에서도 동작하는 모듈 기능을 추가하였다. 2020년 4월 현재, 인터넷 익스플로어를 제외한 대부분의 브라우저(Chrome 61, FF 60, SF 10.1, Edge 16 이상)에서 ES6 모듈을 사용할 수 있다.(ES6 모듈 지원 현황)</p>
+<p>script 태그에 type=”module” 어트리뷰트를 추가하면 로드된 자바스크립트 파일은 모듈로서 동작한다. 일반적인 자바스크립트 파일이 아닌 ES6 모듈임을 명확히 하기 위해 ES6 모듈의 파일 확장자는 mjs를 사용할 것을 권장한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"module"</span> src=<span class="string">"apple.mjs"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="module" src="banana.mjs"&gt;&lt;/</span>script&gt;</span><br><span class="line">&lt;script type=<span class="string">"module"</span> src=<span class="string">"samsung.mjs"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="3-1-모듈-스코프"><a href="#3-1-모듈-스코프" class="headerlink" title="3.1 모듈 스코프"></a>3.1 모듈 스코프</h2><br>
+
+<p>ES6 모듈을 사용하지 않으면 자바스크립트 파일을 분리해도 독자적인 스코프를 갖지 않고 하나의 전역을 공유한다. 아래 예제를 살펴보자.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo.js</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'foo'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 변수 x는 전역 변수이다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">// foo</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// bar.js</span></span><br><span class="line"><span class="comment">// foo.js에서 선언한 전역 변수 x와 중복된 선언이다.</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'bar'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 변수 x는 전역 변수이다.</span></span><br><span class="line"><span class="comment">// foo.js에서 선언한 전역 변수 x의 값이 재할당되었다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">// bar</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script src=<span class="string">"foo.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">  &lt;script src="bar.js"&gt;&lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>HTML에서 2개의 자바스크립트 파일을 로드하면 로드된 자바스크립트는 하나의 전역을 공유한다. 위 예제에서 로드된 2개의 자바스크립트 파일은 하나의 전역 객체를 공유한다. 즉, 하나의 전역 스코프를 갖는다. 따라서 foo.js에서 선언한 변수 x와 bar.js에서 선언한 변수 x는 중복 선언되며 의도치 않게 변수 x의 값이 덮어 써진다.</p>
+<p>ES6 모듈은 파일 자체의 독자적인 모듈 스코프를 제공한다. 따라서, 모듈 내에서 var 키워드로 선언한 변수는 더 이상 전역 변수가 아니며 window 객체의 프로퍼티도 아니다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo.mjs</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'foo'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// foo</span></span><br><span class="line"><span class="comment">// 변수 x는 전역 변수가 아니며 window 객체의 프로퍼티도 아니다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bar.mjs</span></span><br><span class="line"><span class="comment">// 변수 x는 foo.mjs에서 선언한 변수 x와 스코프가 다른 변수이다.</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'bar'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// bar</span></span><br><span class="line"><span class="comment">// 변수 x는 전역 변수가 아니며 window 객체의 프로퍼티도 아니다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"foo.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"bar.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>모듈 내에서 선언한 변수는 모듈 외부에서 참조할 수 없다. 모듈 스코프가 다르기 떄문</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo.mjs</span></span><br><span class="line"><span class="keyword">const</span> x = <span class="string">'foo'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// foo</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bar.js</span></span><br><span class="line"><span class="comment">// 다른 모듈에서 선언한 변수는 모듈 외부에서 참조할 수 없다. 스코프가 다르기 때문이다.</span></span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"foo.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"bar.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="3-2-export-키워드"><a href="#3-2-export-키워드" class="headerlink" title="3.2 export 키워드"></a>3.2 export 키워드</h2><br>
+
+<p>모듈은 독자적인 모듈 스코프를 갖는다. 따라서 모듈 안에 선언한 모든 식별자는 기본적으로 해당 모듈 내부에서만 참조할 수 있다. <strong>만약 모듈 안에 선언한 식별자를 외부에 공개하여 다른 모듈들이 참조할 수 있게 하고 싶다면 export키워드를 사용한다.</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib.mjs</span></span><br><span class="line"><span class="comment">// 변수의 공개</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> pi = <span class="built_in">Math</span>.PI;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수의 공개</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 클래스의 공개</span></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>선언문 앞에 매번 export 키워드를 붙이는 것이 싫다면 export 대상을 모아 하나의 객체로 구성하여 한번에 export할 수도 있다.</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib.mjs</span></span><br><span class="line"><span class="keyword">const</span> pi = <span class="built_in">Math</span>.PI;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 변수, 함수 클래스를 하나의 객체로 구성하여 공개</span></span><br><span class="line"><span class="keyword">export</span> &#123; pi, square, Person &#125;;</span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="3-3-import-키워드"><a href="#3-3-import-키워드" class="headerlink" title="3.3 import 키워드"></a>3.3 import 키워드</h2><br>
+
+<p>다른 모듈에서 공개(export)한 식별자를 자신의 모듈 스코프 내부로 로드하려면 import 키워드를 사용한다. 다른 모듈이 export한 식별자로 import하며 ES6 모듈의 파일 확장자를 생략할 수 없다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.mjs</span></span><br><span class="line"><span class="comment">// 같은 폴더 내의 lib.mjs 모듈이 export한 식별자로 import한다.</span></span><br><span class="line"><span class="comment">// ES6 모듈의 파일 확장자를 생략할 수 없다.</span></span><br><span class="line"><span class="keyword">import</span> &#123; pi, square, Person &#125; <span class="keyword">from</span> <span class="string">'./lib.mjs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pi);         <span class="comment">// 3.141592653589793</span></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">10</span>)); <span class="comment">// 100</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> Person(<span class="string">'Lee'</span>)); <span class="comment">// Person &#123; name: 'Lee' &#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"lib.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"app.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>모듈이 export한 식별자를 각각 지정하지 않고 하나의 이름으로 한꺼번에 import할 수도 있다. 이떄 import되는 식별자는 as뒤에 지정한 이름의 객체에 프로퍼티로 할당된다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.mjs</span></span><br><span class="line"><span class="comment">// lib.mjs 모듈이 export한 모든 식별자를 lib 객체의 프로퍼티로 모아 import한다.</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> lib <span class="keyword">from</span> <span class="string">'./lib.mjs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(lib.pi);         <span class="comment">// 3.141592653589793</span></span><br><span class="line"><span class="built_in">console</span>.log(lib.square(<span class="number">10</span>)); <span class="comment">// 100</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> lib.Person(<span class="string">'Lee'</span>)); <span class="comment">// Person &#123; name: 'Lee' &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>모듈이 export한 식별자 이름을 변경하여 import할 수도 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.mjs</span></span><br><span class="line"><span class="comment">// lib.mjs 모듈이 export한 식별자 이름을 변경하여 import한다.</span></span><br><span class="line"><span class="keyword">import</span> &#123; pi <span class="keyword">as</span> PI, square <span class="keyword">as</span> sq, Person <span class="keyword">as</span> P &#125; <span class="keyword">from</span> <span class="string">'./lib.mjs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(PI);    <span class="comment">// 3.141592653589793</span></span><br><span class="line"><span class="built_in">console</span>.log(sq(<span class="number">2</span>)); <span class="comment">// 4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> P(<span class="string">'Kim'</span>)); <span class="comment">// Person &#123; name: 'Kim' &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>모듈에서 하나의 식별자만을 export한다면 default 키워드를 사용할 수 있다.</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib.mjs</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> x =&gt; x * x;</span><br></pre></td></tr></table></figure>
+
+<p><strong>default 키워드와 함께 export한 모듈은 {}없이 임의의 이름으로 import한다.</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.mjs</span></span><br><span class="line"><span class="keyword">import</span> square <span class="keyword">from</span> <span class="string">'./lib.mjs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">3</span>)); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+
+<p>default 키워드를 사용하는 경우, var, let, const 키워드는 사용할 수 없다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib.mjs</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">const</span> foo = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="comment">// =&gt; SyntaxError: Unexpected token 'const'</span></span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
         <a href="/2020/04/%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98%EC%B0%A8%EC%9D%B4/" class="image is-7by1">
             <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="forEach, map, reduce 차이점 | javaScript">
         </a>
@@ -354,59 +473,6 @@
 <div class="card">
     
     <div class="card-image">
-        <a href="/2020/04/sass03/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.velog.io/post-images/sonaky47/2760fcb0-3672-11e9-b33e-97a2d99d98bb/header-typo-650x3001.png" alt="Sass 문자보간에 대해서 | Sass(SCSS)">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-07T17:50:03.000Z">2020-04-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/Sass/">Sass</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/sass03/">Sass 문자보간에 대해서 | Sass(SCSS)</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="문자보간에-대해서"><a href="#문자보간에-대해서" class="headerlink" title="#{}문자보간에 대해서"></a>#{}문자보간에 대해서</h1>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/sass03/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
         <a href="/2020/04/sass02/" class="image is-7by1">
             <img class="thumbnail" src="https://images.velog.io/post-images/sonaky47/2760fcb0-3672-11e9-b33e-97a2d99d98bb/header-typo-650x3001.png" alt="Sass 선택자, mixin, include | Sass(SCSS)">
         </a>
@@ -441,6 +507,59 @@
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/2020/04/sass02/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/04/sass03/" class="image is-7by1">
+            <img class="thumbnail" src="https://images.velog.io/post-images/sonaky47/2760fcb0-3672-11e9-b33e-97a2d99d98bb/header-typo-650x3001.png" alt="Sass 문자보간에 대해서 | Sass(SCSS)">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-07T17:50:03.000Z">2020-04-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/Sass/">Sass</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/sass03/">Sass 문자보간에 대해서 | Sass(SCSS)</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="문자보간에-대해서"><a href="#문자보간에-대해서" class="headerlink" title="#{}문자보간에 대해서"></a>#{}문자보간에 대해서</h1>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/04/sass03/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -615,51 +734,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/04/git02/" class="image is-7by1">
-            <img class="thumbnail" src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FSFBhJ%2FbtqvyBI6eGX%2FtN0cZvjgFM0iHbP514z4S0%2Fimg.png" alt="깃으로 버전 관리하기 | git &amp; github">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-03T21:02:03.000Z">2020-04-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/git/">git</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/git02/">깃으로 버전 관리하기 | git &amp; github</a>
-            
-        </h1>
-        <div class="content">
-            
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -729,7 +803,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            43
+                            44
                         </p>
                     </a>
                 </div>
@@ -829,7 +903,7 @@
                 <span class="level-item">develop</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">39</span>
+                <span class="level-item tag">40</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/develop/JavaScript/">
@@ -837,7 +911,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">31</span>
+                <span class="level-item tag">32</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/develop/React/">
@@ -882,6 +956,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/module/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="모듈 | javaScript">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-16T00:42:03.000Z">2020-04-16</time></div>
+                    <a href="/2020/04/module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">모듈 | javaScript</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -959,25 +1052,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/sass03/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.velog.io/post-images/sonaky47/2760fcb0-3672-11e9-b33e-97a2d99d98bb/header-typo-650x3001.png" alt="Sass 문자보간에 대해서 | Sass(SCSS)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-07T17:50:03.000Z">2020-04-08</time></div>
-                    <a href="/2020/04/sass03/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Sass 문자보간에 대해서 | Sass(SCSS)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/Sass/">Sass</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -986,7 +1060,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/Date/" style="font-size: 10px;">Date</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/ExecutionContext/" style="font-size: 10px;">ExecutionContext</a> <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/Koala/" style="font-size: 11.11px;">Koala</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/Number/" style="font-size: 10px;">Number</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SASS/" style="font-size: 13.33px;">SASS</a> <a href="/tags/SCSS/" style="font-size: 13.33px;">SCSS</a> <a href="/tags/TypeScript/" style="font-size: 18.89px;">TypeScript</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorism/" style="font-size: 12.22px;">algorism</a> <a href="/tags/array/" style="font-size: 14.44px;">array</a> <a href="/tags/attribute/" style="font-size: 10px;">attribute</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/bulitin/" style="font-size: 10px;">bulitin</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/closer/" style="font-size: 10px;">closer</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/destructuring/" style="font-size: 10px;">destructuring</a> <a href="/tags/firstclass/" style="font-size: 10px;">firstclass</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/git/" style="font-size: 11.11px;">git</a> <a href="/tags/github/" style="font-size: 11.11px;">github</a> <a href="/tags/graphic/" style="font-size: 10px;">graphic</a> <a href="/tags/hexo/" style="font-size: 17.78px;">hexo</a> <a href="/tags/hof/" style="font-size: 11.11px;">hof</a> <a href="/tags/javaScript/" style="font-size: 20px;">javaScript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/module/" style="font-size: 10px;">module</a> <a href="/tags/mvc/" style="font-size: 10px;">mvc</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/object/" style="font-size: 15.56px;">object</a> <a href="/tags/operator/" style="font-size: 10px;">operator</a> <a href="/tags/present/" style="font-size: 10px;">present</a> <a href="/tags/property/" style="font-size: 10px;">property</a> <a href="/tags/prototype/" style="font-size: 16.67px;">prototype</a> <a href="/tags/rendering/" style="font-size: 10px;">rendering</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/scopechain/" style="font-size: 10px;">scopechain</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/statement/" style="font-size: 10px;">statement</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+        <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/Date/" style="font-size: 10px;">Date</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/ExecutionContext/" style="font-size: 10px;">ExecutionContext</a> <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/Koala/" style="font-size: 11.11px;">Koala</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/Number/" style="font-size: 10px;">Number</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SASS/" style="font-size: 13.33px;">SASS</a> <a href="/tags/SCSS/" style="font-size: 13.33px;">SCSS</a> <a href="/tags/TypeScript/" style="font-size: 18.89px;">TypeScript</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorism/" style="font-size: 12.22px;">algorism</a> <a href="/tags/array/" style="font-size: 14.44px;">array</a> <a href="/tags/attribute/" style="font-size: 10px;">attribute</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/bulitin/" style="font-size: 10px;">bulitin</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/closer/" style="font-size: 10px;">closer</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/destructuring/" style="font-size: 10px;">destructuring</a> <a href="/tags/firstclass/" style="font-size: 10px;">firstclass</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/git/" style="font-size: 11.11px;">git</a> <a href="/tags/github/" style="font-size: 11.11px;">github</a> <a href="/tags/graphic/" style="font-size: 10px;">graphic</a> <a href="/tags/hexo/" style="font-size: 17.78px;">hexo</a> <a href="/tags/hof/" style="font-size: 11.11px;">hof</a> <a href="/tags/javaScript/" style="font-size: 20px;">javaScript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/module/" style="font-size: 11.11px;">module</a> <a href="/tags/mvc/" style="font-size: 10px;">mvc</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/object/" style="font-size: 15.56px;">object</a> <a href="/tags/operator/" style="font-size: 10px;">operator</a> <a href="/tags/present/" style="font-size: 10px;">present</a> <a href="/tags/property/" style="font-size: 10px;">property</a> <a href="/tags/prototype/" style="font-size: 16.67px;">prototype</a> <a href="/tags/rendering/" style="font-size: 10px;">rendering</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/scopechain/" style="font-size: 10px;">scopechain</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/statement/" style="font-size: 10px;">statement</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
     </div>
 </div>
     

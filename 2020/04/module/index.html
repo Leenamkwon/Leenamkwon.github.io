@@ -7,30 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Category: develop - namkwon&#39;s tech blog</title>
+<title>모듈 | javaScript - namkwon&#39;s tech blog</title>
 
 
-    <meta name="description" content="Its all good, man!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="namkwon&#39;s tech blog">
-<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/categories/develop/index.html">
+    <meta name="description" content="1. 모듈의 일반적인 의미  모듈(Module)이란 애플리케이션을 구성하는 개별적 요소로서 재사용 가능한 코드 조각을 말한다. 일반적으로 모듈은 기능을 기준으로 파일 단위로 분리되어 있다. 모듈이 성립하려면 모듈은 자신만의 파일 스코프를 가질 수 있어야 한다. 다시 말해, 자신만의 파일스코프를 갖는 모듈의 모든 자산은 캡슐화되어 다른 모듈에서 접근할 수 없">
+<meta property="og:type" content="article">
+<meta property="og:title" content="모듈 | javaScript">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/04/module/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
-<meta property="og:description" content="Its all good, man!">
+<meta property="og:description" content="1. 모듈의 일반적인 의미  모듈(Module)이란 애플리케이션을 구성하는 개별적 요소로서 재사용 가능한 코드 조각을 말한다. 일반적으로 모듈은 기능을 기준으로 파일 단위로 분리되어 있다. 모듈이 성립하려면 모듈은 자신만의 파일 스코프를 가질 수 있어야 한다. 다시 말해, 자신만의 파일스코프를 갖는 모듈의 모든 자산은 캡슐화되어 다른 모듈에서 접근할 수 없">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/images/og_image.png">
+<meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
+<meta property="article:published_time" content="2020-04-16T00:42:03.000Z">
+<meta property="article:modified_time" content="2020-04-16T01:02:37.238Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
-<meta property="article:tag" content=" TypeScript">
-<meta property="article:tag" content=" JS">
-<meta property="article:tag" content=" HTML5">
-<meta property="article:tag" content=" CSS3">
-<meta property="article:tag" content=" SCSS">
-<meta property="article:tag" content=" React">
-<meta property="article:tag" content=" web">
-<meta property="article:tag" content=" vue">
-<meta property="article:tag" content=" git">
+<meta property="article:tag" content="module">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/images/og_image.png">
+<meta name="twitter:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 
 
 
@@ -88,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="namkwon&#39;s tech blog" height="28">
+                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="모듈 | javaScript" height="28">
             
             </a>
         </div>
@@ -137,25 +131,13 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">Categories</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">develop</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-image">
-        <a href="/2020/04/module/" class="image is-7by1">
+        <span  class="image is-7by1">
             <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="모듈 | javaScript">
-        </a>
+        </span>
     </div>
     
     <div class="card-content article ">
@@ -175,7 +157,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/04/module/">모듈 | javaScript</a>
+                모듈 | javaScript
             
         </h1>
         <div class="content">
@@ -256,59 +238,15 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib.mjs</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">const</span> foo = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="comment">// =&gt; SyntaxError: Unexpected token 'const'</span></span><br></pre></td></tr></table></figure>
         </div>
         
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/04/%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98%EC%B0%A8%EC%9D%B4/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="forEach, map, reduce 차이점 | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-14T06:00:03.000Z">2020-04-14</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98%EC%B0%A8%EC%9D%B4/">forEach, map, reduce 차이점 | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="javascript에서-forEach-map-reduce-차이점을-알아보자"><a href="#javascript에서-forEach-map-reduce-차이점을-알아보자" class="headerlink" title="javascript에서 forEach, map, reduce 차이점을 알아보자"></a>javascript에서 forEach, map, reduce 차이점을 알아보자</h1><p>혼자서 할 때마다 맨날 mdn 뒤적뒤적 거리면서 보는게 짜증나서 이 글에서 정리를 해보려고한다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98%EC%B0%A8%EC%9D%B4/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/javaScript/" rel="tag">javaScript</a>, <a class="has-link-grey -link" href="/tags/module/" rel="tag">module</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -318,455 +256,35 @@
 
 
 
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/04/npm/" class="image is-7by1">
-            <img class="thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/540px-Npm-logo.svg.png" alt="npm(node.js) - 모듈관리 | npm">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-09T02:02:03.000Z">2020-04-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/npm/">npm</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/npm/">npm(node.js) - 모듈관리 | npm</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="npm-모듈-설치-삭제-버전-업데이트-관리"><a href="#npm-모듈-설치-삭제-버전-업데이트-관리" class="headerlink" title="npm 모듈 설치, 삭제, 버전 업데이트 관리"></a>npm 모듈 설치, 삭제, 버전 업데이트 관리</h1>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/npm/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/04/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%A0%8C%EB%8D%94%EB%A7%81/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="브라우저의 렌더링 과정 | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-08T17:45:03.000Z">2020-04-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%A0%8C%EB%8D%94%EB%A7%81/">브라우저의 렌더링 과정 | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="브라우저의-렌더링-과정"><a href="#브라우저의-렌더링-과정" class="headerlink" title="브라우저의 렌더링 과정"></a>브라우저의 렌더링 과정</h1>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%A0%8C%EB%8D%94%EB%A7%81/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/04/sass04/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.velog.io/post-images/sonaky47/2760fcb0-3672-11e9-b33e-97a2d99d98bb/header-typo-650x3001.png" alt="Sass @for 반목문과 @each 반복문 | Sass(SCSS)">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-07T18:34:03.000Z">2020-04-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/Sass/">Sass</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/sass04/">Sass @for 반목문과 @each 반복문 | Sass(SCSS)</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="for-반복문-에-대해서"><a href="#for-반복문-에-대해서" class="headerlink" title="@for(반복문)에 대해서"></a>@for(반복문)에 대해서</h1>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/sass04/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/04/sass02/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.velog.io/post-images/sonaky47/2760fcb0-3672-11e9-b33e-97a2d99d98bb/header-typo-650x3001.png" alt="Sass 선택자, mixin, include | Sass(SCSS)">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-07T17:50:03.000Z">2020-04-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/Sass/">Sass</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/sass02/">Sass 선택자, mixin, include | Sass(SCSS)</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Sass-선택자"><a href="#Sass-선택자" class="headerlink" title="Sass 선택자"></a>Sass 선택자</h1>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/sass02/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/04/sass03/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.velog.io/post-images/sonaky47/2760fcb0-3672-11e9-b33e-97a2d99d98bb/header-typo-650x3001.png" alt="Sass 문자보간에 대해서 | Sass(SCSS)">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-07T17:50:03.000Z">2020-04-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/Sass/">Sass</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/sass03/">Sass 문자보간에 대해서 | Sass(SCSS)</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="문자보간에-대해서"><a href="#문자보간에-대해서" class="headerlink" title="#{}문자보간에 대해서"></a>#{}문자보간에 대해서</h1>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/sass03/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/04/sass01/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.velog.io/post-images/sonaky47/2760fcb0-3672-11e9-b33e-97a2d99d98bb/header-typo-650x3001.png" alt="Sass 세팅하기 및 변수에 대해서 | Sass(SCSS)">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-07T17:10:03.000Z">2020-04-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/Sass/">Sass</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/sass01/">Sass 세팅하기 및 변수에 대해서 | Sass(SCSS)</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="SASS-SCSS-차이"><a href="#SASS-SCSS-차이" class="headerlink" title="SASS SCSS 차이"></a>SASS SCSS 차이</h1><br>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/sass01/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/04/ajax/" class="image is-7by1">
-            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="Ajax | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-07T13:00:03.000Z">2020-04-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/ajax/">Ajax | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/ajax/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2020/04/git01/" class="image is-7by1">
-            <img class="thumbnail" src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FSFBhJ%2FbtqvyBI6eGX%2FtN0cZvjgFM0iHbP514z4S0%2Fimg.png" alt="깃 시작하기 | git &amp; github">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-03T21:02:03.000Z">2020-04-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/git/">git</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/git01/">깃 시작하기 | git &amp; github</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="깃으로-무엇을-할-수-있을까"><a href="#깃으로-무엇을-할-수-있을까" class="headerlink" title="깃으로 무엇을 할 수 있을까?"></a>깃으로 무엇을 할 수 있을까?</h1><br>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/git01/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/develop/page/0/">Previous</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98%EC%B0%A8%EC%9D%B4/">
+                <span class="level-item">forEach, map, reduce 차이점 | javaScript</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/develop/page/2/">Next</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/categories/develop/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/categories/develop/page/2/">2</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/categories/develop/page/3/">3</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/categories/develop/page/4/">4</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/04/module/" data-num-posts="5"></div>
+
+    </div>
 </div>
 </div>
                 
@@ -1087,7 +605,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="namkwon&#39;s tech blog" height="28">
+                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="모듈 | javaScript" height="28">
                 
                 </a>
                 <p class="is-size-7">
