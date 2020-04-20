@@ -182,82 +182,16 @@
         </h1>
         <div class="content">
             <h1 id="1-모듈의-일반적인-의미"><a href="#1-모듈의-일반적인-의미" class="headerlink" title="1. 모듈의 일반적인 의미"></a>1. 모듈의 일반적인 의미</h1><br>
-
-<p>모듈(Module)이란 애플리케이션을 구성하는 개별적 요소로서 재사용 가능한 코드 조각을 말한다. 일반적으로 모듈은 기능을 기준으로 파일 단위로 분리되어 있다. 모듈이 성립하려면 모듈은 자신만의 파일 스코프를 가질 수 있어야 한다. 다시 말해, 자신만의 파일스코프를 갖는 모듈의 모든 자산은 캡슐화되어 다른 모듈에서 접근할 수 없다. 즉, 모듈은 개별적 존재로서 애플리케이션과 분리되어 존재한다.</p>
-<p>하지만 모듈은 애플리케이션이나 다른 모듈에 의해 재사용되어야 의미가 있다. 따라서 <strong>모듈은 공개가 필요한 자산에 한정하여 명시적으로 선택적 공개가 가능하다. 이를 export라 한다.</strong></p>
-<p>공개(export)된 모듈의 자산은 다른 모듈에서 재사용할 수 있다. 이때 공개된 모듈의 자산을 사용하는 모듈을 모듈 사용자라 한다. <strong>모듈 사용자는 필요한 자산을 공개한 모듈을 선택해 자신의 스코프 내로 불러 들여 재사용할 수 있다. 이를 import라 한다.</strong></p>
-<p><img src="https://poiemaweb.com/assets/fs-images/46-1.png" alt=""></p>
-<p>이처럼 모듈은 애플리케이션과 분리되어 개별적으로 존재하다가 필요에 따라 다른 모듈에 의해 재사용된다. 모듈은 기능별로 분리되어 개별적인 파일로 작성된다. 결론은 명확히 분리해서 애플리케이션을 구성할 수 있고, 재사용성이 좋아서 개발 효율성과 유지보수성을 높일 수 있다.<br><br></p>
-<h1 id="2-자바스크립트와-모듈"><a href="#2-자바스크립트와-모듈" class="headerlink" title="2. 자바스크립트와 모듈"></a>2. 자바스크립트와 모듈</h1><br>
-
-<p>C 언어는 #include, Java는 import 등 대부분의 프로그래밍 언어는 모듈 기능을 가지고 있다. 하지만 클라이언트 사이드 자바스크립트는 script 태그를 사용하여 외부의 자바스크립트 파일을 가져올 수는 있지만, 파일마다 독립적인 파일 스코프를 갖지 않고 하나의 전역 객체(Global Object)를 공유한다. 즉, 자바스크립트 파일을 여러 개의 파일로 분리하여 script 태그로 로드하여도 분리된 자바스크립트 파일들이 결국 하나의 자바스크립트 파일 내에 있는 것처럼 하나의 전역 객체를 공유한다. 따라서 분리된 자바스크립트 파일들이 하나의 전역을 갖게 되어 전역 변수가 중복되는 등의 문제가 발생할 수 있다. 이것으로는 모듈을 구현할 수 없다.</p>
-<p>자바스크립트를 클라이언트 사이드에 국한하지 않고 범용적으로 사용하고자 하는 움직임이 생기면서 모듈 시스템은 반드시 해결해야 하는 핵심 과제가 되었다. 이런 상황에서 제안된 것이 CommonJS와 AMD(Asynchronous Module Definition)이다.</p>
-<p>이로서 자바스크립트의 모듈 시스템은 크게 CommonJS와 AMD 진영으로 나뉘게 되었고 브라우저에서 모듈을 사용하기 위해서는 CommonJS 또는 AMD를 구현한 모듈 로더 라이브러리를 사용해야 하는 상황이 되었다.</p>
-<p>서버 사이드 자바스크립트 런타임 환경인 Node.js는 모듈 시스템의 사실상 표준(de facto standard)인 CommonJS를 채택하였고 독자적인 진화를 거쳐, 현재는 CommonJS 사양과 100% 동일하지는 않지만 기본적으로 CommonJS 사양을 따르고 있다. 즉, Node.js에서는 표준은 아니지만 모듈 시스템이 지원된다. 따라서 Node.js 환경에서는 모듈 별로 독립적인 파일 스코프, 즉 모듈 스코프를 갖는다.</p>
-<br>
-
-<h1 id="3-ES6-모듈"><a href="#3-ES6-모듈" class="headerlink" title="3. ES6 모듈"></a>3. ES6 모듈</h1><br>
-
-<p>이러한 상황에서 ES6에서는 클라이언트 사이드 자바스크립트에서도 동작하는 모듈 기능을 추가하였다. 2020년 4월 현재, 인터넷 익스플로어를 제외한 대부분의 브라우저(Chrome 61, FF 60, SF 10.1, Edge 16 이상)에서 ES6 모듈을 사용할 수 있다.(ES6 모듈 지원 현황)</p>
-<p>script 태그에 type=”module” 어트리뷰트를 추가하면 로드된 자바스크립트 파일은 모듈로서 동작한다. 일반적인 자바스크립트 파일이 아닌 ES6 모듈임을 명확히 하기 위해 ES6 모듈의 파일 확장자는 mjs를 사용할 것을 권장한다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"module"</span> src=<span class="string">"apple.mjs"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="module" src="banana.mjs"&gt;&lt;/</span>script&gt;</span><br><span class="line">&lt;script type=<span class="string">"module"</span> src=<span class="string">"samsung.mjs"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<br>
-
-<h2 id="3-1-모듈-스코프"><a href="#3-1-모듈-스코프" class="headerlink" title="3.1 모듈 스코프"></a>3.1 모듈 스코프</h2><br>
-
-<p>ES6 모듈을 사용하지 않으면 자바스크립트 파일을 분리해도 독자적인 스코프를 갖지 않고 하나의 전역을 공유한다. 아래 예제를 살펴보자.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo.js</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'foo'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 변수 x는 전역 변수이다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">// foo</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// bar.js</span></span><br><span class="line"><span class="comment">// foo.js에서 선언한 전역 변수 x와 중복된 선언이다.</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'bar'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 변수 x는 전역 변수이다.</span></span><br><span class="line"><span class="comment">// foo.js에서 선언한 전역 변수 x의 값이 재할당되었다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">// bar</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script src=<span class="string">"foo.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">  &lt;script src="bar.js"&gt;&lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>HTML에서 2개의 자바스크립트 파일을 로드하면 로드된 자바스크립트는 하나의 전역을 공유한다. 위 예제에서 로드된 2개의 자바스크립트 파일은 하나의 전역 객체를 공유한다. 즉, 하나의 전역 스코프를 갖는다. 따라서 foo.js에서 선언한 변수 x와 bar.js에서 선언한 변수 x는 중복 선언되며 의도치 않게 변수 x의 값이 덮어 써진다.</p>
-<p>ES6 모듈은 파일 자체의 독자적인 모듈 스코프를 제공한다. 따라서, 모듈 내에서 var 키워드로 선언한 변수는 더 이상 전역 변수가 아니며 window 객체의 프로퍼티도 아니다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo.mjs</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'foo'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// foo</span></span><br><span class="line"><span class="comment">// 변수 x는 전역 변수가 아니며 window 객체의 프로퍼티도 아니다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bar.mjs</span></span><br><span class="line"><span class="comment">// 변수 x는 foo.mjs에서 선언한 변수 x와 스코프가 다른 변수이다.</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'bar'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// bar</span></span><br><span class="line"><span class="comment">// 변수 x는 전역 변수가 아니며 window 객체의 프로퍼티도 아니다.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"foo.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"bar.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>모듈 내에서 선언한 변수는 모듈 외부에서 참조할 수 없다. 모듈 스코프가 다르기 떄문</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo.mjs</span></span><br><span class="line"><span class="keyword">const</span> x = <span class="string">'foo'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// foo</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bar.js</span></span><br><span class="line"><span class="comment">// 다른 모듈에서 선언한 변수는 모듈 외부에서 참조할 수 없다. 스코프가 다르기 때문이다.</span></span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"foo.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"bar.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<br>
-
-<h2 id="3-2-export-키워드"><a href="#3-2-export-키워드" class="headerlink" title="3.2 export 키워드"></a>3.2 export 키워드</h2><br>
-
-<p>모듈은 독자적인 모듈 스코프를 갖는다. 따라서 모듈 안에 선언한 모든 식별자는 기본적으로 해당 모듈 내부에서만 참조할 수 있다. <strong>만약 모듈 안에 선언한 식별자를 외부에 공개하여 다른 모듈들이 참조할 수 있게 하고 싶다면 export키워드를 사용한다.</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib.mjs</span></span><br><span class="line"><span class="comment">// 변수의 공개</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> pi = <span class="built_in">Math</span>.PI;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수의 공개</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 클래스의 공개</span></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>선언문 앞에 매번 export 키워드를 붙이는 것이 싫다면 export 대상을 모아 하나의 객체로 구성하여 한번에 export할 수도 있다.</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib.mjs</span></span><br><span class="line"><span class="keyword">const</span> pi = <span class="built_in">Math</span>.PI;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 변수, 함수 클래스를 하나의 객체로 구성하여 공개</span></span><br><span class="line"><span class="keyword">export</span> &#123; pi, square, Person &#125;;</span><br></pre></td></tr></table></figure>
-<br>
-
-<h2 id="3-3-import-키워드"><a href="#3-3-import-키워드" class="headerlink" title="3.3 import 키워드"></a>3.3 import 키워드</h2><br>
-
-<p>다른 모듈에서 공개(export)한 식별자를 자신의 모듈 스코프 내부로 로드하려면 import 키워드를 사용한다. 다른 모듈이 export한 식별자로 import하며 ES6 모듈의 파일 확장자를 생략할 수 없다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.mjs</span></span><br><span class="line"><span class="comment">// 같은 폴더 내의 lib.mjs 모듈이 export한 식별자로 import한다.</span></span><br><span class="line"><span class="comment">// ES6 모듈의 파일 확장자를 생략할 수 없다.</span></span><br><span class="line"><span class="keyword">import</span> &#123; pi, square, Person &#125; <span class="keyword">from</span> <span class="string">'./lib.mjs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pi);         <span class="comment">// 3.141592653589793</span></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">10</span>)); <span class="comment">// 100</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> Person(<span class="string">'Lee'</span>)); <span class="comment">// Person &#123; name: 'Lee' &#125;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"lib.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"app.mjs"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>모듈이 export한 식별자를 각각 지정하지 않고 하나의 이름으로 한꺼번에 import할 수도 있다. 이떄 import되는 식별자는 as뒤에 지정한 이름의 객체에 프로퍼티로 할당된다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.mjs</span></span><br><span class="line"><span class="comment">// lib.mjs 모듈이 export한 모든 식별자를 lib 객체의 프로퍼티로 모아 import한다.</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> lib <span class="keyword">from</span> <span class="string">'./lib.mjs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(lib.pi);         <span class="comment">// 3.141592653589793</span></span><br><span class="line"><span class="built_in">console</span>.log(lib.square(<span class="number">10</span>)); <span class="comment">// 100</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> lib.Person(<span class="string">'Lee'</span>)); <span class="comment">// Person &#123; name: 'Lee' &#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>모듈이 export한 식별자 이름을 변경하여 import할 수도 있다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.mjs</span></span><br><span class="line"><span class="comment">// lib.mjs 모듈이 export한 식별자 이름을 변경하여 import한다.</span></span><br><span class="line"><span class="keyword">import</span> &#123; pi <span class="keyword">as</span> PI, square <span class="keyword">as</span> sq, Person <span class="keyword">as</span> P &#125; <span class="keyword">from</span> <span class="string">'./lib.mjs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(PI);    <span class="comment">// 3.141592653589793</span></span><br><span class="line"><span class="built_in">console</span>.log(sq(<span class="number">2</span>)); <span class="comment">// 4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> P(<span class="string">'Kim'</span>)); <span class="comment">// Person &#123; name: 'Kim' &#125;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>모듈에서 하나의 식별자만을 export한다면 default 키워드를 사용할 수 있다.</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib.mjs</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> x =&gt; x * x;</span><br></pre></td></tr></table></figure>
-
-<p><strong>default 키워드와 함께 export한 모듈은 {}없이 임의의 이름으로 import한다.</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.mjs</span></span><br><span class="line"><span class="keyword">import</span> square <span class="keyword">from</span> <span class="string">'./lib.mjs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">3</span>)); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
-
-<p>default 키워드를 사용하는 경우, var, let, const 키워드는 사용할 수 없다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib.mjs</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">const</span> foo = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="comment">// =&gt; SyntaxError: Unexpected token 'const'</span></span><br></pre></td></tr></table></figure>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/04/module/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -486,196 +420,6 @@
 <div class="card">
     
     <div class="card-image">
-        <a href="/2020/04/bable_wep/" class="image is-7by1">
-            <img class="thumbnail" src="https://res.cloudinary.com/beetoo/image/upload/v1519315520/js-webpack-babel_peqovw.png" alt="Babel과 Webpack을 이용한 ES6 개발 환경 구축 | javaScript">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-02T04:02:03.000Z">2020-04-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/04/bable_wep/">Babel과 Webpack을 이용한 ES6 개발 환경 구축 | javaScript</a>
-            
-        </h1>
-        <div class="content">
-            <p>크롬, 사파리, 파이어폭스, 엣지와 같은 에버그린 브라우저(Evergreen browser, 사용자의 업데이트 없이도 최신 버전으로 자동 업데이트를 수행하는 모던 브라우저)의 ES6 지원 비율은 약 98%로 거의 대부분의 ES6 사양을 구현하고 있다.</p>
-<p>브라우저별 ES6 지원 현황</p>
-<p>하지만 인터넷 익스플로어 11의 ES6 지원 비율은 약 11%이다. 그리고 매년 새롭게 도입되는 ES6 이상의 버전(ES6+)과 제안 단계에 있는 ES 제안 사양(ES.NEXT)은 브라우저에 따라 지원 비율이 제각각이다.</p>
-<p>따라서 ES6+ 또는 ES.NEXT의 최신 ECMAScript 사양을 사용하여 프로젝트를 진행하려면 최신 사양으로 작성된 코드를 경우에 따라 인터넷 익스플로어를 포함한 구형 브라우저에서 문제 없이 동작시키기 위한 개발 환경을 구축하는 것이 필요하다. 특히 모듈의 경우, 모듈 로더가 필요하다.</p>
-<p>  2020년 4월 현재, 모던 브라우저(Chrome 61, FF 60, SF 10.1, Edge 16 이상)에서 ES6 모듈을 사용할 수 있다. 단, 아래와 같은 이유로 아직까지는 브라우저가 지원하는 ES6 모듈 기능보다는 Webpack 등의 모듈 번들러를 사용하는 것이 일반적이다.</p>
-<p>  인터넷 익스플로어를 포함한 구형 브라우저는 ES6 모듈을 지원하지 않는다.</p>
-<p>  브라우저의 ES6 모듈을 사용하더라도 트랜스파일링이나 번들링이 필요한 것은 변함이 없다.</p>
-<p>  아직 지원하지 않는 기능(Bare import 등)과 점차 해결되고는 있지만 아직 몇가지 이슈가 있다. (ECMAScript modules in browsers 참고)</p>
-<p>  트랜스파일러(Transpiler) Babel과 모듈 번들러(Module bundler) Webpack을 이용하여 ES6+ 개발 환경을 구축하여 보자. 아울러 Webpack을 통해 ES6+ 코드를 트랜스파일링하는 방법도 알아볼 것이다.</p>
-<p>이 책에서 사용한 Babel, Webpack 그리고 플러그인 들의 버전은 아래와 같다.</p>
-<pre><code>Node.js
-13.13.0
-
-npm
-6.14.4
-
-Babel
-@babel/cli : 7.8.4
-@babel/core : 7.9.0
-@babel/preset-env : 7.9.5
-@babel/plugin-proposal-class-properties : 7.8.3
-@babel/polyfill : 7.8.7
-
-Webpack
-webpack : 4.42.1
-webpack-cli : 3.3.11
-Webpack plug-in: ES6+ ⇒ ES5
-babel-loader : 8.1.0
-&lt;br&gt;</code></pre><h1 id="1-Babel"><a href="#1-Babel" class="headerlink" title="1. Babel"></a>1. Babel</h1><p>아래 예제는 ES6의 화살표 함수와 ES7의 지수 연산자를 사용하고 있다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6 화살표 함수와 ES7 지수 연산자</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">n</span> =&gt;</span> n ** n);</span><br><span class="line">인터넷 익스플로어와 같은 구형 브라우저에서는 ES6의 화살표 함수와 ES7의 지수 연산자를 지원하지 않을 수 있다. Babel을 사용하면 위 코드를 아래와 같이 ES5 이하의 버전으로 변환할 수 있다.</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.pow(n, n);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>이처럼 Babel은 최신 ECMAScript 사양의 자바스크립트 소스 코드를 인터넷 익스플로어와 같은 구형 브라우저에서도 동작하는 ES5 이하의 코드로 변환(트랜스파일링)할 수 있다. Babel을 사용하기 위한 개발 환경을 구축해 보자.<br><br></p>
-<h1 id="1-1-Babel-설치"><a href="#1-1-Babel-설치" class="headerlink" title="1.1. Babel 설치"></a>1.1. Babel 설치</h1><p>npm을 사용하여 Babel을 설치해 보자. 프로젝트에 따라 설정이 다를 수 있으므로 전역으로 설치하지 말고 로컬로 설치하도록 하자.</p>
-<h1 id="프로젝트-폴더-생성"><a href="#프로젝트-폴더-생성" class="headerlink" title="프로젝트 폴더 생성"></a>프로젝트 폴더 생성</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir esnext-project &amp;&amp; <span class="built_in">cd</span> esnext-project</span><br></pre></td></tr></table></figure>
-
-<h1 id="package-json-생성"><a href="#package-json-생성" class="headerlink" title="package.json 생성"></a>package.json 생성</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init -y</span><br></pre></td></tr></table></figure>
-<h1 id="babel-core-babel-cli-설치"><a href="#babel-core-babel-cli-설치" class="headerlink" title="babel-core, babel-cli 설치"></a>babel-core, babel-cli 설치</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev @babel/core @babel/cli</span><br></pre></td></tr></table></figure>
-
-<p>설치가 완료된 이후 package.json 파일은 아래와 같다. 불필요한 설정은 삭제하였다.</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"esnext-project"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"@babel/cli"</span>: <span class="string">"^7.8.4"</span>,</span><br><span class="line">    <span class="attr">"@babel/core"</span>: <span class="string">"^7.9.0"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h1 id="1-2-Babel-프리셋-설치와-babel-config-json-설정-파일-작성"><a href="#1-2-Babel-프리셋-설치와-babel-config-json-설정-파일-작성" class="headerlink" title="1.2. Babel 프리셋 설치와 babel.config.json 설정 파일 작성"></a>1.2. Babel 프리셋 설치와 babel.config.json 설정 파일 작성</h1><p>Babel을 사용하려면 @babel/preset-env을 설치해야 한다. @babel/preset-env은 함께 사용되어야 하는 Babel 플러그인을 모아 둔 것으로 Babel 프리셋이라고 부른다. Babel이 제공하는 공식 Babel 프리셋(Official Preset)은 아래와 같다.</p>
-<p>@babel/preset-env<br>@babel/preset-flow<br>@babel/preset-react<br>@babel/preset-typescript<br>@babel/preset-env도 공식 프리셋의 하나이며 필요한 플러그인 들을 프로젝트 지원 환경에 맞춰서 동적으로 결정해 준다. 프로젝트 지원 환경은 Browserslist 형식으로 .browserslistrc 파일에 상세히 설정할 수 있다. 프로젝트 지원 환경 설정 작업을 생략하면 기본값으로 설정된다.</p>
-<p>일단은 기본 설정으로 진행하도록 하자. 기본 설정은 모든 ES.Next 코드를 변환한다.</p>
-<h1 id="env-preset-설치"><a href="#env-preset-설치" class="headerlink" title="env preset 설치"></a>env preset 설치</h1><p>$ npm install –save-dev @babel/preset-env<br>설치가 완료된 이후 package.json 파일은 아래와 같다.</p>
-<p>{<br>  “name”: “esnext-project”,<br>  “version”: “1.0.0”,<br>  “devDependencies”: {<br>    “@babel/cli”: “^7.8.4”,<br>    “@babel/core”: “^7.9.0”,<br>    “@babel/preset-env”: “^7.9.5”<br>  }<br>}<br>설치가 완료되었으면 프로젝트 루트에 babel.config.json 설정 파일을 생성하고 아래와 같이 작성한다. 지금 설치한 @babel/preset-env를 사용하겠다는 의미이다.</p>
-<p>{<br>  “presets”: [“@babel/preset-env”]<br>}<br>#1.3. 트랜스파일링<br>Babel을 사용하여 ES6+ 코드를 ES5 이하의 코드로 트랜스파일링하기 위해 Babel CLI 명령어를 사용할 수도 있으나 npm script를 사용하여 트랜스파일링하는 방법에 대해 알아보도록 하자.</p>
-<p>package.json 파일에 scripts를 추가한다. 완성된 package.json 파일은 아래와 같다.</p>
-<p>{<br>  “name”: “esnext-project”,<br>  “version”: “1.0.0”,<br>  “scripts”: {<br>    “build”: “babel src/js -w -d dist/js”<br>  },<br>  “devDependencies”: {<br>    “@babel/cli”: “^7.8.4”,<br>    “@babel/core”: “^7.9.0”,<br>    “@babel/preset-env”: “^7.9.5”<br>  }<br>}<br>위 npm script는 src/js 폴더(타깃 폴더)에 있는 모든 ES6+ 파일들을 트랜스파일링한 후, 그 결과물을 dist/js 폴더에 저장한다. 사용한 옵션의 의미는 아래와 같다.</p>
-<p>-w : 타깃 폴더에 있는 모든 파일들의 변경을 감지하여 자동으로 트랜스파일한다. (–watch 옵션의 축약형)<br>-d : 트랜스파일링된 결과물이 저장될 폴더를 지정한다. (–out-dir 옵션의 축약형)<br>이제 트랜스파일링을 테스트하기 위해 ES6+ 파일을 작성해 보자. 프로젝트 루트에 src/js 폴더를 생성한 후 lib.js와 main.js를 추가한다.</p>
-<p>// src/js/lib.js<br>// ES6 모듈<br>export const pi = Math.PI;</p>
-<p>export function power(x, y) {<br>  // ES7: 지수 연산자<br>  return x ** y;<br>}</p>
-<p>// ES6 클래스<br>export class Foo {<br>  // stage 3: 클래스 필드 정의 제안<br>  #private = 10;</p>
-<p>  foo() {<br>    // stage 4: 객체 Rest/Spread 프로퍼티<br>    const { a, b, …x } = { …{ a: 1, b: 2 }, c: 3, d: 4 };<br>    return { a, b, x };<br>  }</p>
-<p>  bar() {<br>    return this.#private;<br>  }<br>}<br>// src/js/main.js<br>// ES6 모듈<br>import { pi, power, Foo } from ‘./lib’;</p>
-<p>console.log(pi);<br>console.log(power(pi, pi));</p>
-<p>const f = new Foo();<br>console.log(f.foo());<br>console.log(f.bar());<br>터미널에서 아래 명령어로 트랜스파일링을 실행한다.</p>
-<p>$ npm run build</p>
-<blockquote>
-<p><a href="mailto:esnext-project@1.0.0">esnext-project@1.0.0</a> build /Users/leeungmo/Desktop/esnext-project<br>babel src/js -w -d dist/js</p>
-</blockquote>
-<p>SyntaxError: /Users/leeungmo/Desktop/esnext-project/src/js/lib.js: Unexpected character ‘#’ (13:2)</p>
-<p>  11 | export class Foo {<br>  12 |   // stage 3: 클래스 필드 정의 제안</p>
-<blockquote>
-<p>13 |   #private = 10;<br>     |   ^<br>  14 |<br>  15 |   foo() {<br>  16 |     // stage 4: 객체 Rest/Spread 프로퍼티</p>
-</blockquote>
-<p>…<br>2020년 4월 현재 TC39 프로세스의 stage 3(candidate) 단계에 있는 private 필드 정의 제안에서 에러가 발생하였다.</p>
-<p>@babel/preset-env는 현재 제안 단계에 있는 사양에 대한 플러그인을 지원하지 않기 때문에 발생한 에러이다. 현재 제안 단계에 있는 사양을 지원하려면 별도의 플러그인을 설치하여야 한다.</p>
-<p>#1.4. Babel 플러그인 설치<br>설치가 필요한 Babel 플러그인은 Babel 홈페이지에서 검색할 수 있다. Babel 홈페이지 상단 메뉴의 Search에 제안(프로포절)의 이름을 입력하면 해당 플러그인을 검색할 수 있다. 클래스 필드 정의 제안 플러그인을 검색하기 위해 “Class field”를 입력해보자.</p>
-<p>Babel 플러그인 검색</p>
-<p>검색한 Babel 플러그인 @babel/plugin-proposal-class-properties를 설치해보자.</p>
-<p>$ npm install –save-dev @babel/plugin-proposal-class-properties<br>설치가 완료된 이후 package.json 파일은 아래와 같다.</p>
-<p>{<br>  “name”: “esnext-project”,<br>  “version”: “1.0.0”,<br>  “scripts”: {<br>    “build”: “babel src/js -w -d dist/js”<br>  },<br>  “devDependencies”: {<br>    “@babel/cli”: “^7.8.4”,<br>    “@babel/core”: “^7.9.0”,<br>    “@babel/plugin-proposal-class-properties”: “^7.8.3”,<br>    “@babel/preset-env”: “^7.9.5”<br>  }<br>}<br>설치한 플러그인은 babel.config.json 설정 파일에 추가해 주어야 한다. babel.config.json 설정 파일을 아래와 같이 수정한다.</p>
-<p>{<br>  “presets”: [“@babel/preset-env”],<br>  “plugins”: [“@babel/plugin-proposal-class-properties”]<br>}<br>다시 터미널에서 아래 명령어로로 트랜스파일링을 실행해보자.</p>
-<p>$ npm run build</p>
-<blockquote>
-<p><a href="mailto:esnext-project@1.0.0">esnext-project@1.0.0</a> build /Users/leeungmo/Desktop/esnext-project<br>babel src/js -w -d dist/js</p>
-</blockquote>
-<p>Successfully compiled 2 files with Babel.<br>트랜스파일링에 성공하면 프로젝트 루트에 dist/js 폴더가 자동 생성되고 트랜스파일링된 main.js와 lib.js가 저장된다. 트랜스파일링된 main.js를 실행하여 보자. 결과는 아래와 같다.</p>
-<p>$ node dist/js/main<br>3.141592653589793<br>36.4621596072079<br>{ a: 1, b: 2, x: { c: 3, d: 4 } }<br>10<br>#1.5. 브라우저에서 모듈 로딩 테스트<br>앞에서 main.js와 lib.js 모듈을 트랜스파일링하여 ES5로 변환된 main.js을 실행한 결과, 문제없이 실행되는 것을 확인하였다. ES6+에서 새롭게 추가된 기능은 물론 현재 제안 상태에 있는 “클래스 필드 정의 제안”도 ES5로 트랜스파일링되었고 ES6의 모듈의 import와 export 키워드도 트랜스파일링되어 모듈 기능도 정상적으로 동작하는 것을 확인하였다.</p>
-<p>하지만 위 예제의 모듈 기능은 node.js 환경에서 동작한 것이고 Babel이 모듈을 트랜스파일링한 것도 node.js가 기본 지원하는 CommonJS 방식의 모듈 로딩 시스템에 따른 것이다. 아래는 src/js/main.js가 Babel에 의해 트랜스파일링된 결과이다.</p>
-<p>// dist/js/main.js<br>“use strict”;</p>
-<p>var _lib = require(“./lib”);</p>
-<p>// src/js/main.js<br>// ES6 모듈<br>console.log(_lib.pi);<br>console.log((0, _lib.power)(_lib.pi, _lib.pi));<br>var f = new _lib.Foo();<br>console.log(f.foo());<br>console.log(f.bar());<br>브라우저는 CommonJS 방식의 require 함수를 지원하지 않으므로 위에서 트랜스파일링된 결과를 그대로 브라우저에서 실행하면 에러가 발생한다. 프로젝트 루트 폴더에 아래와 같이 index.html을 작성하여 트랜스파일링된 자바스크립트 파일을 브라우저에서 실행해보자.</p>
-<!DOCTYPE html>
-<html>
-<body>
-  <script src="dist/js/lib.js"></script>
-  <script src="dist/js/main.js"></script>
-</body>
-</html>
-위 html 파일을 브라우저 실행하면 아래와 같은 에러가 발생한다.
-
-<p>Uncaught ReferenceError: exports is not defined<br>    at lib.js:3<br>main.js:3 Uncaught ReferenceError: require is not defined<br>    at main.js:3<br>브라우저의 ES6 모듈 기능을 사용하도록 Babel을 설정할 수도 있으나 앞서 설명한 바와 같이 브라우저의 ES6 모듈 기능을 사용하는 것은 문제가 있다. 다음 장에서는 Webpack을 통해 이러한 문제를 해결해보도록 하자.</p>
-<p>#2. Webpack<br>Webpack은 의존 관계에 있는 모듈들을 하나의 자바스크립트 파일로 번들링하는 모듈 번들러이다. Webpack을 사용하면 의존 모듈이 하나의 파일로 번들링되므로 별도의 모듈 로더가 필요없다. 그리고 다수의 자바스크립트 파일을 하나의 파일로 번들링하므로 html 파일에서 script 태그로 다수의 자바스크립트 파일을 로드해야 하는 번거로움도 사라진다.</p>
-<p>Webpack 홈페이지</p>
-<p>Webpack과 Babel을 이용하여 ES6+ 개발 환경을 구축하여 보자. Webpack이 자바스크립트 파일을 번들링하기 전에 Babel을 로드하여 ES6+ 코드를 ES5 코드로 트랜스파일링하는 작업을 실행하도록 설정할 것이다.</p>
-<p>#2.1. Webpack 설치<br>터미널에서 아래 명령어로 Webpack을 설치한다.</p>
-<p>$ npm install –save-dev webpack webpack-cli<br>설치가 완료된 이후 package.json 파일은 아래와 같다.</p>
-<p>{<br>  “name”: “esnext-project”,<br>  “version”: “1.0.0”,<br>  “scripts”: {<br>    “build”: “babel src/js -w -d dist/js”<br>  },<br>  “devDependencies”: {<br>    “@babel/cli”: “^7.8.4”,<br>    “@babel/core”: “^7.9.0”,<br>    “@babel/plugin-proposal-class-properties”: “^7.8.3”,<br>    “@babel/preset-env”: “^7.9.5”,<br>    “webpack”: “^4.42.1”,<br>    “webpack-cli”: “^3.3.11”<br>  }<br>}<br>#2.2. babel-loader 설치<br>Webpack이 모듈을 번들링할 때 Babel을 사용하여 ES6+ 코드를 ES5 코드로 트랜스파일링하도록 babel-loader를 설치한다.</p>
-<p>$ npm install –save-dev babel-loader<br>이제 npm script를 변경하여 Babel 대신 Webpack을 실행하도록 수정하자. 아래와 같이 package.json 파일의 scripts를 변경한다. 완성된 package.json 파일은 아래와 같다.</p>
-<p>{<br>  “name”: “esnext-project”,<br>  “version”: “1.0.0”,<br>  “scripts”: {<br>    “build”: “webpack -w”<br>  },<br>  “devDependencies”: {<br>    “@babel/cli”: “^7.8.4”,<br>    “@babel/core”: “^7.9.0”,<br>    “@babel/plugin-proposal-class-properties”: “^7.8.3”,<br>    “@babel/preset-env”: “^7.9.5”,<br>    “babel-loader”: “^8.1.0”,<br>    “webpack”: “^4.42.1”,<br>    “webpack-cli”: “^3.3.11”<br>  }<br>}<br>#2.3. webpack.config.js 설정 파일 작성<br>webpack.config.js은 Webpack이 실행될 때 참조하는 설정 파일이다. 프로젝트 루트에 webpack.config.js 파일을 생성하고 아래와 같이 작성한다.</p>
-<p>const path = require(‘path’);</p>
-<p>module.exports = {<br>  // entry file<br>  entry: ‘./src/js/main.js’,<br>  // 컴파일 + 번들링된 js 파일이 저장될 경로와 이름 지정<br>  output: {<br>    path: path.resolve(<strong>dirname, ‘dist/js’),<br>    filename: ‘bundle.js’<br>  },<br>  module: {<br>    rules: [<br>      {<br>        test: /.js$/,<br>        include: [<br>          path.resolve(</strong>dirname, ‘src/js’)<br>        ],<br>        exclude: /node_modules/,<br>        use: {<br>          loader: ‘babel-loader’,<br>          options: {<br>            presets: [‘@babel/preset-env’],<br>            plugins: [‘@babel/plugin-proposal-class-properties’]<br>          }<br>        }<br>      }<br>    ]<br>  },<br>  devtool: ‘source-map’,<br>  // <a href="https://webpack.js.org/concepts/mode/#mode-development">https://webpack.js.org/concepts/mode/#mode-development</a><br>  mode: ‘development’<br>};<br>이제 Webpack을 실행하여 트랜스파일링 및 번들링을 실행한다. 트랜스파일링은 Babel이 실행하고 번들링은 Webpack이 실행한다. 만약 이전에 실행시킨 빌드 명령이 실행 중인 상태라면 중지시키고 다시 아래 명령을 실행한다.</p>
-<p>$ npm run build</p>
-<blockquote>
-<p><a href="mailto:esnext-project@1.0.0">esnext-project@1.0.0</a> build /Users/leeungmo/Desktop/esnext-project<br>webpack -w</p>
-</blockquote>
-<p>webpack is watching the files…</p>
-<p>Hash: adcc0e0f453a5be2a78b<br>Version: webpack 4.42.1<br>Time: 1281ms<br>Built at: 2020. 04. 15. 오후 8:18:32<br>        Asset      Size  Chunks                   Chunk Names<br>    bundle.js  8.56 KiB    main  [emitted]        main<br>bundle.js.map  5.14 KiB    main  [emitted] [dev]  main<br>Entrypoint main = bundle.js bundle.js.map<br>[./src/js/lib.js] 3.69 KiB {main} [built]<br>[./src/js/main.js] 179 bytes {main} [built]<br>Webpack을 실행한 결과, dist/js 폴더에 bundle.js이 생성되었다. 이 파일은 main.js, lib.js 모듈이 하나로 번들링된 결과물이다. index.html을 아래와 같이 수정하고 브라우저에서 실행해 보자.</p>
-<!DOCTYPE html>
-<html>
-<body>
-  <script src="./dist/js/bundle.js"></script>
-</body>
-</html>
-
-
-<p>브라우저에서 Webpack을 통해 번들링한 자바스크립트 로딩 테스트</p>
-<p>main.js, lib.js 모듈이 하나로 번들링된 bundle.js가 브라우저에서 문제없이 실행된 것을 확인할 수 있다.</p>
-<p>#2.4. babel-polyfill 설치<br>Babel을 사용하여 ES6+ 코드를 ES5 이하로 트랜스파일링하여도 브라우저가 지원하지 않는 코드가 남아 있을 수 있다. 예를 들어, ES6에서 추가된 Promise, Object.assign, Array.from 등은 ES5 이하로 트랜스파일링하여도 대체할 ES5 기능이 없기 때문에 그대로 남아 있다.</p>
-<p>src/js/main.js를 아래와 같이 수정하여 ES6에서 추가된 Promise, Object.assign, Array.from 등이 어떻게 트랜스파일링되는지 확인해 보자.</p>
-<p>// src/js/main.js<br>import { pi, power, Foo } from ‘./lib’;</p>
-<p>console.log(pi);<br>console.log(power(pi, pi));</p>
-<p>const f = new Foo();<br>console.log(f.foo());<br>console.log(f.bar());</p>
-<p>// polyfill이 필요한 코드<br>console.log(new Promise((resolve, reject) =&gt; {<br>  setTimeout(() =&gt; resolve(1), 100);<br>}));</p>
-<p>// polyfill이 필요한 코드<br>console.log(Object.assign({}, { x: 1 }, { y: 2 }));</p>
-<p>// polyfill이 필요한 코드<br>console.log(Array.from([1, 2, 3], v =&gt; v + v));<br>다시 트랜스파일링과 번들링을 실행한 다음, dist/js/bundle.js을 확인해보자.</p>
-<p>…<br>// 190 line<br>console.log(new Promise(function (resolve, reject) {<br>  setTimeout(function () {<br>    return resolve(1);<br>  }, 100);<br>})); // polyfill이 필요한 코드</p>
-<p>console.log(Object.assign({}, {<br>  x: 1<br>}, {<br>  y: 2<br>})); // polyfill이 필요한 코드</p>
-<p>console.log(Array.from([1, 2, 3], function (v) {<br>  return v + v;<br>}));<br>…<br>위와 같이 Promise, Object.assign, Array.from 등과 같이 ES5 이하로 대체할 수 없는 기능은 트랜스파일링이 되지 않는다. 따라서 오래된 브라우저에서도 ES6+에서 새롭게 추가된 객체나 메소드를 사용하기 위해서는 @babel/polyfill을 설치해야 한다.</p>
-<p>$ npm install @babel/polyfill<br>설치가 완료된 이후 package.json 파일은 아래와 같다.</p>
-<p>{<br>  “name”: “esnext-project”,<br>  “version”: “1.0.0”,<br>  “scripts”: {<br>    “build”: “webpack -w”<br>  },<br>  “devDependencies”: {<br>    “@babel/cli”: “^7.8.4”,<br>    “@babel/core”: “^7.9.0”,<br>    “@babel/plugin-proposal-class-properties”: “^7.8.3”,<br>    “@babel/preset-env”: “^7.9.5”,<br>    “babel-loader”: “^8.1.0”,<br>    “webpack”: “^4.42.1”,<br>    “webpack-cli”: “^3.3.11”<br>  },<br>  “dependencies”: {<br>    “@babel/polyfill”: “^7.8.7”<br>  }<br>}<br>@babel-polyfill은 개발 환경에서만 사용하는 것이 아니라 실제 운영 환경에서도 사용하여야 하므로 –save-dev 옵션으로 개발 설치를 하지 않도록 한다.</p>
-<p>ES6의 import를 사용하는 경우에는 진입점의 선두에서 먼저 폴리필을 로드하도록 한다.</p>
-<p>// src/js/main.js<br>import “@babel/polyfill”;<br>import { pi, power, Foo } from ‘./lib’;<br>…<br>webpack을 사용하는 경우에는 위 방법을 대신 폴리필을 webpack.config.js 파일의 entry 배열에 추가한다.</p>
-<p>const path = require(‘path’);</p>
-<p>module.exports = {<br>  // enntry file<br>  entry: [‘@babel/polyfill’, ‘./src/js/main.js’],<br>…<br>위와 같이 webpack.config.js 파일을 수정하여 폴리필을 반영해보자. 빌드 명령이 실행 중인 상태라면 중지시키고 다시 아래 명령을 실행한다.</p>
-<p>$ npm run build</p>
-<blockquote>
-<p><a href="mailto:esnext-project@1.0.0">esnext-project@1.0.0</a> build /Users/leeungmo/Desktop/esnext-project<br>webpack -w</p>
-</blockquote>
-<p>webpack is watching the files…</p>
-<p>Hash: 5e56791e9e5dd2d9d5d9<br>Version: webpack 4.42.1<br>Time: 2133ms<br>Built at: 2020. 04. 15. 오후 10:30:35<br>        Asset     Size  Chunks                   Chunk Names<br>    bundle.js  408 KiB    main  [emitted]        main<br>bundle.js.map  325 KiB    main  [emitted] [dev]  main<br>Entrypoint main = bundle.js bundle.js.map<br>[0] multi @babel/polyfill ./src/js/main.js 40 bytes {main} [built]<br>[./src/js/lib.js] 3.69 KiB {main} [built]<br>[./src/js/main.js] 509 bytes {main} [built]<br>    + 307 hidden modules<br>dist/js/bundle.js을 확인해보면 아래와 같이 폴리필이 추가된 것을 확인할 수 있다.</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
         <a href="/2020/03/RegExp/" class="image is-7by1">
             <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="정규표현식 | javaScript">
         </a>
@@ -884,6 +628,59 @@ babel-loader : 8.1.0
 
 
 
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/03/%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C/" class="image is-7by1">
+            <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="스프레드문법 | javaScript">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-25T11:02:03.000Z">2020-03-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C/">스프레드문법 | javaScript</a>
+            
+        </h1>
+        <div class="content">
+            <p>ES에서 새롭게 도입된 스프레드 문법 …은 하나로 뭉쳐 있는 여러 값들의 집합을 펼쳐서(전개, 분산)개별적인 값들의 목록을 만든다.</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
     
 <div class="card card-transparent">
@@ -1061,7 +858,7 @@ babel-loader : 8.1.0
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">33</span>
+                <span class="level-item tag">32</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/develop/React/">
@@ -1090,10 +887,10 @@ babel-loader : 8.1.0
         </a></li><li>
         <a class="level is-marginless" href="/categories/develop/npm-webpack/">
             <span class="level-start">
-                <span class="level-item">npm, webpack</span>
+                <span class="level-item">npm & webpack</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -1106,6 +903,25 @@ babel-loader : 8.1.0
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/bable_wep/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://res.cloudinary.com/beetoo/image/upload/v1519315520/js-webpack-babel_peqovw.png" alt="Babel과 Webpack을 이용한 ES6 개발 환경 구축 | javaScript">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T04:02:03.000Z">2020-04-19</time></div>
+                    <a href="/2020/04/bable_wep/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Babel과 Webpack을 이용한 ES6 개발 환경 구축 | javaScript</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/npm-webpack/">npm & webpack</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1177,26 +993,7 @@ babel-loader : 8.1.0
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-09T02:02:03.000Z">2020-04-09</time></div>
                     <a href="/2020/04/npm/" class="title has-link-black-ter is-size-6 has-text-weight-normal">npm(node.js) - 모듈관리 | npm</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/npm-webpack/">npm, webpack</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%A0%8C%EB%8D%94%EB%A7%81/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="브라우저의 렌더링 과정 | javaScript">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-08T17:45:03.000Z">2020-04-09</time></div>
-                    <a href="/2020/04/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%A0%8C%EB%8D%94%EB%A7%81/" class="title has-link-black-ter is-size-6 has-text-weight-normal">브라우저의 렌더링 과정 | javaScript</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/npm-webpack/">npm & webpack</a>
                     </p>
                 </div>
             </div>
