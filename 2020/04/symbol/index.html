@@ -10,16 +10,16 @@
 <title>Symbol | javaScript - namkwon&#39;s tech blog</title>
 
 
-    <meta name="description" content="1. Symbol이란?  심볼은 ES6에서 새롭게 추가된 7번째 타입으로 변경 불가능한 원시 타입의 값이다.심볼 값은 다른 값과 중복되지 않는 유일 무이한 값이다. 따라서 주로 이름의 충돌 위험이 없는 유일한 프로퍼티 키를 만들기 위해 사용한다.">
+    <meta name="description" content="1. Symbol이란?">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Symbol | javaScript">
 <meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/04/symbol/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
-<meta property="og:description" content="1. Symbol이란?  심볼은 ES6에서 새롭게 추가된 7번째 타입으로 변경 불가능한 원시 타입의 값이다.심볼 값은 다른 값과 중복되지 않는 유일 무이한 값이다. 따라서 주로 이름의 충돌 위험이 없는 유일한 프로퍼티 키를 만들기 위해 사용한다.">
+<meta property="og:description" content="1. Symbol이란?">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png">
 <meta property="article:published_time" content="2020-04-22T14:49:11.000Z">
-<meta property="article:modified_time" content="2020-04-22T14:50:53.596Z">
+<meta property="article:modified_time" content="2020-04-24T13:22:25.930Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -162,9 +162,79 @@
             
         </h1>
         <div class="content">
-            <h1 id="1-Symbol이란"><a href="#1-Symbol이란" class="headerlink" title="1. Symbol이란?"></a>1. Symbol이란?</h1><br>
+            <h1 id="1-Symbol이란"><a href="#1-Symbol이란" class="headerlink" title="1. Symbol이란?"></a>1. Symbol이란?</h1><a id="more"></a>
+<br>
 
-<p>심볼은 ES6에서 새롭게 추가된 7번째 타입으로 변경 불가능한 원시 타입의 값이다.<br>심볼 값은 다른 값과 중복되지 않는 유일 무이한 값이다. 따라서 주로 이름의 충돌 위험이 없는 유일한 프로퍼티 키를 만들기 위해 사용한다.</p>
+<p>심볼은 ES6에서 새롭게 추가된 7번째 타입으로 변경 불가능한 원시 타입의 값이다.<br>심볼 값은 다른 값과 중복되지 않는 유일 무이한 값이다. 따라서 주로 이름의 충돌 위험이 없는 유일한 프로퍼티 키를 만들기 위해 사용한다.<br><br></p>
+<h1 id="2-Symbol의-생성"><a href="#2-Symbol의-생성" class="headerlink" title="2. Symbol의 생성"></a>2. Symbol의 생성</h1><h1 id="2-1-Symbol-함수"><a href="#2-1-Symbol-함수" class="headerlink" title="2.1 Symbol 함수"></a>2.1 Symbol 함수</h1><br>
+
+<p>심볼 값은 Symbol 함수를 호출하여 생성한다. 다른 원시값, 즉 문자열, 숫자, 불리언, undefined, null 타입의 값은 리터럴 표기법을 통해 값을 생성할 수 있지만 심볼 값은 Symbol 함수를 호출하여 생성해야 한다. 이떄 생성된 심볼 값은 노출되지 않으며 <strong>다른 값과 절대 중복되지 않는 유일무이한 값</strong>이다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Symbol 함수를 호출하여 유일무이한 심볼 값을 생성한다.</span></span><br><span class="line"><span class="keyword">const</span> mySymbol = symbol();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 심볼 값은 노출되지 않는다.</span></span><br><span class="line"><span class="built_in">console</span>.log(mySymbol); <span class="comment">// Symbol()</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> mySymbol); <span class="comment">// symbol</span></span><br></pre></td></tr></table></figure>
+
+<p>Symbol 함수는 String, Number, Boolean 생성자 함수와는 달리 new 연산자를 사용하지 않는다. new 연산자와 함께 생성자 함수 또는 클래스를 호출하면 객체(인스턴스)가 생성되지만 심볼 값은 변경 불가능한 원시 값이다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Symbol</span>(); <span class="comment">// TypeError: Symbol is not a constructor</span></span><br></pre></td></tr></table></figure>
+
+<p>Symbol 함수에는 선택적으로 문자열을 인수로 전달할 수 있다. 이 문자열은 생성된 심볼 값에 대한 설명으로 디버깅용도로만 사용되며 심볼 값 생성에 어떠한 영향도 주지 않는다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 심볼 값에 대한 설명이 같더라도 유일무이한 심볼 값을 생성한다.</span></span><br><span class="line"><span class="keyword">const</span> mySymbol1 = <span class="built_in">Symbol</span>(<span class="string">'mySymbol'</span>);</span><br><span class="line"><span class="keyword">const</span> mySymbol2 = <span class="built_in">Symbol</span>(<span class="string">'mySymbol'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(mySymbol1 === mySymbol2); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>심볼 값도 문자열, 숫자, 불리언과 같이 객체처럼 접근하면 암묵적으로 레퍼 객체를 생성한다. 아래 예제의 description 프로퍼티와 toString 메소드는 Symbol.prototype의 프로퍼티이다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 심볼도 레퍼 객체를 생성한다</span></span><br><span class="line"><span class="keyword">const</span> mySymbol = <span class="built_in">Symbol</span>(<span class="string">'mySymbol'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(mySymbol.description); <span class="comment">// mySymbol</span></span><br><span class="line"><span class="built_in">console</span>.log(mySymbol.toString()); <span class="comment">// Symbol(mySymbol)</span></span><br></pre></td></tr></table></figure>
+
+<p>심볼 값은 암묵적으로 문자열이나 숫자 타입으로 변환되지 않는다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mySymbol = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 심볼 값은 암묵적으로 타입 변환이 되지 않는다.</span></span><br><span class="line"><span class="built_in">console</span>.log(mySymbol + <span class="string">''</span>); <span class="comment">// TypeError: Cannot convert a Symbol value to a string</span></span><br><span class="line"><span class="built_in">console</span>.log(+mySymbol); <span class="comment">// TypeError: Cannot convert a Symbol value to a string</span></span><br></pre></td></tr></table></figure>
+
+<p>단, <strong>불리언 타입으로는 암묵적으로 타입 변환된다.</strong> 이를 통해 if문 등에서 존재 확인이 가능하다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mySymbol = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 불리언 타입으로는 암묵적으로 타입 변환된다</span></span><br><span class="line"><span class="built_in">console</span>.log(!!mySymbol); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 문 등에서 존재 확인을 위해 사용할 수 있다.</span></span><br><span class="line"><span class="keyword">if</span> (mySymbol) <span class="built_in">console</span>.log(<span class="string">'mySymbol is not empty.'</span>);</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="2-2-Symbol-for-메소드"><a href="#2-2-Symbol-for-메소드" class="headerlink" title="2.2 Symbol.for 메소드"></a>2.2 Symbol.for 메소드</h2><br>
+
+<p>Symbol.for 메소드는 인수로 전달받은 문자열을 키로 사용하여 키와 심볼 값의 쌍들이 저장되어 있는 전역 심볼 레지스트리(global symbol registry)에서 해당 키와 일치하는 심볼 값을 검색한다.</p>
+<p>검색에 성공하면 새로운 심볼 값을 생성하지 않고 검색된 심볼 값을 반환한다.<br>검색에 실패하면 새로운 심볼 값을 생성하여 Symbol.for 메소드의 인수로 전달된 키로 전역 Symbol 레지스트리에 저장한 후, 생성된 심볼 값을 반환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 전역 심볼 레지스트리에 mySymbol이라는 키로 저장된 심볼 값이 없으면 새로운 심볼 값을 생성</span></span><br><span class="line"><span class="keyword">const</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">'mySymbol'</span>);</span><br><span class="line"><span class="comment">// 전역 심볼 레지스트리에 mySymbol이라는 키로 저장된 심볼 값이 있으면 해당 심볼 값을 반환</span></span><br><span class="line"><span class="keyword">const</span> s2 = <span class="built_in">Symbol</span>.for(<span class="string">'mySymbol'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(s1 === s2); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>Symbol.for 메소드를 사용하면 애플리케이션 전역에서 중복되지 않는 유일무이한 상수인 심볼 값을 단 하나만 생성하여 전역 심볼레지스트리를 통해 공유할 수 있다.</p>
+<p>Symbol.keyFor 메소드를 사용하면 전역 심볼 레지스트리에 저장된 심볼 값의 키를 추출할 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 전역 심볼 레지스트리에 mySymbol이라는 키로 저장된 심볼 값이 없으면 새로운 심볼 값을 생성</span></span><br><span class="line"><span class="keyword">const</span> s = <span class="built_in">Symbol</span>.for(<span class="string">'mySymbol'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 전역 심볼 레지스트리에 저장된 심볼 값의 키를 추출</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(s)); <span class="comment">// mySymbol</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h1 id="3-Symbol과-상수"><a href="#3-Symbol과-상수" class="headerlink" title="3. Symbol과 상수"></a>3. Symbol과 상수</h1><p>예를 들어, 4방향 즉, 위, 아래, 오른쪽, 왼쪽을 나타내는 상수를 정의한다고 생각해 보자.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 위, 아래, 오른쪽, 왼쪽을 나타내는 상수.</span></span><br><span class="line"><span class="comment">// 값 1, 2, 3, 4에는 특별한 의미가 없고 상수 이름에 의미가 있다</span></span><br><span class="line"><span class="keyword">const</span> Direction = &#123;</span><br><span class="line">  UP: <span class="number">1</span>,</span><br><span class="line">  DOWN: <span class="number">2</span>,</span><br><span class="line">  LEFT: <span class="number">3</span>,</span><br><span class="line">  RIGHT: <span class="number">4</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 변수에 상수를 할당</span></span><br><span class="line"><span class="keyword">const</span> myDirection = Direction.UP;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (myDirection === Direction.UP) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'You are going UP.'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 예제와 같이 값에는 특별한 의미가 없고 상수 이름 자체에 의미가 있는 경우가 있다. 이때 문제는 상수값 1, 2, 3, 4가 다른 변수 값과 중복될 수 있다는 것이다. 이러한 경우, 중복될 가능성이 있는 무의미한 상수 대신 중복될 가능성이 없는 유일무이한 심볼 값을 사용할 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 위, 아래, 오른쪽, 왼쪽을 나타내는 상수.</span></span><br><span class="line"><span class="comment">// 중복될 가능성이 없는 심볼 값으로 상수값을 생성</span></span><br><span class="line"><span class="keyword">const</span> Direction = &#123;</span><br><span class="line">  UP: <span class="built_in">Symbol</span>(<span class="string">'up'</span>),</span><br><span class="line">  DOWN: <span class="built_in">Symbol</span>(<span class="string">'down'</span>),</span><br><span class="line">  LEFT: <span class="built_in">Symbol</span>(<span class="string">'left'</span>),</span><br><span class="line">  RIGHT: <span class="built_in">Symbol</span>(<span class="string">'right'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 변수에 상수를 할당</span></span><br><span class="line"><span class="keyword">const</span> myDirection = Direction.UP;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (myDirection === Direction.UP) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'You are going UP.'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h1 id="4-Symbol과-프로퍼티-키"><a href="#4-Symbol과-프로퍼티-키" class="headerlink" title="4. Symbol과 프로퍼티 키"></a>4. Symbol과 프로퍼티 키</h1><br>
+
+<p>객체의 프로퍼티 키는 빈 문자열을 포함하는 모든 문자열 또는 심볼 값으로 만들 수 있으며 동적으로 생성(Computed property name, “9.9.2 프로퍼티 키 동적 생성” 참고)할 수도 있다.</p>
+<p>심볼 값으로 프로퍼티 키를 동적 생성하여 프로퍼티를 만들어 보자. 심볼 값으로 프로퍼티 키를 동적 생성하여 프로퍼티를 만들어 보자. 심볼 값을 프로퍼티 키로 사용하려면 프로퍼티 키로 사용할 심볼 값에 대괄호를 사용해야 한다. 프로퍼티에 접근할 때도 마찬가지로 대괄호를 사용해야 한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="comment">// 심볼 값으로 프로퍼티 키를 동적 생성</span></span><br><span class="line">  [<span class="built_in">Symbol</span>.for(<span class="string">'mySymbol'</span>)]: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj[<span class="built_in">Symbol</span>.for(<span class="string">'mySymbol'</span>)]); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>심볼 값은 유일무이한 값이므로 심볼 값으로 프로퍼티 키를 만들면 다른 프로퍼티 키와 절대 충돌하지 않는다.</strong> 기존 프로퍼티 키와 충돌하지 않는 것은 물론, 미래에 추가될 어떤 프로퍼티 키와도 충돌할 위험이 없다.</p>
+<br>
+
+<h1 id="5-Symbol과-프로퍼티-은닉"><a href="#5-Symbol과-프로퍼티-은닉" class="headerlink" title="5. Symbol과 프로퍼티 은닉"></a>5. Symbol과 프로퍼티 은닉</h1><br>
+
+<p>심볼 값으로 동적 생성한 프로퍼티 키로 만든 프로퍼티는 for…in 문이나 Object.keys, Object.getOwnPropertyNames 메소드로 찾을 수 없다. 이처럼 심볼 값으로 동적 생성한 프로퍼티 키로 프로퍼티를 만들면 프로퍼티를 숨길 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="comment">// 심볼 값으로 프로퍼티 키를 동적 생성</span></span><br><span class="line">  [<span class="built_in">Symbol</span>(<span class="string">'mySymbol'</span>)]: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key); <span class="comment">// 아무것도 출력되지 않는다.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(obj)); <span class="comment">// []</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(obj)); <span class="comment">// []</span></span><br></pre></td></tr></table></figure>
+
+<p>하지만 프로퍼티를 완전하게 숨길 수 있는 것은 아니다. ES6에서 도입된 Object.getOwnPropertySymbols 메소드를 사용하면 심볼 값으로 동적 생성한 프로퍼티 키로 만든 프로퍼티를 찾을 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="comment">// 심볼 값으로 프로퍼티 키를 동적 생성</span></span><br><span class="line">  [<span class="built_in">Symbol</span>(<span class="string">'mySymbol'</span>)]: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6 : getOwnPropertySymbols</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertySymbols(obj)); <span class="comment">// [Symbol(mySymbol)]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 심볼 값을 찾을 수 있다.</span></span><br><span class="line"><span class="keyword">const</span> symbolKey1 = <span class="built_in">Object</span>.getOwnPropertySymbols(obj)[<span class="number">0</span>];</span><br><span class="line"><span class="built_in">console</span>.log(obj[symbolKey1]); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h1 id="6-Symbol과-표준-빌트인-객체-확장"><a href="#6-Symbol과-표준-빌트인-객체-확장" class="headerlink" title="6. Symbol과 표준 빌트인 객체 확장"></a>6. Symbol과 표준 빌트인 객체 확장</h1><br>
+
+<p>일반적으로 표준 빌트인 객체에 사용자 정의 메소드를 직접 추가하여 확장하는 것은 권장하지 않는다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 표준 빌트인 객체를 확장하는 것은 권장하지 않는다.</span></span><br><span class="line"><span class="comment">// 즉, Array.prototype은 읽기 전용으로 사용하는 것이 좋다.</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.sum = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.reduce(<span class="function">(<span class="params">p, c</span>) =&gt;</span> p + c, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log([<span class="number">1</span>, <span class="number">2</span>].sum()); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>그 이유는 개발자가 직접 추가한 메소드와 미래에 표준 사양으로 추가될 메소드가 이름이 중복될 수 있기 때문이다. 예를 들어, Array.prototype.find 메소드가 ES6에서 새롭게 도입되기 이전에 Array.prototype에 사용자 정의 find 메소드를 직접 추가했다면 새롭게 도입된 ES6의 Array.prototype.find 메소드와 이름이 중복되어 ES6의 Array.prototype.find 메소드를 이전에 추가했던 사용자 정의 find 메소드가 덮어쓴다. 표준 빌트인 메소드를 사용자 정의 메소드가 덮어쓴다면 문제가 된다.</p>
+<p>하지만 중복될 가능성이 없는 심볼 값으로 프로퍼티 키를 생성하여 표준 빌트인 객체를 확장하면 표준 빌트인 객체의 기존 프로퍼티 키와 충돌하지 않는 것은 물론, 버전이 올라감에 따라 추가될지 모르는 어떤 프로퍼티 키와도 충돌할 위험이 없어 안전하게 표준 빌트인 객체를 확장할 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 심볼 값으로 프로퍼티 키를 동적 생성하면 다른 프로퍼티 키와 절대 충돌하지 않는다.</span></span><br><span class="line"><span class="built_in">Array</span>.prototype[<span class="built_in">Symbol</span>.for(<span class="string">'sum'</span>)] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.reduce(<span class="function">(<span class="params">p, c</span>) =&gt;</span> p + c, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log([<span class="number">1</span>, <span class="number">2</span>][<span class="built_in">Symbol</span>.for(<span class="string">'sum'</span>)]()); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -188,6 +258,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/bable_wep/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Webpack 실전에 적용하기 | javaScript</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -418,6 +495,25 @@
         
         <article class="media">
             
+            <a href="/2020/04/bable_wep/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://res.cloudinary.com/beetoo/image/upload/v1519315520/js-webpack-babel_peqovw.png" alt="Webpack 실전에 적용하기 | javaScript">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-24T01:30:03.000Z">2020-04-24</time></div>
+                    <a href="/2020/04/bable_wep/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Webpack 실전에 적용하기 | javaScript</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/npm-webpack/">npm & webpack</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/04/symbol/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://miro.medium.com/max/785/1*3Bf5DMZ_cN3SOC-0px8Crw.png" alt="Symbol | javaScript">
@@ -449,25 +545,6 @@
                     <a href="/2020/04/vscode/" class="title has-link-black-ter is-size-6 has-text-weight-normal">알아두면 쓸데있는 VSCode | IDE</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/bable_wep/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://res.cloudinary.com/beetoo/image/upload/v1519315520/js-webpack-babel_peqovw.png" alt="Babel과 Webpack을 이용한 ES6 개발 환경 구축 | javaScript">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T04:02:03.000Z">2020-04-19</time></div>
-                    <a href="/2020/04/bable_wep/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Babel과 Webpack을 이용한 ES6 개발 환경 구축 | javaScript</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/npm-webpack/">npm & webpack</a>
                     </p>
                 </div>
             </div>
