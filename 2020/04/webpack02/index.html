@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://reactgo.com/img/webpack.png">
 <meta property="article:published_time" content="2020-04-24T01:45:03.000Z">
-<meta property="article:modified_time" content="2020-04-24T14:08:57.968Z">
+<meta property="article:modified_time" content="2020-05-04T02:08:39.565Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -231,7 +231,86 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'[chunkhash].bundle.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>이렇게 생성된 결과 파일의 이름에는 각각 엔트리 이름, 모듈 아이디, 해시 값 등이 포함됩니다.<br><br></p>
-<h1 id="3-Loader"><a href="#3-Loader" class="headerlink" title="3. Loader"></a>3. Loader</h1><br>
+<h1 id="3-Loader"><a href="#3-Loader" class="headerlink" title="3. Loader"></a>3. Loader</h1><p>로더(Loader)는 웹팩이 웹 애플리케이션을 해석할 때 자바스크립트 파일이 아닌 웹 자원(HTML, CSS, Images, 폰트 등)들을 변환할 수 있도록 도와주는 속성입니다.<br><br></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: []</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>다른 프로퍼티와 다르게 module 라는 이름을 사용한다.</p>
+<h2 id="3-1-CSS-Loader"><a href="#3-1-CSS-Loader" class="headerlink" title="3.1 CSS Loader"></a>3.1 CSS Loader</h2><br>
+
+<p>이 때 해당 폴더에 아래의 NPM 명령어로 CSS 로더를 설치하고 웹팩 설정 파일 설정을 바꿔주면 에러를 해결할 수 있습니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i css-loader -D</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./app.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'bundle.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">'css-loader'</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>test : 로더를 적용할 파일 유형 (일반적으로 정규 표현식 사용)</li>
+<li>use : 해당 파일에 적용할 로더의 이름</li>
+</ul>
+<p>위 코드는 해당 프로젝트의 모든 CSS 파일에 대해서 CSS 로더를 적용한다는 뜻입니다.</p>
+<h2 id="3-2-로더-적용-순서"><a href="#3-2-로더-적용-순서" class="headerlink" title="3.2 로더 적용 순서"></a>3.2 로더 적용 순서</h2><p><strong>로더는 기본적으로 오른쪽에서 왼쪽순으로 적용됩니다.</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">  use: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>, <span class="string">'sass-loader'</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>sass를 css로 변환하고 css를 인라인 스타일링으로 추가</p>
+<br>
+
+<h2 id="3-3-자주-사용되는-로더-종류"><a href="#3-3-자주-사용되는-로더-종류" class="headerlink" title="3.3 자주 사용되는 로더 종류"></a>3.3 자주 사용되는 로더 종류</h2><br>
+
+<ul>
+<li>Babel Loader</li>
+<li>style Lodaer</li>
+<li>Sass Loader</li>
+<li>File Loader</li>
+<li>Vue Loader</li>
+<li>TS Loader</li>
+</ul>
+<br>
+
+<h1 id="4-Plugin"><a href="#4-Plugin" class="headerlink" title="4 Plugin"></a>4 Plugin</h1><br>
+
+<p>플러그인(plugin)은 웹팩의 기본적인 동작에 추가적인 기능을 제공하는 속성입니다. 로더랑 비교하면 로더는 파일을 해석하고 변환하는 과정에 관여하는 반면, 플러그인은 해당 결과물의 형태를 바꾸는 역할을 한다고 보면 됩니다.</p>
+<p>아래와 같이 선언</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: []</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>플러그인의 배열에는 생성자 함수로 생성한 객체 인스턴스만 추가 가능하다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">var</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [<span class="keyword">new</span> HtmlWebpackPlugin(), <span class="keyword">new</span> webpack.ProgressPlugin()]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>위의 두 플러그인은 각각 아래와 같은 역할을 함</p>
+<ul>
+<li>HtmlWebpackPlugin : 웹팩으로 빌드한 결과물로 HTML 파일을 생성해주는 플러그인</li>
+<li>ProgressPlugin : 웹팩의 빌드 진행율을 표시해주는 플러그인<br>
+
+</li>
+</ul>
+<h2 id="4-1-자주-사용하는-플러그인"><a href="#4-1-자주-사용하는-플러그인" class="headerlink" title="4.1 자주 사용하는 플러그인"></a>4.1 자주 사용하는 플러그인</h2><ul>
+<li>split-chunks-plugin</li>
+<li>clean-webpack-plugin</li>
+<li>image-webpack-loader</li>
+<li>webpack-bundle-analyzer-plugin</li>
+</ul>
+<br>
+
+<h1 id="5-정리"><a href="#5-정리" class="headerlink" title="5 정리"></a>5 정리</h1><br>
+
+<p>웹팩의 주요 속성인 4가지를 정리 하자면..!</p>
+<ul>
+<li>Entry 속성은 웹팩을 실행할 대상 파일. 진입점</li>
+<li>Output 속성은 웹팩의 결과물에 대한 정보를 입력하는 속성. 일반적으로 filename과 path를 정의</li>
+<li>Loader 속성은 CSS, 이미지와 같은 비 자바스크립트 파일을 웹팩이 인식할 수 있게 추가하는 속성. 로더는 오른쪽에서 왼쪽 순으로 적용</li>
+<li>Plugin 속성은 웹팩으로 변환한 파일에 추가적인 기능을 더하고 싶을 때 사용하는 속성. 웹팩 변환 과정 전반에 대한 제어권을 갖고 있음</li>
+</ul>
+<p>이외에 devserver, devtool, resolve등도 있습니다. 참고!</p>
+<br>
+
+<h2 id="5-1-Webpack-Dev-Server"><a href="#5-1-Webpack-Dev-Server" class="headerlink" title="5.1 Webpack Dev Server"></a>5.1 Webpack Dev Server</h2><p>웹팩 데브 서버는 웹 애플리케이션을 개발하는 과정에서 유용하게 쓰이는 도구입니다. 웹팩의 빌드 대상 파일이 변경 되었을 때 매번 웹팩 명령어를 실행하지 않아도 코드만 변경하고 저장하면 웹팩으로 빌드한 후 브라우저를 새로고침 해줍니다.</p>
+<p>매번 명령어를 치는 시간과 브라우저를 새로 고침하는 시간 뿐만 아니라 웹팩 빌드 시간 또한 줄여주기 때문에 웹팩 기반의 웹 애플리케이션 개발에 필수로 사용됩니다.</p>
+<p>웹팩 데브 서버는 일반 웹팩 빌드와 다른점이 있습니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "dev": "webpack-dev-server",</span><br><span class="line">  "build": "webpack"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>웹팩 데브 서버를 실행하여 웹팩 빌드를 하는 경우에는 빌드한 결과물이 파일 탐색기나 프로젝트 폴더에서 보이지 않습니다. 좀 더 구체적으로 얘기하자면 웹팩 데브 서버로 빌드한 결과물은 메모리에 저장되고 파일로 생성하지는 않기 때문에 컴퓨터 내부적으로는 접근할 수 있지만 사람이 직접 눈으로 보고 파일을 조작할 순 없습니다.</p>
+<p>따라서, 웹팩 데브 서버는 개발할 때만 사용하다가 개발이 완료되면 웹팩 명령어를 이용해 결과물을 파일로 생성해야 합니다.</p>
+<br>
+
+<h1 id="6-결론"><a href="#6-결론" class="headerlink" title="6 결론"></a>6 결론</h1><p><del>yarn create react-app명렁어를 쓰면 편하다.</del></p>
 
         </div>
         
