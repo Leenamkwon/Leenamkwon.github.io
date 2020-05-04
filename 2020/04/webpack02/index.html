@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://reactgo.com/img/webpack.png">
 <meta property="article:published_time" content="2020-04-24T01:45:03.000Z">
-<meta property="article:modified_time" content="2020-05-04T02:08:39.565Z">
+<meta property="article:modified_time" content="2020-05-04T02:24:25.940Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
 <meta property="article:tag" content="TypeScript">
@@ -308,6 +308,48 @@
 
 <p>웹팩 데브 서버를 실행하여 웹팩 빌드를 하는 경우에는 빌드한 결과물이 파일 탐색기나 프로젝트 폴더에서 보이지 않습니다. 좀 더 구체적으로 얘기하자면 웹팩 데브 서버로 빌드한 결과물은 메모리에 저장되고 파일로 생성하지는 않기 때문에 컴퓨터 내부적으로는 접근할 수 있지만 사람이 직접 눈으로 보고 파일을 조작할 순 없습니다.</p>
 <p>따라서, 웹팩 데브 서버는 개발할 때만 사용하다가 개발이 완료되면 웹팩 명령어를 이용해 결과물을 파일로 생성해야 합니다.</p>
+<h3 id="5-1-1-Dev-server-적용하기"><a href="#5-1-1-Dev-server-적용하기" class="headerlink" title="5.1.1 Dev server 적용하기"></a>5.1.1 Dev server 적용하기</h3><br>
+
+<ol>
+<li>아래 명령어로 라이브러리 설치</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack webpack-dev-server</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>package.json 파일에서 아래와 같이 script 속성에 커스텀 명령어 추가</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"dev"</span>: <span class="string">"webpack-dev-server"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>웹팩 설정 파일 webpack.config.js 생성 후 아래 내용 추가</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">'none'</span>,</span><br><span class="line">  entry: <span class="string">'./index.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    port: <span class="number">9000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      <span class="comment">// index.html 템플릿을 기반으로 빌드 결과물을 추가해줌</span></span><br><span class="line">      template: <span class="string">'index.html'</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>명령어 입력창에 npm run dev 입력하여 데브 서버 실행</p>
+</li>
+<li><p>잘 실행되는 지 확인</p>
+</li>
+</ol>
+<br>
+
+<h2 id="5-2-mode"><a href="#5-2-mode" class="headerlink" title="5.2 mode"></a>5.2 mode</h2><br>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">'none'</span>,</span><br><span class="line">  entry: <span class="string">''</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>웹팩 설정을 정의할 때 위와 같이 mode라는 속성을 정의하면 웹팩의 실행 모드가 설정됩니다. 웹팩의 실행 모드에는 다음 3가지가 있습니다.</p>
+<ul>
+<li>none : 모드 설정 안함</li>
+<li>development : 개발 모드</li>
+<li>production : 배포 모드</li>
+</ul>
+<p>각 실행 모드에 따라 웹팩의 결과물 모습이 달라집니다. 개발 모드인 경우에는 개발자들이 좀 더 보기 편하게 웹팩 로그나 결과물이 보여지고, 배포 모드인 경우에는 성능 최적화를 위해 기본적인 파일 압축 등의 빌드 과정이 추가됩니다.</p>
+<h3 id="5-2-1-실행-모드에-따라-웹팩-설정-다르게-하는-법"><a href="#5-2-1-실행-모드에-따라-웹팩-설정-다르게-하는-법" class="headerlink" title="5.2.1 실행 모드에 따라 웹팩 설정 다르게 하는 법"></a>5.2.1 실행 모드에 따라 웹팩 설정 다르게 하는 법</h3><br>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">env</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> entryPath = env.mode === <span class="string">'production'</span> ? <span class="string">'./public/index.js'</span> : <span class="string">'./src/index.js'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    entry: entryPath,</span><br><span class="line">    output: &#123;&#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"build"</span>: <span class="string">"webpack"</span>,</span><br><span class="line">  <span class="attr">"development"</span>: <span class="string">"npm run build -- --env.mode=development"</span>,</span><br><span class="line">  <span class="attr">"production"</span>: <span class="string">"npm run build -- --env.mode=production"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <br>
 
 <h1 id="6-결론"><a href="#6-결론" class="headerlink" title="6 결론"></a>6 결론</h1><p><del>yarn create react-app명렁어를 쓰면 편하다.</del></p>
@@ -415,7 +457,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            48
+                            49
                         </p>
                     </a>
                 </div>
@@ -515,7 +557,7 @@
                 <span class="level-item">develop</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">44</span>
+                <span class="level-item tag">45</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/develop/JavaScript/">
@@ -555,7 +597,7 @@
                 <span class="level-item">npm & webpack</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -568,6 +610,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/webpack03/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://reactgo.com/img/webpack.png" alt="Webpack 실습하기 | javaScript">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-04T02:45:03.000Z">2020-05-04</time></div>
+                    <a href="/2020/05/webpack03/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Webpack 실습하기 | javaScript</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/npm-webpack/">npm & webpack</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -645,25 +706,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/vscode/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blogs.syntaxsofts.com/assets/thumbnails/blog-4/blog-header.png" alt="알아두면 쓸데있는 VSCode | IDE">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-20T09:18:11.000Z">2020-04-20</time></div>
-                    <a href="/2020/04/vscode/" class="title has-link-black-ter is-size-6 has-text-weight-normal">알아두면 쓸데있는 VSCode | IDE</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/develop/">develop</a> / <a class="has-link-grey -link" href="/categories/develop/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -672,7 +714,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/Date/" style="font-size: 10px;">Date</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/ExecutionContext/" style="font-size: 10px;">ExecutionContext</a> <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/Koala/" style="font-size: 11.11px;">Koala</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/Number/" style="font-size: 10px;">Number</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SASS/" style="font-size: 13.33px;">SASS</a> <a href="/tags/SCSS/" style="font-size: 13.33px;">SCSS</a> <a href="/tags/TypeScript/" style="font-size: 18.89px;">TypeScript</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorism/" style="font-size: 12.22px;">algorism</a> <a href="/tags/array/" style="font-size: 14.44px;">array</a> <a href="/tags/attribute/" style="font-size: 10px;">attribute</a> <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/bable/" style="font-size: 11.11px;">bable</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/bulitin/" style="font-size: 10px;">bulitin</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/closer/" style="font-size: 10px;">closer</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/destructuring/" style="font-size: 10px;">destructuring</a> <a href="/tags/editor/" style="font-size: 10px;">editor</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/firstclass/" style="font-size: 10px;">firstclass</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/git/" style="font-size: 11.11px;">git</a> <a href="/tags/github/" style="font-size: 11.11px;">github</a> <a href="/tags/graphic/" style="font-size: 10px;">graphic</a> <a href="/tags/hexo/" style="font-size: 17.78px;">hexo</a> <a href="/tags/hof/" style="font-size: 11.11px;">hof</a> <a href="/tags/ide/" style="font-size: 10px;">ide</a> <a href="/tags/javaScript/" style="font-size: 20px;">javaScript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/module/" style="font-size: 11.11px;">module</a> <a href="/tags/mvc/" style="font-size: 10px;">mvc</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/object/" style="font-size: 15.56px;">object</a> <a href="/tags/operator/" style="font-size: 10px;">operator</a> <a href="/tags/present/" style="font-size: 10px;">present</a> <a href="/tags/prettier/" style="font-size: 10px;">prettier</a> <a href="/tags/property/" style="font-size: 10px;">property</a> <a href="/tags/prototype/" style="font-size: 16.67px;">prototype</a> <a href="/tags/rendering/" style="font-size: 10px;">rendering</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/scopechain/" style="font-size: 10px;">scopechain</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/statement/" style="font-size: 10px;">statement</a> <a href="/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/webpack/" style="font-size: 12.22px;">webpack</a>
+        <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/Date/" style="font-size: 10px;">Date</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/ExecutionContext/" style="font-size: 10px;">ExecutionContext</a> <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/Koala/" style="font-size: 11.11px;">Koala</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/Number/" style="font-size: 10px;">Number</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SASS/" style="font-size: 13.33px;">SASS</a> <a href="/tags/SCSS/" style="font-size: 13.33px;">SCSS</a> <a href="/tags/TypeScript/" style="font-size: 18.89px;">TypeScript</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/algorism/" style="font-size: 12.22px;">algorism</a> <a href="/tags/array/" style="font-size: 14.44px;">array</a> <a href="/tags/attribute/" style="font-size: 10px;">attribute</a> <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/bable/" style="font-size: 12.22px;">bable</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/bulitin/" style="font-size: 10px;">bulitin</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/closer/" style="font-size: 10px;">closer</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/destructuring/" style="font-size: 10px;">destructuring</a> <a href="/tags/editor/" style="font-size: 10px;">editor</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/firstclass/" style="font-size: 10px;">firstclass</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/git/" style="font-size: 11.11px;">git</a> <a href="/tags/github/" style="font-size: 11.11px;">github</a> <a href="/tags/graphic/" style="font-size: 10px;">graphic</a> <a href="/tags/hexo/" style="font-size: 17.78px;">hexo</a> <a href="/tags/hof/" style="font-size: 11.11px;">hof</a> <a href="/tags/ide/" style="font-size: 10px;">ide</a> <a href="/tags/javaScript/" style="font-size: 20px;">javaScript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/module/" style="font-size: 11.11px;">module</a> <a href="/tags/mvc/" style="font-size: 10px;">mvc</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/object/" style="font-size: 15.56px;">object</a> <a href="/tags/operator/" style="font-size: 10px;">operator</a> <a href="/tags/present/" style="font-size: 10px;">present</a> <a href="/tags/prettier/" style="font-size: 10px;">prettier</a> <a href="/tags/property/" style="font-size: 10px;">property</a> <a href="/tags/prototype/" style="font-size: 16.67px;">prototype</a> <a href="/tags/rendering/" style="font-size: 10px;">rendering</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/scopechain/" style="font-size: 10px;">scopechain</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/statement/" style="font-size: 10px;">statement</a> <a href="/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a>
     </div>
 </div>
     

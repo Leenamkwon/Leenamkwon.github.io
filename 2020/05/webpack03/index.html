@@ -7,25 +7,26 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>npm(node.js) - 모듈관리 | npm - namkwon&#39;s tech blog</title>
+<title>Webpack 실습하기 | javaScript - namkwon&#39;s tech blog</title>
 
 
-    <meta name="description" content="npm 모듈 설치, 삭제, 버전 업데이트 관리">
+    <meta name="description" content="요즘 js랑 리액트에 몰두하다 보니까 블로그를 오랜만에 올리네요누구나 따라하는 웹팩 듀토리얼 시작합니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="npm(node.js) - 모듈관리 | npm">
-<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/04/npm/index.html">
+<meta property="og:title" content="Webpack 실습하기 | javaScript">
+<meta property="og:url" content="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/05/webpack03/index.html">
 <meta property="og:site_name" content="namkwon&#39;s tech blog">
-<meta property="og:description" content="npm 모듈 설치, 삭제, 버전 업데이트 관리">
+<meta property="og:description" content="요즘 js랑 리액트에 몰두하다 보니까 블로그를 오랜만에 올리네요누구나 따라하는 웹팩 듀토리얼 시작합니다.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/540px-Npm-logo.svg.png">
-<meta property="article:published_time" content="2020-04-09T02:02:03.000Z">
-<meta property="article:modified_time" content="2020-04-19T07:01:58.150Z">
+<meta property="og:image" content="https://reactgo.com/img/webpack.png">
+<meta property="article:published_time" content="2020-05-04T02:45:03.000Z">
+<meta property="article:modified_time" content="2020-05-04T02:24:48.885Z">
 <meta property="article:author" content="Lee namkwon">
 <meta property="article:tag" content="javaScript">
-<meta property="article:tag" content="npm">
-<meta property="article:tag" content="node.js">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="webpack">
+<meta property="article:tag" content="bable">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/540px-Npm-logo.svg.png">
+<meta name="twitter:image" content="https://reactgo.com/img/webpack.png">
 
 
 
@@ -83,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="npm(node.js) - 모듈관리 | npm" height="28">
+                <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="Webpack 실습하기 | javaScript" height="28">
             
             </a>
         </div>
@@ -137,7 +138,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/540px-Npm-logo.svg.png" alt="npm(node.js) - 모듈관리 | npm">
+            <img class="thumbnail" src="https://reactgo.com/img/webpack.png" alt="Webpack 실습하기 | javaScript">
         </span>
     </div>
     
@@ -145,7 +146,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-09T02:02:03.000Z">2020-04-09</time>
+                <time class="level-item has-text-grey" datetime="2020-05-04T02:45:03.000Z">2020-05-04</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/develop/">develop</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/develop/npm-webpack/">npm & webpack</a>
@@ -158,46 +159,45 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                npm(node.js) - 모듈관리 | npm
+                Webpack 실습하기 | javaScript
             
         </h1>
         <div class="content">
-            <h1 id="npm-모듈-설치-삭제-버전-업데이트-관리"><a href="#npm-모듈-설치-삭제-버전-업데이트-관리" class="headerlink" title="npm 모듈 설치, 삭제, 버전 업데이트 관리"></a>npm 모듈 설치, 삭제, 버전 업데이트 관리</h1><a id="more"></a>
+            <p><del>요즘 js랑 리액트에 몰두하다 보니까</del> 블로그를 오랜만에 올리네요<br>누구나 따라하는 웹팩 듀토리얼 시작합니다.</p>
+<a id="more"></a>
+
+<h1 id="실습"><a href="#실습" class="headerlink" title="실습"></a>실습</h1><br>
+
+<ol>
+<li>빈폴더에서 아래 명령어로 package.json 파일 생성</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>아래 명령어로 실습이 필요한 라이브러리 설치</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack webpack-cli css-loader style-loader mini-css-extract-plugin -D</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>프로젝트 디렉토리에 index.html 파일 생성하고 bundle.js 연결</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>webpack practice<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Hello javaSCript<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>hello webpack<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 웹팩의 빌드 결과물을 로딩하는 스크립트 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./dist/bundle.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>프로젝트 루트 레벨에 웹팩 설정 파일 webpack.config.js 추가</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">'none'</span>,</span><br><span class="line">  entry: <span class="string">'./index.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>CSS 파일을 별도로 분리하기 위해 MiniCssExtractPlugin 플러그인 설정 추가</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">'mini-css-extract-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">'none'</span>,</span><br><span class="line">  entry: <span class="string">'./index.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [&#123; <span class="attr">loader</span>: MiniCssExtractPlugin.loader &#125;, <span class="string">'css-loader'</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [<span class="keyword">new</span> MiniCssExtractPlugin()]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <br>
-  1 npm 모듈 관리에서 중요한 설치, 업데이트, 삭제 방법을 설명한다.
-  2 설치 및 업데이트 명령어에 버전을 명시하지 않으면, 최신버전으로 설치된다.
-  3 npm 대신에 모듈설치 부분에서 빠른속도, 안정성이 검증된 yam에 대해서는 다음 포스팅에 설명한다.
 
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install module_name      #npm 모듈 설치(로컬 설치)</span><br><span class="line">npm install -g module_name   #npm 모듈 설치(전역 설치)</span><br><span class="line">npm update module_name       #npm 모듈 업데이트</span><br><span class="line">npm uninstall module_name    #npm 모듈 삭제</span><br><span class="line">npm docs # npm 모듈 설명</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h1 id="npm-node-js-list"><a href="#npm-node-js-list" class="headerlink" title="npm(node.js) - list"></a>npm(node.js) - list</h1><p>설치된 전역 리스트 확인</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls -g --depth=<span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<p>npm 설치된 패키지 버전 확인</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm ls</span><br><span class="line">npm list</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h1 id="npm-node-js-list-view"><a href="#npm-node-js-list-view" class="headerlink" title="npm(node.js) - list, view"></a>npm(node.js) - list, view</h1><p>기본 소스</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 현재 설치된 모듈 버전 확인</span></span><br><span class="line">npm list 모듈명</span><br><span class="line">npm list 모듈명 -g</span><br><span class="line"></span><br><span class="line"><span class="comment">#모듈의 최신버전 확인</span></span><br><span class="line">npm view 모듈명 version</span><br></pre></td></tr></table></figure>
-
-<h1 id="npm-버전-확인-및-기타-에러-발생시-캐시-삭제-방법"><a href="#npm-버전-확인-및-기타-에러-발생시-캐시-삭제-방법" class="headerlink" title="npm 버전 확인 및 기타 에러 발생시 캐시 삭제 방법"></a>npm 버전 확인 및 기타 에러 발생시 캐시 삭제 방법</h1><br>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm -v <span class="comment">#npm 버전 확인</span></span><br><span class="line">npm cache verify <span class="comment">#npm 캐시 확인</span></span><br><span class="line">npm cache clean <span class="comment">#npm 캐시 삭제</span></span><br><span class="line">npm cache clean --force <span class="comment"># npm 캐시 강제 삭제</span></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h1 id="pakage-json"><a href="#pakage-json" class="headerlink" title="pakage.json"></a>pakage.json</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init <span class="comment"># pakage.json을 만듬</span></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h1 id="npm-node-js-도움말-옵션"><a href="#npm-node-js-도움말-옵션" class="headerlink" title="npm(node.js) 도움말 옵션"></a>npm(node.js) 도움말 옵션</h1><p>기본 소스</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#npm 커맨드 확인</span></span><br><span class="line">npm -h</span><br><span class="line"></span><br><span class="line"><span class="comment">#npm 커맨드 세부사항 확인</span></span><br><span class="line">npm 커맨드 -h</span><br></pre></td></tr></table></figure>
-
-<br>
+<ol start="6">
+<li>마지막으로 CSS를 자기 취향대로 꾸며보고 build 명령어로 결과물을 봐보세요! + 로더나 플러그인 적용도 해보세요</li>
+</ol>
 
         </div>
         
@@ -205,7 +205,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/javaScript/" rel="tag">javaScript</a>, <a class="has-link-grey -link" href="/tags/node-js/" rel="tag">node.js</a>, <a class="has-link-grey -link" href="/tags/npm/" rel="tag">npm</a>
+                    <a class="has-link-grey -link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="has-link-grey -link" href="/tags/bable/" rel="tag">bable</a>, <a class="has-link-grey -link" href="/tags/javaScript/" rel="tag">javaScript</a>, <a class="has-link-grey -link" href="/tags/webpack/" rel="tag">webpack</a>
                 </div>
             </div>
         </div>
@@ -222,17 +222,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98%EC%B0%A8%EC%9D%B4/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">forEach, map, reduce 차이점 | javaScript</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%A0%8C%EB%8D%94%EB%A7%81/">
-                <span class="level-item">브라우저의 렌더링 과정 | javaScript</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/%EB%A6%AC%EC%95%A1%ED%8A%B81/">
+                <span class="level-item">리액트의 시작 | React</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -252,7 +245,7 @@
     js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v2.8";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-comments" data-width="100%" data-href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/04/npm/" data-num-posts="5"></div>
+<div class="fb-comments" data-width="100%" data-href="https://github.com/Leenamkwon/Leenamkwon.github.io/2020/05/webpack03/" data-num-posts="5"></div>
 
     </div>
 </div>
@@ -575,7 +568,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="npm(node.js) - 모듈관리 | npm" height="28">
+                    <img src="https://static1.squarespace.com/static/58c82b5eb3db2b7f6a799f6b/t/58c853433e00be9447177a91/1489523524985/DEV-logo.png?format=1500w" alt="Webpack 실습하기 | javaScript" height="28">
                 
                 </a>
                 <p class="is-size-7">
